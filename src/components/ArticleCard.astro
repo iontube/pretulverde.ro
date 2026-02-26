@@ -1,0 +1,55 @@
+---
+interface Props {
+  title: string;
+  slug: string;
+  excerpt: string;
+  image: string;
+  category: string;
+  categorySlug: string;
+  date: string;
+  variant?: 'featured' | 'grid';
+}
+
+const { title, slug, excerpt, image, category, categorySlug, date, variant = 'grid' } = Astro.props;
+const cleanExcerpt = excerpt?.replace(/<[^>]*>/g, '') || '';
+
+const formattedDate = new Date(date).toLocaleDateString('ro-RO', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+{variant === 'featured' ? (
+  <a href={`/${slug}/`} class="article-card-featured">
+    <img
+      src={image}
+      alt={title}
+      class="card-image"
+      loading="eager"
+      width="1200"
+      height="600"
+    >
+    <div class="card-overlay">
+      <span class="card-category-badge">{category}</span>
+      <h3 class="card-title">{title}</h3>
+      <p class="card-excerpt">{cleanExcerpt}</p>
+      <span class="card-date">{formattedDate}</span>
+    </div>
+  </a>
+) : (
+  <a href={`/${slug}/`} class="article-card-grid">
+    <div class="card-image-wrap">
+      <img src={image} alt={title} class="card-image" loading="lazy" width="800" height="600">
+      <span class="card-category-badge">{category}</span>
+    </div>
+    <div class="card-body">
+      <h3 class="card-title">{title}</h3>
+      <p class="card-excerpt">{cleanExcerpt}</p>
+      <div class="card-footer">
+        <span>{formattedDate}</span>
+        <span class="card-read-more">Citeste &rarr;</span>
+      </div>
+    </div>
+  </a>
+)}

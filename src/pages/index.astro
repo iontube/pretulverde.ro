@@ -1,0 +1,171 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import keywordsData from '../../keywords.json';
+
+const categories = [
+  {
+    name: 'Electrocasnice',
+    slug: 'electrocasnice',
+    description: 'Masini de spalat, frigidere, aspiratoare robot, cuptoare cu microunde si multe altele. Comparam modele de la branduri precum Samsung, Bosch, Whirlpool si LG, analizand consumul energetic, fiabilitatea si raportul calitate-pret pentru a te ajuta sa faci cea mai buna investitie.',
+    icon: 'bolt'
+  },
+  {
+    name: 'Telefoane si Laptopuri',
+    slug: 'telefoane-laptopuri',
+    description: 'Smartphone-uri, laptopuri, tablete si accesorii tech. Analizam specificatii, performanta reala, autonomia bateriei si preturile din magazinele romanesti. De la telefoane sub 1000 lei la flagshipuri premium, gasesti comparatii detaliate pentru orice buget.',
+    icon: 'device'
+  },
+  {
+    name: 'Casa si Gradina',
+    slug: 'casa-gradina',
+    description: 'Mobilier, scule electrice, echipamente de gradina si decoratiuni. De la bormasini si fierastraie la seturi de mobilier si sisteme de irigare, comparam produse care iti fac viata mai usoara acasa si in gradina.',
+    icon: 'home'
+  },
+  {
+    name: 'Sanatate si Frumusete',
+    slug: 'sanatate-frumusete',
+    description: 'Cosmetice, creme, suplimente alimentare si aparate de ingrijire personala. Analizam ingrediente, eficienta si preturi pentru a te ajuta sa alegi produsele potrivite pentru rutina ta de ingrijire.',
+    icon: 'heart'
+  },
+  {
+    name: 'Sport si Timp Liber',
+    slug: 'sport-timp-liber',
+    description: 'Biciclete, echipament fitness, trotinete electrice si accesorii outdoor. Testam si comparam produse pentru un stil de viata activ, cu accent pe durabilitate si valoare pentru bani.',
+    icon: 'activity'
+  }
+];
+
+// SVG icons map
+const icons: Record<string, string> = {
+  bolt: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>',
+  device: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>',
+  home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+  heart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>',
+  activity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>'
+};
+
+// Get completed articles
+const articles = keywordsData.completed.map(item => ({
+  title: item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1),
+  slug: item.keyword.toLowerCase()
+    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+    .replace(/ș/g, 's').replace(/ț/g, 't')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
+  excerpt: item.excerpt || '',
+  image: `/images/articles/${item.keyword.toLowerCase()
+    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+    .replace(/ș/g, 's').replace(/ț/g, 't')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}.webp`,
+  category: item.category,
+  categorySlug: item.categorySlug,
+  date: item.date || new Date().toISOString(),
+  modifiedDate: item.modifiedDate || item.date || new Date().toISOString()
+})).sort((a, b) => new Date(b.modifiedDate).getTime() - new Date(a.modifiedDate).getTime());
+
+// Count articles per category
+const categoryCounts = categories.map(cat => ({
+  ...cat,
+  count: articles.filter(a => a.categorySlug === cat.slug).length
+}));
+
+const recentArticles = articles.slice(0, 9);
+---
+
+<Layout
+  title="PretulVerde - Comparatii de Preturi si Recomandari Smart"
+  description="Comparam preturi, analizam produse si te ajutam sa faci cele mai bune alegeri. Electrocasnice, telefoane, casa si gradina, sanatate si sport."
+>
+  <!-- Hero Banner -->
+  <section class="hero-banner">
+    <div class="container">
+      <h1>Compara preturile, alege smart</h1>
+      <p class="hero-subtitle">
+        Analizam si comparam produse din cele mai populare categorii pentru a te ajuta sa gasesti cel mai bun raport calitate-pret.
+      </p>
+      <a href="/blog/" class="hero-cta">
+        Vezi toate articolele
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Recent Articles Grid -->
+  {recentArticles.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <p class="section-label">Ultimele articole</p>
+        <h2 class="section-title">Cele mai recente comparatii</h2>
+        <div class="article-grid" style="margin-top: var(--space-xl);">
+          {recentArticles.map(article => (
+            <ArticleCard {...article} variant="grid" />
+          ))}
+        </div>
+        {articles.length > 3 && (
+          <div style="text-align: center; margin-top: var(--space-2xl);">
+            <a href="/blog/" class="btn-accent-lg">Vezi toate articolele</a>
+          </div>
+        )}
+      </div>
+    </section>
+  )}
+
+  <!-- Categories Section - Alternating blocks -->
+  <section class="section section-alt">
+    <div class="container">
+      <p class="section-label">Categorii</p>
+      <h2 class="section-title">Exploreaza pe domenii de interes</h2>
+      <div class="category-blocks" style="margin-top: var(--space-xl);">
+        {categoryCounts.map(cat => (
+          <a href={`/${cat.slug}/`} class="category-block">
+            <div class="category-block-icon">
+              <Fragment set:html={icons[cat.icon]} />
+            </div>
+            <div class="category-block-content">
+              <h3>{cat.name} <span class="category-count">{cat.count} articole</span></h3>
+              <p>{cat.description}</p>
+              <span class="category-block-link">Exploreaza categoria</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section">
+    <div class="container">
+      <div class="about-brief">
+        <p class="section-label">Despre PretulVerde</p>
+        <h2 class="section-title">De ce sa ne citesti?</h2>
+        <p>
+          PretulVerde.ro a aparut din nevoia de a avea un loc de incredere unde gasesti comparatii oneste de preturi si recomandari bazate pe cercetare reala. Nu suntem un catalog de produse. Suntem o echipa de specialisti care analizeaza piata romaneasca, compara specificatii, preturi si experienta de utilizare pentru a te ajuta sa faci alegeri inteligente fara sa pierzi timp si bani.
+        </p>
+
+        <div class="about-features">
+          <div class="about-feature-item">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h4>Comparatii obiective</h4>
+            <p>Analizam fiecare produs fara partinire, bazandu-ne pe specificatii reale si preturi actuale.</p>
+          </div>
+          <div class="about-feature-item">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <h4>Preturi actualizate</h4>
+            <p>Monitorizarea preturilor din magazinele romanesti pentru cele mai bune oferte.</p>
+          </div>
+          <div class="about-feature-item">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h4>Recenzii de incredere</h4>
+            <p>Fiecare articol e scris de specialisti cu experienta reala in domeniu.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

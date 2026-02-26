@@ -1,0 +1,357 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SimilarArticles from '../components/SimilarArticles.astro';
+import keywordsData from '../../keywords.json';
+
+export const frontmatter = {
+  title: "Cele mai bune biciclete de oras",
+  excerpt: "Daca vrei cele mai bune biciclete de oras acum, fara batai de cap, ia una de la Cube, modelul  Town Sport Pro, cam 3500-4000 lei. E un echilibru misto intre dotari, confort si pret, perfecta pentru naveta zilnica si plimbari relaxate. Dar stai putin, alegerea depinde mult de ce vrei sa faci cu ea si cat esti dispus sa bagi.",
+  image: "/images/articles/cele-mai-bune-biciclete-de-oras.webp",
+  category: "Sport si Timp Liber",
+  categorySlug: "sport-timp-liber",
+  date: "2025-11-18T11:00:00.000Z",
+  modifiedDate: "2026-02-03T08:00:00.000Z",
+  author: "Dan Vasilescu",
+  authorRole: "Expert Sport si Outdoor",
+  authorBio: "Dan este pasionat de sport si activitati in aer liber. Testeaza biciclete, echipament fitness si accesorii outdoor, punand accent pe performanta si raportul calitate-pret."
+};
+
+const faq = [
+  { question: "cat costa o bicicleta buna de oras?", answer: "O bicicleta de oras buna, noua, cu frane pe disc hidraulice si componente decente, incepe de la aproximativ 2000-2500 lei. Modelele echilibrate, cu confort si dotari, ajung in jur de 3500-4500 lei, cum ar fi Cube Town Sport Pro." },
+  { question: "ce e mai bun bicicleta Cube sau Trek pentru oras?", answer: "Ambele branduri fac biciclete excelente. Cube Town Sport Pro e de obicei mai bine echipata din fabrica, ideala pentru confort maxim. Trek FX 2 Disc e un pic mai sportiva si agila. Alegerea depinde daca pui pret pe confortul complet sau pe un stil de pedalat mai alert." },
+  { question: "cat timp rezista o bicicleta de oras?", answer: "O bicicleta de oras de calitate, bine intretinuta, poate rezista peste 10 ani. Componentele se uzeaza, dar pot fi inlocuite. Durata depinde mult de calitatea componentelor, de cum o folosesti si de cat de des o cureti si o ungi." },
+  { question: "ce tip de bicicleta sa aleg pentru oras", answer: "Pentru oras, cel mai bine se preteaza bicicletele hibride sau de trekking. Acestea ofera o pozitie confortabila de pedalat, roti rapide pe asfalt (28 inch) si sunt adesea echipate cu portbagaj si aripi, fiind gata de drum." },
+  { question: "de ce bicicleta mea de oras nu schimba bine vitezele?", answer: "Schimbarea proasta a vitezelor poate fi cauzata de cabluri intinse, murdarie in sistemul de schimbare, sau reglaj incorect. Daca problema persista, cel mai bine e sa mergi la un service de biciclete pentru o verificare si reglare profesionala." },
+  { question: "cand merita sa cumpar bicicleta de oras second hand?", answer: "Merita sa cumperi second hand daca gasesti un model de calitate de la un brand bun la un pret semnificativ mai mic decat cel nou. Verifica atent starea componentelor (frane, schimbatoare, furca, roti) si eventual mergi cu cineva care se pricepe." },
+  { question: "ce marime de bicicleta de oras sa aleg pentru 1.75m?", answer: "Pentru o inaltime de 1.75m, marimea potrivita pentru o bicicleta de oras este de obicei M sau L (intre 17 si 19 inch). Cel mai bine este sa probezi bicicleta pentru a te asigura ca pozitia de pedalat este confortabila." },
+  { question: "sunt bune bicicletele de oras cu suspensie?", answer: "O bicicleta de oras cu suspensie poate fi confortabila pe drumuri denivelate, dar adauga greutate si complexitate. Majoritatea bicicletelor de oras nu au nevoie de suspensie, fiind mai eficiente si mai usoare fara ea. O furca fixa este de obicei suficienta pentru asfalt." }
+];
+
+const toc = [
+  { title: "Ce bicicleta de oras sa-ti iei acum fara sa te arzi la buzunar", id: "ce-bicicleta-de-oras-sa-ti-iei-acum-fara-sa-te-arzi-la-buzunar" },
+  { title: "Top recomandari de biciclete urbane: Ce sa alegi in functie de buzunar si nevoi", id: "top-recomandari-de-biciclete-urbane-ce-sa-alegi-in-functie-de-buzunar-si-nevoi" },
+  { title: "Ce specificatii conteaza la o bicicleta de oras (si ce e doar marketing)", id: "ce-specificatii-conteaza-la-o-bicicleta-de-oras-si-ce-e-doar-marketing" },
+  { title: "Cube Town Sport Pro vs. Trek FX 2 Disc: Care e mai buna pentru tine?", id: "cube-town-sport-pro-vs-trek-fx-2-disc-care-e-mai-buna-pentru-tine" },
+  { title: "Greșeli comune la cumpărarea bicicletei de oraș și cum să prinzi cele mai bune prețuri", id: "greseli-comune-la-cumpararea-bicicletei-de-oras-si-cum-sa-prinzi-cele-mai-bune-preturi" },
+  { title: "Verdict final: Ce bicicleta de oras sa cumperi acum, pe categorii de buget", id: "verdict-final-ce-bicicleta-de-oras-sa-cumperi-acum-pe-categorii-de-buget" }
+];
+
+// Get all articles for similar articles component
+const allArticles = keywordsData.completed.map(item => ({
+  title: item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1),
+  slug: item.keyword.toLowerCase()
+    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+    .replace(/ș/g, 's').replace(/ț/g, 't')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
+  excerpt: item.excerpt || '',
+  image: `/images/articles/${item.keyword.toLowerCase()
+    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+    .replace(/ș/g, 's').replace(/ț/g, 't')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}.webp`,
+  category: item.category,
+  categorySlug: item.categorySlug,
+  date: item.date || new Date().toISOString()
+}));
+---
+
+<Layout
+  title="Cele mai bune biciclete de oras - PretulVerde"
+  description="Daca vrei cele mai bune biciclete de oras acum, fara batai de cap, ia una de la Cube, modelul  Town Sport Pro, cam 3500-4000 lei. E un echilibru misto intre dotari, confort si pret, perfecta pentru naveta zilnica si plimbari relaxate. Dar stai putin, alegerea depinde mult de ce vrei sa faci cu ea si cat esti dispus sa bagi."
+  image="/images/articles/cele-mai-bune-biciclete-de-oras.webp"
+  type="article"
+  publishedTime="2025-11-18T11:00:00.000Z"
+  modifiedTime="2026-02-03T08:00:00.000Z"
+  author="Dan Vasilescu"
+  faq={faq}
+  breadcrumbs={[
+    { name: "Acasa", url: "/" },
+    { name: "Sport si Timp Liber", url: "/sport-timp-liber/" },
+    { name: "Cele mai bune biciclete de oras", url: "/cele-mai-bune-biciclete-de-oras/" }
+  ]}
+>
+  <article class="article-page">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+      <ol>
+        <li><a href="/">Acasa</a></li>
+        <li><a href="/sport-timp-liber/">Sport si Timp Liber</a></li>
+        <li><span>Cele mai bune biciclete de oras</span></li>
+      </ol>
+    </nav>
+
+    <!-- Title -->
+    <h1 class="article-page-title">Cele mai bune biciclete de oras</h1>
+
+    <!-- Meta -->
+    <div class="article-page-meta">
+      <span>Dan Vasilescu</span>
+      <span>&middot;</span>
+      <span>Publicat: 18 noiembrie 2025</span>
+      <span>&middot;</span>
+      <span>Actualizat: 3 februarie 2026</span>
+    </div>
+
+    <!-- Featured Image -->
+    <img src="/images/articles/cele-mai-bune-biciclete-de-oras.webp" alt="Cele mai bune biciclete de oras" class="article-page-image" width="800" height="600" loading="eager">
+
+    <!-- Two-column layout: content + TOC sidebar on RIGHT -->
+    <div class="article-layout">
+      <div>
+        <!-- Mobile TOC (expandable) -->
+        <div class="toc-mobile" id="toc-mobile">
+          <button class="toc-mobile-toggle" onclick="this.parentElement.classList.toggle('open')">
+            Cuprins
+            <span class="toc-chevron">&#9660;</span>
+          </button>
+          <ol class="toc-mobile-list">
+            {toc.map(item => (
+              <li><a href={`#${item.id}`}>{item.title}</a></li>
+            ))}
+            <li><a href="#faq">Intrebari Frecvente</a></li>
+          </ol>
+        </div>
+
+        <!-- Article Content -->
+        <div class="article-content">
+          
+      <section id="ce-bicicleta-de-oras-sa-ti-iei-acum-fara-sa-te-arzi-la-buzunar">
+        <h2>Ce bicicleta de oras sa-ti iei acum fara sa te arzi la buzunar</h2>
+        <p>Bun, hai sa fim sinceri. Ai cautat "cele mai bune biciclete de oras" si vrei sa stii direct ce sa iei. Am facut eu researchul pentru tine si sa-ti zic drept, pentru oras, cel mai fain e sa ai o bicicleta confortabila, usor de manevrat si nu foarte pretentioasa la intretinere. M-am uitat la modele care se potrivesc pentru plimbari pe asfalt, prin parcuri, sau chiar drumuri mai scurte spre munca. Si ma rog, sa nu arate nici naspa, ca conteaza si asta.</p>
+
+        <p>Recomandarea mea de top, ca sa incepem direct cu bine, e Cube Town Sport Pro. E cam in jur de 3500-4000 de lei, depinde unde o prinzi, si ofera un pachet solid. De ce asta? Pai, are o pozitie de pedalat dreapta, care-ti salveaza spatele si gatul pe distante mai lungi, roti de 28 de inch care ruleaza usor pe asfalt, si frane pe disc hidraulice, care-s mult mai fiabile decat cele V-brake, mai ales pe ploaie.</p>
+        <p>Plus ca are si un portbagaj, lumini si aripi, deci e pregatita de drum imediat ce o scoti din cutie.</p>
+
+        <p>Nu-i cea mai ieftina, dar nici un lux. E un fel de "sweet spot" unde platesti pentru ce primesti, fara marketing exagerat. Stiu, poate pare mult 4000 de lei, dar gandeste-te ca o bicicleta buna te tine ani de zile si te scapa de aglomeratie, plus ca e si miscare. Ce poti sa obtii mai ieftin? Sigur, dar probabil cu compromisuri la componente sau confort.</p>
+
+        <p>Pe de alta parte, daca bugetul e mai flexibil, poti sa te uiti si la altceva, dar pentru majoritatea "omului normal" care vrea o bicicleta "de oras", Cube-ul asta e un punct de plecare excelent. Si daca te gandesti la second-hand, poti gasi oferte bune, dar trebuie sa verifici atent starea ei, mai ales la furca, la angrenaj si la frane. Nu te arunca la prima bicicleta ieftina gasita pe olx, ca s-ar putea sa ajungi sa bagi mai multi bani in reparatii decat ai fi dat pe una noua.</p>
+
+        <p>Deci, ca sa recapitulam, pentru ce ai cerut tu, "cele mai bune biciclete de oras", Cube Town Sport Pro e o alegere sigura si inteligenta. Hai sa vedem si alte optiuni, ca sa nu zici ca te-am trimis doar la una singura.</p>
+      </section>
+
+      <section id="top-recomandari-de-biciclete-urbane-ce-sa-alegi-in-functie-de-buzunar-si-nevoi">
+        <h2>Top recomandari de biciclete urbane: Ce sa alegi in functie de buzunar si nevoi</h2>
+        <p>Bun, ai vazut recomandarea mea principala, acum sa extindem putin orizontul. Am ales 4-5 modele care mi s-au parut interesante si cu raport bun pret-calitate, si o sa ti le prezint pe scurt, cu plusuri si minusuri. Sa nu zici ca nu esti informat.</p>
+
+        <p>Mai intai, hai sa vorbim de ceva si mai accesibil, dar totusi decent. <strong>Kross Trans 2.0</strong>, de exemplu. O gasesti pe la 2000-2500 lei, mai ales la promotii. E o bicicleta mai simpla, dar isi face treaba.</p>
+        <p>Plusuri: pretul e clar cel mai mare atu. E o optiune buna daca bugetul e strans si vrei ceva nou. Vine si ea cu portbagaj, aripi, stii tu, chestiile de oras.</p>
+        <p>Minusuri: componentele sunt mai de baza. Franele sunt V-brake, care nu-s grozave pe umezeala, si schimbatorul de foi si pinioane nu va fi la fel de fin ca la un model mai scump. Nu te astepta la viteze schimbate instant.</p>
+        <p>E pentru plimbari mai scurte, prin cartier, nu pentru navete zilnice pe 20 de km. Potrivita pentru: incepatori cu buget mic, oameni care vor o bicicleta "de ocazie" pentru plimbari ocazionale.</p>
+
+        <p>Apoi, sa trecem la ceva mai serios. Daca iti place stilul Cube, dar vrei o alternativa, uita-te la <strong>Trek FX 2 Disc</strong>. E cam in aceeasi zona de pret cu Cube Town Sport Pro, poate un pic mai mult, 4000-4500 lei.</p>
+        <p>Trek fac biciclete faine, si asta nu face exceptie. Plusuri: e mai sportiva putin decat Cube-ul, deci daca vrei sa pedalezi un pic mai alert, e o alegere buna. Are si ea frane pe disc hidraulice si roti bune.</p>
+        <p>Minusuri: nu vine la fel de echipata din fabrica. S-ar putea sa ai nevoie sa cumperi separat portbagaj, lumini, etc., ceea ce adauga la pret. Pozitia e un pic mai aplecata decat la Cube, deci daca ai probleme cu spatele, s-ar putea sa nu fie la fel de confortabila.</p>
+        <p>Potrivita pentru: cei care vor o bicicleta de oras cu un aer mai sportiv, pentru navete mai lungi sau plimbari in weekend.</p>
+
+        <p>Acum, o alta directie: bicicletele pliabile. Nu sunt strict "de oras" in sensul clasic, dar sunt geniale pentru cei care locuiesc in apartamente mici sau trebuie sa le combine cu transportul in comun. Exemplu: <strong>Brompton</strong>.</p>
+        <p>Aleluia, astea sunt scumpe, sar de 6000-7000 lei. Plusuri: se pliaza incredibil de compact, e foarte rezistenta, o placere sa o pliezi si sa o desfaci. Minusuri: pretul e prohibitiv pentru multi.</p>
+        <p>Si e mai greu de pedalat pe distante lungi comparativ cu o bicicleta normala. Potrivita pentru: navetisti urbani, oameni cu spatiu limitat, cei care nu se uita la bani. Mai exista si optiuni mai accesibile la pliabile, gen Dahon sau chiar modele mai no-name de pe eMAG, dar calitatea e mult mai jos.</p>
+
+        <p>Ca o alta alternativa de oras, sa zicem un pic mai "vintage" sau cu un stil diferit, cauta modelele de la <strong>Electra</strong>. Ei fac biciclete cu un design aparte, foarte confortabile, cu sezuturi late si ghidoane inalte. Preturile variaza, dar un model decent te duce pe la 3000-4000 lei.</p>
+        <p>Plusuri: confort maxim, aspect unic, pozitie de pedalat foarte relaxata. Minusuri: sunt mai grele, nu sunt pentru viteza, si uneori piesele pot fi mai greu de gasit daca ai nevoie de ceva specific. Potrivita pentru: cei care pun confortul si stilul pe primul loc, si nu vor sa pedaleze sportiv.</p>
+
+        <p>Si bineinteles, nu uita de piata second-hand. Poti gasi biciclete de la branduri bune (Giant, Specialized, Scott) la preturi mult mai bune, uneori chiar modele care noi costau dublu. Un prieten si-a luat un Specialized Sirrus de pe olx la jumatate de pret si e super multumit. Dar, repet, verifica atent! Nu te grabi, cere poze detaliate, ideal mergi cu cineva care se pricepe la biciclete sa o vada.</p>
+      </section>
+
+      <section id="ce-specificatii-conteaza-la-o-bicicleta-de-oras-si-ce-e-doar-marketing">
+        <h2>Ce specificatii conteaza la o bicicleta de oras (si ce e doar marketing)</h2>
+        <p>Bun, acum ca am vazut cateva modele, hai sa vorbim pe limba ta: ce inseamna toate "specificatiile alea" si la ce sa te uiti de fapt. Nu vreau sa te ametesc cu termeni tehnici, ci sa-ti dau niste repere clare.</p>
+
+        <p>In primul rand, <strong>cadrul</strong>. Majoritatea bicicletelor de oras sunt din aluminiu. E usor si nu rugine.</p>
+        <p>Otelul e mai greu si mai rezistent, dar pentru oras, aluminiul e standard. E mai mult despre geometria cadrului. La o bicicleta de oras, vrei o pozitie mai verticala.</p>
+        <p>Asta inseamna un cadru cu un top tube (tubul de sus) mai scurt si un head tube (tubul de la furca) mai inalt. Cum ziceam la Cube Town Sport Pro, asta te ajuta sa nu te doara spatele. Daca vezi o bicicleta cu un cadru foarte aplecat, e mai mult de mountain bike sau de sosea, nu de oras.</p>
+
+        <p>Apoi, <strong>rotile</strong>. Aici majoritatea se invartesc in jurul marimii de 28 de inch (sau 700c, cum zic unii). Asta e marimea standard pentru bicicletele de oras si hibride. Rularea e fina pe asfalt. Anvelopele sunt si ele importante. Pentru oras, vrei anvelope mai late (gen 35-45mm), cu un pic de cramponare pe margini, ca sa fie si confortabile si sa aiba aderenta pe udat sau pe piatra cubica. Nu vreau anvelope ultra-slick ca la cursiere.</p>
+
+        <p><strong>Schimbatoarele de viteze</strong>. Aici lumea se blocheaza. Pentru oras, nu ai nevoie de 20-30 de viteze. O sa folosesti maxim 5-7 din ele. Sistemele Shimano sunt cele mai comune si de incredere. Shimano Altus, Acera, Alivio sunt "entry-level" pentru biciclete hibride/oras si sunt ok. Daca vezi Tourney, e foarte basic. Daca vezi Deore sau mai sus, e deja peste ce ai nevoie, dar nu strica. Cel mai important e sa schimbe fin si sa nu sara de pe foaie/pinion.</p>
+
+        <p><strong>Franele</strong>. Aici e un punct sensibil. Franele pe disc hidraulice sunt cel mai bun lucru pe care il poti avea pentru o bicicleta de oras.</p>
+        <p>Sunt puternice, au control bun si merg la fel de bine pe ploaie ca pe uscat. Marci ca Shimano sau Tektro fac frane bune. Franele pe disc mecanice sunt mai ieftine, dar nu la fel de performante.</p>
+        <p>Si cele mai vechi, V-brake (cele care "strang" janta) sunt cele mai putin performante, mai ales pe ploaie sau cand se umezesc jantele. Eu personal, daca pot, as alege frane pe disc hidraulice.</p>
+
+        <p><strong>Furca</strong>. Multe biciclete de oras au furca fixa (adica nu are suspensie). Asta le face mai usoare si mai eficiente. Daca mergi pe drumuri foarte denivelate sau cu multe gropi, o furca cu suspensie (gen RockShox sau Suntour) poate fi o idee, dar adauga greutate si complexitate. Majoritatea bicicletelor de oras nu au nevoie de suspensie, se descurca bine si fara. Sa zicem ca 100-120mm cursa la suspensie e mult pentru oras.</p>
+
+        <p>Si inca ceva: <strong>accesorii</strong>. Portbagajul, aripile, lumina, cricul. Sunt chestii care fac viata mai usoara in oras. Unele vin din fabrica, altele trebuie cumparate separat. Verifica ce include pretul. Si nu te lasa pacalit de "21 de viteze" daca schimbatorul e din cel mai ieftin. Mai bine 7 viteze bune, decat 21 prosti.</p>
+
+        <p>Pe scurt: cauta pozitie confortabila, roti de 28, frane pe disc hidraulice (daca se poate), si schimbatoare decente. Restul e bonus.</p>
+      </section>
+
+      <section id="cube-town-sport-pro-vs-trek-fx-2-disc-care-e-mai-buna-pentru-tine">
+        <h2>Cube Town Sport Pro vs. Trek FX 2 Disc: Care e mai buna pentru tine?</h2>
+        <p>Bun, hai sa comparam direct cele doua modele pe care le-am tot mentionat, Cube Town Sport Pro si Trek FX 2 Disc. Sunt cam in aceeasi categorie de pret, cam 4000-4500 lei, deci e o comparatie justa. Sa zicem ca asta e "decizia ta finala", daca bugetul permite.</p>
+
+        <p><strong>Cube Town Sport Pro.</strong> Asta e tipul de bicicleta "plug-and-play" pentru oras. Vine echipata cu de toate: portbagaj solid, lumini LED bune (fata si spate), aripi fata-spate, cric. E gandita sa fie gata de drum din prima zi.</p>
+        <p>Pozitia de pedalat e foarte dreapta, un fel de "state in the saddle", cum zic englezii. Asta inseamna confort maxim pe distante mai lungi si pentru cei cu probleme la spate. Schimbatoarele sunt de obicei Shimano, un nivel decent (Altus/Acera), si franele sunt pe disc hidraulice, ceea ce e un mare plus.</p>
+        <p>Daca ar fi sa-i gasesc un minus, ar fi ca nu e cea mai sportiva. Daca vrei sa te dai un pic "in vant", s-ar putea sa simti ca e un pic mai greoaie sau mai putin receptiva la accelerari bruste. Dar pentru naveta, plimbari prin parc, mers la cumparaturi, e excelenta.</p>
+
+        <p><strong>Acum, Trek FX 2 Disc.</strong> Asta e un pic mai spre sportivitate. Pozitia e mai aplecata, nu cu mult, dar simti diferenta fata de Cube. E mai agila, mai rapida la accelerari.</p>
+        <p>Si ea vine cu frane pe disc hidraulice si roti de 28 inch. Partea mai putin grozava e ca, de obicei, nu vine la fel de dotata ca Cube-ul. S-ar putea sa trebuiasca sa cumperi separat portbagaj, lumini, aripi.</p>
+        <p>Asta poate duce pretul final mai sus. Si schimbatoarele, desi sunt tot Shimano, s-ar putea sa fie un pic diferite ca nivel, dar tot in zona buna.</p>
+
+        <p>Deci, iata cum alegi: Daca bugetul tau e 4000-4500 lei si vrei o bicicleta gata echipata, confortabila, pe care sa te urci si sa pleci imediat la drum, fara sa te gandesti la accesorii, si pui confortul pe primul loc, ia Cube Town Sport Pro. E un pachet complet.</p>
+
+        <p>Daca vrei o bicicleta un pic mai rapida, un pic mai sportiva, si esti dispus sa cumperi separat cateva accesorii (daca nu vin incluse la promotie), si poate ai deja acasa lumini sau portbagaj, atunci Trek FX 2 Disc e o alegere excelenta. E mai "versatila" in sensul ca o poti folosi si pentru un pic de sport, dar tot ramane o bicicleta buna de oras.</p>
+
+        <p>Partea si mai buna e ca ambele sunt branduri de renume, deci stii ca sunt construite bine si ai suport. Eu, personal, daca nu as fi un "entuziast" si as vrea doar sa ajung din punctul A in punctul B confortabil si fara batai de cap, as inclina spre Cube Town Sport Pro datorita echiparii complete. Dar daca am 2-3 sute de lei in plus si vreau un pic mai multa agilitate, as merge pe Trek.</p>
+        <p>Nu e o diferenta uriasa, ambele sunt alegeri bune. Totul depinde de ce e mai important pentru tine: confort maxim si echipare completa vs. un pic mai multa agilitate.</p>
+      </section>
+
+      <section id="greseli-comune-la-cumpararea-bicicletei-de-oras-si-cum-sa-prinzi-cele-mai-bune-preturi">
+        <h2>Greșeli comune la cumpărarea bicicletei de oraș și cum să prinzi cele mai bune prețuri</h2>
+        <p>Ok, hai sa vorbim despre ce merge naspa cand lumea isi ia bicicleta de oras, si cum poti sa eviti asta, ca sa nu arunci banii pe fereastra.</p>
+
+        <p>Multi se pripaesc. Vad o bicicleta "de firma" la 1000 lei si zic "gata, asta e!" Nu, frate, la 1000 lei (noua!) primesti o bicicleta cu componente atat de slabe incat o sa te enervezi la fiecare schimbare de viteza si la fiecare frana apasata. Si apoi ajungi sa bagi 500 lei in piese noi in primul an.</p>
+        <p>Deci, <strong>greseala numarul 1</strong>: sa te iei dupa pretul cel mai mic, fara sa te uiti la specificatii. Brandurile mari (Cube, Trek, Giant, Specialized) au modele de intrare, dar alea tot pe la 2000 lei incep, si alea sunt "de baza".</p>
+
+        <p><strong>Greseala numar 2</strong>: sa cumperi bicicleta "online" de pe un site dubios, fara sa o vezi sau sa o probezi. Mai ales daca nu esti sigur de marime. Sa zicem ca ai 1.75m. Ce marime de cadru ti se potriveste? La bicicletele de oras, e de obicei M sau L. Daca iei prea mica sau prea mare, o sa te doara tot corpul dupa 5 km. E ca si cum ti-ai lua pantofi gresiti. Deci, ideal, mergi la un magazin, chiar daca o cumperi online de la altcineva. Probeaza, simte cum e.</p>
+
+        <p><strong>Greseala numar 3</strong>: sa te lasi impresionat de "21 de viteze" sau "30 de viteze". Cum am zis, pentru oras, 7-10 viteze sunt suficiente. Daca schimbatorul e din cel mai ieftin plastic, o sa ai probleme. Focus pe calitatea componentelor, nu pe numarul lor.</p>
+
+        <p><strong>Greseala numar 4</strong>: sa ignori franele. Franele sunt cele mai importante, pentru siguranta ta! Nu te multumi cu frane pe disc mecanice sau V-brake daca poti lua hidraulice, mai ales daca mergi in trafic aglomerat sau pe ploaie. Iti garantez ca vei aprecia diferenta.</p>
+
+        <p>Si acum, cum prinzi cele mai bune preturi? Simplu: fii pe faza la promotii. Marile magazine (eMAG, Altex, Dedeman, Flanco, PC Garage, Decathlon) fac reduceri periodice. De obicei, la sfarsitul sezonului (septembrie-noiembrie) poti gasi reduceri bune la modelele din anul respectiv, pentru ca scot modelele noi.</p>
+        <p>Dar si in primavara, inainte de "sezonul" de biciclete, mai apar oferte. Aboneaza-te la newslettere de la magazinele tale preferate. Urmareste ofertele "Black Friday" sau "Cyber Monday".</p>
+        <p>Si nu uita de site-urile specializate pe biciclete (Bikearena, Hervis, etc.).</p>
+
+        <p>O alta chestie pe care multi o ignora: preturile la accesorii. Daca bicicleta nu vine echipata, nu cumpara prima lumina sau primul portbagaj pe care il vezi. Compara preturile online. Uneori gasesti oferte mult mai bune pe site-uri ca eMAG sau Dedeman decat in magazinele specializate de biciclete, pentru aceleasi produse.</p>
+
+        <p>Si inca un truc: cauta modelele din anii anteriori. Daca un model a aparut acum 2-3 ani si inca se mai vinde, e posibil sa gasesti reduceri bune la el, pentru ca nu mai e "ultimul model". Si sincer, la o bicicleta de oras, diferenta intre un model de anul trecut si unul de acum e neglijabila pentru utilizatorul mediu.</p>
+
+        <p>Pe scurt: nu te pripi, verifica specificatiile (mai ales franele si schimbatoarele), probeaza bicicleta, si fii atent la promotii si la cumpararea accesoriilor separat.</p>
+      </section>
+
+      <section id="verdict-final-ce-bicicleta-de-oras-sa-cumperi-acum-pe-categorii-de-buget">
+        <h2>Verdict final: Ce bicicleta de oras sa cumperi acum, pe categorii de buget</h2>
+        <p>Bun, am ajuns la final si trebuie sa dam un verdict clar. Daca as fi in locul tau, acum, in momentul asta, si as vrea sa-mi iau o bicicleta de oras, as face asa, in functie de buget. Nu mai dau ocol, direct la subiect. Pe bune.</p>
+
+        <p><strong>Pentru cei cu un buget mai mic, sa zicem pana in 2500 lei:</strong> Recomandarea mea e sa te uiti la Kross Trans 2.0 sau modele similare de la Merida sau DHS (daca le gasesti la promotie). Stiu ca am zis ca sunt "de baza", dar e cel mai bun compromis pe care il poti face in acest buget. Plusuri: pretul.</p>
+        <p>E probabil cea mai ieftina bicicleta noua care vine "echipata" (cu portbagaj, aripi). Minusuri: componentele sunt de intrare. Franele V-brake nu sunt grozave, schimbatorul o sa fie mai "sacadat".</p>
+        <p>E buna pentru plimbari scurte, prin cartier, mers la magazinul din colt. Nu te astepta la performante sportive sau la fiabilitate pe termen lung fara mici ajustari.</p>
+
+        <p><strong>Daca bugetul permite o marire, si te duci spre 2500-3500 lei:</strong> Aici incepe sa fie interesant. Poti sa te uiti la Cube Town Sport Pro (daca prinzi o promotie buna) sau la modele similare de la Trek (FX 1 sau FX 2, tot la promotie). Sau chiar la Orbea Carpe (un alt brand bun).</p>
+        <p>In acest buget, vei gasi biciclete cu frane pe disc hidraulice, schimbatoare mai bune (Shimano Altus/Acera), si o geometrie mult mai confortabila. Si vei gasi modele care vin si cu portbagaj, lumini, etc. Aceste biciclete sunt excelente pentru naveta zilnica, plimbari mai lungi in weekend, si te vor servi ani de zile fara probleme.</p>
+        <p>Daca ar fi sa aleg eu acum un "sweet spot" intre pret si dotari, ar fi in zona asta de 2500-3500 lei. Pentru mine, asta ar fi cea mai "buna bicicleta de oras" in sensul de "cel mai bun raport pret/calitate/utilitate".</p>
+
+        <p><strong>Pentru cei cu buget mare, peste 3500-4000 lei:</strong> Aici deja intri in zona premium pentru biciclete de oras. Cube Town Sport Pro devine o optiune standard, dar poti sa te uiti si la Trek FX 2 Disc (daca vrei un pic mai multa agilitate) sau chiar la modelele de la Specialized (Sirrus X, de exemplu). Poti sa te gandesti si la biciclete electrice de oras, dar alea sar de 8000-10000 lei.</p>
+        <p>In acest buget, vei primi componente de top, probabil furca cu suspensie (daca vrei), si o greutate mai mica. Dar, pentru mine, pentru "cele mai bune biciclete de oras", daca nu ai nevoie de motor electric, nu prea are sens sa platesti peste 4000-4500 lei. Diferentele devin mici, iar tu platesti mai mult pentru brand sau pentru mici imbunatatiri care s-ar putea sa nu le folosesti la capacitate maxima in oras.</p>
+
+        <p>Deci, ca sa dau verdictul final: Daca as cumpara azi, m-as uita la <strong>Cube Town Sport Pro</strong>, in jur de 3500-4000 lei. De ce? Pentru ca vine complet echipata, e super confortabila, are frane bune, si e un pachet ideal pentru ce cauta majoritatea oamenilor cand zic "bicicleta de oras". Nu ma complic cu accesorii separate, ma urc si plec. E cea mai "fara griji" optiune.</p>
+
+        <p>Daca as vrea un pic mai multa agilitate si as fi dispus sa mai cumpar ceva separat, as merge pe Trek FX 2 Disc. Dar, sincer, pentru oras, confortul si dotarile complete ale Cube-ului ma atrag mai mult. Si daca bugetul e strict, sub 2500 lei, Kross Trans 2.0 e singura optiune decenta, dar cu compromisuri.</p>
+      </section>
+
+          <!-- FAQ Section -->
+          <section class="faq-section" id="faq">
+            <h2 class="faq-title">Intrebari Frecvente</h2>
+            
+            <details class="faq-item" id="faq-0">
+              <summary>
+                cat costa o bicicleta buna de oras?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                O bicicleta de oras buna, noua, cu frane pe disc hidraulice si componente decente, incepe de la aproximativ 2000-2500 lei. Modelele echilibrate, cu confort si dotari, ajung in jur de 3500-4500 lei, cum ar fi Cube Town Sport Pro.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-1">
+              <summary>
+                ce e mai bun bicicleta Cube sau Trek pentru oras?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Ambele branduri fac biciclete excelente. Cube Town Sport Pro e de obicei mai bine echipata din fabrica, ideala pentru confort maxim. Trek FX 2 Disc e un pic mai sportiva si agila. Alegerea depinde daca pui pret pe confortul complet sau pe un stil de pedalat mai alert.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-2">
+              <summary>
+                cat timp rezista o bicicleta de oras?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                O bicicleta de oras de calitate, bine intretinuta, poate rezista peste 10 ani. Componentele se uzeaza, dar pot fi inlocuite. Durata depinde mult de calitatea componentelor, de cum o folosesti si de cat de des o cureti si o ungi.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-3">
+              <summary>
+                ce tip de bicicleta sa aleg pentru oras
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Pentru oras, cel mai bine se preteaza bicicletele hibride sau de trekking. Acestea ofera o pozitie confortabila de pedalat, roti rapide pe asfalt (28 inch) si sunt adesea echipate cu portbagaj si aripi, fiind gata de drum.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-4">
+              <summary>
+                de ce bicicleta mea de oras nu schimba bine vitezele?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Schimbarea proasta a vitezelor poate fi cauzata de cabluri intinse, murdarie in sistemul de schimbare, sau reglaj incorect. Daca problema persista, cel mai bine e sa mergi la un service de biciclete pentru o verificare si reglare profesionala.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-5">
+              <summary>
+                cand merita sa cumpar bicicleta de oras second hand?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Merita sa cumperi second hand daca gasesti un model de calitate de la un brand bun la un pret semnificativ mai mic decat cel nou. Verifica atent starea componentelor (frane, schimbatoare, furca, roti) si eventual mergi cu cineva care se pricepe.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-6">
+              <summary>
+                ce marime de bicicleta de oras sa aleg pentru 1.75m?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Pentru o inaltime de 1.75m, marimea potrivita pentru o bicicleta de oras este de obicei M sau L (intre 17 si 19 inch). Cel mai bine este sa probezi bicicleta pentru a te asigura ca pozitia de pedalat este confortabila.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-7">
+              <summary>
+                sunt bune bicicletele de oras cu suspensie?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                O bicicleta de oras cu suspensie poate fi confortabila pe drumuri denivelate, dar adauga greutate si complexitate. Majoritatea bicicletelor de oras nu au nevoie de suspensie, fiind mai eficiente si mai usoare fara ea. O furca fixa este de obicei suficienta pentru asfalt.
+              </div>
+            </details>
+          </section>
+        </div>
+
+        <!-- Author -->
+        <div class="author-line">
+          <div class="author-avatar">DV</div>
+          <div>
+            <div class="author-name">Dan Vasilescu</div>
+            <div class="author-role">Expert Sport si Outdoor</div>
+          </div>
+        </div>
+
+        <!-- Similar Articles -->
+        <SimilarArticles
+          currentSlug="cele-mai-bune-biciclete-de-oras"
+          currentCategory="sport-timp-liber"
+          articles={allArticles}
+        />
+      </div>
+
+      <!-- Sticky TOC Sidebar (desktop) - RIGHT side -->
+      <aside class="toc-sidebar">
+        <p class="toc-sidebar-title">Cuprins</p>
+        <ol class="toc-sidebar-list">
+          {toc.map(item => (
+            <li><a href={`#${item.id}`}>{item.title}</a></li>
+          ))}
+          <li><a href="#faq">Intrebari Frecvente</a></li>
+        </ol>
+      </aside>
+    </div>
+  </article>
+</Layout>

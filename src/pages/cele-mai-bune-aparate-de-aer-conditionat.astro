@@ -1,0 +1,269 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SimilarArticles from '../components/SimilarArticles.astro';
+import keywordsData from '../../keywords.json';
+
+export const frontmatter = {
+  title: "Cele mai bune aparate de aer conditionat",
+  excerpt: "Daca ma intrebi pe mine, cele mai bune aparate de aer conditionat in 2024 sunt cele care iti ofera un echilibru bun intre performanta, eficienta energetica si pret. Asta inseamna de obicei modele inverter de la producatori consacrati precum Daikin, Gree, Midea sau LG. Pentru un confort garantat si facturi mai mici, cauta modele cu clasa energetica A++ sau A+++.",
+  image: "/images/articles/cele-mai-bune-aparate-de-aer-conditionat.webp",
+  category: "Electrocasnice",
+  categorySlug: "electrocasnice",
+  date: "2025-03-04T15:00:00.000Z",
+  modifiedDate: "2026-02-21T14:50:31.603Z",
+  author: "Andrei Ionescu",
+  authorRole: "Expert Electrocasnice",
+  authorBio: "Andrei testeaza si compara electrocasnice de peste 7 ani. Analizeaza raportul calitate-pret si performanta reala a fiecarui produs, de la masini de spalat la aspiratoare robot."
+};
+
+const breadcrumbs = [
+  { name: "Acasa", url: "/" },
+  { name: "Electrocasnice", url: "/electrocasnice/" },
+  { name: "Cele mai bune aparate de aer conditionat", url: "/cele-mai-bune-aparate-de-aer-conditionat/" }
+];
+
+const faq = [
+  { question: "cat costa un aparat de aer conditionat bun", answer: "Un aparat de aer conditionat bun, cu tehnologie inverter si clasa energetica A++ sau A+++, costa incepand de la aproximativ 2000 lei pentru un model de 12000 BTU. Modelele premium de la branduri recunoscute pot ajunge si la 3500-4500 lei sau chiar mai mult." },
+  { question: "care e diferenta intre aer conditionat inverter si non-inverter", answer: "Aparatele cu inverter isi ajusteaza continuu turatia compresorului, oferind o temperatura constanta, un consum energetic mai mic (cu pana la 30-40%) si un nivel de zgomot redus. Cele non-inverter pornesc si se opresc brusc, fiind mai putin eficiente, mai zgomotoase si cu o temperatura mai fluctuanta." },
+  { question: "ce aparat de aer conditionat e cel mai fiabil", answer: "Din experienta si parerile utilizatorilor, Daikin este considerat printre cele mai fiabile marci de aparate de aer conditionat, urmat de Fujitsu, Mitsubishi Electric si Panasonic. Aceste branduri investesc mult in calitate si tehnologie, rezultand o durata de viata mai lunga." },
+  { question: "cat de des trebuie curatat aerul conditionat", answer: "Pentru o functionare optima si aer curat, filtrele interioare ale aparatului de aer conditionat trebuie curatate cel putin o data pe luna in sezonul de utilizare intensa. Curatarea completa a sistemului, inclusiv a unitatii exterioare, este recomandata o data pe an." },
+  { question: "ce inseamna 12000 btu", answer: "BTU (British Thermal Unit) este unitatea de masura pentru capacitatea de racire sau incalzire. 12000 BTU este potrivit pentru spatii de aproximativ 15-25 metri patrati, in functie de izolatie, inaltime si expunerea la soare. Pentru camere mai mari sau mai mici, este necesara o alta capacitate." },
+  { question: "ce clasa energetica e buna la aer conditionat", answer: "La aparatele de aer conditionat, clasa energetica A+++ este cea mai eficienta si economica, urmata de A++ si A+. In general, modelele cu clasa A++ sau A+++ sunt recomandate pentru un consum redus de energie electrica pe termen lung, chiar daca pretul initial poate fi mai ridicat." },
+  { question: "unde gasesc cele mai bune preturi la aparate de aer conditionat", answer: "Cele mai bune preturi la aparate de aer conditionat se gasesc de obicei in magazinele mari de electronice (domestice si online) precum eMAG, Altex, Media Galaxy, sau magazine specializate in climatizare. Este indicat sa comparati ofertele si sa asteptati perioadele de reduceri (primavara, Black Friday)." },
+  { question: "de ce nu mai porneste aerul conditionat", answer: "Daca aerul conditionat nu mai porneste, motivele pot fi diverse: lipsa curentului electric, o problema la telecomanda (baterii slabe, defecte), declansarea sigurantei automate, sau o defectiune interna a aparatului. Primul pas este verificarea alimentarii cu energie si a telecomenzii." }
+];
+
+const toc = [
+  { title: "Alegerea Top Cele Mai Bune Aparate de Aer Conditionat Pe Bune", id: "alegerea-top-cele-mai-bune-aparate-de-aer-conditionat-pe-bune" },
+  { title: "Top Recomandari: Cele Mai Bune Aparate de Aer Conditionat Cu Plusuri Si Minusuri", id: "top-recomandari-cele-mai-bune-aparate-de-aer-conditionat-cu-plusuri-si-minusuri" },
+  { title: "Cum Alegi Cele Mai Bune Aparate de Aer Conditionat Pentru Tine", id: "cum-alegi-cele-mai-bune-aparate-de-aer-conditionat-pentru-tine" },
+  { title: "Comparatie: Daikin vs. Gree - Ce Alegi?", id: "comparatie-daikin-vs-gree---ce-alegi" },
+  { title: "Greșeli de Evitat: Ce Nu Vrei Să Faci Când Cumperi Cele Mai Bune Aparate de Aer Conditionat", id: "greseli-de-evitat-ce-nu-vrei-sa-faci-cand-cumperi-cele-mai-bune-aparate-de-aer-conditionat" },
+  { title: "Verdict pe Bugete: Cele Mai Bune Aparate de Aer Conditionat", id: "verdict-pe-bugete-cele-mai-bune-aparate-de-aer-conditionat" }
+];
+
+// Get all articles for similar articles component
+const allArticles = keywordsData.completed.map(item => ({
+  title: item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1),
+  slug: item.keyword.toLowerCase()
+    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+    .replace(/ș/g, 's').replace(/ț/g, 't')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
+  excerpt: item.excerpt || '',
+  image: `/images/articles/${item.keyword.toLowerCase()
+    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+    .replace(/ș/g, 's').replace(/ț/g, 't')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}.webp`,
+  category: item.category,
+  categorySlug: item.categorySlug,
+  date: item.date || new Date().toISOString()
+}));
+---
+
+<Layout
+  title="Cele mai bune aparate de aer conditionat - PretulVerde"
+  description="Daca ma intrebi pe mine, cele mai bune aparate de aer conditionat in 2024 sunt cele care iti ofera un echilibru bun intre performanta, eficienta energetica si pret. Asta inseamna de obicei modele inverter de la producatori consacrati precum Daikin, Gree, Midea sau LG. Pentru un confort garantat si facturi mai mici, cauta modele cu clasa energetica A++ sau A+++."
+  image="/images/articles/cele-mai-bune-aparate-de-aer-conditionat.webp"
+  type="article"
+  publishedTime="2025-03-04T15:00:00.000Z"
+  modifiedTime="2026-02-21T14:50:31.603Z"
+  author="Andrei Ionescu"
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <article class="article-page">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+      <ol>
+        <li><a href="/">Acasa</a></li>
+        <li><a href="/electrocasnice/">Electrocasnice</a></li>
+        <li><span>Cele mai bune aparate de aer conditionat</span></li>
+      </ol>
+    </nav>
+
+    <!-- Title -->
+    <h1 class="article-page-title">Cele mai bune aparate de aer conditionat</h1>
+
+    <!-- Meta -->
+    <div class="article-page-meta">
+      <span>Andrei Ionescu</span>
+      <span>&middot;</span>
+      <span>Publicat: 4 martie 2025</span>
+      <span>&middot;</span>
+      <span>Actualizat: 21 februarie 2026</span>
+    </div>
+
+    <!-- Featured Image -->
+    
+
+    <!-- Two-column layout: content + TOC sidebar on RIGHT -->
+    <div class="article-layout">
+      <div>
+        <!-- Mobile TOC (expandable) -->
+        <div class="toc-mobile" id="toc-mobile">
+          <button class="toc-mobile-toggle" onclick="this.parentElement.classList.toggle('open')">
+            Cuprins
+            <span class="toc-chevron">&#9660;</span>
+          </button>
+          <ol class="toc-mobile-list">
+            {toc.map(item => (
+              <li><a href={`#${item.id}`}>{item.title}</a></li>
+            ))}
+            <li><a href="#faq">Intrebari Frecvente</a></li>
+          </ol>
+        </div>
+
+        <!-- Article Content -->
+        <div class="article-content">
+          
+      <section id="alegerea-top-cele-mai-bune-aparate-de-aer-conditionat-pe-bune">
+        <h2>Alegerea Top Cele Mai Bune Aparate de Aer Conditionat Pe Bune</h2>
+        <p>Hai sa fim directi. Cand vine vorba de <strong>cele mai bune aparate de aer conditionat</strong>, nu exista un singur castigator absolut. Depinde mult de ce ai tu nevoie, de cati bani esti dispus sa dai si de cat de mare e camera pe care vrei sa o racesti. Dar, ca sa iti fac treaba mai usoara, am pus ochii pe cateva modele care mi s-au parut a fi peste medie anul asta.</p><p>Pe primul loc, daca bugetul permite si vrei ceva fiabil, eu as merge pe un model de la Daikin. Sunt scumpe, da, dar tin cat zece. Am avut un Daikin la parinti acum vreo 10 ani si inca merge brici.</p>
+        <p>Acum, pentru o optiune mai echilibrata ca pret, Gree e un jucator serios. Modelele lor din seria Bora sau Muse sunt destul de populare si ofera un raport calitate-pret bun. Midea e si ea o varianta buna, mai ales modelele cu inverter, cum ar fi seria Xtreme Save.</p>
+        <p>Sunt eficiente si nu te rupe la buzunar cand le cumperi.</p><p>LG-ul e mereu o optiune, mai ales daca vrei functii smart si un design mai modern. Modelele lor cu Dual Inverter sunt destul de economice si racesc rapid. Nu uita si de Whirlpool sau Bosch, sunt si astea firme mari, fac electrocasnice serioase, si aerul conditionat nu face exceptie. Important e sa nu te arunci la cel mai ieftin model pe care il gasesti, ca aia e loterie curata. Vei da banii pe reparatii in scurt timp.</p>
+      </section>
+
+      <section id="top-recomandari-cele-mai-bune-aparate-de-aer-conditionat-cu-plusuri-si-minusuri">
+        <h2>Top Recomandari: Cele Mai Bune Aparate de Aer Conditionat Cu Plusuri Si Minusuri</h2>
+        <p>Bun, am zis sa iti dau si cateva exemple concrete, ca sa stii la ce sa te uiti. Tine cont ca preturile sunt aproximative si pot varia.</p><ul><li><strong>Daikin Sensira (FTXF-A)</strong>: Asta e ca un Mercedes in lumea aerului conditionat. Raceste si incalzeste excelent, e super silentios si consuma putin.</li><ul><li><strong>Plusuri:</strong> Fiabilitate legendara, consum energetic foarte mic (clasa A++ / A+++), foarte silentios (pana la 19 dB), functii inteligente de purificare a aerului.</li><li><strong>Minusuri:</strong> Pretul, e printre cele mai scumpe. Piese de schimb pot fi si ele mai greu de gasit si mai scumpe.</li><li><strong>Pret estimat:</strong> 3500 - 4500 lei</li></ul></ul><ul><li><strong>Gree Bora (GWH12ACBKB)</strong>: Asta e un campion al raportului calitate-pret. Racește bine, e eficient si nu te lasa cu bule la factura de curent.</li><ul><li><strong>Plusuri:</strong> Pret accesibil, consum redus (clasa A++), funcționează bine și la temperaturi scăzute, design destul de neutru.</li><li><strong>Minusuri:</strong> Poate fi puțin mai zgomotos la putere maximă comparativ cu modelele premium, funcțiile smart sunt mai de bază.</li><li><strong>Pret estimat:</strong> 2200 - 2800 lei</li></ul></ul><ul><li><strong>Midea Xtreme Save (MSEAAU-12HRFN1)</strong>: Midea a evoluat mult si modelele astea sunt chiar bune. Au un consum incredibil de mic pentru pretul lor.</li><ul><li><strong>Plusuri:</strong> Eficiență energetică de top (A+++), preț foarte bun pentru ce oferă, funcționează bine și pe încălzire, are mod turbo pentru răcire rapidă.</li><li><strong>Minusuri:</strong> Calitatea materialelor nu e chiar la nivelul Daikin, telecomanda e un pic simplistă.</li><li><strong>Pret estimat:</strong> 2400 - 3000 lei</li></ul></ul><ul><li><strong>LG Dual Inverter (S09ET, S12ET)</strong>: LG-ul vine cu un plus de tehnologie. Dual Inverter înseamnă eficiență sporită și răcire/încălzire rapidă.</li><ul><li><strong>Plusuri:</strong> Consum foarte mic, răcire/încălzire rapidă, funcții smart (Wi-Fi), design modern, funcționează bine pe încălzire chiar și la frig.</li><li><strong>Minusuri:</strong> Poate fi puțin mai scump decât Gree sau Midea, unele modele au nevoie de o instalare atentă pentru a funcționa optim.</li><li><strong>Pret estimat:</strong> 2800 - 3500 lei</li></ul></ul><p>Astea sunt doar cateva exemple, na. Mai sunt si alte firme bune, dar astea mi se par ca si cumpara cel mai des lumea si sunt multumita.</p>
+      </section>
+
+      <section id="cum-alegi-cele-mai-bune-aparate-de-aer-conditionat-pentru-tine">
+        <h2>Cum Alegi Cele Mai Bune Aparate de Aer Conditionat Pentru Tine</h2>
+        <p>Ok, acum vine partea mai grea. Cum alegi, de fapt? Nu te lua doar dupa ce zice reclama. Uite la ce sa fii atent, pe bune:</p><p><strong>Puterea (BTU)</strong>: Asta e cea mai importanta. Nu lua un aparat subdimensionat, ca o sa alerge non-stop si tot nu o sa faca fata. Nu lua nici supra-dimensionat, ca o sa porneasca si se opreasca des, nu face bine nici lui, nici consumului. Regula de baza: pentru o camera de 10-15 mp, cam 9000 BTU; pentru 15-25 mp, cam 12000 BTU; peste 25 mp, probabil 18000 BTU sau chiar mai mult. Dar depinde si de inaltime, izolare, cat soare intra pe geam.</p><p><strong>Clasa Energetica</strong>: Asta iti arata cat de eficient e aparatul. Cu cat mai multe '+', cu atat mai bine. Cauta macar A++ pentru vara, ideal A+++ daca vrei sa economisesti serios la curent si pe termen lung. Un aparat A+++ poate consuma cu pana la 40-50% mai putin decat unul A+.</p><p><strong>Tehnologia Inverter</strong>: Asta e cheia. Inverterul face ca motorul sa nu mai porneasca si sa se opreasca constant, ci sa isi ajusteze turatia. Asta inseamna consum mai mic, zgomot mai redus si o temperatura mai constanta in camera. Nu-ti lua aparat fara inverter, simplu.</p><p><strong>Functii Suplimentare</strong>: Wi-Fi (sa il controlezi din telefon), functii de dezumidificare (utile si cand nu e cald rau), filtre de aer avansate (pentru alergici), mod silentios, mod turbo. Vezi ce e util pentru tine. Nu plati extra pentru functii pe care nu le folosesti.</p><p><strong>Nivelul de Zgomot</strong>: Mai ales daca il pui in dormitor. Verifica nivelul de zgomot in decibeli (dB), atat pe modul racire, cat si pe modul ventilare. Sub 25 dB e considerat foarte silentios.</p><p><strong>Producatorul si Garantie</strong>: Alege firme cunoscute, cu service in Romania. Verifica garantia oferita pe compresor (ar trebui sa fie minim 5 ani, uneori chiar 10). Si nu uita de instalare. O instalare facuta prost iti poate strica si cel mai bun aparat.</p>
+      </section>
+
+      <section id="comparatie-daikin-vs-gree---ce-alegi">
+        <h2>Comparatie: Daikin vs. Gree - Ce Alegi?</h2>
+        <p>Hai sa comparam doua nume mari, dar cu filozofii diferite: Daikin si Gree. Daikin e premium, Gree e mai pe buget. Stiu ca multi se gandesc la asta.</p><p><strong>Daikin</strong>, cum ziceam, e regele fiabilitatii si eficientei. Cand cumperi Daikin, cumperi liniste sufleteasca. Sunt construite sa tina, au tehnologie de top si consuma incredibil de putin. Asta se vede si in factura de curent pe termen lung. Daca vrei performanta pura, fara compromisuri, si nu te uiti la bani, Daikin e raspunsul. Modelele lor top de gama, ca Sensira sau Perfera, sunt pur si simplu exceptionale. Racirea si incalzirea sunt rapide, uniforme, si aerul se simte altfel.</p><p>Pe de alta parte, <strong>Gree</strong> a facut pasi uriasi. Nu mai e firma aia ieftina de acum 10 ani. Modelele lor Bora sau U-Crown sunt foarte competitive. Oferta lor e un echilibru. Iti iei un aparat bun, eficient, care isi face treaba, la un pret mult mai corect. Daca ai un buget mai restrans sau nu vrei sa investesti o avere intr-un aer conditionat, Gree e o alegere foarte inteleapta. Raceste bine, incalzeste decent si consumul nu e deloc rau, mai ales la modelele noi cu inverter.</p><p>Uite, daca ma intrebi pe mine, diferenta principala e in longevitate si finisaje. Daikin-ul parca e construit parca mai solid, se simte la atingere. Si e mai silentios in general. Dar Gree-ul, ca sa zic asa, e un "good value for money". Daca vrei sa cheltui 2500 lei pe un aparat bun, cam greu gasesti Daikin nou. Dar gasesti un Gree excelent. Daca ai 4000 lei si vrei ce-i mai bun, Daikin-ul merita investitia.</p><p>Deci, pe scurt: <strong>Daikin</strong> pentru cei care vor cea mai buna calitate si nu au probleme cu bugetul, <strong>Gree</strong> pentru cei care vor performanta buna la un pret corect.</p>
+      </section>
+
+      <section id="greseli-de-evitat-ce-nu-vrei-sa-faci-cand-cumperi-cele-mai-bune-aparate-de-aer-conditionat">
+        <h2>Greșeli de Evitat: Ce Nu Vrei Să Faci Când Cumperi Cele Mai Bune Aparate de Aer Conditionat</h2>
+        <p>Am vazut prea multi prieteni sa dea cu bata-n balta. Sa nu faci si tu la fel. Uite cateva greseli clasice:</p><p><strong>Sa nu iei cel mai ieftin model</strong>. Asta e ca si cum ai cumpara o masina la jumatate de pret, dar stii ca o sa te lase pe margine in prima zi. Aparatele de aer conditionat ieftine rau, alea sub 1500 lei, de obicei sunt chinezarii fara nume, cu compresoare slabe, consum mare si care tin maxim 2 ani. E o economie proasta pe termen lung. Mai bine strangi niste bani.</p><p><strong>Sa ignori puterea (BTU)</strong>. Am patit-o si eu la un apartament mai vechi. Am luat un aparat de 12000 BTU pentru o sufragerie de 20 mp si vara, cand era cald rau, nu facea fata. Alergare non-stop, consum mare, si tot transpirat ramaneam. Daca nu esti sigur, mai bine ia unul cu 3000 BTU in plus. E mai bine sa mearga in relanti decat sa munceasca la maxim.</p><p><strong>Sa nu te intereseze clasa energetica sau inverterul</strong>. Asta e ca si cum ai cumpara o masina pe benzina care consuma 15% in oras. Iti rupe factura la curent. Cauta obligatoriu inverter si minim clasa A++. Ideea e sa iti recuperezi investitia in timp prin facturi mai mici. Altfel, de ce ai da banii?</p><p><strong>Sa apelezi la orice instalator</strong>. Asta e o greseala monumentala. O instalare proasta, cu tubulatura prea lunga, fara vidare corecta, cu freon pus la ochi, iti poate distruge aparatul. Cauta un instalator autorizat, cu experienta pe marca pe care o cumperi. Daca poti, intreaba si la magazin de recomandari. O instalare buna te costa 300-500 lei, dar te scapa de probleme de mii de lei.</p><p><strong>Sa te lasi prostit de functii inutile</strong>. Toate au Wi-Fi, toate au ionizator, toate au nu stiu ce. Stai putin si gandeste-te: chiar ai nevoie sa controlezi AC-ul din avion? Sau de filtrul ala de nu stiu ce? Concentreaza-te pe ce e esential: putere, eficienta, zgomot, fiabilitate. Restul e marketing.</p>
+      </section>
+
+      <section id="verdict-pe-bugete-cele-mai-bune-aparate-de-aer-conditionat">
+        <h2>Verdict pe Bugete: Cele Mai Bune Aparate de Aer Conditionat</h2>
+        <p>Na, ca sa te ajut sa iei o decizie cat mai repede, am facut un mic top pe categorii de buget. Sincer, e cel mai usor asa.</p><p><strong>Buget Mic (Sub 2000 lei)</strong>: Aici e mai greu. Sa fim cinstiti, pentru banii astia nu prinzi modele cu inverter de la branduri de top, sau modele foarte eficiente. Totusi, daca te uiti atent, mai gasesti oferte la modele mai vechi de la Whirlpool, Arctic sau chiar si unele modele de baza de la Gree sau Midea, dar trebuie sa prinzi o reducere buna.</p>
+        <p>Acestea sunt orientate mai mult spre racire si nu sunt cele mai economice. Punctul forte e pretul, punctul slab e eficienta si longevitatea. O sa racesti camera, dar factura la curent o sa fie mai mare.</p><p><strong>Buget Mediu (2000 - 3000 lei)</strong>: Aici incepe distractia. In aceasta categorie gasesti <strong>cele mai bune aparate de aer conditionat</strong> pentru majoritatea romanilor. Modelele de la Gree, Midea (gen Xtreme Save), sau chiar modelele de baza de la LG (cu inverter) sunt excelente.</p>
+        <p>Iti iei un aparat eficient (clasa A++ sau chiar A+++), cu inverter, care raceste si incalzeste bine, si e relativ silentios. E un echilibru perfect intre performanta, cost si eficienta energetica. Aici ti-as recomanda sa te uiti la modelele cu 12000 BTU, sunt cele mai versatile.</p><p><strong>Buget Mare (Peste 3000 lei)</strong>: Daca nu te uiti la bani si vrei ce e mai bun, atunci te duci spre Daikin (Sensira, Perfera), Fujitsu, sau modelele de top de la LG (Jewel, Artcool). Aici vorbim de eficienta maxima (A+++), zgomot aproape inexistent, functii smart de ultima generatie, fiabilitate garantata pe multi ani si o calitate a aerului superioara. Acestea sunt investitii pe termen lung, care iti vor oferi confort maxim si costuri minime de operare.</p>
+        <p>Racirea si incalzirea sunt rapide, precise, si te bucuri de ele ani de zile fara batai de cap.</p>
+      </section>
+
+          <!-- FAQ Section -->
+          <section class="faq-section" id="faq">
+            <h2 class="faq-title">Intrebari Frecvente</h2>
+            
+            <details class="faq-item" id="faq-0">
+              <summary>
+                cat costa un aparat de aer conditionat bun
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Un aparat de aer conditionat bun, cu tehnologie inverter si clasa energetica A++ sau A+++, costa incepand de la aproximativ 2000 lei pentru un model de 12000 BTU. Modelele premium de la branduri recunoscute pot ajunge si la 3500-4500 lei sau chiar mai mult.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-1">
+              <summary>
+                care e diferenta intre aer conditionat inverter si non-inverter
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Aparatele cu inverter isi ajusteaza continuu turatia compresorului, oferind o temperatura constanta, un consum energetic mai mic (cu pana la 30-40%) si un nivel de zgomot redus. Cele non-inverter pornesc si se opresc brusc, fiind mai putin eficiente, mai zgomotoase si cu o temperatura mai fluctuanta.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-2">
+              <summary>
+                ce aparat de aer conditionat e cel mai fiabil
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Din experienta si parerile utilizatorilor, Daikin este considerat printre cele mai fiabile marci de aparate de aer conditionat, urmat de Fujitsu, Mitsubishi Electric si Panasonic. Aceste branduri investesc mult in calitate si tehnologie, rezultand o durata de viata mai lunga.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-3">
+              <summary>
+                cat de des trebuie curatat aerul conditionat
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Pentru o functionare optima si aer curat, filtrele interioare ale aparatului de aer conditionat trebuie curatate cel putin o data pe luna in sezonul de utilizare intensa. Curatarea completa a sistemului, inclusiv a unitatii exterioare, este recomandata o data pe an.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-4">
+              <summary>
+                ce inseamna 12000 btu
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                BTU (British Thermal Unit) este unitatea de masura pentru capacitatea de racire sau incalzire. 12000 BTU este potrivit pentru spatii de aproximativ 15-25 metri patrati, in functie de izolatie, inaltime si expunerea la soare. Pentru camere mai mari sau mai mici, este necesara o alta capacitate.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-5">
+              <summary>
+                ce clasa energetica e buna la aer conditionat
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                La aparatele de aer conditionat, clasa energetica A+++ este cea mai eficienta si economica, urmata de A++ si A+. In general, modelele cu clasa A++ sau A+++ sunt recomandate pentru un consum redus de energie electrica pe termen lung, chiar daca pretul initial poate fi mai ridicat.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-6">
+              <summary>
+                unde gasesc cele mai bune preturi la aparate de aer conditionat
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Cele mai bune preturi la aparate de aer conditionat se gasesc de obicei in magazinele mari de electronice (domestice si online) precum eMAG, Altex, Media Galaxy, sau magazine specializate in climatizare. Este indicat sa comparati ofertele si sa asteptati perioadele de reduceri (primavara, Black Friday).
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-7">
+              <summary>
+                de ce nu mai porneste aerul conditionat
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Daca aerul conditionat nu mai porneste, motivele pot fi diverse: lipsa curentului electric, o problema la telecomanda (baterii slabe, defecte), declansarea sigurantei automate, sau o defectiune interna a aparatului. Primul pas este verificarea alimentarii cu energie si a telecomenzii.
+              </div>
+            </details>
+          </section>
+        </div>
+
+        <!-- Author -->
+        <div class="author-line">
+          <div class="author-avatar">AI</div>
+          <div>
+            <div class="author-name">Andrei Ionescu</div>
+            <div class="author-role">Expert Electrocasnice</div>
+          </div>
+        </div>
+
+        <!-- Similar Articles -->
+        <SimilarArticles
+          currentSlug="cele-mai-bune-aparate-de-aer-conditionat"
+          currentCategory="electrocasnice"
+          articles={allArticles}
+        />
+      </div>
+
+      <!-- Sticky TOC Sidebar (desktop) - RIGHT side -->
+      <aside class="toc-sidebar">
+        <p class="toc-sidebar-title">Cuprins</p>
+        <ol class="toc-sidebar-list">
+          {toc.map(item => (
+            <li><a href={`#${item.id}`}>{item.title}</a></li>
+          ))}
+          <li><a href="#faq">Intrebari Frecvente</a></li>
+        </ol>
+      </aside>
+    </div>
+  </article>
+</Layout>

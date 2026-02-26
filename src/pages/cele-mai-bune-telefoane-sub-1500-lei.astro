@@ -1,0 +1,278 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SimilarArticles from '../components/SimilarArticles.astro';
+import keywordsData from '../../keywords.json';
+
+export const frontmatter = {
+  title: "Cele mai bune telefoane sub 1500 lei",
+  excerpt: "Daca vrei cel mai bun telefon sub 1500 lei in momentul asta, mergi pe Samsung Galaxy A34 5G, e o alegere sigura si echilibrata. Daca vrei ceva si mai ieftin, dar tot bun, Poco X5 Pro e o optiune misto, mai ales pentru gaming. Acestea sunt primele mele recomandari pe bune, bazate pe ce am vazut si testat.",
+  image: "/images/articles/cele-mai-bune-telefoane-sub-1500-lei.webp",
+  category: "Telefoane si Laptopuri",
+  categorySlug: "telefoane-laptopuri",
+  date: "2025-05-20T10:30:00.000Z",
+  modifiedDate: "2026-01-30T11:00:00.000Z",
+  author: "Mihai Dumitrescu",
+  authorRole: "Specialist Tehnologie",
+  authorBio: "Mihai este pasionat de tehnologie si urmareste piata de smartphones si laptopuri din Romania. Compara specificatii, preturi si experienta reala de utilizare pentru a gasi cele mai bune oferte."
+};
+
+const faq = [
+  { question: "care e cel mai bun telefon sub 1500 lei acum?", answer: "Samsung Galaxy A34 5G e cea mai echilibrata optiune sub 1500 lei acum, oferind un ecran AMOLED excelent, rezistenta la apa si suport software bun. Daca vrei performanta mai buna la gaming, Poco X5 Pro 5G e o alternativa excelenta, de obicei la un pret mai mic." },
+  { question: "ce telefon sa aleg sub 1500 lei pentru poze?", answer: "Pentru poze bune sub 1500 lei, Samsung Galaxy A34 5G se descurca cel mai bine datorita camerei principale cu OIS si procesarii Samsung. Xiaomi Redmi Note 13 Pro 5G cu senzorul sau de 200MP poate fi o optiune, dar conteaza mult si procesarea imaginii." },
+  { question: "merita poco x5 pro 5g acum?", answer: "Da, Poco X5 Pro 5G merita acum daca principalul tau criteriu e performanta in jocuri si aplicatii, ecranul AMOLED 120Hz si incarcarea rapida de 67W. Ramane o optiune excelenta pentru raportul pret/performanta, mai ales sub 1300 lei." },
+  { question: "cat costa un samsung galaxy a34 5g?", answer: "Samsung Galaxy A34 5G costa de obicei intre 1300 si 1450 RON, in functie de oferta si magazin (eMAG, Altex). Uneori poate fi gasit si la preturi mai mici in campaniile promotionale." },
+  { question: "ce telefon e mai bun samsung a34 sau poco x5 pro?", answer: "Samsung A34 e mai bun pentru camera, rezistenta la apa si actualizari software pe termen lung. Poco X5 Pro e mai bun pentru performanta in jocuri si viteza de incarcare. Alegerea depinde de prioritatile tale." },
+  { question: "unde gasesc telefoane ieftine sub 1500 lei?", answer: "Cele mai bune oferte pentru telefoane sub 1500 lei le gasesti la eMAG, Altex, PCGarage si Flanco. Verifica constant aceste magazine, mai ales in perioadele de reduceri (Black Friday, reduceri de sezon)." },
+  { question: "ce procesor e bun pentru gaming sub 1500 lei?", answer: "Pentru gaming sub 1500 lei, cauta procesoare precum Snapdragon 778G 5G (Poco X5 Pro) sau MediaTek Dimensity 1080 (Samsung A34). Acestea ofera un echilibru bun intre performanta si consum, ruland majoritatea jocurilor decent." },
+  { question: "cat rezista un telefon sub 1500 lei?", answer: "Un telefon bun sub 1500 lei, precum Samsung A34, poate rezista fara probleme 2-3 ani la utilizare normala, gratie suportului software prelungit si a constructiei solide. La fel, Poco X5 Pro e fiabil cat timp nu il expui la socuri mecanice puternice." }
+];
+
+const toc = [
+  { title: "Telefonul tau sub 1500 lei: Ce sa alegi ACUM si de ce", id: "telefonul-tau-sub-1500-lei-ce-sa-alegi-acum-si-de-ce" },
+  { title: "Recomandari concrete: Top telefoane sub 1500 lei, avantajele si dezavantajele lor", id: "recomandari-concrete-top-telefoane-sub-1500-lei-avantajele-si-dezavantajele-lor" },
+  { title: "Ce inseamna specificatiile alea? Ghid simplu pentru telefonul sub 1500 lei", id: "ce-inseamna-specificatiile-alea-ghid-simplu-pentru-telefonul-sub-1500-lei" },
+  { title: "Samsung A34 vs Poco X5 Pro: Duelul Titanilor sub 1500 lei", id: "samsung-a34-vs-poco-x5-pro-duelul-titanilor-sub-1500-lei" },
+  { title: "Greșeli de evitat la cumpărarea telefonului tău nou sub 1500 lei", id: "greseli-de-evitat-la-cumpararea-telefonului-tau-nou-sub-1500-lei" },
+  { title: "Verdictul final: Ce telefon SUB 1500 lei mi-as lua eu ACUM", id: "verdictul-final-ce-telefon-sub-1500-lei-mi-as-lua-eu-acum" }
+];
+
+// Get all articles for similar articles component
+const allArticles = keywordsData.completed.map(item => ({
+  title: item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1),
+  slug: item.keyword.toLowerCase()
+    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+    .replace(/ș/g, 's').replace(/ț/g, 't')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
+  excerpt: item.excerpt || '',
+  image: `/images/articles/${item.keyword.toLowerCase()
+    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+    .replace(/ș/g, 's').replace(/ț/g, 't')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}.webp`,
+  category: item.category,
+  categorySlug: item.categorySlug,
+  date: item.date || new Date().toISOString()
+}));
+---
+
+<Layout
+  title="Cele mai bune telefoane sub 1500 lei - PretulVerde"
+  description="Daca vrei cel mai bun telefon sub 1500 lei in momentul asta, mergi pe Samsung Galaxy A34 5G, e o alegere sigura si echilibrata. Daca vrei ceva si mai ieftin, dar tot bun, Poco X5 Pro e o optiune misto, mai ales pentru gaming. Acestea sunt primele mele recomandari pe bune, bazate pe ce am vazut si testat."
+  image="/images/articles/cele-mai-bune-telefoane-sub-1500-lei.webp"
+  type="article"
+  publishedTime="2025-05-20T10:30:00.000Z"
+  modifiedTime="2026-01-30T11:00:00.000Z"
+  author="Mihai Dumitrescu"
+  faq={faq}
+  breadcrumbs={[
+    { name: "Acasa", url: "/" },
+    { name: "Telefoane si Laptopuri", url: "/telefoane-laptopuri/" },
+    { name: "Cele mai bune telefoane sub 1500 lei", url: "/cele-mai-bune-telefoane-sub-1500-lei/" }
+  ]}
+>
+  <article class="article-page">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+      <ol>
+        <li><a href="/">Acasa</a></li>
+        <li><a href="/telefoane-laptopuri/">Telefoane si Laptopuri</a></li>
+        <li><span>Cele mai bune telefoane sub 1500 lei</span></li>
+      </ol>
+    </nav>
+
+    <!-- Title -->
+    <h1 class="article-page-title">Cele mai bune telefoane sub 1500 lei</h1>
+
+    <!-- Meta -->
+    <div class="article-page-meta">
+      <span>Mihai Dumitrescu</span>
+      <span>&middot;</span>
+      <span>Publicat: 20 mai 2025</span>
+      <span>&middot;</span>
+      <span>Actualizat: 30 ianuarie 2026</span>
+    </div>
+
+    <!-- Featured Image -->
+    <img src="/images/articles/cele-mai-bune-telefoane-sub-1500-lei.webp" alt="Cele mai bune telefoane sub 1500 lei" class="article-page-image" width="800" height="600" loading="eager">
+
+    <!-- Two-column layout: content + TOC sidebar on RIGHT -->
+    <div class="article-layout">
+      <div>
+        <!-- Mobile TOC (expandable) -->
+        <div class="toc-mobile" id="toc-mobile">
+          <button class="toc-mobile-toggle" onclick="this.parentElement.classList.toggle('open')">
+            Cuprins
+            <span class="toc-chevron">&#9660;</span>
+          </button>
+          <ol class="toc-mobile-list">
+            {toc.map(item => (
+              <li><a href={`#${item.id}`}>{item.title}</a></li>
+            ))}
+            <li><a href="#faq">Intrebari Frecvente</a></li>
+          </ol>
+        </div>
+
+        <!-- Article Content -->
+        <div class="article-content">
+          
+      <section id="telefonul-tau-sub-1500-lei-ce-sa-alegi-acum-si-de-ce">
+        <h2>Telefonul tau sub 1500 lei: Ce sa alegi ACUM si de ce</h2>
+        <p>Ok, deci vrei un telefon nou, dar nu vrei sa spargi banca. Ai ajuns unde trebuie. Sub 1500 lei, piata e plina de optiuni, dar nu toate sunt egale.</p>
+        <p>Sincer, am testat destule incat sa stiu ce merge si ce nu. Daca ar trebui sa aleg un singur telefon acum, sub aceasta suma, as merge pe <strong>Samsung Galaxy A34 5G</strong>. E un pachet complet, bine echilibrat, care nu te lasa balta la nimic important.</p>
+        <p>Ecran AMOLED, 5G, camera decenta, baterie care tine, si suport software bun de la Samsung. E genul de telefon la care te poti gandi fara griji pentru 2-3 ani. E drept ca nu e cel mai ieftin din segment, dar merita fiecare leu platit.</p>
+        <p>Pretul lui fluctueaza, dar il gasesti frecvent in jur de 1300-1450 lei la eMAG sau Altex.</p><p>Pe locul doi, pentru cine vrea sa mai stranga niste lei sau e pasionat de performanta bruta la gaming, recomand <strong>Poco X5 Pro</strong>. E un telefon care rupe in doua concurenta la capitolul procesor si ecran, oferind imagini superbe si viteza in aplicatii si jocuri. E un pic peste 1200 lei de obicei, deci lasa loc si pentru o husa sau o folie mai buna.</p>
+        <p>Camera lui e buna, dar nu se compara cu Samsung-ul la pozele de zi cu zi, mai ales in conditii mai slabe de lumina. Si inca ceva, MIUI-ul de la Xiaomi (acum HyperOS) nu e pe gustul tuturor, e mai plin de optiuni, dar si de potentiale mici bug-uri sau reclame daca nu esti atent la setari. Dar daca gamingul si viteza sunt prioritare, Poco X5 Pro e o alegere greu de batut.</p><p>Ce cauti, de fapt, cand zici "cel mai bun telefon sub 1500 lei"? Probabil un echilibru. Nu vrei sa fie lent, sa nu poata face poze decente, sa se descarce in cateva ore sau sa aiba un ecran naspa. Si vrei sa stii ca nu dai banii pe ceva ce o sa fie depasit in sase luni.</p>
+        <p>Asta e si ideea mea. Vreau sa-ti dau direct solutii, nu sa te plimb prin specificatii complicate. Am avut modelul A34 vreo jumatate de an si a fost o experienta placuta, fara batai de cap majore.</p>
+        <p>Un prieten si-a luat Poco X5 Pro si e super multumit de cat de rapid e in jocuri. Deci, pe bune, astea doua sunt alegerile mele principale, chiar daca mai sunt si altele.</p><p>Sunt si alte optiuni, bineinteles. Xiaomi Redmi Note 12 Pro 5G e similar cu Poco X5 Pro, dar uneori e un pic mai scump pentru ce ofera. Motorola Moto G84 e o alternativa interesanta, mai ales daca iti place designul si ecranul de calitate, dar performanta e un pic sub Poco.</p>
+        <p>Si Samsung Galaxy A25 5G e o varianta mai ieftina daca vrei totusi Samsung, dar sacrifici la capitolul ecran si procesor fata de A34. Deci, ca sa zic pe scurt: vrei cel mai bun echilibru si suport – Samsung A34. Vrei performanta bruta si gaming – Poco X5 Pro.</p>
+        <p>Simplu, nu?</p>
+      </section>
+
+      <section id="recomandari-concrete-top-telefoane-sub-1500-lei-avantajele-si-dezavantajele-lor">
+        <h2>Recomandari concrete: Top telefoane sub 1500 lei, avantajele si dezavantajele lor</h2>
+        <p>Hai sa punem pe masa cateva modele concrete, sa le vezi clar. Am ales ce e mai bun in jurul pragului de 1500 lei, dar si variante un pic mai jos, ca sa ai de unde alege in functie de bugetul exact. Uite lista mea:</p><ul><li><strong>Samsung Galaxy A34 5G</strong><br>Pret: ~1300-1450 RON (eMAG, Altex)<br>Plusuri: Ecran Super AMOLED 120Hz luminos si fluid, rezistenta la apa si praf (IP67), garantie de actualizari software pe termen lung, baterie de 5000 mAh care tine usor o zi si jumatate. Camera principala e surprinzator de buna pentru clasa lui, mai ales ziua. Sunet stereo.<br>Minusuri: Procesorul nu e cel mai rapid pentru gaming intens, dar e suficient pentru uz zilnic. Designul e un pic generic, nu iese in evidenta. Nu vine cu incarcator in cutie la toate variantele, verifica asta cand cumperi.</li><li><strong>Poco X5 Pro 5G</strong><br>Pret: ~1200-1350 RON (eMAG, PCGarage)<br>Plusuri: Performanta excelenta pentru pret datorita procesorului Snapdragon 778G 5G, ecran AMOLED 120Hz de calitate cu luminozitate buna, incarcare rapida de 67W (inclusa in cutie!), camera principala de 108MP care face poze bune in conditii ideale. Sunet stereo.</li><li><strong>Xiaomi Redmi Note 13 Pro 5G</strong><br>Pret: ~1400-1550 RON (eMAG, Altex) - e la limita, dar merita mentionat<br>Plusuri: Camera principala de 200MP (desi nu te astepta la minuni la aceasta suma), ecran AMOLED 120Hz foarte bun, design premium, incarcare rapida de 67W, performanta decenta.</li><li><strong>Motorola Moto G84 5G</strong><br>Pret: ~1100-1250 RON (eMAG, Flanco)<br>Plusuri: Ecran pOLED 120Hz excelent, design subtire si usor, pielarie ecologica pe spate la unele culori (super misto la atingere), sunet stereo, Android curat, fara bloatware. Baterie de 5000 mAh.</li></ul><p>Acestea sunt, zic eu, cele mai bune alegeri pe care le poti face acum. Samsung A34 e regele echilibrului. Poco X5 Pro e campionul performantei la gaming.</p>
+        <p>Redmi Note 13 Pro e pentru cine vrea camera cu multi megapixeli si design. Iar Moto G84 e pentru cine cauta un Android curat si un ecran superb, cu un plus la design. Am avut un prieten care a stat pe ganduri intre A34 si Moto G84 si a ales A34 pentru garantie mai buna si suport software, dar G84 l-a impresionat prin display si feelingul premium.</p><p>Sa iti zic drept, comparatia intre ele se face la detalii. Daca vrei sa te joci mult, Poco X5 Pro e clar. Daca vrei sa faci poze mai bune in vacanta, probabil A34 sau poate chiar Redmi 13 Pro daca prinzi o oferta buna. Daca vrei un telefon usor si elegant, pe care sa te uiti cu placere, G84 e misto. Fiecare are un punct forte, dar si cate un compromis. Nimic nu e perfect, mai ales la pretul asta.</p>
+      </section>
+
+      <section id="ce-inseamna-specificatiile-alea-ghid-simplu-pentru-telefonul-sub-1500-lei">
+        <h2>Ce inseamna specificatiile alea? Ghid simplu pentru telefonul sub 1500 lei</h2>
+        <p>Stiu, specificatiile pot fi un labirint. "Snapdragon X vs MediaTek Y", "LPDDR4X vs LPDDR5", "UFS 2.1 vs UFS 3.1". Sunam complicat, dar hai sa le luam pe rand, ce conteaza cu adevarat pentru un telefon bun sub 1500 lei.</p><p><strong>Ecranul:</strong> Aici nu prea ai voie sa gresesti. Cauta <strong>AMOLED</strong> sau <strong>pOLED</strong>. De ce? Culori mult mai vii, negru perfect, consum mai mic de energie.</p>
+        <p>Si neaparat <strong>120Hz</strong>. Asta inseamna ca imaginea se actualizeaza de 120 de ori pe secunda, fata de 60Hz la telefoanele mai vechi sau mai ieftine. Totul va fi mult mai fluid: scrollat prin meniuri, navigat pe net, jocuri.</p>
+        <p>Nu te uita la rezolutie Full HD+, ca toate telefoanele bune au asa ceva acum. Ce conteaza mai mult e luminozitatea – cauta minim 800-1000 nits pentru a vedea ecranul bine afara, in soare.</p><p><strong>Procesorul (Chipsetul):</strong> Asta e "creierul" telefonului. Pentru uz zilnic (Facebook, WhatsApp, browsing, YouTube), majoritatea procesoarelor din telefoanele astea se descurca. Dar daca te joci sau folosesti aplicatii mai grele, conteaza.</p>
+        <p>Snapdragon 778G 5G (gasit pe Poco X5 Pro) e un campion la acest pret. Snapdragon 695 5G (gasit pe Moto G84, Samsung A25) e ok, dar mai slab. MediaTek Dimensity 8100 sau 1080 (pe unele modele Xiaomi/Redmi) sunt de asemenea bune.</p>
+        <p>Nu te lasa pacalit de numarul de nuclee sau frecventa mare, arhitectura conteaza mai mult.</p><p><strong>Memoria RAM si Stocarea:</strong> Minim <strong>6GB RAM</strong>. 8GB RAM e ideal si se gaseste pe multe modele acum. Mai mult RAM inseamna ca poti tine mai multe aplicatii deschise in spate fara sa se inchida. Stocarea (spatiul de unde iti iei filme, poze, aplicatii): cauta minim <strong>128GB</strong>. Daca ai posibilitatea de a extinde cu un card MicroSD, e un plus, dar tot mai rar intalnit la modelele mai noi.</p><p><strong>Camera:</strong> Asta e un capitol sensibil. Nu te astepta la poze de DSLR la 1500 lei. Cauta un senzor principal bun (108MP pe Redmi 13 Pro e impresionant pe hartie, dar conteaza mult procesarea imaginii). Camera principala conteaza cel mai mult. Senzorii ultra-wide sau macro sunt de obicei slabi la acest buget. Daca ai posibilitatea, cauta telefoane cu stabilizare optica (OIS) pe camera principala – face o diferenta mare in pozele facute in miscare sau in lumina slaba.</p><p><strong>Bateria si Incarcarea:</strong> <strong>5000 mAh</strong> e standardul acum si te asigura ca telefonul tine o zi intreaga, poate chiar doua, la uz moderat. La incarcare, cauta minim 33W. 67W (gasit pe Poco si Redmi) e excelent si incarca telefonul aproape complet in sub o ora. Atentie: nu toate telefoanele vin cu incarcator in cutie!</p><p><strong>Alte chestii:</strong> <strong>5G</strong> e standard acum si probabil vei avea nevoie de el in viitor. Sunetul stereo (doua difuzoare) face experienta multimedia mult mai placuta. Rezistenta la apa si praf (IP rating) e un bonus mare, mai ales IP67 (Samsung A34).</p>
+      </section>
+
+      <section id="samsung-a34-vs-poco-x5-pro-duelul-titanilor-sub-1500-lei">
+        <h2>Samsung A34 vs Poco X5 Pro: Duelul Titanilor sub 1500 lei</h2>
+        <p>Am zis de ele de la inceput, si nu degeaba. <strong>Samsung Galaxy A34 5G</strong> si <strong>Poco X5 Pro 5G</strong> sunt cele mai populare optiuni in bugetul tau, si pe buna dreptate. Dar care e pentru tine? Hai sa le comparam direct, fara menajamente.</p><p><strong>Performanta si Gaming:</strong> Aici e clar castigator <strong>Poco X5 Pro</strong>. Procesorul sau Snapdragon 778G 5G e pur si simplu mai puternic decat MediaTek Dimensity 1080 de pe A34. Daca te joci jocuri solicitante precum Genshin Impact, Call of Duty Mobile pe setari inalte, Poco va rula mult mai fin. Nici A34 nu e slab, se descurca bine, dar diferentele se vad in momentele cheie.</p><p><strong>Ecran:</strong> Ambele au ecrane AMOLED de 120Hz, si ambele sunt foarte bune. Totusi, Samsung-ul A34 are o luminozitate de varf un pic mai mare (pana la 1000 nits) fata de Poco (pana la 900 nits), ceea ce il face un pic mai usor de folosit in soare puternic. Culorile sunt superbe pe ambele, dar eu am o usoara preferinta pentru nuantele naturale de la Samsung. Dar e subiectiv.</p><p><strong>Camera:</strong> Aici, din nou, ambele sunt decente, dar Samsung A34 iese un pic in fata la capitolul versatilitate si calitatea generala a pozelor, mai ales in conditii de lumina nu tocmai ideale. Camera principala de 48MP de pe A34, cu OIS, e mai fiabila. Camera de 108MP de pe Poco face poze impresionante ziua, dar la noapte sau in lumina scazuta, A34 se descurca mai bine la nivel de detalii si zgomot.</p><p><strong>Baterie si Incarcare:</strong> Ambele au baterii de 5000 mAh, deci te tin cam la fel, cam o zi si jumatate la uz normal. Dar <strong>Poco X5 Pro</strong> castiga la capitolul viteza de incarcare. Vine cu 67W in cutie, incarcandu-l complet in sub 50 de minute. Samsung A34 vine, de obicei, fara incarcator, si chiar si daca cumperi unul de 25W, tot dureaza mai mult. Deci Poco e mult mai rapid pe "plaj".</p><p><strong>Software si Actualizari:</strong> Samsung are un mare avantaj aici. Politica lor de actualizari este mult mai buna, oferind update-uri de Android si securitate pentru mai multi ani (de obicei 4 ani Android, 5 ani securitate). Interfata One UI e, pentru mine, mai curata si mai intuitiva decat MIUI/HyperOS de pe Poco. Asta nu inseamna ca Poco e rau, doar ca Samsung ofera o garantie pe termen lung.</p><p><strong>Pretul:</strong> De obicei, <strong>Poco X5 Pro</strong> e un pic mai ieftin decat Samsung A34. Asta il face o alegere si mai atractiva daca bugetul e strans.</p><p><strong>Verdict:</strong><br><strong>Alege Samsung Galaxy A34 5G daca:</strong> vrei cel mai bun echilibru, un telefon fiabil pentru multi ani, cu camera buna, ecran excelent si rezistenta la apa. E o alegere sigura pentru oricine.</p><p><strong>Alege Poco X5 Pro 5G daca:</strong> principalul tau criteriu e performanta la gaming, viteza in aplicatii, si vrei sa economisesti niste bani, primind in schimb o incarcare super rapida. E telefonul pentru "gamerul" casual sau pentru cineva caruia ii place viteza.</p>
+      </section>
+
+      <section id="greseli-de-evitat-la-cumpararea-telefonului-tau-nou-sub-1500-lei">
+        <h2>Greșeli de evitat la cumpărarea telefonului tău nou sub 1500 lei</h2>
+        <p>Multi oameni fac aceleasi greseli cand isi cauta un telefon nou, mai ales in acest segment de pret unde compromisurile sunt inevitabile. Si nu vrei sa platesti pentru ceva ce n-o sa folosesti sau o sa te enerveze.</p><p><strong>1. Te lasi pacalit de "megapixeli in plus" la camera.</strong> Stiu, 108MP sau 200MP suna impresionant. Dar daca senzorul e mic sau procesarea imaginii e slaba, pozele alea n-o sa fie mai bune decat cele de pe un telefon cu 48MP sau 50MP de la un brand serios. Conteaza calitatea senzorului, stabilizarea optica (OIS) si cat de bine lucreaza software-ul telefonului. Nu te uita doar la numarul mare.</p><p><strong>2. Platiesti extra pentru functii de care nu ai nevoie.</strong> De exemplu, un ecran cu 144Hz sau 165Hz in loc de 120Hz. Diferenta e aproape imperceptibila in uz zilnic, dar pretul poate creste. La fel, incarcare de 120W (care dureaza sub 20 de minute) cand tu ai timp sa incarci telefonul peste noapte sau dimineata. Nu zic ca nu sunt misto, dar daca te costa cu 200-300 lei in plus, poate nu merita.</p><p><strong>3. Nu verifici suportul software si actualizari.</strong> Un telefon de la Samsung sau Google primeste update-uri de Android si securitate ani de zile. Un telefon de la un brand mai mic sau mai putin cunoscut s-ar putea sa ramana blocat la versiunea de Android cu care a venit din fabrica sau sa primeasca update-uri de securitate arareori. Asta nu e ideal pentru siguranta si accesul la noile functii.</p><p><strong>4. Cumperi in "vremea cea mare".</strong> Nu te arunca sa cumperi imediat ce apare un model nou. Pretul e cel mai mare la inceput. Asteapta 2-3 luni, apar primele oferte. Si mai ales, nu cumpara imediat dupa lansare, ci cand incep reducerile de sarbatori (Black Friday, Paste, Craciun). Poti prinde reduceri serioase. Stiu ca tentatia e mare, dar rabdarea e cheia.</p><p><strong>5. Ignori specificatiile esentiale pentru viteza si fluiditate.</strong> Daca vrei un telefon rapid, nu te uita doar la design sau la numarul de camere. Cauta minim 6GB RAM (ideal 8GB) si un procesor decent (Snapdragon 7xx series, Dimensity 1000+ sau mai bun). Daca iei un telefon cu 4GB RAM si un procesor vechi, o sa te enervezi zilnic, indiferent cat de frumos arata.</p><p><strong>6. Nu te gandesti la "durabilitate".</strong> Un telefon cu rezistenta la apa si praf (IP67 sau IP68) cum e Samsung A34, e mult mai probabil sa supravietuiasca unei scufundari accidentale in chiuveta sau unei ploi torentiale. E un "peace of mind" pe care nu-l obtii de la un telefon fara certificare.</p>
+        <p>La fel, daca poti gasi o oferta buna la un model second-hand sau refurbished de la un retailer de incredere (eMAG, PCGarage), poate fi o varianta excelenta pentru a obtine un telefon de top la un pret redus.</p><p><strong>7. Uiti de incarcator.</strong> Multe branduri (inclusiv Samsung, uneori) nu mai pun incarcator in cutie. Daca nu ai deja unul compatibil (cu Quick Charge sau Power Delivery), trebuie sa il cumperi separat. Si un incarcator rapid de calitate poate costa 100-150 lei. Ia asta in calcul cand vezi pretul "redus" al telefonului.</p><p>Pe scurt, nu te axa doar pe ce e "cool" pe hartie. Gândește-te la cum folosești tu telefonul zilnic si ce te-ar enerva cel mai mult sa nu meargă bine. Asta te va ghida spre cea mai buna alegere.</p>
+      </section>
+
+      <section id="verdictul-final-ce-telefon-sub-1500-lei-mi-as-lua-eu-acum">
+        <h2>Verdictul final: Ce telefon SUB 1500 lei mi-as lua eu ACUM</h2>
+        <p>Daca ar fi sa dau un raspuns scurt, direct si fara ocolisuri, si sa-mi iau telefonul asta chiar in ziua de azi, as merge pe <strong>Samsung Galaxy A34 5G</strong>.</p><p>De ce? Pentru ca e cel mai sigur pariu, cel mai echilibrat pachet. Nu exceleaza la absolut nimic, dar e foarte, foarte bun la tot ce conteaza pentru un om normal. Are un ecran superb, pe care stai cu placere ore in sir.</p>
+        <p>Bateria tine fara probleme o zi intreaga grea. Camera face poze decente, cu care te poti mandri pe Instagram sau Facebook. Stai linistit ca primesti actualizari ani de zile, deci telefonul ramane in siguranta si primeste functii noi.</p>
+        <p>Si faptul ca e rezistent la apa si praf (IP67) e un bonus urias pentru mine, ca sunt un pic neindemanatic.</p><p>Da, stiu, Poco X5 Pro e mai rapid la gaming si incarcarea e mult mai rapida. Si pretul lui e de obicei mai mic. Daca tu esti un gamer impatimit sau vrei sa vezi cel mai bun raport performanta/pret la viteza, Poco X5 Pro e o alegere excelenta. Dar eu, ca utilizator mediu spre avansat, care pune pret pe longevitate, pe o experienta de utilizare curata si pe o camera decenta la orice ora, aleg A34. E un telefon pe care il poti lua si da unui parinte fara grija, stii ca va functiona bine mult timp.</p><p>Sa zicem ca bugetul meu e mai mic, undeva pe la 1100-1200 lei. Atunci as reevalua. As merge pe <strong>Motorola Moto G84 5G</strong> daca vreau un ecran pOLED absolut genial si un Android curat, sau pe <strong>Poco X5 Pro 5G</strong> daca vreau totusi performanta mai buna, chiar daca renunt la o parte din finisajele premium ale lui G84 sau la suportul software de top al Samsung-ului.</p><p>Ce ar trebui sa retii din toata discutia asta e ca nu exista un "cel mai bun" telefon absolut. Exista "cel mai bun telefon PENTRU TINE". Daca vrei sa te joci, ia Poco. Daca vrei camera buna si rezistenta la apa, ia Samsung A34. Daca vrei un telefon usor si cu ecran superb, ia Moto G84. Si verifica mereu preturile la eMAG, Altex, PCGarage si Flanco, pentru ca se schimba constant si poti prinde oferte bune.</p><p>Deci, verdictul meu final, ca un tip care chiar a stat sa se uite la toate astea: <strong>Samsung Galaxy A34 5G</strong> e alegerea mea de top sub 1500 lei pentru echilibru si longevitate. Daca bugetul e un pic mai flexibil in sus, poate te uiti si la Samsung Galaxy A54, care e un salt calitativ mare, dar probabil trece de 1500 lei.</p>
+      </section>
+
+          <!-- FAQ Section -->
+          <section class="faq-section" id="faq">
+            <h2 class="faq-title">Intrebari Frecvente</h2>
+            
+            <details class="faq-item" id="faq-0">
+              <summary>
+                care e cel mai bun telefon sub 1500 lei acum?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Samsung Galaxy A34 5G e cea mai echilibrata optiune sub 1500 lei acum, oferind un ecran AMOLED excelent, rezistenta la apa si suport software bun. Daca vrei performanta mai buna la gaming, Poco X5 Pro 5G e o alternativa excelenta, de obicei la un pret mai mic.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-1">
+              <summary>
+                ce telefon sa aleg sub 1500 lei pentru poze?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Pentru poze bune sub 1500 lei, Samsung Galaxy A34 5G se descurca cel mai bine datorita camerei principale cu OIS si procesarii Samsung. Xiaomi Redmi Note 13 Pro 5G cu senzorul sau de 200MP poate fi o optiune, dar conteaza mult si procesarea imaginii.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-2">
+              <summary>
+                merita poco x5 pro 5g acum?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Da, Poco X5 Pro 5G merita acum daca principalul tau criteriu e performanta in jocuri si aplicatii, ecranul AMOLED 120Hz si incarcarea rapida de 67W. Ramane o optiune excelenta pentru raportul pret/performanta, mai ales sub 1300 lei.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-3">
+              <summary>
+                cat costa un samsung galaxy a34 5g?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Samsung Galaxy A34 5G costa de obicei intre 1300 si 1450 RON, in functie de oferta si magazin (eMAG, Altex). Uneori poate fi gasit si la preturi mai mici in campaniile promotionale.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-4">
+              <summary>
+                ce telefon e mai bun samsung a34 sau poco x5 pro?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Samsung A34 e mai bun pentru camera, rezistenta la apa si actualizari software pe termen lung. Poco X5 Pro e mai bun pentru performanta in jocuri si viteza de incarcare. Alegerea depinde de prioritatile tale.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-5">
+              <summary>
+                unde gasesc telefoane ieftine sub 1500 lei?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Cele mai bune oferte pentru telefoane sub 1500 lei le gasesti la eMAG, Altex, PCGarage si Flanco. Verifica constant aceste magazine, mai ales in perioadele de reduceri (Black Friday, reduceri de sezon).
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-6">
+              <summary>
+                ce procesor e bun pentru gaming sub 1500 lei?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Pentru gaming sub 1500 lei, cauta procesoare precum Snapdragon 778G 5G (Poco X5 Pro) sau MediaTek Dimensity 1080 (Samsung A34). Acestea ofera un echilibru bun intre performanta si consum, ruland majoritatea jocurilor decent.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-7">
+              <summary>
+                cat rezista un telefon sub 1500 lei?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Un telefon bun sub 1500 lei, precum Samsung A34, poate rezista fara probleme 2-3 ani la utilizare normala, gratie suportului software prelungit si a constructiei solide. La fel, Poco X5 Pro e fiabil cat timp nu il expui la socuri mecanice puternice.
+              </div>
+            </details>
+          </section>
+        </div>
+
+        <!-- Author -->
+        <div class="author-line">
+          <div class="author-avatar">MD</div>
+          <div>
+            <div class="author-name">Mihai Dumitrescu</div>
+            <div class="author-role">Specialist Tehnologie</div>
+          </div>
+        </div>
+
+        <!-- Similar Articles -->
+        <SimilarArticles
+          currentSlug="cele-mai-bune-telefoane-sub-1500-lei"
+          currentCategory="telefoane-laptopuri"
+          articles={allArticles}
+        />
+      </div>
+
+      <!-- Sticky TOC Sidebar (desktop) - RIGHT side -->
+      <aside class="toc-sidebar">
+        <p class="toc-sidebar-title">Cuprins</p>
+        <ol class="toc-sidebar-list">
+          {toc.map(item => (
+            <li><a href={`#${item.id}`}>{item.title}</a></li>
+          ))}
+          <li><a href="#faq">Intrebari Frecvente</a></li>
+        </ol>
+      </aside>
+    </div>
+  </article>
+</Layout>

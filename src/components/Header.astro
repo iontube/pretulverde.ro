@@ -1,0 +1,105 @@
+---
+const categories = [
+  { name: 'Electrocasnice', slug: 'electrocasnice' },
+  { name: 'Telefoane', slug: 'telefoane-laptopuri' },
+  { name: 'Casa & Gradina', slug: 'casa-gradina' },
+  { name: 'Sanatate', slug: 'sanatate-frumusete' },
+  { name: 'Sport', slug: 'sport-timp-liber' }
+];
+
+const navLinks = [
+  { name: 'Acasa', href: '/' },
+  ...categories.map(cat => ({ name: cat.name, href: `/${cat.slug}/` })),
+  { name: 'Blog', href: '/blog/' }
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="header" id="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="/" class="header-logo-link">
+        <img src="/images/logo.svg" alt="PretulVerde" class="header-logo">
+      </a>
+
+      <nav class="header-nav">
+        {navLinks.map(link => (
+          <a
+            href={link.href}
+            class={currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href)) ? 'active' : ''}
+          >
+            {link.name}
+          </a>
+        ))}
+      </nav>
+
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Meniu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Backdrop -->
+<div class="mobile-drawer-backdrop" id="drawer-backdrop"></div>
+
+<!-- Slide-in drawer from right -->
+<div class="mobile-drawer" id="mobile-drawer">
+  <div class="mobile-drawer-header">
+    <img src="/images/logo.svg" alt="PretulVerde" style="height: 36px;">
+    <button class="mobile-drawer-close" id="drawer-close" aria-label="Inchide meniu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+  <nav class="mobile-drawer-nav">
+    {navLinks.map(link => (
+      <a href={link.href}>{link.name}</a>
+    ))}
+    <a href="/contact/">Contact</a>
+  </nav>
+</div>
+
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const drawer = document.getElementById('mobile-drawer');
+  const backdrop = document.getElementById('drawer-backdrop');
+  const closeBtn = document.getElementById('drawer-close');
+
+  function openDrawer() {
+    drawer?.classList.add('open');
+    backdrop?.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    drawer?.classList.remove('open');
+    backdrop?.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  menuBtn?.addEventListener('click', openDrawer);
+  closeBtn?.addEventListener('click', closeDrawer);
+  backdrop?.addEventListener('click', closeDrawer);
+
+  drawer?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeDrawer);
+  });
+
+  // Sticky header scroll behavior
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+  });
+</script>

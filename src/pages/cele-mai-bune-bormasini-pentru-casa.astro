@@ -1,0 +1,289 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SimilarArticles from '../components/SimilarArticles.astro';
+import keywordsData from '../../keywords.json';
+
+export const frontmatter = {
+  title: "Cele mai bune bormasini pentru casa",
+  excerpt: "Cel mai bun aparat de gaurit si insurubat pentru casa e o masina cu acumulator, cu 2 viteze, cel putin 18V si un cuplu de peste 50 Nm, modelul Bosch Professional GSB 18V-55 la vreo 600-700 RON (fara acumulatori, ceea ce e un plus pentru ca ii poti cumpara separat pe cei mai potriviti) este o alegere solida. Raspunsul direct e ca nu exista o singura 'cea mai buna' bormasina, ci cea mai buna PENTRU TINE, in functie de ce ai de facut in casa si de buget.",
+  image: "/images/articles/cele-mai-bune-bormasini-pentru-casa.webp",
+  category: "Casa si Gradina",
+  categorySlug: "casa-gradina",
+  date: "2025-07-10T08:00:00.000Z",
+  modifiedDate: "2026-02-01T09:30:00.000Z",
+  author: "Elena Marin",
+  authorRole: "Expert Casa si Gradina",
+  authorBio: "Elena are experienta practica cu scule electrice, mobilier si echipamente de gradina. Testeaza produse si ofera recomandari bazate pe durabilitate, pret si usurinta de utilizare."
+};
+
+const faq = [
+  { question: "cat costa o bormasina buna pentru casa?", answer: "O bormasina cu acumulator buna pentru casa, cu motor Brushless si percutie, costa intre 400-600 RON doar corpul masinii, sau intre 700-1200 RON pentru un kit complet cu acumulatori si incarcator. Modelele profesionale sunt mai scumpe dar si mai durabile." },
+  { question: "ce e mai bun bormasina cu percutie sau fara?", answer: "Daca dai gauri in pereti de caramida sau beton, bormasina cu percutie e mult mai eficienta. Pentru lemn sau metal, percutia nu e necesara si o masina fara percutie poate fi mai ieftina sau mai usoara." },
+  { question: "ce bormasina sa aleg pentru gauri in pereti?", answer: "Pentru gauri in pereti de caramida sau BCA, alege o bormasina cu acumulator de minim 18V si cu percutie. Un cuplu de peste 40 Nm si o mandrina metalica de 13 mm sunt de preferat." },
+  { question: "cat rezista un acumulator de bormasina?", answer: "Un acumulator de 18V cu 2Ah poate sustine aproximativ 30-50 de gauri in caramida, in functie de diametrul burghiului. Un acumulator de 4Ah dubleaza autonomia, fiind ideal pentru sarcini mai extinse." },
+  { question: "ce inseamna 18V la o bormasina?", answer: "18V reprezinta voltajul acumulatorului, adica puterea electrica a masinii. Pentru uz casnic, 18V este standardul ideal, oferind un echilibru bun intre putere si greutate, fiind suficient pentru majoritatea lucrarilor." },
+  { question: "merita sa cumperi bormasina cu fir?", answer: "Daca ai proiecte mari, continue, unde priza este mereu la indemana, o bormasina cu fir poate fi mai puternica si nu necesita incarcare. Totusi, pentru flexibilitate si mobilitate in casa, cele cu acumulator sunt net superioare." },
+  { question: "de ce nu mai am putere la bormasina?", answer: "Lipsa de putere poate fi cauzata de un acumulator descarcat sau uzat, de un motor cu perii pe terminate (la masinile mai vechi), sau de o sarcina prea mare pentru masina. Verifica starea acumulatorului si daca masina este potrivita pentru lucrarea respectiva." },
+  { question: "cand merita sa cumperi un kit bormasina vs doar corpul?", answer: "Merita sa cumperi kitul daca nu ai deja acumulatori si incarcator de la acelasi producator. Daca ai deja, cumpararea doar a corpului masinii este mult mai avantajoasa financiar, economisind pana la 50% din cost." }
+];
+
+const toc = [
+  { title: "Ce bormasina sa iei pentru casa acum si la ce preturi gasesti?", id: "ce-bormasina-sa-iei-pentru-casa-acum-si-la-ce-preturi-gasesti" },
+  { title: "Top 4 masini de gaurit si insurubat de incredere acum", id: "top-4-masini-de-gaurit-si-insurubat-de-incredere-acum" },
+  { title: "Ce criterii conteaza cu adevarat la o bormasina pentru casa?", id: "ce-criterii-conteaza-cu-adevarat-la-o-bormasina-pentru-casa" },
+  { title: "Bosch vs Makita vs DeWalt - care e mai buna pentru tine?", id: "bosch-vs-makita-vs-dewalt---care-e-mai-buna-pentru-tine" },
+  { title: "Greșeli Frecvente la Cumpărarea Unei Bormasini & Trucuri de Prețuri", id: "greseli-frecvente-la-cumpararea-unei-bormasini--trucuri-de-preturi" },
+  { title: "Verdict final: Care e cea mai bună bormasină pentru casa TA?", id: "verdict-final-care-e-cea-mai-buna-bormasina-pentru-casa-ta" }
+];
+
+// Get all articles for similar articles component
+const allArticles = keywordsData.completed.map(item => ({
+  title: item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1),
+  slug: item.keyword.toLowerCase()
+    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+    .replace(/ș/g, 's').replace(/ț/g, 't')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
+  excerpt: item.excerpt || '',
+  image: `/images/articles/${item.keyword.toLowerCase()
+    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+    .replace(/ș/g, 's').replace(/ț/g, 't')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}.webp`,
+  category: item.category,
+  categorySlug: item.categorySlug,
+  date: item.date || new Date().toISOString()
+}));
+---
+
+<Layout
+  title="Cele mai bune bormasini pentru casa - PretulVerde"
+  description="Cel mai bun aparat de gaurit si insurubat pentru casa e o masina cu acumulator, cu 2 viteze, cel putin 18V si un cuplu de peste 50 Nm, modelul Bosch Professional GSB 18V-55 la vreo 600-700 RON (fara acumulatori, ceea ce e un plus pentru ca ii poti cumpara separat pe cei mai potriviti) este o alegere solida. Raspunsul direct e ca nu exista o singura 'cea mai buna' bormasina, ci cea mai buna PENTRU TINE, in functie de ce ai de facut in casa si de buget."
+  image="/images/articles/cele-mai-bune-bormasini-pentru-casa.webp"
+  type="article"
+  publishedTime="2025-07-10T08:00:00.000Z"
+  modifiedTime="2026-02-01T09:30:00.000Z"
+  author="Elena Marin"
+  faq={faq}
+  breadcrumbs={[
+    { name: "Acasa", url: "/" },
+    { name: "Casa si Gradina", url: "/casa-gradina/" },
+    { name: "Cele mai bune bormasini pentru casa", url: "/cele-mai-bune-bormasini-pentru-casa/" }
+  ]}
+>
+  <article class="article-page">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+      <ol>
+        <li><a href="/">Acasa</a></li>
+        <li><a href="/casa-gradina/">Casa si Gradina</a></li>
+        <li><span>Cele mai bune bormasini pentru casa</span></li>
+      </ol>
+    </nav>
+
+    <!-- Title -->
+    <h1 class="article-page-title">Cele mai bune bormasini pentru casa</h1>
+
+    <!-- Meta -->
+    <div class="article-page-meta">
+      <span>Elena Marin</span>
+      <span>&middot;</span>
+      <span>Publicat: 10 iulie 2025</span>
+      <span>&middot;</span>
+      <span>Actualizat: 1 februarie 2026</span>
+    </div>
+
+    <!-- Featured Image -->
+    <img src="/images/articles/cele-mai-bune-bormasini-pentru-casa.webp" alt="Cele mai bune bormasini pentru casa" class="article-page-image" width="800" height="600" loading="eager">
+
+    <!-- Two-column layout: content + TOC sidebar on RIGHT -->
+    <div class="article-layout">
+      <div>
+        <!-- Mobile TOC (expandable) -->
+        <div class="toc-mobile" id="toc-mobile">
+          <button class="toc-mobile-toggle" onclick="this.parentElement.classList.toggle('open')">
+            Cuprins
+            <span class="toc-chevron">&#9660;</span>
+          </button>
+          <ol class="toc-mobile-list">
+            {toc.map(item => (
+              <li><a href={`#${item.id}`}>{item.title}</a></li>
+            ))}
+            <li><a href="#faq">Intrebari Frecvente</a></li>
+          </ol>
+        </div>
+
+        <!-- Article Content -->
+        <div class="article-content">
+          
+      <section id="ce-bormasina-sa-iei-pentru-casa-acum-si-la-ce-preturi-gasesti">
+        <h2>Ce bormasina sa iei pentru casa acum si la ce preturi gasesti?</h2>
+        <p>Stai putin, vrei sa stii ce bormasina sa iei pentru casa. Ai cautat pe Google "cele mai bune bormasini pentru casa" si vrei un raspuns pe bune, nu vrajeala de marketing. Pai sa-ti zic drept, Bosch Professional GSB 18V-55 este o optiune de top, chiar daca pretul poate parea un pic piperat la prima vedere, cam 600-700 RON doar pentru scula, fara acumulatori.</p>
+        <p>De ce recomand asta? Pentru ca e un model de 18V, are percutie (utila pentru pereti mai solizi, sa zicem), 2 viteze (una pentru gaurit, alta pentru insurubat/desurubat, mult mai controlata) si un cuplu de peste 50 Nm. Asta inseamna putere. Multa putere.</p>
+        <p>Practic, poti gauri prin beton, lemn gros, metal. Si insurubezi suruburi mari fara sa te chinui deloc. Un prieten si-a luat un model similar de la Makita si e super multumit, zice ca i-a simplificat enorm treaba prin casa, de la montat rafturi pana la zugraveli.</p>
+        <p>Totusi, daca bugetul e mai mic, sa zicem sub 400 RON, poti gasi variante decente, dar vei face compromisuri. Am avut un model de la Black+Decker vreo 2 ani, era bun pentru chestii usoare, gen montat un tablou sau prins un raft mai mic. Cand am incercat sa dau o gaura in beton, a inceput sa scoata fum.</p>
+        <p>Deci, atentie la nevoile tale reale.</p><p>Pentru casa, in 90% din cazuri, o masina cu acumulator e cea mai buna alegere. Nu te mai incurci in fire, poti lucra oriunde. Si un acumulator de 18V e suficient pentru majoritatea treburilor casnice.</p>
+        <p>Peste 18V deja vorbim de scule profesionale, scumpe si grele, pe care probabil nu le vei folosi la potential maxim acasa. Daca vrei sa montezi un perete de rigips sau sa construiesti o magazie, atunci da, poate meriti sa te uiti la modele mai puternice. Dar pentru gaurit in pereti, montat mobila, prins diverse chestii, 18V e aur.</p>
+        <p>Si cuplul ala de peste 50 Nm e un indicator bun de putere. Nu te uita doar la voltaj. Un aparat de 18V cu 30 Nm e mult mai slab decat unul de 18V cu 55 Nm.</p>
+        <p>E ca si cum ai compara un motor de masina mica cu unul de SUV. Ambele merg, dar cu performante diferite.</p><p>Ce inseamna "fara acumulatori"? Inseamna ca in cutia pe care o cumperi gasesti doar masina (corpul), poate o surubelnita, un bit, manualul, dar nu si acumulatorul sau incarcatorul. Asta pare naspa la prima vedere, dar are si avantaje. Daca deja ai alte scule de la acelasi producator (sa zicem un polizor unghiular sau o fierastrau pendular de la Bosch Professional), poti folosi acelasi acumulator si incarcator.</p>
+        <p>Si de multe ori acumulatorii pe care ii vinzi separat sunt mai performanti sau au capacitate mai mare decat cei inclusi in kituri ieftine. Deci, poti sa alegi exact capacitatea de care ai nevoie, sa zicem un acumulator de 4Ah sau chiar 6Ah daca ai treaba multa. Un acumulator de 2Ah e bun pentru lucruri minore, dar daca dai multe gauri, se descarca repede si te opreste din treaba.</p>
+        <p>Deci, atentie si la asta. Un kit cu masina, 2 acumulatori (sa zicem de 4Ah) si incarcator o sa te duca undeva la 900-1200 RON, depinde de oferta. E o investitie, dar una care merita pe termen lung daca vrei sa ai uneltele potrivite.</p>
+      </section>
+
+      <section id="top-4-masini-de-gaurit-si-insurubat-de-incredere-acum">
+        <h2>Top 4 masini de gaurit si insurubat de incredere acum</h2>
+        <p>Ok, hai sa vedem cateva modele concrete care se gasesc pe piata si sunt bune pentru casa. Am ales sa ma concentrez pe cele cu acumulator, ca sunt cele mai practice pentru uz casnic. Preturi sunt orientative, pot varia in functie de promotii, deci verifica pe eMAG, Altex, Dedeman sau Flanco.</p><ul><li><strong>Bosch Professional GSB 18V-55 (Corpul masinii)</strong><ul><li><strong>Plusuri:</strong> Foarte puternica (55 Nm), percutie, 2 viteze, mandrina metalica de calitate (13 mm), motor fara perii (Brushless - mai eficient, nu se incinge atat de tare, are viata mai lunga), sistemul Push&Click pentru schimbarea rapida a accesoriilor. E o masina "pro" dar accesibila.</li><li><strong>Minusuri:</strong> Vine fara acumulatori si incarcator, deci costul total creste. Poate fi un pic cam grea pentru cineva mai fragil, dar la ~1.6 kg (fara acumulator) e rezonabil.</li><li><strong>Pentru cine e:</strong> Pentru oricine vrea o unealta serioasa, care sa-i reziste ani de zile si sa faca fata oricarei sarcini casnice, de la montat un raft la gaurit in beton. Daca ai deja acumulatori Bosch 18V, e o oferta imbatabila.</li><li><strong>Pret estimat (doar corpul):</strong> 600-700 RON.</li></ul></li><li><strong>Makita DHP484Z (Corpul masinii)</strong><ul><li><strong>Plusuri:</strong> Un alt model profesional, 50 Nm, 2 viteze, percutie, motor Brushless, destul de compacta si usoara (aprox 1.5 kg fara acumulator), mandrina metalica de 13 mm. Makita e un brand foarte respectat, sculele lor sunt rezistente.</li><li><strong>Minusuri:</strong> Similar cu Bosch, vine fara acumulatori. Pretul e de obicei un pic mai mare decat la Bosch echivalent.</li><li><strong>Pentru cine e:</strong> Pentru cei care au deja scule Makita pe acumulatori de 18V sau sunt fani ai brandului si vor fiabilitate maxima. E o alegere excelenta pentru durabilitate.</li><li><strong>Pret estimat (doar corpul):</strong> 700-800 RON.</li></ul></li><li><strong>DeWalt DCD791D2 (Kit cu 2 acumulatori de 2Ah)</strong><ul><li><strong>Plusuri:</strong> Un kit gata de utilizare. 70 Nm (foarte puternica!), motor Brushless, 2 viteze, LED frontal pentru iluminare, mandrina metalica 13 mm. 2 acumulatori de 2Ah sunt suficienti pentru multe treburi. DeWalt e tot brand "pro".</li><li><strong>Minusuri:</strong> Kitul e mai scump, dar nu ai batai de cap. Cuplul de 70 Nm e poate un pic overkill pentru uz casnic obisnuit, dar nu strică niciodată.</li><li><strong>Pentru cine e:</strong> Pentru cei care vor un kit complet, puternic si fiabil, fara sa caute separat acumulatori si incarcator. E un "all-in-one" bun.</li><li><strong>Pret estimat (kit):</strong> 1000-1300 RON.</li></ul></li><li><strong>Einhell TE-CD 18 Li-i Brushless (Solo - fara acumulatori)</strong><ul><li><strong>Plusuri:</strong> O optiune mai accesibila, dar tot cu motor Brushless. 50 Nm, 2 viteze, percutie, mandrina metalica de 13 mm. Einhell are un sistem de acumulatori comun pentru multe scule din gama lor "Power X-Change", deci daca iti cumperi si o drujba sau o masina de tuns gazonul de la ei, poti folosi aceeasi baterie.</li><li><strong>Minusuri:</strong> Nu e la nivelul de fiabilitate si finisaje al Bosch, Makita sau DeWalt pe termen foarte lung, dar pentru casa e mai mult decat suficient. Tot vine fara acumulator.</li><li><strong>Pentru cine e:</strong> Pentru cei cu buget mai restrans, care vor totusi o masina performanta cu motor Brushless si percutie, si poate vor sa-si extinda ecosistemul de scule Einhell.</li><li><strong>Pret estimat (doar corpul):</strong> 350-450 RON.</li></ul></li></ul><p>Am incercat sa aduc o varietate de preturi si optiuni. Daca vrei ceva ieftin, sub 300 RON, vei gasi multe modele "fara percutie", cu motoare cu perii (care se uzeaza mai repede), cuplu mic (sub 30 Nm) si mandate de plastic. Alea sunt bune doar daca vrei sa strangi 3 suruburi la un raft si gata. Pe bune, nu merita sa te chinui cu scule slabe, te frustrezi si risti sa strici si ce vrei sa repari.</p>
+      </section>
+
+      <section id="ce-criterii-conteaza-cu-adevarat-la-o-bormasina-pentru-casa">
+        <h2>Ce criterii conteaza cu adevarat la o bormasina pentru casa?</h2>
+        <p>Hai sa spargem miturile si sa vedem ce conteaza cu adevarat cand vine vorba de "cele mai bune bormasini pentru casa". Majoritatea oamenilor se pierd in specificatii inutile sau alearga dupa branduri fara sa stie de ce. Na, sa-ti explic simplu.</p><p><strong>1. Acumulator (V/Ah)</strong>. Asta e "sufletul" masinii electrice.</p>
+        <p>Voltajul (V) iti da puterea bruta. Pentru casa, 18V e standardul de aur. Sub 12V e pentru jucarii sau insurubat foarte usor.</p>
+        <p>Peste 18V (20V, 36V) e pentru constructii grele, nu ai nevoie de asa ceva acasa, te oboseste si te costa. Capacitatea acumulatorului (Ah - Amperi-ora) iti spune cat tine bateria. 2Ah e minim, 4Ah e decent, 6Ah e pentru treaba multa. Gandeste-te ca la 2Ah poti da cam 30-50 de gauri in caramida, iar la 4Ah cam dublu.</p>
+        <p>Daca dai 10 gauri pe an, 2Ah e ok. Daca te apuci sa construiesti o casuta de joaca pentru copii, 4Ah sau mai mult e recomandat.</p><p><strong>2. Cuplu (Nm - Newton-metri)</strong>. Asta e forta cu care masina poate invarti. Si aici, mai mare inseamna mai bine. Peste 50 Nm e un cuplu bun pentru casa. Inseamna ca poate trage suruburi mari in lemn, dar si desface suruburi intepenite. Daca vezi masini cu 20-30 Nm, sunt bune doar pentru insurubat suruburi micute in rigips sau lemn moale. Nu te astepta sa gauriti prin beton cu ele.</p><p><strong>3. Viteze</strong>. Aproape toate masinile bune au 2 viteze. Viteza 1 (mai mica, cuplu mai mare) e pentru insurubat/desurubat. Te ajuta sa controlezi cat de adanc bagi surubul fara sa strici lemnul sau sa-l rupi. Viteza 2 (mai mare, cuplu mai mic) e pentru gaurit. Te ajuta sa dai gauri mai repede. E o diferenta mare fata de cele cu o singura viteza, care te forteaza sa alegi intre a da gauri lent sau a insuruba haotic.</p><p><strong>4. Percutie</strong>. Asta e o functie utila pentru gaurit in zidarie (caramida, BCA, beton).</p>
+        <p>Masina nu doar invarte, ci si loveste in fata, ca un mic ciocan. Ajuta enorm sa treci prin materiale mai dure. Daca dai gauri doar in lemn sau metal, nu ai neaparat nevoie de percutie.</p>
+        <p>Dar daca stai la bloc sau ai pereti din caramida, e aproape obligatorie. Atenție, nu confunda percutia unei bormasini cu cea a unui ciocan rotopercutor. Ciocanul rotopercutor e mult, mult mai puternic si face treaba la demolarile serioase sau la gaurile mari in beton.</p>
+        <p>Bormasina cu percutie e pentru gauri uzuale de 6-10 mm in zidarie.</p><p><strong>5. Mandrina</strong>. Asta e partea unde se prind burghiele sau capetele de surubelnita. Ideal e sa fie metalica, nu de plastic. Cele de plastic sunt mai ieftine, dar se tocesc mai repede si pot fi mai greu de strans/desfacut. Majoritatea masinilor bune au mandrine de 10 mm sau 13 mm. 13 mm e mai robusta si accepta burghie cu coada mai groasa, deci e preferabila.</p><p><strong>6. Motor Brushless (fara perii)</strong>. Asta e o tehnologie mai noua. Motoarele Brushless sunt mai eficiente (dau mai multa putere din acelasi acumulator), se incing mai greu, sunt mai silentioase si au o durata de viata mult mai lunga decat motoarele cu perii clasice. Le gasesti de obicei la masinile mai scumpe, dar merita investitia pe termen lung. Daca bugetul permite, alege Brushless.</p><p><strong>Ce NU conteaza atat de mult:</strong> Numerele alea "maxime" de gauri pe minut sau numarul de "setari de cuplu" (daca nu e vorba de 20+ setari, cele 16-20 uzuale sunt suficiente). Si brandurile "super lux" care costa dublu si ofera doar un design un pic mai misto. E drept ca o marca premium poate fi mai finisata, dar daca nu ești profesionist, diferența de preț s-ar putea să nu justifice.</p>
+        <p>Eu am avut un model de la Skill pe care l-am luat la reducere acum 3 ani, si a mers brici pentru ce am avut nevoie in casa. Nu e Bosch, dar si-a facut treaba.</p>
+      </section>
+
+      <section id="bosch-vs-makita-vs-dewalt---care-e-mai-buna-pentru-tine">
+        <h2>Bosch vs Makita vs DeWalt - care e mai buna pentru tine?</h2>
+        <p>Acum ca am vazut ce sa cautam, hai sa comparam direct 3 dintre cele mai populare marci la capitolul bormasini pentru casa: Bosch, Makita si DeWalt. Toate sunt producatori de top, cunoscute pentru scule fiabile. Diferentele sunt subtile si depind mult de preferintele tale si de ecosistemul de scule pe care il ai deja.</p><p><strong>Bosch</strong>. Ei au doua game mari: "verde" (pentru uz casnic, mai ieftine) si "albastru" (Profesional, mai scumpe, mai rezistente). Pentru "cele mai bune bormasini pentru casa", eu ma orientez spre gama Profesionala, chiar daca e un pic mai scumpa.</p>
+        <p>Modelele lor de 18V, cum e GSB 18V-55, sunt un echilibru excelent intre putere, fiabilitate si pret. Bosch pune accent pe ergonomie, sunt de obicei confortabile in mana. Plus, sistemul lor de acumulatori e foarte raspandit, gasesti usor piese si accesorii.</p>
+        <p>Un minus ar fi ca uneori pretul lor "profesional" e un pic mai mare decat al concurentei pentru specificatii similare.</p><p><strong>Makita</strong>. Un alt gigant japonez. Makita e renumita pentru durabilitate.</p>
+        <p>Sculele lor sunt facute sa reziste la conditii grele de santier. Modelele lor de 18V, cum ar fi DHP484Z, sunt adesea considerate printre cele mai robuste. Au un cuplu mare, motoare Brushless exceptionale si o calitate a constructiei de top.</p>
+        <p>Daca vrei o masina care sa te tina o viata, indiferent de cat de mult o folosesti, Makita e o alegere sigura. Dezavantajul? De obicei, pretul e un pic mai sus. Si uneori, designul e un pic mai "agresiv", mai masiv, fata de Bosch sau DeWalt.</p><p><strong>DeWalt</strong>. Brand american, acum sub umbrela Stanley Black & Decker. DeWalt e undeva la mijloc intre Bosch si Makita ca si percepție.</p>
+        <p>Sunt foarte puternice, adesea oferind cupluri mai mari decat competitorii la acelasi nivel de pret. Modelele lor de 18V sunt excelente, iar kiturile lor (care vin cu acumulatori si incarcator) sunt adesea foarte competitive ca pret pentru ce ofera. DeWalt pune accent pe inovație, au sisteme bune de iluminare, ergonomie modernă.</p>
+        <p>Un mic minus ar fi că, pe termen foarte lung, unii utilizatori profesioniști zic că pot fi un pic mai predispuse la uzură decât Makita, dar pentru uz casnic, e o diferență neglijabilă. Ei au si sistemul lor "FlexVolt" pentru scule mai puternice pe 54V, dar asta e deja alt nivel.</p><p><strong>Decizia?</strong> Daca bugetul e mai flexibil si vrei un echilibru bun intre putere, fiabilitate si ergonomie, si poate deja ai acumulatori Bosch, ia GSB 18V-55. Daca durabilitatea extrema e pe primul loc si nu te deranjeaza sa platesti un pic mai mult, Makita DHP484Z e o alegere excelentă. Daca vrei cea mai mare putere pentru banii tai, si poate un kit complet, atentie la ofertele DeWalt (ex: DCD791D2).</p><p>Sincer, nu prea poti da gres cu niciunul dintre astea 3 pentru uz casnic. Toate sunt peste media sculelor "ieftine". Eu am avut un model de la Bosch verde acum 5 ani, era ok, dar cand am trecut la unul profesional albastru, am simtit diferenta. Si am prieteni care folosesc exclusiv Makita sau DeWalt si sunt la fel de multumiti.</p>
+      </section>
+
+      <section id="greseli-frecvente-la-cumpararea-unei-bormasini--trucuri-de-preturi">
+        <h2>Greșeli Frecvente la Cumpărarea Unei Bormasini & Trucuri de Prețuri</h2>
+        <p>Pe bune, multa lume face aceleasi greseli cand vine vorba de "cele mai bune bormasini pentru casa". Si apoi se mira de ce nu sunt multumiti de achizitie. Hai sa vedem ce sa eviti si cum sa prinzi oferte bune.</p><p><strong>Greșeli de evitat:</strong></p><ul><li><strong>1. Cumpărarea celei mai ieftine variante:</strong> "Am dat 150 RON pe ea, ce sa vrei?" Pai, cam asta. Sculele foarte ieftine (sub 200-250 RON) au de obicei motoare cu perii care se ard repede, mandate de plastic care nu tin, cuplu mic si nicio putere. Vei deveni frustrat si vei da banii de doua ori. Mai bine strangi niste bani si iei ceva decent.</li><li><strong>2. Ignorarea cuplului (Nm):</strong> Mulți se uită doar la Voltaj (V). Dar un 18V cu 30 Nm e mult mai slab decat un 18V cu 50 Nm. Cuplul e crucial pentru insurubat si gaurit in materiale mai dure. Nu lua sub 40 Nm daca vrei ceva serios pentru casa.</li><li><strong>3. Alegerea unei masini cu fir cand ai nevoie de una cu acumulator:</strong> Daca nu esti un tip care face tot timpul proiecte mari in atelier si nu te deranjeaza sa tragi prelungitoare, o masina cu fir poate fi mai puternica si mai ieftina. Dar pentru uz casnic, varietatea de locuri unde poti lucra fara fir e un avantaj imens.</li><li><strong>4. Supraestimarea nevoilor (sau subestimarea):</strong> Nu ai nevoie de un ciocan rotopercutor de 500 RON daca vrei doar sa montezi un tablou. Pe de alta parte, nu lua o masina de 12V cu 15 Nm daca vrei sa construiesti o magazie sau sa montezi un gard. Evalueaza-ti realist ce vei face.</li><li><strong>5. A nu verifica ecosistemul de acumulatori:</strong> Daca iti iei prima scula dintr-un brand, s-ar putea sa te trezesti ca mai tarziu vrei o fierastrau circular sau o polizor unghiular de la alt brand si trebuie sa cumperi acumulatori si incarcatori noi pentru fiecare. Daca gasesti un brand cu o gama larga de scule (Bosch, Makita, DeWalt, Einhell), poti economisi bani pe termen lung.</li></ul><p><strong>Trucuri pentru cele mai bune prețuri:</strong></p><p>Aici e cheia pentru "cele mai bune bormasini pentru casa" la preturi bune. Nu te grabi!</p><ul><li><strong>1. Urmărește promoțiile:</strong> Marile magazine (eMAG, Altex, Flanco, Dedeman) au reduceri frecvente, mai ales in perioadele de Black Friday, reduceri de primavara/toamna. Aboneaza-te la newslettere sau urmareste paginile lor de social media.</li><li><strong>2. Compară prețurile:</strong> Foloseste comparatoare de prețuri online. Nu te baza pe primul magazin pe care il gasesti.</li><li><strong>3. Cumpără "solo" (corpul masinii):</strong> Daca deja ai acumulatori si incarcator de la un anumit brand, cumpararea doar a corpului masinii (fara baterii) poate reduce costul cu 30-50%. Asta e o strategie excelenta pentru a-ti extinde gama de scule.</li><li><strong>4. Verifică second-hand sau refurbished:</strong> Site-uri ca OLX sau grupuri de Facebook pot avea oferte bune. Dar fii atent! Cere poze clare, verifică starea acumulatorilor (daca se poate, cere o filmare cu masina in functiune). Produsele refurbished de la producatori de renume pot fi o afacere buna, dar asigură-te ca au garanție. Am avut un prieten care si-a luat un flex DeWalt refurbished si a fost super multumit.</li><li><strong>5. Așteaptă momentele potrivite:</strong> Nu cumpara in graba. Daca nu ai nevoie urgenta, asteapta o reducere. De exemplu, acum, inainte de sarbatori, apar mereu oferte. Sau imediat dupa sarbatori, cand lumea vrea sa scape de stocuri.</li><li><strong>6. Verifică site-urile producătorilor:</strong> Uneori, producatorii au oferte direct pe site-urile lor, sau oferte speciale pentru anumite kituri.</li></ul><p>Pe bune, cu putina rabdare si cercetare, poti gasi o bormasina de top, care sa ti se potriveasca, fara sa cheltui o avere. E o investitie, dar una care te ajuta ani de zile.</p>
+      </section>
+
+      <section id="verdict-final-care-e-cea-mai-buna-bormasina-pentru-casa-ta">
+        <h2>Verdict final: Care e cea mai bună bormasină pentru casa TA?</h2>
+        <p>Ok, am vorbit mult, am comparat, am zis ce e bun si ce nu. Acum, daca ar fi sa aleg azi, pentru casa mea, ce as lua? Depinde de buget, clar.</p><p><strong>Pentru un buget mic/mediu (sub 500 RON pentru toata instalatia, masina + acumulator + incarcator):</strong><br>Aici e mai greu sa gasesti "cele mai bune bormasini pentru casa" la un nivel profesional, dar se poate ceva decent. As merge pe <strong>Einhell TE-CD 18 Li-i Brushless (kit, cu acumulator de 2Ah si incarcator)</strong>. Pretul ajunge cam pe la 450-550 RON in promotii.</p>
+        <p>Ai motor Brushless, 50 Nm, percutie. E un pas mare fata de masinile ieftine cu perii. Nu e la nivelul Bosch/Makita, dar pentru uz casnic obisnuit, face treaba.</p>
+        <p>Sau, daca gasesti la oferta un kit Bosch "verde" mai vechi (cu motor cu perii, dar tot de 18V), ar putea fi o optiune, dar as prefera Einhell-ul cu Brushless.</p><p><strong>Pentru un buget mediu/bun (700-1000 RON pentru toata instalatia):</strong><br>Aici incepe distractia. As recomanda fie <strong>Bosch Professional GSB 18V-55 (corpul) + un acumulator de 4Ah si incarcator</strong> (pret total cam 800-1000 RON), fie <strong>DeWalt DCD791D2 (kit cu 2 acumulatori de 2Ah)</strong> daca e la oferta buna (cam 1000-1100 RON). Bosch-ul e un pic mai echilibrat, are 55 Nm, e usor de manevrat.</p>
+        <p>DeWalt-ul ofera 70 Nm, deci e mai "brutal", dar are acumulatori mai mici, de 2Ah, care s-ar putea sa se descarce mai repede la treaba multa. Alegerea aici tine mai mult de brand preference si de ce oferta gasesti la momentul respectiv.</p><p><strong>Pentru un buget "fara griji" (peste 1000 RON pentru toata instalatia):</strong><br>Daca vrei ce e mai bun si nu te uiti la bani, as merge pe un kit <strong>Makita</strong> de 18V (ceva gen DHP484Z + acumulatori de 5Ah sau chiar 6Ah). Makita e sinonima cu fiabilitatea pe termen lung. Sau, un kit <strong>Bosch Professional</strong> cu acumulatori de 5Ah sau 6Ah.</p>
+        <p>Aici practic iti iei "calul de bătaie" care te va ține probabil cel puțin 10 ani, dacă nu mai mult. Ai putere, fiabilitate, ergonomie, tot ce vrei.</p><p><strong>Si ce as lua eu?</strong><br>Eu, personal, daca as cumpara azi, as merge pe <strong>Bosch Professional GSB 18V-55 (corpul)</strong> si as cauta separat <strong>un acumulator de 4Ah</strong> si <strong>un incarcator rapid</strong>. De ce? Pentru ca am deja alte scule Bosch pe 18V, deci nu platesc pentru acumulator si incarcator. Daca nu as avea, as lua kit-ul DeWalt DCD791D2 daca as gasi la o oferta buna, sau as investi direct in Bosch GSB 18V-55 cu acumulatori de 4Ah.</p>
+        <p>E un echilibru excelent intre pret, putere si fiabilitate. Si percutia aia e salvatoare cand dau gauri in peretele meu de caramida plina. Nu am testat personal toate modelele, dar din ce am citit si din experienta prietenilor, Bosch Professional e o alegere sigură pentru casă.</p><p>Reține, "cele mai bune bormasini pentru casa" sunt cele care se potrivesc CEL MAI BINE nevoilor tale. Nu te lasa pacalit de marketing. Cerceteaza, compara si alege in cunostinta de cauza.</p>
+      </section>
+
+          <!-- FAQ Section -->
+          <section class="faq-section" id="faq">
+            <h2 class="faq-title">Intrebari Frecvente</h2>
+            
+            <details class="faq-item" id="faq-0">
+              <summary>
+                cat costa o bormasina buna pentru casa?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                O bormasina cu acumulator buna pentru casa, cu motor Brushless si percutie, costa intre 400-600 RON doar corpul masinii, sau intre 700-1200 RON pentru un kit complet cu acumulatori si incarcator. Modelele profesionale sunt mai scumpe dar si mai durabile.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-1">
+              <summary>
+                ce e mai bun bormasina cu percutie sau fara?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Daca dai gauri in pereti de caramida sau beton, bormasina cu percutie e mult mai eficienta. Pentru lemn sau metal, percutia nu e necesara si o masina fara percutie poate fi mai ieftina sau mai usoara.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-2">
+              <summary>
+                ce bormasina sa aleg pentru gauri in pereti?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Pentru gauri in pereti de caramida sau BCA, alege o bormasina cu acumulator de minim 18V si cu percutie. Un cuplu de peste 40 Nm si o mandrina metalica de 13 mm sunt de preferat.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-3">
+              <summary>
+                cat rezista un acumulator de bormasina?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Un acumulator de 18V cu 2Ah poate sustine aproximativ 30-50 de gauri in caramida, in functie de diametrul burghiului. Un acumulator de 4Ah dubleaza autonomia, fiind ideal pentru sarcini mai extinse.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-4">
+              <summary>
+                ce inseamna 18V la o bormasina?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                18V reprezinta voltajul acumulatorului, adica puterea electrica a masinii. Pentru uz casnic, 18V este standardul ideal, oferind un echilibru bun intre putere si greutate, fiind suficient pentru majoritatea lucrarilor.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-5">
+              <summary>
+                merita sa cumperi bormasina cu fir?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Daca ai proiecte mari, continue, unde priza este mereu la indemana, o bormasina cu fir poate fi mai puternica si nu necesita incarcare. Totusi, pentru flexibilitate si mobilitate in casa, cele cu acumulator sunt net superioare.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-6">
+              <summary>
+                de ce nu mai am putere la bormasina?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Lipsa de putere poate fi cauzata de un acumulator descarcat sau uzat, de un motor cu perii pe terminate (la masinile mai vechi), sau de o sarcina prea mare pentru masina. Verifica starea acumulatorului si daca masina este potrivita pentru lucrarea respectiva.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-7">
+              <summary>
+                cand merita sa cumperi un kit bormasina vs doar corpul?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Merita sa cumperi kitul daca nu ai deja acumulatori si incarcator de la acelasi producator. Daca ai deja, cumpararea doar a corpului masinii este mult mai avantajoasa financiar, economisind pana la 50% din cost.
+              </div>
+            </details>
+          </section>
+        </div>
+
+        <!-- Author -->
+        <div class="author-line">
+          <div class="author-avatar">EM</div>
+          <div>
+            <div class="author-name">Elena Marin</div>
+            <div class="author-role">Expert Casa si Gradina</div>
+          </div>
+        </div>
+
+        <!-- Similar Articles -->
+        <SimilarArticles
+          currentSlug="cele-mai-bune-bormasini-pentru-casa"
+          currentCategory="casa-gradina"
+          articles={allArticles}
+        />
+      </div>
+
+      <!-- Sticky TOC Sidebar (desktop) - RIGHT side -->
+      <aside class="toc-sidebar">
+        <p class="toc-sidebar-title">Cuprins</p>
+        <ol class="toc-sidebar-list">
+          {toc.map(item => (
+            <li><a href={`#${item.id}`}>{item.title}</a></li>
+          ))}
+          <li><a href="#faq">Intrebari Frecvente</a></li>
+        </ol>
+      </aside>
+    </div>
+  </article>
+</Layout>

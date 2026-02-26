@@ -1,0 +1,71 @@
+---
+const currentYear = new Date().getFullYear();
+
+const categories = [
+  { name: 'Electrocasnice', slug: 'electrocasnice' },
+  { name: 'Telefoane si Laptopuri', slug: 'telefoane-laptopuri' },
+  { name: 'Casa si Gradina', slug: 'casa-gradina' },
+  { name: 'Sanatate si Frumusete', slug: 'sanatate-frumusete' },
+  { name: 'Sport si Timp Liber', slug: 'sport-timp-liber' }
+];
+
+const pages = [
+  { name: 'Acasa', href: '/' },
+  { name: 'Blog', href: '/blog/' },
+  { name: 'Contact', href: '/contact/' },
+  { name: 'Sitemap', href: '/sitemap/' }
+];
+
+const legalLinks = [
+  { name: 'Politica de Confidentialitate', href: '/privacy-policy/' },
+  { name: 'Politica GDPR', href: '/gdpr/' },
+  { name: 'Termeni si Conditii', href: '/terms/' },
+  { name: 'Politica Cookies', href: '/cookies/' }
+];
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Brand column -->
+      <div class="footer-brand-col">
+        <img src="/images/logo.svg" alt="PretulVerde" class="footer-logo">
+        <p>Comparam preturi, analizam produse si te ajutam sa faci cele mai bune alegeri pentru bugetul tau.</p>
+      </div>
+
+      <!-- Categories column -->
+      <div class="footer-col">
+        <h4>Categorii</h4>
+        <ul>
+          {categories.map(cat => (
+            <li><a href={`/${cat.slug}/`}>{cat.name}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Pages column -->
+      <div class="footer-col">
+        <h4>Pagini</h4>
+        <ul>
+          {pages.map(page => (
+            <li><a href={page.href}>{page.name}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Legal column -->
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          {legalLinks.map(link => (
+            <li><a href={link.href}>{link.name}</a></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">&copy; {currentYear} PretulVerde.ro - Toate drepturile rezervate.</p>
+    </div>
+  </div>
+</footer>

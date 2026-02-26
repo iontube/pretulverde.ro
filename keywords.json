@@ -1,0 +1,737 @@
+{
+  "pending": [
+    {
+      "keyword": "cele mai bune creme antirid",
+      "category": "Sanatate si Frumusete",
+      "categorySlug": "sanatate-frumusete",
+      "pubDate": "2025-02-05T08:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune periute de dinti electrice",
+      "category": "Sanatate si Frumusete",
+      "categorySlug": "sanatate-frumusete",
+      "pubDate": "2025-02-24T13:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune biciclete electrice",
+      "category": "Sport si Timp Liber",
+      "categorySlug": "sport-timp-liber",
+      "pubDate": "2025-02-28T14:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune epilatoare",
+      "category": "Sanatate si Frumusete",
+      "categorySlug": "sanatate-frumusete",
+      "pubDate": "2025-03-16T10:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune corturi de camping",
+      "category": "Sport si Timp Liber",
+      "categorySlug": "sport-timp-liber",
+      "pubDate": "2025-03-19T11:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune placi de indreptat parul",
+      "category": "Sanatate si Frumusete",
+      "categorySlug": "sanatate-frumusete",
+      "pubDate": "2025-04-04T15:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune ghete de munte",
+      "category": "Sport si Timp Liber",
+      "categorySlug": "sport-timp-liber",
+      "pubDate": "2025-04-08T08:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune casti wireless",
+      "category": "Telefoane si Laptopuri",
+      "categorySlug": "telefoane-laptopuri",
+      "pubDate": "2025-04-16T10:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune sisteme de irigare",
+      "category": "Casa si Gradina",
+      "categorySlug": "casa-gradina",
+      "pubDate": "2025-04-20T11:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune uscatoare de par profesionale",
+      "category": "Sanatate si Frumusete",
+      "categorySlug": "sanatate-frumusete",
+      "pubDate": "2025-04-23T12:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune gantere reglabile",
+      "category": "Sport si Timp Liber",
+      "categorySlug": "sport-timp-liber",
+      "pubDate": "2025-04-27T13:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune uscatoare de rufe",
+      "category": "Electrocasnice",
+      "categorySlug": "electrocasnice",
+      "pubDate": "2025-05-01T14:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune telefoane cu camera buna",
+      "category": "Telefoane si Laptopuri",
+      "categorySlug": "telefoane-laptopuri",
+      "pubDate": "2025-05-05T15:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune gratare de gradina",
+      "category": "Casa si Gradina",
+      "categorySlug": "casa-gradina",
+      "pubDate": "2025-05-09T08:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune aparate de ras electrice",
+      "category": "Sanatate si Frumusete",
+      "categorySlug": "sanatate-frumusete",
+      "pubDate": "2025-05-13T09:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune saci de dormit",
+      "category": "Sport si Timp Liber",
+      "categorySlug": "sport-timp-liber",
+      "pubDate": "2025-05-17T10:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune aspiratoare fara fir",
+      "category": "Electrocasnice",
+      "categorySlug": "electrocasnice",
+      "pubDate": "2025-05-21T11:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune laptopuri ultrabook",
+      "category": "Telefoane si Laptopuri",
+      "categorySlug": "telefoane-laptopuri",
+      "pubDate": "2025-05-25T12:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune polizoare unghiulare",
+      "category": "Casa si Gradina",
+      "categorySlug": "casa-gradina",
+      "pubDate": "2025-05-28T13:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune creme de protectie solara",
+      "category": "Sanatate si Frumusete",
+      "categorySlug": "sanatate-frumusete",
+      "pubDate": "2025-06-01T14:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune rachete de tenis",
+      "category": "Sport si Timp Liber",
+      "categorySlug": "sport-timp-liber",
+      "pubDate": "2025-06-05T15:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune plite cu inductie",
+      "category": "Electrocasnice",
+      "categorySlug": "electrocasnice",
+      "pubDate": "2025-06-09T08:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune monitoare pentru gaming",
+      "category": "Telefoane si Laptopuri",
+      "categorySlug": "telefoane-laptopuri",
+      "pubDate": "2025-06-13T09:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune scaune de birou ergonomice",
+      "category": "Casa si Gradina",
+      "categorySlug": "casa-gradina",
+      "pubDate": "2025-06-17T10:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune suplimente de magneziu",
+      "category": "Sanatate si Frumusete",
+      "categorySlug": "sanatate-frumusete",
+      "pubDate": "2025-06-21T11:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune role pentru adulti",
+      "category": "Sport si Timp Liber",
+      "categorySlug": "sport-timp-liber",
+      "pubDate": "2025-06-25T12:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune roboti de bucatarie",
+      "category": "Electrocasnice",
+      "categorySlug": "electrocasnice",
+      "pubDate": "2025-06-29T13:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune tastaturi mecanice",
+      "category": "Telefoane si Laptopuri",
+      "categorySlug": "telefoane-laptopuri",
+      "pubDate": "2025-07-02T14:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune saltele ortopedice",
+      "category": "Casa si Gradina",
+      "categorySlug": "casa-gradina",
+      "pubDate": "2025-07-06T15:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune vitamine pentru imunitate",
+      "category": "Sanatate si Frumusete",
+      "categorySlug": "sanatate-frumusete",
+      "pubDate": "2025-07-10T08:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune biciclete pliabile",
+      "category": "Sport si Timp Liber",
+      "categorySlug": "sport-timp-liber",
+      "pubDate": "2025-07-14T09:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune fieruri de calcat cu abur",
+      "category": "Electrocasnice",
+      "categorySlug": "electrocasnice",
+      "pubDate": "2025-07-18T10:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune mouse-uri wireless",
+      "category": "Telefoane si Laptopuri",
+      "categorySlug": "telefoane-laptopuri",
+      "pubDate": "2025-07-22T11:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune canapele extensibile",
+      "category": "Casa si Gradina",
+      "categorySlug": "casa-gradina",
+      "pubDate": "2025-07-26T12:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune cantare de baie digitale",
+      "category": "Sanatate si Frumusete",
+      "categorySlug": "sanatate-frumusete",
+      "pubDate": "2025-07-30T13:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune drone cu camera",
+      "category": "Sport si Timp Liber",
+      "categorySlug": "sport-timp-liber",
+      "pubDate": "2025-08-03T14:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune purificatoare de aer",
+      "category": "Electrocasnice",
+      "categorySlug": "electrocasnice",
+      "pubDate": "2025-08-06T15:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune telefoane Samsung",
+      "category": "Telefoane si Laptopuri",
+      "categorySlug": "telefoane-laptopuri",
+      "pubDate": "2025-08-10T08:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune aspiratoare de frunze",
+      "category": "Casa si Gradina",
+      "categorySlug": "casa-gradina",
+      "pubDate": "2025-08-14T09:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune aparate de masaj",
+      "category": "Sanatate si Frumusete",
+      "categorySlug": "sanatate-frumusete",
+      "pubDate": "2025-08-18T10:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune genti de voiaj",
+      "category": "Sport si Timp Liber",
+      "categorySlug": "sport-timp-liber",
+      "pubDate": "2025-08-22T11:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune congelatoare",
+      "category": "Electrocasnice",
+      "categorySlug": "electrocasnice",
+      "pubDate": "2025-08-26T12:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune hard disk-uri externe",
+      "category": "Telefoane si Laptopuri",
+      "categorySlug": "telefoane-laptopuri",
+      "pubDate": "2025-08-30T13:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune centrale termice",
+      "category": "Casa si Gradina",
+      "categorySlug": "casa-gradina",
+      "pubDate": "2025-09-03T14:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune samponuri profesionale",
+      "category": "Sanatate si Frumusete",
+      "categorySlug": "sanatate-frumusete",
+      "pubDate": "2025-09-07T15:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune binocluri",
+      "category": "Sport si Timp Liber",
+      "categorySlug": "sport-timp-liber",
+      "pubDate": "2025-09-10T08:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune aparate de facut paine",
+      "category": "Electrocasnice",
+      "categorySlug": "electrocasnice",
+      "pubDate": "2025-09-14T09:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune routere WiFi",
+      "category": "Telefoane si Laptopuri",
+      "categorySlug": "telefoane-laptopuri",
+      "pubDate": "2025-09-18T10:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune camere de supraveghere",
+      "category": "Casa si Gradina",
+      "categorySlug": "casa-gradina",
+      "pubDate": "2025-09-22T11:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune creme de corp",
+      "category": "Sanatate si Frumusete",
+      "categorySlug": "sanatate-frumusete",
+      "pubDate": "2025-09-26T12:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune aparate fitness multifunctionale",
+      "category": "Sport si Timp Liber",
+      "categorySlug": "sport-timp-liber",
+      "pubDate": "2025-09-30T13:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune friteuze cu aer cald",
+      "category": "Electrocasnice",
+      "categorySlug": "electrocasnice",
+      "pubDate": "2025-10-04T14:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune webcam-uri pentru streaming",
+      "category": "Telefoane si Laptopuri",
+      "categorySlug": "telefoane-laptopuri",
+      "pubDate": "2025-10-08T15:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune alarme de casa",
+      "category": "Casa si Gradina",
+      "categorySlug": "casa-gradina",
+      "pubDate": "2025-10-12T08:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune deodorante naturale",
+      "category": "Sanatate si Frumusete",
+      "categorySlug": "sanatate-frumusete",
+      "pubDate": "2025-10-15T09:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune stepper-e pentru acasa",
+      "category": "Sport si Timp Liber",
+      "categorySlug": "sport-timp-liber",
+      "pubDate": "2025-10-19T10:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune hote de bucatarie",
+      "category": "Electrocasnice",
+      "categorySlug": "electrocasnice",
+      "pubDate": "2025-10-23T11:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune imprimante pentru acasa",
+      "category": "Telefoane si Laptopuri",
+      "categorySlug": "telefoane-laptopuri",
+      "pubDate": "2025-10-27T12:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune incalzitoare electrice",
+      "category": "Casa si Gradina",
+      "categorySlug": "casa-gradina",
+      "pubDate": "2025-10-31T13:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune truse de machiaj",
+      "category": "Sanatate si Frumusete",
+      "categorySlug": "sanatate-frumusete",
+      "pubDate": "2025-11-04T14:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune skateboard-uri electrice",
+      "category": "Sport si Timp Liber",
+      "categorySlug": "sport-timp-liber",
+      "pubDate": "2025-11-08T15:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune storcatoare de fructe",
+      "category": "Electrocasnice",
+      "categorySlug": "electrocasnice",
+      "pubDate": "2025-11-12T08:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune laptopuri sub 2500 lei",
+      "category": "Telefoane si Laptopuri",
+      "categorySlug": "telefoane-laptopuri",
+      "pubDate": "2025-11-16T09:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune pompe submersibile",
+      "category": "Casa si Gradina",
+      "categorySlug": "casa-gradina",
+      "pubDate": "2025-11-19T10:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune uleiuri esentiale",
+      "category": "Sanatate si Frumusete",
+      "categorySlug": "sanatate-frumusete",
+      "pubDate": "2025-11-23T11:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune rucsacuri de drumetie",
+      "category": "Sport si Timp Liber",
+      "categorySlug": "sport-timp-liber",
+      "pubDate": "2025-11-27T12:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune cuptoare electrice incorporabile",
+      "category": "Electrocasnice",
+      "categorySlug": "electrocasnice",
+      "pubDate": "2025-12-01T13:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune boxe bluetooth portabile",
+      "category": "Telefoane si Laptopuri",
+      "categorySlug": "telefoane-laptopuri",
+      "pubDate": "2025-12-05T14:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune motosape",
+      "category": "Casa si Gradina",
+      "categorySlug": "casa-gradina",
+      "pubDate": "2025-12-09T15:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune produse anticelulitice",
+      "category": "Sanatate si Frumusete",
+      "categorySlug": "sanatate-frumusete",
+      "pubDate": "2025-12-13T08:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune trambuline pentru copii",
+      "category": "Sport si Timp Liber",
+      "categorySlug": "sport-timp-liber",
+      "pubDate": "2025-12-17T09:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune aragazuri pe gaz",
+      "category": "Electrocasnice",
+      "categorySlug": "electrocasnice",
+      "pubDate": "2025-12-21T10:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune televizoare 4K",
+      "category": "Telefoane si Laptopuri",
+      "categorySlug": "telefoane-laptopuri",
+      "pubDate": "2025-12-24T11:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune perne ortopedice",
+      "category": "Casa si Gradina",
+      "categorySlug": "casa-gradina",
+      "pubDate": "2025-12-28T12:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune suplimente de colagen",
+      "category": "Sanatate si Frumusete",
+      "categorySlug": "sanatate-frumusete",
+      "pubDate": "2026-01-01T13:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune echipamente de snorkeling",
+      "category": "Sport si Timp Liber",
+      "categorySlug": "sport-timp-liber",
+      "pubDate": "2026-01-05T14:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune dezumidificatoare",
+      "category": "Electrocasnice",
+      "categorySlug": "electrocasnice",
+      "pubDate": "2026-01-09T15:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune tablete grafice",
+      "category": "Telefoane si Laptopuri",
+      "categorySlug": "telefoane-laptopuri",
+      "pubDate": "2026-01-13T08:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune masini de spalat cu presiune",
+      "category": "Casa si Gradina",
+      "categorySlug": "casa-gradina",
+      "pubDate": "2026-01-17T09:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune tensiometre digitale",
+      "category": "Sanatate si Frumusete",
+      "categorySlug": "sanatate-frumusete",
+      "pubDate": "2026-01-21T10:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune lanterne tactice",
+      "category": "Sport si Timp Liber",
+      "categorySlug": "sport-timp-liber",
+      "pubDate": "2026-01-25T11:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune seruri de fata cu vitamina C",
+      "category": "Sanatate si Frumusete",
+      "categorySlug": "sanatate-frumusete",
+      "pubDate": "2025-01-16T11:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune seturi de scule pentru casa",
+      "category": "Casa si Gradina",
+      "categorySlug": "casa-gradina",
+      "pubDate": "2025-02-20T12:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune aparate de sudura",
+      "category": "Casa si Gradina",
+      "categorySlug": "casa-gradina",
+      "pubDate": "2025-03-12T09:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune motocoase",
+      "category": "Casa si Gradina",
+      "categorySlug": "casa-gradina",
+      "pubDate": "2025-03-31T14:00:00.000Z"
+    }
+  ],
+  "completed": [
+    {
+      "keyword": "cele mai bune masini de spalat rufe",
+      "category": "Electrocasnice",
+      "categorySlug": "electrocasnice",
+      "pubDate": "2025-03-15T09:00:00.000Z",
+      "modifiedDate": "2026-01-28T10:00:00.000Z",
+      "excerpt": "Daca vrei cea mai buna masina de spalat rufe acum, pe bune, uita-te la Samsung WW90T4543TE/LE. E un model echilibrat, nu te rupe la pret si face treaba ca lumea. Altfel, pentru un raport calitate-pret si mai bun, un LG din seria F4WV 708 S1 poate fi o alegere buna.",
+      "date": "2025-03-15T09:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune telefoane sub 1500 lei",
+      "category": "Telefoane si Laptopuri",
+      "categorySlug": "telefoane-laptopuri",
+      "pubDate": "2025-05-20T10:30:00.000Z",
+      "modifiedDate": "2026-01-30T11:00:00.000Z",
+      "excerpt": "Daca vrei cel mai bun telefon sub 1500 lei in momentul asta, mergi pe Samsung Galaxy A34 5G, e o alegere sigura si echilibrata. Daca vrei ceva si mai ieftin, dar tot bun, Poco X5 Pro e o optiune misto, mai ales pentru gaming. Acestea sunt primele mele recomandari pe bune, bazate pe ce am vazut si testat.",
+      "date": "2025-05-20T10:30:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune bormasini pentru casa",
+      "category": "Casa si Gradina",
+      "categorySlug": "casa-gradina",
+      "pubDate": "2025-07-10T08:00:00.000Z",
+      "modifiedDate": "2026-02-01T09:30:00.000Z",
+      "excerpt": "Cel mai bun aparat de gaurit si insurubat pentru casa e o masina cu acumulator, cu 2 viteze, cel putin 18V si un cuplu de peste 50 Nm, modelul Bosch Professional GSB 18V-55 la vreo 600-700 RON (fara acumulatori, ceea ce e un plus pentru ca ii poti cumpara separat pe cei mai potriviti) este o alegere solida. Raspunsul direct e ca nu exista o singura 'cea mai buna' bormasina, ci cea mai buna PENTRU TINE, in functie de ce ai de facut in casa si de buget.",
+      "date": "2025-07-10T08:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune creme hidratante de fata",
+      "category": "Sanatate si Frumusete",
+      "categorySlug": "sanatate-frumusete",
+      "pubDate": "2025-09-05T14:00:00.000Z",
+      "modifiedDate": "2026-02-02T12:00:00.000Z",
+      "excerpt": "Daca vrei o crema hidratanta de fata buna, fara batai de cap, ia <strong>La Roche-Posay Toleriane Sensitive Creme</strong>. E cam 70-80 RON pe eMAG si e perfecta pentru pielea sensibila, calmeaza si hidrateaza pe bune. E o alegere sigura pentru majoritatea, indiferent de tipul pielii, pentru ca nu are parfum si e hipoalergenica.",
+      "date": "2025-09-05T14:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune biciclete de oras",
+      "category": "Sport si Timp Liber",
+      "categorySlug": "sport-timp-liber",
+      "pubDate": "2025-11-18T11:00:00.000Z",
+      "modifiedDate": "2026-02-03T08:00:00.000Z",
+      "excerpt": "Daca vrei cele mai bune biciclete de oras acum, fara batai de cap, ia una de la Cube, modelul  Town Sport Pro, cam 3500-4000 lei. E un echilibru misto intre dotari, confort si pret, perfecta pentru naveta zilnica si plimbari relaxate. Dar stai putin, alegerea depinde mult de ce vrei sa faci cu ea si cat esti dispus sa bagi.",
+      "date": "2025-11-18T11:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune trotinete electrice",
+      "category": "Sport si Timp Liber",
+      "categorySlug": "sport-timp-liber",
+      "pubDate": "2025-01-20T12:00:00.000Z",
+      "modifiedDate": "2026-02-03T14:54:00.000Z",
+      "excerpt": "Daca vrei acum cea mai buna trotineta electrica pentru uz zilnic, fara batai de cap si cu un raport calitate-pret excelent, trage cu ochiul la Xiaomi Mi Electric Scooter 3. E rapida, e fiabila si nu te lasa pe drumuri, iar pretul e undeva la 2000-2300 RON la eMAG sau Altex. Pentru cei cu buget mai generos si care vor ceva mai mult, Ninebot KickScooter MAX G30P e regele neincoronat al distantei si al confortului, insa te duce spre 3000-3500 RON.",
+      "date": "2025-01-20T12:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune benzi de alergat",
+      "category": "Sport si Timp Liber",
+      "categorySlug": "sport-timp-liber",
+      "pubDate": "2025-02-09T09:00:00.000Z",
+      "modifiedDate": "2026-02-03T17:11:00.000Z",
+      "excerpt": "Daca vrei una dintre cele mai bune benzi de alergat acum, un model de la marca Horizon Fitness, genul Fitness Tracker 7.0, e o alegere excelenta pentru majoritatea acasa, oferind un echilibru misto intre dotari si pret, in jur de 5000-5500 RON. E solida, cu motor bun si spatiu decent de alergare, ideala pentru antrenamente regulate, fie ca alergi sau mergi rapid. Dar, stati putin, nu te arunca orbește. Depinde mult ce cauți și câți bani ai la dispoziție. Oricum, nu uita, alegerea depinde de tine și de obiectivele tale.",
+      "date": "2025-02-09T09:00:00.000Z"
+    },
+    {
+      "keyword": "cele mai bune aspiratoare robot",
+      "category": "Electrocasnice",
+      "categorySlug": "electrocasnice",
+      "pubDate": "2025-01-05T08:00:00.000Z",
+      "excerpt": "Daca vrei cel mai bun aspirator robot acum, ia in calcul iRobot Roomba j7+. Are o navigare super desteapta, un sistem bun de auto-golire si o aplicatie pe care o controlezi usor. E un pic mai scump, dar face treaba si te scapa de grija.\n\nPe bune, omul cauta ceva care sa-i faca viata mai usoara si sa nu fie o bataie de cap. Asta inseamna un robot care aspira bine, nu se blocheaza pe sub canapea si nu trebuie sa-l cureti dupa fiecare curatenie. Si asta e exact ce vrei sa gasesti aici.",
+      "date": "2025-01-05T08:00:00.000Z",
+      "modifiedDate": "2026-02-04T14:51:02.542Z"
+    },
+    {
+      "keyword": "cele mai bune laptopuri pentru studenti",
+      "category": "Telefoane si Laptopuri",
+      "categorySlug": "telefoane-laptopuri",
+      "pubDate": "2025-01-08T09:00:00.000Z",
+      "excerpt": "La ora actuala, daca vrei cel mai bun laptop pentru student, fara sa dai o avere, mergi pe un Lenovo IdeaPad 5 sau un HP Pavilion 15. Acestea ofera un echilibru grozav intre pret, performanta si durabilitate, perfecte pentru cursuri, proiecte si putina distractie. Sunt fiabile, au ecrane decente si tastaturi confortabile, exact ce-ti trebuie cand petreci ore in sir cu nasul in el.",
+      "date": "2025-01-08T09:00:00.000Z",
+      "modifiedDate": "2026-02-04T17:12:18.349Z"
+    },
+    {
+      "keyword": "cele mai bune telefoane sub 1000 lei",
+      "category": "Telefoane si Laptopuri",
+      "categorySlug": "telefoane-laptopuri",
+      "pubDate": "2025-01-28T14:00:00.000Z",
+      "excerpt": "Daca vrei sa iei un telefon bun, dar nu dai faliment, cele mai bune telefoane sub 1000 lei in 2024 se invart in jurul unor modele de la Xiaomi (Redmi), Samsung (Galaxy A) si uneori Motorola. M-am uitat atent si am pus pe tapet ce merita cu adevarat.",
+      "date": "2025-01-28T14:00:00.000Z",
+      "modifiedDate": "2026-02-06T14:50:58.850Z"
+    },
+    {
+      "keyword": "cele mai bune tablete android",
+      "category": "Telefoane si Laptopuri",
+      "categorySlug": "telefoane-laptopuri",
+      "pubDate": "2025-02-16T11:00:00.000Z",
+      "excerpt": "Daca ma intrebi pe mine, acum cele mai bune tablete android sunt Samsung Galaxy Tab S9 Ultra pentru cine vrea totul, Xiaomi Pad 6 Pro pentru performanta si un pret mai bun, si Samsung Galaxy Tab A9+ pentru buget redus. Stai sa-ti zic de ce.",
+      "date": "2025-02-16T11:00:00.000Z",
+      "modifiedDate": "2026-02-07T14:51:09.450Z"
+    },
+    {
+      "keyword": "cele mai bune laptopuri gaming",
+      "category": "Telefoane si Laptopuri",
+      "categorySlug": "telefoane-laptopuri",
+      "pubDate": "2025-03-08T08:00:00.000Z",
+      "excerpt": "Ca sa ai cele mai bune laptopuri gaming, nu te uita doar la placa video. Poti lua un MSI GE76 Raider cu RTX 4070 la ~7500 lei sau un ASUS ROG Strix SCAR 16 cu RTX 4080 la ~11000 lei, dar depinde mult de jocul pe care vrei sa-l rulezi si ce alte chestii faci cu el.",
+      "date": "2025-03-08T08:00:00.000Z",
+      "modifiedDate": "2026-02-08T14:51:08.338Z"
+    },
+    {
+      "keyword": "cele mai bune masini de tuns iarba",
+      "category": "Casa si Gradina",
+      "categorySlug": "casa-gradina",
+      "pubDate": "2025-01-12T10:00:00.000Z",
+      "excerpt": "Daca ma intrebi pe mine, cele mai bune masini de tuns iarba pentru majoritatea romanilor sunt cele electrice, mai ales daca ai o gradina sub 500 mp. Sunt silentioase, usoare si nu te complici cu benzina. Daca ai suprafete mai mari sau teren denivelat, merita sa te uiti spre cele pe benzina, dar pregateste-te pentru mai mult zgomot si intretinere. Robotii sunt misto, dar scumpi si nu pentru oricine.",
+      "date": "2025-01-12T10:00:00.000Z",
+      "modifiedDate": "2026-02-09T14:50:53.840Z"
+    },
+    {
+      "keyword": "cele mai bune fierastraie electrice",
+      "category": "Casa si Gradina",
+      "categorySlug": "casa-gradina",
+      "pubDate": "2025-02-01T15:00:00.000Z",
+      "excerpt": "Daca vrei sa stii care sunt cele mai bune fierastraie electrice, sincer, depinde mult ce ai de facut cu ele. Pentru tăieri generale prin casă și prin curte, un fierastrau pendular bun de la Bosch sau Makita, sub 500 de lei, e o alegere sigură. Dacă ai de tăiat lemne mai groase sau vrei să construiești ceva mai serios, un fierastrau sabie (reciproc) de la DeWalt sau chiar un circular mai zdravăn ar fi pe lista mea.",
+      "date": "2025-02-01T15:00:00.000Z",
+      "modifiedDate": "2026-02-10T14:51:05.461Z"
+    },
+    {
+      "keyword": "cele mai bune frigidere",
+      "category": "Electrocasnice",
+      "categorySlug": "electrocasnice",
+      "pubDate": "2025-01-24T13:00:00.000Z",
+      "excerpt": "Daca ma intrebi pe mine, cele mai bune frigidere in 2024 sunt Samsung RB38T675CS9, Bosch KGN39XI30 si Arctic ANF245+. Acestea imbina tehnologia de ultima ora cu fiabilitatea si un raport bun calitate-pret, acoperind nevoi diferite de la cele de baza la cele mai exigente.",
+      "date": "2025-01-24T13:00:00.000Z",
+      "modifiedDate": "2026-02-19T14:50:24.666Z"
+    },
+    {
+      "keyword": "cele mai bune masini de spalat vase",
+      "category": "Electrocasnice",
+      "categorySlug": "electrocasnice",
+      "pubDate": "2025-02-12T10:00:00.000Z",
+      "excerpt": "Cele mai bune masini de spalat vase la ora actuala, daca ma intrebi pe mine, sunt cele care ofera un echilibru bun intre curatare, eficienta energetica si durabilitate, tinand cont de buget. Modelul X de la Brandul A este o optiune solidă, dar si Y de la Brandul B merita atentie.",
+      "date": "2025-02-12T10:00:00.000Z",
+      "modifiedDate": "2026-02-20T14:51:51.287Z"
+    },
+    {
+      "keyword": "cele mai bune aparate de aer conditionat",
+      "category": "Electrocasnice",
+      "categorySlug": "electrocasnice",
+      "pubDate": "2025-03-04T15:00:00.000Z",
+      "excerpt": "Daca ma intrebi pe mine, cele mai bune aparate de aer conditionat in 2024 sunt cele care iti ofera un echilibru bun intre performanta, eficienta energetica si pret. Asta inseamna de obicei modele inverter de la producatori consacrati precum Daikin, Gree, Midea sau LG. Pentru un confort garantat si facturi mai mici, cauta modele cu clasa energetica A++ sau A+++.",
+      "date": "2025-03-04T15:00:00.000Z",
+      "modifiedDate": "2026-02-21T14:50:31.603Z"
+    },
+    {
+      "keyword": "cele mai bune smartwatch-uri",
+      "category": "Telefoane si Laptopuri",
+      "categorySlug": "telefoane-laptopuri",
+      "pubDate": "2025-03-27T13:00:00.000Z",
+      "excerpt": "Daca ma intrebi pe mine, cele mai bune smartwatch-uri in 2024 sunt Apple Watch Series 9 pentru iOS si Samsung Galaxy Watch 6 pentru Android. Apple Watch iese in fata cu integrarea ecosistemului si un ecran super luminos, iar Samsung impresioneaza prin functiile de sanatate si designul premium.",
+      "date": "2025-03-27T13:00:00.000Z",
+      "modifiedDate": "2026-02-22T14:50:31.952Z"
+    },
+    {
+      "keyword": "cele mai bune espressoare automate",
+      "category": "Electrocasnice",
+      "categorySlug": "electrocasnice",
+      "excerpt": "Daca ma intrebi pe mine, cele mai bune espressoare automate la ora asta sunt Saeco Lirika Plus si DeLonghi Magnifica S. Ambele fac cafea excelenta, sunt destul de fiabile si nu te usuca la buzunar. Lirika e un pic mai spartan, dar face treaba ca la carte, iar Magnifica S e un pic mai versatil, cu un cappuccinatore manual care-ti permite sa te joci cu spuma.",
+      "date": "2026-02-26T08:07:22.267Z",
+      "modifiedDate": "2026-02-26T08:07:22.267Z"
+    },
+    {
+      "keyword": "cele mai bune cuptoare cu microunde",
+      "category": "Electrocasnice",
+      "categorySlug": "electrocasnice",
+      "pubDate": "2025-04-12T09:00:00.000Z",
+      "excerpt": "Daca ma intrebi pe mine, cele mai bune cuptoare cu microunde in 2024 sunt cele care iti fac viata mai usoara fara sa te rupa la buzunar. Pe lista scurta intra modelele de la Samsung, Bosch si Sharp, in functie de ce anume cauti: rapiditate, functii smart sau durabilitate pura. Dar stai, ca-ti zic mai pe larg.",
+      "date": "2025-04-12T09:00:00.000Z",
+      "modifiedDate": "2026-02-26T08:18:45.795Z"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Andrei Ionescu",
+      "role": "Expert Electrocasnice",
+      "bio": "Andrei testeaza si compara electrocasnice de peste 7 ani. Analizeaza raportul calitate-pret si performanta reala a fiecarui produs, de la masini de spalat la aspiratoare robot.",
+      "categories": [
+        "electrocasnice"
+      ]
+    },
+    {
+      "name": "Mihai Dumitrescu",
+      "role": "Specialist Tehnologie",
+      "bio": "Mihai este pasionat de tehnologie si urmareste piata de smartphones si laptopuri din Romania. Compara specificatii, preturi si experienta reala de utilizare pentru a gasi cele mai bune oferte.",
+      "categories": [
+        "telefoane-laptopuri"
+      ]
+    },
+    {
+      "name": "Elena Marin",
+      "role": "Expert Casa si Gradina",
+      "bio": "Elena are experienta practica cu scule electrice, mobilier si echipamente de gradina. Testeaza produse si ofera recomandari bazate pe durabilitate, pret si usurinta de utilizare.",
+      "categories": [
+        "casa-gradina"
+      ]
+    },
+    {
+      "name": "Cristina Radu",
+      "role": "Specialist Sanatate si Frumusete",
+      "bio": "Cristina analizeaza cosmetice, suplimente si produse de ingrijire personala. Compara ingrediente, preturi si rezultate reale pentru a te ajuta sa faci alegerile potrivite.",
+      "categories": [
+        "sanatate-frumusete"
+      ]
+    },
+    {
+      "name": "Dan Vasilescu",
+      "role": "Expert Sport si Outdoor",
+      "bio": "Dan este pasionat de sport si activitati in aer liber. Testeaza biciclete, echipament fitness si accesorii outdoor, punand accent pe performanta si raportul calitate-pret.",
+      "categories": [
+        "sport-timp-liber"
+      ]
+    }
+  ]
+}

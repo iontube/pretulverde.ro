@@ -1,0 +1,129 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import keywordsData from '../../../keywords.json';
+
+const categoryDescriptions: Record<string, string> = {
+  'electrocasnice': 'Comparatii detaliate pentru masini de spalat, frigidere, aspiratoare si alte electrocasnice. Analizam consumul energetic, fiabilitatea si raportul calitate-pret.',
+  'telefoane-laptopuri': 'Comparatii de telefoane si laptopuri la cele mai bune preturi. Analizam specificatii, performanta reala si autonomie pentru fiecare buget.',
+  'casa-gradina': 'Scule electrice, mobilier si echipamente de gradina comparate si analizate. Gaseste cele mai bune produse pentru casa ta.',
+  'sanatate-frumusete': 'Cosmetice, creme hidratante si suplimente comparate dupa ingrediente, eficienta si pret. Alege inteligent pentru ingrijirea ta.',
+  'sport-timp-liber': 'Biciclete, echipament fitness si accesorii outdoor. Comparam preturi si calitate pentru un stil de viata activ.'
+};
+
+export async function getStaticPaths() {
+  const categories = [
+    { name: 'Electrocasnice', slug: 'electrocasnice' },
+    { name: 'Telefoane si Laptopuri', slug: 'telefoane-laptopuri' },
+    { name: 'Casa si Gradina', slug: 'casa-gradina' },
+    { name: 'Sanatate si Frumusete', slug: 'sanatate-frumusete' },
+    { name: 'Sport si Timp Liber', slug: 'sport-timp-liber' }
+  ];
+
+  const ARTICLES_PER_PAGE = 15;
+  const paths = [];
+
+  for (const category of categories) {
+    const categoryArticles = keywordsData.completed
+      .filter(item => item.categorySlug === category.slug)
+      .map(item => ({
+        title: item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1),
+        slug: item.keyword.toLowerCase()
+          .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+          .replace(/ș/g, 's').replace(/ț/g, 't')
+          .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
+        excerpt: item.excerpt || '',
+        image: `/images/articles/${item.keyword.toLowerCase()
+          .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+          .replace(/ș/g, 's').replace(/ț/g, 't')
+          .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}.webp`,
+        category: item.category,
+        categorySlug: item.categorySlug,
+        date: item.date || new Date().toISOString(),
+        modifiedDate: item.modifiedDate || item.date || new Date().toISOString()
+      }))
+      .sort((a, b) => new Date(b.modifiedDate).getTime() - new Date(a.modifiedDate).getTime());
+
+    const totalPages = Math.max(1, Math.ceil(categoryArticles.length / ARTICLES_PER_PAGE));
+
+    for (let i = 1; i <= totalPages; i++) {
+      const start = (i - 1) * ARTICLES_PER_PAGE;
+      const end = start + ARTICLES_PER_PAGE;
+      const pageArticles = categoryArticles.slice(start, end);
+
+      paths.push({
+        params: {
+          category: category.slug,
+          page: i === 1 ? undefined : String(i)
+        },
+        props: {
+          categoryName: category.name,
+          categorySlug: category.slug,
+          articles: pageArticles,
+          currentPage: i,
+          totalPages: totalPages
+        }
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { categoryName, categorySlug, articles, currentPage, totalPages } = Astro.props;
+const description = categoryDescriptions[categorySlug] || '';
+---
+
+<Layout
+  title={`${categoryName} - PretulVerde`}
+  description={`Cele mai bune produse si comparatii de preturi pentru ${categoryName.toLowerCase()}. Analize detaliate si recomandari testate.`}
+>
+  <div class="container" style="padding-top: var(--space-xl); padding-bottom: var(--space-3xl);">
+    <div class="blog-header">
+      <h1>{categoryName}</h1>
+      {description && <p>{description}</p>}
+    </div>
+
+    {articles.length > 0 ? (
+      <>
+        <div class="article-grid">
+          {articles.map(article => (
+            <ArticleCard {...article} variant="grid" />
+          ))}
+        </div>
+
+        {totalPages > 1 && (
+          <nav class="pagination">
+            {currentPage > 1 && (
+              <a
+                href={currentPage === 2 ? `/${categorySlug}/` : `/${categorySlug}/${currentPage - 1}/`}
+                class="pagination-link"
+              >
+                &larr;
+              </a>
+            )}
+
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+              <a
+                href={page === 1 ? `/${categorySlug}/` : `/${categorySlug}/${page}/`}
+                class={`pagination-link ${page === currentPage ? 'active' : ''}`}
+              >
+                {page}
+              </a>
+            ))}
+
+            {currentPage < totalPages && (
+              <a href={`/${categorySlug}/${currentPage + 1}/`} class="pagination-link">
+                &rarr;
+              </a>
+            )}
+          </nav>
+        )}
+      </>
+    ) : (
+      <p style="text-align: center; color: var(--color-muted); padding: var(--space-2xl);">
+        Articolele pentru aceasta categorie sunt in curs de pregatire.
+      </p>
+    )}
+  </div>
+</Layout>

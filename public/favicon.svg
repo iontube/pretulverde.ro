@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <circle cx="16" cy="16" r="16" fill="#166534"/>
+  <g transform="translate(7, 4) scale(0.75)">
+    <path d="M12 2L14 8H20L15 12L17 18L12 14L7 18L9 12L4 8H10L12 2Z" fill="#fbbf24" stroke="white" stroke-width="0.5"/>
+  </g>
+  <text x="16" y="27" text-anchor="middle" font-family="'DM Sans', Arial, sans-serif" font-weight="700" font-size="10" fill="white">PV</text>
+</svg>

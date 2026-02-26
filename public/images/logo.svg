@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 100">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=DM+Sans:wght@500&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- Icon: price tag with checkmark -->
+  <g transform="translate(8, 10)">
+    <rect x="0" y="0" width="80" height="80" rx="16" fill="#166534"/>
+    <g transform="translate(16, 10) scale(0.6)">
+      <path d="M40 5L45 20H55L47 28L50 42L40 35L30 42L33 28L25 20H35L40 5Z" fill="#fbbf24"/>
+    </g>
+    <text x="40" y="68" text-anchor="middle" font-family="'DM Sans', Arial, sans-serif" font-weight="700" font-size="22" fill="white" letter-spacing="-0.5">PV</text>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="108" y="48" font-family="'DM Serif Display', Georgia, serif" font-weight="400" font-size="38" fill="#166534" letter-spacing="0.5">PretulVerde</text>
+
+  <!-- Tagline -->
+  <text x="110" y="72" font-family="'DM Sans', -apple-system, sans-serif" font-weight="500" font-size="13" fill="#6b7280" letter-spacing="2" text-transform="uppercase">COMPARA PRETURI, ALEGE SMART</text>
+
+  <!-- Accent line -->
+  <line x1="108" y1="82" x2="190" y2="82" stroke="#D97706" stroke-width="2"/>
+</svg>
