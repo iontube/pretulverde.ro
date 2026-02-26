@@ -137,6 +137,27 @@ async function shouldRunToday() {
   }
 }
 
+// Generate stats.json with article count for the panou sync
+async function generateStats() {
+  const pagesDir = path.join(projectDir, 'src', 'pages');
+  const publicDir = path.join(projectDir, 'public');
+  const excludePages = new Set(['index', 'contact', 'cookies', 'privacy-policy', 'privacy', 'gdpr', 'sitemap', '404', 'about', 'terms']);
+
+  const files = await fs.readdir(pagesDir);
+  const articles = files.filter(f => {
+    if (!f.endsWith('.astro')) return false;
+    const name = f.replace('.astro', '');
+    if (name.startsWith('[')) return false;
+    if (excludePages.has(name)) return false;
+    return true;
+  });
+
+  const stats = { articlesCount: articles.length, lastUpdated: new Date().toISOString() };
+  await fs.mkdir(publicDir, { recursive: true });
+  await fs.writeFile(path.join(publicDir, 'stats.json'), JSON.stringify(stats, null, 2));
+  await log(`Stats generated: ${articles.length} articles`);
+}
+
 // Main
 async function main() {
   // Check if we should run today (min 2 days between articles)
@@ -234,6 +255,9 @@ async function main() {
 
     return;
   }
+
+  // Generate stats.json before build
+  await generateStats();
 
   // Build
   await log('Building site...');
