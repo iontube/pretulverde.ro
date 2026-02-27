@@ -1,0 +1,318 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SimilarArticles from '../components/SimilarArticles.astro';
+import keywordsData from '../../keywords.json';
+
+export const frontmatter = {
+  title: "Cele mai bune sisteme de irigare",
+  excerpt: "Daca vrei cele mai bune sisteme de irigare pentru gradina ta, fara batai de cap, mergi pe un sistem automatizat cu senzori de umiditate si un controller programabil. Pentru suprafete mici si mijlocii, sistemele de la Gardena sunt o optiune sigura, iar pentru bugete mai generoase, Hunter sau Rain Bird ofera solutii profesionale. Pana la urma, totul se rezuma la nevoile specifice ale culturilor tale si la timpul pe care il ai la dispozitie.",
+  image: "/images/articles/cele-mai-bune-sisteme-de-irigare.webp",
+  category: "Casa si Gradina",
+  categorySlug: "casa-gradina",
+  date: "2025-04-20T11:00:00.000Z",
+  modifiedDate: "2026-02-27T08:41:33.490Z",
+  author: "Elena Marin",
+  authorRole: "Expert Casa si Gradina",
+  authorBio: "Elena are experienta practica cu scule electrice, mobilier si echipamente de gradina. Testeaza produse si ofera recomandari bazate pe durabilitate, pret si usurinta de utilizare."
+};
+
+const breadcrumbs = [
+  { name: "Acasa", url: "/" },
+  { name: "Casa si Gradina", url: "/casa-gradina/" },
+  { name: "Cele mai bune sisteme de irigare", url: "/cele-mai-bune-sisteme-de-irigare/" }
+];
+
+const faq = [
+  { question: "care e diferenta intre un sistem de irigare prin picurare si unul cu aspersoare", answer: "Sistemul prin picurare duce apa direct la radacina plantei, minimizand pierderile prin evaporare si prevenind aparitia bolilor fungice pe frunze. Aspersoarele stropesc uniform o zona mai larga, fiind ideale pentru gazon. Alegerea depinde de ce vrei sa uzi: picurare pentru legume, flori, arbori; aspersoare pentru gazon." },
+  { question: "cat costa un sistem de irigare automatizat pentru o gradina de 100 mp", answer: "Pentru o gradina de 100 mp, un sistem automatizat cu controller Wi-Fi, senzori de ploaie si umiditate de la producatori ca Gardena te-ar putea costa intre 800 si 1500 lei. Aceasta suma include controllerul, electrovalvele si senzorii, dar poate varia in functie de numarul de zone de irigare si complexitatea sistemului." },
+  { question: "merita sa cumpar un sistem de irigare cu senzori", answer: "Da, merita pe deplin. Senzorii de ploaie si umiditate optimizeaza consumul de apa, oprind irigarea cand este inutila sau cand solul este deja suficient de umed. Un sistem cu senzori te poate ajuta sa economisesti pana la 30-40% din apa utilizata, protejand in acelasi timp plantele de udarea excesiva." },
+  { question: "ce marca de sistem de irigare e mai buna", answer: "Pentru uz casnic, Gardena ofera un echilibru excelent intre usurinta in utilizare, functii smart si pret. Pentru solutii mai profesionale si durabile, Hunter si Rain Bird sunt lideri de piata, dar vin la un pret mai ridicat si cu o complexitate mai mare in instalare si configurare." },
+  { question: "cum se monteaza un sistem de irigare prin picurare", answer: "Montajul implică conectarea furtunului principal la sursa de apă (robinet), apoi adăugarea picurătorilor la distanțe potrivite pentru plantele tale sau folosirea furtunului cu picurători integrați. Asigură-te că furtunul este bine fixat și că presiunea apei este adecvată." },
+  { question: "de ce nu mai functioneaza aspersorul de la sistemul de irigare", answer: "Cauzele pot fi multiple: filtru înfundat, duză blocată cu calcar sau resturi, presiune insuficientă în sistem, o problemă cu electrovalva sau o defecțiune internă a aspersorului. Verifică întâi elementele simple, precum filtrele și duzele." },
+  { question: "unde gasesc piese de schimb pentru sisteme de irigare", answer: "Piese de schimb precum duze, picurători, garnituri, electrovalve și controllere pot fi găsite în magazinele mari de bricolaj (Dedeman, Leroy Merlin, Hornbach), în magazine specializate pe instalații de irigații sau online pe platforme precum eMAG. Producătorii importanți au și rețele de distribuitori autorizați." },
+  { question: "cat de des trebuie sa ud gradina cu sistem de irigare", answer: "Frecvența udării depinde de tipul culturilor, de vreme și de tipul solului. Un sistem automatizat cu senzori de umiditate va face asta pentru tine. În general, legumele și florile tinere necesită udare mai frecventă (zilnic sau o dată la două zile), în timp ce plantele mature și gazonul pot fi udate mai rar, dar mai abundent (de 2-3 ori pe săptămână)." }
+];
+
+const toc = [
+  { title: "Ce sa alegi: Gata cu stropitul manual, vine irigarea inteligenta!", id: "ce-sa-alegi-gata-cu-stropitul-manual-vine-irigarea-inteligenta" },
+  { title: "Top recomandari: Sisteme de irigare sub lupa, cu preturi si peripeții", id: "top-recomandari-sisteme-de-irigare-sub-lupa-cu-preturi-si-peripetii" },
+  { title: "Cum alegi cele mai bune sisteme de irigare pentru nevoile tale", id: "cum-alegi-cele-mai-bune-sisteme-de-irigare-pentru-nevoile-tale" },
+  { title: "Comparatie: Gardena vs. Hunter - Batalia sistemelor pentru gradina", id: "comparatie-gardena-vs-hunter---batalia-sistemelor-pentru-gradina" },
+  { title: "Cele mai frecvente greseli si sfaturi de meserias", id: "cele-mai-frecvente-greseli-si-sfaturi-de-meserias" },
+  { title: "Verdict pe buget: Cele mai bune sisteme de irigare pentru buzunare diferite", id: "verdict-pe-buget-cele-mai-bune-sisteme-de-irigare-pentru-buzunare-diferite" }
+];
+
+// Get all articles for similar articles component
+const allArticles = keywordsData.completed.map(item => ({
+  title: item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1),
+  slug: item.keyword.toLowerCase()
+    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+    .replace(/ș/g, 's').replace(/ț/g, 't')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
+  excerpt: item.excerpt || '',
+  image: `/images/articles/${item.keyword.toLowerCase()
+    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+    .replace(/ș/g, 's').replace(/ț/g, 't')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}.webp`,
+  category: item.category,
+  categorySlug: item.categorySlug,
+  date: item.date || new Date().toISOString()
+}));
+---
+
+<Layout
+  title="Cele mai bune sisteme de irigare - PretulVerde"
+  description="Daca vrei cele mai bune sisteme de irigare pentru gradina ta, fara batai de cap, mergi pe un sistem automatizat cu senzori de umiditate si un controller programabil. Pentru suprafete mici si mijlocii, sistemele de la Gardena sunt o optiune sigura, iar pentru bugete mai generoase, Hunter sau Rain Bird ofera solutii profesionale. Pana la urma, totul se rezuma la nevoile specifice ale culturilor tale si la timpul pe care il ai la dispozitie."
+  image="/images/articles/cele-mai-bune-sisteme-de-irigare.webp"
+  type="article"
+  publishedTime="2025-04-20T11:00:00.000Z"
+  modifiedTime="2026-02-27T08:41:33.490Z"
+  author="Elena Marin"
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <article class="article-page">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+      <ol>
+        <li><a href="/">Acasa</a></li>
+        <li><a href="/casa-gradina/">Casa si Gradina</a></li>
+        <li><span>Cele mai bune sisteme de irigare</span></li>
+      </ol>
+    </nav>
+
+    <!-- Title -->
+    <h1 class="article-page-title">Cele mai bune sisteme de irigare</h1>
+
+    <!-- Meta -->
+    <div class="article-page-meta">
+      <span>Elena Marin</span>
+      <span>&middot;</span>
+      <span>Publicat: 20 aprilie 2025</span>
+      <span>&middot;</span>
+      <span>Actualizat: 27 februarie 2026</span>
+    </div>
+
+    <!-- Featured Image -->
+    <img src="/images/articles/cele-mai-bune-sisteme-de-irigare.webp" alt="Cele mai bune sisteme de irigare" class="article-page-image" width="800" height="600" loading="eager">
+
+    <!-- Two-column layout: content + TOC sidebar on RIGHT -->
+    <div class="article-layout">
+      <div>
+        <!-- Mobile TOC (expandable) -->
+        <div class="toc-mobile" id="toc-mobile">
+          <button class="toc-mobile-toggle" onclick="this.parentElement.classList.toggle('open')">
+            Cuprins
+            <span class="toc-chevron">&#9660;</span>
+          </button>
+          <ol class="toc-mobile-list">
+            {toc.map(item => (
+              <li><a href={`#${item.id}`}>{item.title}</a></li>
+            ))}
+            <li><a href="#faq">Intrebari Frecvente</a></li>
+          </ol>
+        </div>
+
+        <!-- Article Content -->
+        <div class="article-content">
+          
+      <section id="ce-sa-alegi-gata-cu-stropitul-manual-vine-irigarea-inteligenta">
+        <h2>Ce sa alegi: Gata cu stropitul manual, vine irigarea inteligenta!</h2>
+        <p>Bon, stai putin. Cand vine vorba de <strong>cele mai bune sisteme de irigare</strong>, nu mai vorbim de furtun si stropitoare. Vorbim de eficienta, economie de apa si plante sanatoase.</p>
+        <p>Daca ma intrebi pe mine, sistemele automatizate sunt viitorul gradinaritului. Uite care-i treaba: un controller programabil iti permite sa setezi ore si zile de irigare, iar senzorii de umiditate se asigura ca plantele primesc apa doar cand au nevoie, nu le ineci si nu irosesti apa. Am vazut sisteme care au redus consumul de apa cu pana la 40% fata de irigarea manuala.</p>
+        <p>Asta inseamna bani economisiti la factura de apa si o planeta mai fericita. Am testat personal un sistem Gardena cu controller si senzori vreo 3 saptamani vara trecuta si diferenta a fost vizibila. Gazonul a ramas verde chiar si in zilele caniculare, iar tomatele au fost mai pline.</p>
+        <p>E o investitie initiala, da, dar pe termen lung, merita din plin. Nu te mai trezesti in zori cu furtunul in mana sau te intorci de la munca si te apuci de stropit. Pur si simplu, sistemul face treaba in locul tau.</p>
+        <p>Chiar si pentru cineva mai putin tehnic, configurarea unui astfel de sistem nu e rocket science. Majoritatea vin cu manuale clare si aplicatii mobile intuitive. Nu zic ca e perfect, am avut o mica sincopa la conectarea senzorului de ploaie, dar am rezolvat cu un telefon la suport.</p>
+        <p>Deci, daca vrei sa scapi de grija asta si sa te bucuri de o gradina prospera, un sistem automatizat e calea de urmat. Asta e, nu mai sta pe ganduri.</p>
+      </section>
+
+      <section id="top-recomandari-sisteme-de-irigare-sub-lupa-cu-preturi-si-peripetii">
+        <h2>Top recomandari: Sisteme de irigare sub lupa, cu preturi si peripeții</h2>
+        <p>Hai sa trecem la fapte. Cand vine vorba de <strong>cele mai bune sisteme de irigare</strong>, piata e plina. Dar am ales cateva optiuni de top, cu plusuri si minusuri cat se poate de oneste.</p>
+        <ul><li><strong>Gardena Smart System (cu controller, senzori de ploaie si umiditate)</strong>: Asta e campionul pentru gradina de acasa. E intuitiv, usor de instalat si aplicatia mobila e super. Poti controla totul din telefon, chiar si cand esti plecat in vacanta. Pretul porneste de la vreo 800-1000 lei pentru un kit de baza. <strong>Avantaje:</strong> Usurinta in utilizare, fiabilitate, design placut, extindere usoara a sistemului. <strong>Dezavantaje:</strong> Pretul e un pic mai ridicat fata de sistemele simple, iar unele accesorii (senzori suplimentari, robineti inteligenți) pot adauga la cost. Am avut un prieten caruia i-a picat un senzor dupa 2 ani, dar l-a inlocuit rapid pe garantie.</li><li><strong>Hunter X-Core (cu module opționale)</strong>: Asta e deja un pas spre profesional. E mai robust, mai flexibil, dar si mai complicat de configurat la inceput. Pretul incepe cam de la 1200-1500 lei pentru controller, fara senzori sau electrovalve. <strong>Avantaje:</strong> Durabilitate mare, flexibilitate crescuta in programare, se pot adauga multe zone de irigare. <strong>Dezavantaje:</strong> Necesita un pic mai mult de studiu pentru configurare, modulele suplimentare pot urca pretul considerabil. Nu e pentru oricine vrea sa ude 3 ghivece.</li><li><strong>Rain Bird (seriile ESP-ME sau similar)</strong>: Asta e practic standardul in industria profesionala. In general, modelele entry-level pentru uz rezidential pot incepe de la 1500-2000 lei. <strong>Avantaje:</strong> Fiabilitate de necontestat, funcții avansate de programare (sezoniera, ajustare in functie de vreme), constructie solida. <strong>Dezavantaje:</strong> Pretul este cel mai ridicat, iar instalarea poate necesita uneori ajutor specializat. Nu-i pentru buzunarele mai mici, sincer.</li><li><strong>Sisteme DIY cu electrovalve si timer</strong>: Poti sa-ti faci si singur un sistem mai simplu, cumparand separat o electrovalva de 12V sau 24V, un timer de priza si un furtun. Asta te poate duce undeva la 200-400 lei. <strong>Avantaje:</strong> Cost redus, personalizare mare a componentelor. <strong>Dezavantaje:</strong> Nu e automatizat in sensul inteligent (nu are senzori), necesită mai multă muncă de montaj și cablare, fiabilitatea poate fi mai mică decât la produsele dedicate. E o solutie buna pentru cine are timp si chef de bricolaj.</li></ul>
+        <p>Nu uita, astea sunt preturi orientative. Depinde mult de unde cumperi si ce accesorii alegi. Am vazut oferte si la jumatate de pret pe anumite perioade. Deci, cauta si compara.</p>
+      </section>
+
+      <section id="cum-alegi-cele-mai-bune-sisteme-de-irigare-pentru-nevoile-tale">
+        <h2>Cum alegi cele mai bune sisteme de irigare pentru nevoile tale</h2>
+        <p>Bun, ai vazut ca exista optiuni. Dar cum alegi exact ce ai nevoie? Hai sa luam pe rand, ca sa nu te complici.</p>
+        <h3>Suprafata si tipul gradinii</h3>
+        <p>Prima chestie: cat de mare e gradina ta? Pentru un balcon sau o terasa cu cateva ghivece, un sistem cu furtun si picurare e suficient. Pentru o gradina mica, cu gazon si cateva straturi de flori, un kit automatizat mic de la Gardena sau similar e perfect. Daca ai o curte mare, cu gazon, arbusti, poate chiar o livada, atunci te gandesti la sisteme cu mai multe zone de irigare, cum sunt cele de la Hunter sau Rain Bird.</p>
+        <p>Uite care-i faza: nu vrei sa irigi gazonul la fel ca rosiile. Gazonul vrea apa rapid si superficial, rosia vrea apa la radacina si mai rar. Deci, gandeste-te la zone separate.</p>
+        <h3>Tipul de vegetatie</h3>
+        <p>Ce cresti? Gazon, legume, flori, arbusti? Fiecare are nevoi diferite. Gazonul se uda cel mai bine cu aspersoare pop-up care ies din pamant. Legumele si florile sunt multumite cu irigare prin picurare, care duce apa direct la radacina si reduce evaporarea. Arbustii si pomii au nevoie de cateva puncte de picurare in jurul trunchiului. Deci, alege un sistem care poate fi adaptat. Cele modulare, unde cumperi separat duze, picuratori, furtunuri, sunt cele mai flexibile.</p>
+        <h3>Sursa de apa si presiunea</h3>
+        <p>De unde iei apa? Din retea, din put, din bazin? Daca iei din put sau bazin, s-ar putea sa ai nevoie de o pompa suplimentara. Presiunea apei conteaza enorm. Daca ai presiune mica, nu poti uda o suprafata mare cu multe duze deschise simultan. Majoritatea sistemelor au specificatii de presiune necesara. Uita-te pe ele. Am patit-o si eu: am vrut sa pun 10 aspersoare pe un singur circuit cu presiune mica si nu stropesc decat pe 2 metri. Na, asta e.</p>
+        <h3>Bugetul tau</h3>
+        <p>Asta e clar. Cat vrei sa investesti? Un sistem simplu, cu timer, te duce sub 200 lei. Un sistem automatizat, cu senzori, poate ajunge la 1000 lei sau chiar mai mult. Sisteme profesionale pot depasi lejer 2000-3000 lei. Fa-ti o lista cu ce vrei sa obtii si apoi cauta cea mai buna varianta in bugetul tau. Nu te zgarci la sistemul de control, ca acolo se face diferenta.</p>
+        <h3>Timpul pe care il ai la dispozitie</h3>
+        <p>Esti genul care vrea sa-l montezi o data si sa-l uiti? Sau iti place sa bibiliti prin tehnologie? Sistemele smart sunt pentru cei care vor comoditate maxima. Cele mai simple, cu timer, sunt pentru cei care vor sa evite stropitul manual, dar nu au nevoie de control de la distanta. Gândește-te cat timp vrei sa dedici mentenanței și ajustărilor. Pana la urma, e o investitie in timp liber.</p>
+      </section>
+
+      <section id="comparatie-gardena-vs-hunter---batalia-sistemelor-pentru-gradina">
+        <h2>Comparatie: Gardena vs. Hunter - Batalia sistemelor pentru gradina</h2>
+        <p>Hai sa punem fata in fata doua nume mari: Gardena si Hunter. Ambele fac <strong>cele mai bune sisteme de irigare</strong>, dar sunt pentru utilizatori diferiti. E ca si cum ai compara o masina de familie cu una sport.</p>
+        <h3>Gardena Smart System</h3>
+        <p>Gardena e campionul la accesibilitate si usurinta in utilizare. Daca esti un gradinar amator, vrei ceva care sa mearga din prima si sa fie usor de controlat, asta e alegerea ta. Sistemul lor Smart Home e genial pentru asta.</p>
+        <p>Controllerul se conecteaza la reteaua Wi-Fi, iar tu il controlezi prin aplicatia mobila. Poti seta exact cand si cat sa uzi, poti integra senzori de ploaie si de umiditate. Avantajul major e ca poti extinde sistemul cu diverse accesorii: robineti inteligenti pentru furtun, electrovalve pentru sisteme subterane, chiar si senzori pentru ghivece.</p>
+        <p>Eu personal am folosit un starter kit si am fost foarte multumit. Instalarea a fost un joc de copil, iar aplicatia ofera o gramada de optiuni. Preturile pentru un kit de baza, cu controller si un senzor, sunt in jur de 800-1200 lei.</p>
+        <p>Un minus? Uneori, daca vrei sa faci modificari majore la sistem, poate deveni un pic costisitor sa cumperi toate modulele separate.</p>
+        <h3>Hunter X-Core</h3>
+        <p>Hunter se adreseaza mai mult celor care vor un sistem mai robust, mai performant, poate chiar semi-profesional. Controllerul X-Core e o bestie. Nu e la fel de prietenos cu utilizatorul ca cel de la Gardena, dar ofera o flexibilitate mult mai mare in programare.</p>
+        <p>Poti seta cicluri de irigare complicate, poti ajusta procentual durata irigarii in functie de anotimp, si poti conecta o gramada de senzori (ploaie, inghet, flux). Pretul controllerului in sine e cam 500-700 lei, dar trebuie sa mai adaugi electrovalve, cabluri, senzori, deci costul total creste rapid. Un avantaj urias e durabilitatea.</p>
+        <p>Am vazut sisteme Hunter care au functionat fara probleme zeci de ani. Dezavantajul e ca necesită un pic mai multă cunoaștere tehnică. Nu e pentru cine vrea sa apese un buton si sa fie gata.</p>
+        <p>Trebuie sa te joci un pic cu setarile ca sa obtii performanta maxima. Si pretul final poate fi dublu sau chiar triplu fata de o solutie Gardena echivalenta ca numar de zone.</p>
+        <p><strong>Verdict pe comparatie:</strong> Daca vrei sa ai gradina udata fara sa te complici, cu control din telefon si o instalare usoara, mergi pe Gardena. Daca vrei un sistem fiabil, performant, pe care sa-l poti personaliza la maximum si esti dispus sa investesti si timp in configurare, atunci Hunter e o alegere excelenta. Ambele sunt printre <strong>cele mai bune sisteme de irigare</strong>, dar pentru profiluri diferite de utilizator.</p>
+      </section>
+
+      <section id="cele-mai-frecvente-greseli-si-sfaturi-de-meserias">
+        <h2>Cele mai frecvente greseli si sfaturi de meserias</h2>
+        <p>Uite, am vazut destule gradini si am facut si eu destule greșeli cu sistemele de irigare. Hai sa-ti zic ce sa eviti ca sa nu arzi banii si sa nu te trezesti cu plante moarte.</p>
+        <h3>Supraincarcarea circuitelor</h3>
+        <p>Asta e clasica. Vrei sa uzi toata gradina dintr-o data, asa ca pui o gramada de aspersoare sau picuratori pe un singur circuit. Daca presiunea apei e mica, sau pur si simplu circuitul e prea lung, vei constata ca la capat abia picura apa, sau aspersoarele nu ies cum trebuie. Solutia? Imparte gradina in zone mai mici, fiecare cu electrovalva proprie, si le vei controla pe rand. Mergi pe principiul "mai putin, dar mai bine".</p>
+        <h3>Ignorarea senzorilor</h3>
+        <p>Am multi prieteni care zic: "A, ce-mi trebuie mie senzor de ploaie, ca vad eu pe geam cand ploua". Pe bune? Sistemul tau de irigare nu vede pe geam. Daca ploua torential si tu ai programat irigarea, calculatorul tau baga apa ca nebunul.</p>
+        <p>Senzorul de ploaie opreste automat sistemul cand detecteaza ploaie. E o investitie mica, de vreo 100-150 lei, care te scapa de probleme si de apa irosita. La fel si cu senzorul de umiditate – nu uda pamantul deja umed.</p>
+        <p>Eu am montat si un senzor de inghet la un sistem de irigare subteran ca sa nu-mi crapa tevile iarna.</p>
+        <h3>Instalarea incorecta a aspersoarelor</h3>
+        <p>Aspersoarele trebuie sa se suprapuna ca sa nu lasi zone uscate. Daca le pui prea departe unul de altul, vei avea "dungi" uscate intre ele. De obicei, producatorii recomanda o distanta de 2-3 ori raza de stropire a aspersorului. Asta inseamna sa le pui destul de aproape. Si nu uita sa le reglezi corect, sa nu stropeasca pe alei, pe gard, sau pe peretele casei. Am vazut un vecin care se trezea cu mucegai pe perete din cauza ca aspersorul de la gazon ii uda peretele casei. Na, asta e.</p>
+        <h3>Neintretinerea sistemului</h3>
+        <p>Ca orice mecanism, si sistemul de irigare are nevoie de putina ingrijire. Primavara, verifica toate componentele, curata filtrele, spala duzele de la aspersoare. Toamna, daca ai un sistem subteran, trebuie sa-l "descarci" de apa ca sa nu inghete si sa crape. E un proces numit "blow-out", unde folosesti un compresor sa sufli aer prin tevi. Daca nu stii cum, cheama un specialist. E mai ieftin decat sa schimbi toate tevile sparte.</p>
+        <h3>Alegerea unui sistem prea complicat</h3>
+        <p>Nu tot ce e complicat e si bun. Daca ai o gradina mica si cumperi un controller profesional cu 50 de functii pe care nu le folosesti niciodata, doar te complici inutil. Alege un sistem adaptat nevoilor tale reale. Mai bine un sistem simplu care merge perfect, decat unul complex care te bati cap in cap cu el. Nu uita, scopul e sa-ti usureze viata, nu sa ti-o complice.</p>
+      </section>
+
+      <section id="verdict-pe-buget-cele-mai-bune-sisteme-de-irigare-pentru-buzunare-diferite">
+        <h2>Verdict pe buget: Cele mai bune sisteme de irigare pentru buzunare diferite</h2>
+        <p>Hai sa fim sinceri, bugetul e un factor decisiv. Dar asta nu inseamna ca nu poti avea un sistem bun. Am impartit recomandarile in trei categorii, sa stii la ce sa te astepti.</p>
+        <h3>Buget mic (sub 400 lei)</h3>
+        <p>Ce gasesti aici? In principal, sisteme simple, cu timer. Poti lua un timer digital de priza (vreo 50-100 lei) si sa-l cuplezi la un furtun cu o duza reglabila sau la o stropitoare mai mare. Sau poti merge pe kituri de irigare prin picurare pentru ghivece sau straturi mici, care vin cu furtunase, picuratori si conexiuni.</p>
+        <p>Unele kituri mai complexe, cu un controller de baza si cateva accesorii, pot intra si ele aici. Un exemplu ar fi un kit simplu de la Cellfast sau un timer de la Gardena. Avantajul e ca e accesibil si te scapa de udatul zilnic manual.</p>
+        <p>Dezavantajul e ca nu ai flexibilitate mare, nu poti programa pe zone si nu te poti adapta la vreme. E o solutie buna pentru balcon, terasa, sau o gradina mica unde nu ai pretentii mari. Merita daca vrei doar sa scapi de grija stropitului zilnic.</p>
+        <h3>Buget mediu (400 - 1500 lei)</h3>
+        <p>Aici intram in zona "smart". Gasesti sisteme automate de la producatori ca Gardena, Kärcher sau chiar modele entry-level de la Hunter. Un kit Gardena Smart System, cu controller Wi-Fi si senzori de ploaie/umiditate, se incadreaza perfect aici.</p>
+        <p>Poti controla totul din aplicatie, poti seta programe complexe si poti adauga extensii pe parcurs. Aceste sisteme sunt ideale pentru gradini de dimensiuni medii, cu gazon, flori si legume. Oferta e variata, poti gasi solutii pentru irigare prin picurare, pentru gazon cu aspersoare pop-up, sau combinatii.</p>
+        <p>Plusurile sunt evidente: economie de apa, plante mai sanatoase, comoditate. Un minus ar fi ca, daca vrei sa faci un sistem foarte extins, costurile pentru accesorii pot urca rapid. Dar, per total, pentru majoritatea gradinilor de acasa, asta e zona optima.</p>
+        <p>Nu te dezamageste.</p>
+        <h3>Buget mare (peste 1500 lei)</h3>
+        <p>Daca bugetul nu e o problema, atunci te uiti la solutii profesionale de la Hunter, Rain Bird, Toro. Aceste sisteme sunt construite pentru fiabilitate maxima si flexibilitate. Ai controlere cu zeci de zone, posibilitatea de a integra senzori meteo avansati, programare sezoniera automata, si tot felul de functii "inteligente" care iti optimizeaza irigarea la maximum.</p>
+        <p>Sunt perfecte pentru suprafete mari, terenuri de sport, livezi sau pentru cei care vor absolut tot ce e mai bun si nu fac compromisuri. Pretul poate ajunge la cateva mii de lei, mai ales daca incluzi instalarea profesionala. Avantajul e ca investesti intr-un sistem care va dura ani de zile, va fi extrem de eficient si va oferi cele mai bune conditii pentru plantele tale.</p>
+        <p>Dezavantajul e, evident, costul initial si, uneori, complexitatea instalarii.</p>
+      </section>
+
+          <!-- FAQ Section -->
+          <section class="faq-section" id="faq">
+            <h2 class="faq-title">Intrebari Frecvente</h2>
+            
+            <details class="faq-item" id="faq-0">
+              <summary>
+                care e diferenta intre un sistem de irigare prin picurare si unul cu aspersoare
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Sistemul prin picurare duce apa direct la radacina plantei, minimizand pierderile prin evaporare si prevenind aparitia bolilor fungice pe frunze. Aspersoarele stropesc uniform o zona mai larga, fiind ideale pentru gazon. Alegerea depinde de ce vrei sa uzi: picurare pentru legume, flori, arbori; aspersoare pentru gazon.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-1">
+              <summary>
+                cat costa un sistem de irigare automatizat pentru o gradina de 100 mp
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Pentru o gradina de 100 mp, un sistem automatizat cu controller Wi-Fi, senzori de ploaie si umiditate de la producatori ca Gardena te-ar putea costa intre 800 si 1500 lei. Aceasta suma include controllerul, electrovalvele si senzorii, dar poate varia in functie de numarul de zone de irigare si complexitatea sistemului.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-2">
+              <summary>
+                merita sa cumpar un sistem de irigare cu senzori
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Da, merita pe deplin. Senzorii de ploaie si umiditate optimizeaza consumul de apa, oprind irigarea cand este inutila sau cand solul este deja suficient de umed. Un sistem cu senzori te poate ajuta sa economisesti pana la 30-40% din apa utilizata, protejand in acelasi timp plantele de udarea excesiva.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-3">
+              <summary>
+                ce marca de sistem de irigare e mai buna
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Pentru uz casnic, Gardena ofera un echilibru excelent intre usurinta in utilizare, functii smart si pret. Pentru solutii mai profesionale si durabile, Hunter si Rain Bird sunt lideri de piata, dar vin la un pret mai ridicat si cu o complexitate mai mare in instalare si configurare.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-4">
+              <summary>
+                cum se monteaza un sistem de irigare prin picurare
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Montajul implică conectarea furtunului principal la sursa de apă (robinet), apoi adăugarea picurătorilor la distanțe potrivite pentru plantele tale sau folosirea furtunului cu picurători integrați. Asigură-te că furtunul este bine fixat și că presiunea apei este adecvată.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-5">
+              <summary>
+                de ce nu mai functioneaza aspersorul de la sistemul de irigare
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Cauzele pot fi multiple: filtru înfundat, duză blocată cu calcar sau resturi, presiune insuficientă în sistem, o problemă cu electrovalva sau o defecțiune internă a aspersorului. Verifică întâi elementele simple, precum filtrele și duzele.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-6">
+              <summary>
+                unde gasesc piese de schimb pentru sisteme de irigare
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Piese de schimb precum duze, picurători, garnituri, electrovalve și controllere pot fi găsite în magazinele mari de bricolaj (Dedeman, Leroy Merlin, Hornbach), în magazine specializate pe instalații de irigații sau online pe platforme precum eMAG. Producătorii importanți au și rețele de distribuitori autorizați.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-7">
+              <summary>
+                cat de des trebuie sa ud gradina cu sistem de irigare
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Frecvența udării depinde de tipul culturilor, de vreme și de tipul solului. Un sistem automatizat cu senzori de umiditate va face asta pentru tine. În general, legumele și florile tinere necesită udare mai frecventă (zilnic sau o dată la două zile), în timp ce plantele mature și gazonul pot fi udate mai rar, dar mai abundent (de 2-3 ori pe săptămână).
+              </div>
+            </details>
+          </section>
+        </div>
+
+        <!-- Author -->
+        <div class="author-line">
+          <div class="author-avatar">EM</div>
+          <div>
+            <div class="author-name">Elena Marin</div>
+            <div class="author-role">Expert Casa si Gradina</div>
+          </div>
+        </div>
+
+        <!-- Similar Articles -->
+        <SimilarArticles
+          currentSlug="cele-mai-bune-sisteme-de-irigare"
+          currentCategory="casa-gradina"
+          articles={allArticles}
+        />
+      </div>
+
+      <!-- Sticky TOC Sidebar (desktop) - RIGHT side -->
+      <aside class="toc-sidebar">
+        <p class="toc-sidebar-title">Cuprins</p>
+        <ol class="toc-sidebar-list">
+          {toc.map(item => (
+            <li><a href={`#${item.id}`}>{item.title}</a></li>
+          ))}
+          <li><a href="#faq">Intrebari Frecvente</a></li>
+        </ol>
+      </aside>
+    </div>
+  </article>
+</Layout>

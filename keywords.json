@@ -49,12 +49,6 @@
       "pubDate": "2025-04-16T10:00:00.000Z"
     },
     {
-      "keyword": "cele mai bune sisteme de irigare",
-      "category": "Casa si Gradina",
-      "categorySlug": "casa-gradina",
-      "pubDate": "2025-04-20T11:00:00.000Z"
-    },
-    {
       "keyword": "cele mai bune uscatoare de par profesionale",
       "category": "Sanatate si Frumusete",
       "categorySlug": "sanatate-frumusete",
@@ -690,6 +684,15 @@
       "excerpt": "Daca ma intrebi pe mine, cele mai bune cuptoare cu microunde in 2024 sunt cele care iti fac viata mai usoara fara sa te rupa la buzunar. Pe lista scurta intra modelele de la Samsung, Bosch si Sharp, in functie de ce anume cauti: rapiditate, functii smart sau durabilitate pura. Dar stai, ca-ti zic mai pe larg.",
       "date": "2025-04-12T09:00:00.000Z",
       "modifiedDate": "2026-02-26T08:18:45.795Z"
+    },
+    {
+      "keyword": "cele mai bune sisteme de irigare",
+      "category": "Casa si Gradina",
+      "categorySlug": "casa-gradina",
+      "pubDate": "2025-04-20T11:00:00.000Z",
+      "excerpt": "Daca vrei cele mai bune sisteme de irigare pentru gradina ta, fara batai de cap, mergi pe un sistem automatizat cu senzori de umiditate si un controller programabil. Pentru suprafete mici si mijlocii, sistemele de la Gardena sunt o optiune sigura, iar pentru bugete mai generoase, Hunter sau Rain Bird ofera solutii profesionale. Pana la urma, totul se rezuma la nevoile specifice ale culturilor tale si la timpul pe care il ai la dispozitie.",
+      "date": "2025-04-20T11:00:00.000Z",
+      "modifiedDate": "2026-02-27T08:41:33.490Z"
     }
   ],
   "authors": [
