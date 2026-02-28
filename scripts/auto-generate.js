@@ -130,7 +130,7 @@ async function shouldRunToday() {
     const daysSinceLast = (Date.now() - lastDate) / (1000 * 60 * 60 * 24);
     // Randomize: skip if today, 50% chance if 1 day ago, always run if 2+ days
     if (daysSinceLast < 1) return false;
-    if (daysSinceLast < 2) return Math.random() > 0.5;
+    // Post every day, skip only if already posted today
     return true;
   } catch {
     return true;
