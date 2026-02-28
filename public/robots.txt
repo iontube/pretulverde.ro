@@ -2,4 +2,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://pretulverde.ro/sitemap-index.xml
-Sitemap: https://pretulverde.ro/sitemap-images.xml
