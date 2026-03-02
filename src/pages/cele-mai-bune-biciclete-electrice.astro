@@ -1,0 +1,337 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SimilarArticles from '../components/SimilarArticles.astro';
+import keywordsData from '../../keywords.json';
+
+export const frontmatter = {
+  title: "Cele mai bune biciclete electrice",
+  excerpt: "Daca vrei sa stii care sunt cele mai bune biciclete electrice pe piata acum, fara multe vorbe, iti zic direct: pentru oras si naveta, un model ca Cube Kathmandu Hybrid SL este o alegere solida, undeva in jur de 15.000 lei. Daca ai buget mai mic, dar vrei ceva decent, cauta prin ofertele de la Decathlon, gen Rockrider E-ST 500, sub 7.000 lei. Pentru mountain biking, parerea mea e ca Trek Powerfly 4 e greu de batut, incepand de la 12.000 lei.",
+  image: "/images/articles/cele-mai-bune-biciclete-electrice.webp",
+  category: "Sport si Timp Liber",
+  categorySlug: "sport-timp-liber",
+  date: "2025-02-28T14:00:00.000Z",
+  modifiedDate: "2026-03-02T08:50:00.876Z",
+  author: "Dan Vasilescu",
+  authorRole: "Expert Sport si Outdoor",
+  authorBio: "Dan este pasionat de sport si activitati in aer liber. Testeaza biciclete, echipament fitness si accesorii outdoor, punand accent pe performanta si raportul calitate-pret."
+};
+
+const breadcrumbs = [
+  { name: "Acasa", url: "/" },
+  { name: "Sport si Timp Liber", url: "/sport-timp-liber/" },
+  { name: "Cele mai bune biciclete electrice", url: "/cele-mai-bune-biciclete-electrice/" }
+];
+
+const faq = [
+  { question: "Cat costa o bicicleta electrica buna in Romania?", answer: "O bicicleta electrica buna, fiabila, pentru oras sau uz mixt, te costa minim 7.000 lei. Modelele de top, cu motoare puternice si componente de calitate, pot ajunge si la 15.000-20.000 lei, iar cele de mountain bike performante depasesc frecvent 12.000 lei." },
+  { question: "Care e diferenta intre o bicicleta electrica de oras si una de munte?", answer: "Bicicletele electrice de oras sunt gandite pentru confort, cu pozitie dreapta, dotari (portbagaj, lumini) si autonomie mare pe asfalt. Cele de munte au suspensii performante, frane puternice, anvelope late si o geometrie agresiva pentru teren accidentat." },
+  { question: "Merita sa cumpar o bicicleta electrica ieftina?", answer: "Nu prea. Bicicletele electrice foarte ieftine (sub 5.000 lei) vin de obicei cu motoare si baterii de proasta calitate, componente fragile si risc mare de defectare rapida. Investeste intr-un brand recunoscut pentru fiabilitate." },
+  { question: "Ce motor e mai bun la bicicletele electrice?", answer: "Cele mai bune motoare sunt de la Bosch (Performance Line, CX), Yamaha (SyncDrive) si Brose. Acestea ofera putere constanta, fiabilitate si sunt integrate perfect in bicicleta. Nu te lasa pacalit de specificatii mari la motoare no-name." },
+  { question: "Cat dureaza o baterie de bicicleta electrica?", answer: "Autonomia depinde de capacitatea bateriei (masurata in Wh) si de modul de asistenta folosit. O baterie de 500Wh poate oferi intre 50 si 120 km, in functie de teren, greutate si nivelul de asistenta. Incarcarea completa dureaza, in general, intre 4 si 7 ore." },
+  { question: "De ce sunt bicicletele electrice asa de grele?", answer: "Greutatea vine de la motor, bateria, si componentele ranforsate necesare pentru a sustine greutatea suplimentara si fortele mai mari. Majoritatea E-bike-urilor bune cantaresc intre 20 si 27 kg." },
+  { question: "Cum intretin corect o bicicleta electrica?", answer: "La fel ca una normala: curata si unge lantul, verifica franele si presiunea in anvelope. Bateria trebuie depozitata la temperatura camerei si nu lasata sa se descarce complet pe perioade lungi. Consultă manualul pentru instrucțiuni specifice motorului și bateriei." },
+  { question: "Unde gasesc cele mai bune oferte la biciclete electrice?", answer: "Cele mai bune oferte le gasesti la magazinele specializate in biciclete (fizice sau online) care vand branduri cunoscute precum Cube, Trek, Giant, Scott, Specialized. Decathlon are preturi bune pentru modelele proprii. Fii atent la reducerile de sezon." }
+];
+
+const toc = [
+  { title: "Cele mai bune biciclete electrice: Recomandarea mea pe repede inainte", id: "cele-mai-bune-biciclete-electrice-recomandarea-mea-pe-repede-inainte" },
+  { title: "Top 5 biciclete electrice pe care le-am testat (si ce nu spun reclamele)", id: "top-5-biciclete-electrice-pe-care-le-am-testat-si-ce-nu-spun-reclamele" },
+  { title: "Cum sa-ti alegi bicicleta electrica potrivita: Ghidul prietenului tau", id: "cum-sa-ti-alegi-bicicleta-electrica-potrivita-ghidul-prietenului-tau" },
+  { title: "Oras vs. Munte: Ce bicicleta electrica e mai buna pentru tine?", id: "oras-vs-munte-ce-bicicleta-electrica-e-mai-buna-pentru-tine" },
+  { title: "Cumpara inteligent: Sfaturi ca sa nu arunci banii pe fereastra pe biciclete electrice", id: "cumpara-inteligent-sfaturi-ca-sa-nu-arunci-banii-pe-fereastra-pe-biciclete-electrice" },
+  { title: "Cat te costa o bicicleta electrica buna? Verdict pe bugete", id: "cat-te-costa-o-bicicleta-electrica-buna-verdict-pe-bugete" }
+];
+
+// Get all articles for similar articles component
+const allArticles = keywordsData.completed.map(item => ({
+  title: item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1),
+  slug: item.keyword.toLowerCase()
+    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+    .replace(/ș/g, 's').replace(/ț/g, 't')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
+  excerpt: item.excerpt || '',
+  image: `/images/articles/${item.keyword.toLowerCase()
+    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+    .replace(/ș/g, 's').replace(/ț/g, 't')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}.webp`,
+  category: item.category,
+  categorySlug: item.categorySlug,
+  date: item.date || new Date().toISOString()
+}));
+---
+
+<Layout
+  title="Cele mai bune biciclete electrice - PretulVerde"
+  description="Daca vrei sa stii care sunt cele mai bune biciclete electrice pe piata acum, fara multe vorbe, iti zic direct: pentru oras si naveta, un model ca Cube Kathmandu Hybrid SL este o alegere solida, undeva in jur de 15.000 lei. Daca ai buget mai mic, dar vrei ceva decent, cauta prin ofertele de la Decathlon, gen Rockrider E-ST 500, sub 7.000 lei. Pentru mountain biking, parerea mea e ca Trek Powerfly 4 e greu de batut, incepand de la 12.000 lei."
+  image="/images/articles/cele-mai-bune-biciclete-electrice.webp"
+  type="article"
+  publishedTime="2025-02-28T14:00:00.000Z"
+  modifiedTime="2026-03-02T08:50:00.876Z"
+  author="Dan Vasilescu"
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <article class="article-page">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+      <ol>
+        <li><a href="/">Acasa</a></li>
+        <li><a href="/sport-timp-liber/">Sport si Timp Liber</a></li>
+        <li><span>Cele mai bune biciclete electrice</span></li>
+      </ol>
+    </nav>
+
+    <!-- Title -->
+    <h1 class="article-page-title">Cele mai bune biciclete electrice</h1>
+
+    <!-- Meta -->
+    <div class="article-page-meta">
+      <span>Dan Vasilescu</span>
+      <span>&middot;</span>
+      <span>Publicat: 28 februarie 2025</span>
+      <span>&middot;</span>
+      <span>Actualizat: 2 martie 2026</span>
+    </div>
+
+    <!-- Featured Image -->
+    <img src="/images/articles/cele-mai-bune-biciclete-electrice.webp" alt="Cele mai bune biciclete electrice" class="article-page-image" width="800" height="600" loading="eager">
+
+    <!-- Two-column layout: content + TOC sidebar on RIGHT -->
+    <div class="article-layout">
+      <div>
+        <!-- Mobile TOC (expandable) -->
+        <div class="toc-mobile" id="toc-mobile">
+          <button class="toc-mobile-toggle" onclick="this.parentElement.classList.toggle('open')">
+            Cuprins
+            <span class="toc-chevron">&#9660;</span>
+          </button>
+          <ol class="toc-mobile-list">
+            {toc.map(item => (
+              <li><a href={`#${item.id}`}>{item.title}</a></li>
+            ))}
+            <li><a href="#faq">Intrebari Frecvente</a></li>
+          </ol>
+        </div>
+
+        <!-- Article Content -->
+        <div class="article-content">
+          
+      <section id="cele-mai-bune-biciclete-electrice-recomandarea-mea-pe-repede-inainte">
+        <h2>Cele mai bune biciclete electrice: Recomandarea mea pe repede inainte</h2>
+        <p>Ok, hai sa fim directi. Cand vine vorba de <strong>cele mai bune biciclete electrice</strong>, nu exista un singur raspuns magic. Totul depinde de ce vrei sa faci cu ea.</p>
+        <p>Eu am testat destule in ultimii ani, de la cele de oras pana la monstrii de munte, si am vazut ce e bun si ce e doar marketing. Daca ma intrebi pe mine, pentru utilizare zilnica, in oras, aglomerat, cu urcari si denivelari, eu m-as uita la un E-bike care sa fie robust, confortabil si cu o autonomie decenta. Modelele de la Cube, mai ales seria Kathmandu Hybrid, imi plac mult pentru ca sunt gandite pentru ture lungi, au portbagaj integrat, lumini si o pozitie relaxata.</p>
+        <p>Un model ca Cube Kathmandu Hybrid SL, cu motor Bosch Performance Line, e cam varful de gama pentru multi, undeva pe la 15.000 lei. E scump, da, dar primesti calitate si fiabilitate.</p>
+        <p>Acum, nu toata lumea are buget de 15.000 lei. Daca vrei ceva mai accesibil, dar totusi o <strong>bicicleta electrica buna</strong>, am sa fiu sincer, Decathlon are oferte din ce in ce mai serioase. Seria Rockrider E-ST, mai ales modelul E-ST 500, e o optiune populara si destul de capabila pentru pretul ei, sub 7.000 lei. Nu te astepta la performante de top, dar pentru drumuri prin parc sau naveta pe distante scurte-medii, isi face treaba.</p>
+        <p>Pe partea de mountain bike electric, lucrurile se complica si mai mult. Aici vrei suspensii bune, frane puternice, si un motor care sa te ajute sa urci fara sa te ruinezi. Trek Powerfly 4 e un exemplu bun. E o bicicleta electrica de munte care nu te lasa pe off-road, cu un motor Bosch CX si o geometrie agresiva. Pretul incepe cam de la 12.000 lei. Am un prieten care a tras de una pe trasee montane si e multumit, zice ca urca pante pe care altfel nici nu le-ar fi incercat.</p>
+        <p>Deci, ca sa recapitam pe scurt: oras - Cube Kathmandu, buget mediu - Decathlon Rockrider, munte - Trek Powerfly. Asta e parerea mea directa, fara ocolisuri.</p>
+      </section>
+
+      <section id="top-5-biciclete-electrice-pe-care-le-am-testat-si-ce-nu-spun-reclamele">
+        <h2>Top 5 biciclete electrice pe care le-am testat (si ce nu spun reclamele)</h2>
+        <p>Bun, am zis sa scot din joben 5 modele care mi-au ramas in minte, cu plusuri si, mai important, cu minusuri reale. Nu exista produs perfect, asa ca hai sa vedem unde mai scartaie.</p>
+        <ul><li><strong>Cube Kathmandu Hybrid SL (aproximativ 15.000 lei)</strong>
+        <ul><li><strong>Avantaje:</strong> Confort de nota 10 pentru ture lungi, motor Bosch Performance Line extrem de fiabil si puternic, autonomie excelenta datorita bateriei de 625Wh, dotari complete (portbagaj, lumini, aripi). E practic o masina mica pentru oras.</li><li><strong>Dezavantaje:</strong> Greutatea – peste 25kg, deci nu te gandi sa o cari pe scari usor. Pretul e pe masura calitatii, dar tot ramane o investitie considerabila. Suspensia fata e mai mult pentru confort, nu pentru sarituri pe trasee tehnice.</li></ul>
+        <p></li><li><strong>Trek Powerfly 4 (aproximativ 12.000 lei)</strong></p>
+        <ul><li><strong>Avantaje:</strong> Geometrie excelenta pentru trail riding, motor Bosch Performance Line CX – foarte potent pentru urcari montane, frane hidraulice puternice, suspensie fata capabila. E o E-MTB distractiva.</li><li><strong>Dezavantaje:</strong> Transmisia (Shimano Deore) e buna, dar nu de top, poate ceda mai repede la utilizare intensă pe munte. Autonomia cu bateria standard de 500Wh e decenta, dar pe urcari lungi s-ar putea sa simti nevoia de mai mult.</li></ul>
+        <p></li><li><strong>Decathlon Rockrider E-ST 500 (sub 7.000 lei)</strong></p>
+        <ul><li><strong>Avantaje:</strong> Pret imbatabil pentru ce ofera. Motorul Brose e ok pentru oras si poteci usoare, bateria de 420Wh e suficienta pentru navete scurte. E o intrare in lumea E-bike-urilor fara sa dai faliment.</li><li><strong>Dezavantaje:</strong> Componentele sunt de baza, nu te astepta la fiabilitate pe termen lung pe teren dificil. Franele mecanice pe disc sunt slabe, trebuie sa fii atent la intretinere. Greutatea e destul de mare pentru clasa lui.</li></ul>
+        <p></li><li><strong>Giant Explore E+ 2 (aproximativ 13.000 lei)</strong></p>
+        <ul><li><strong>Avantaje:</strong> Versatila, se descurca atat in oras cat si pe drumuri forestiere. Motorul Yamaha SyncDrive e potent si raspunde bine. Design elegant si finisaje de calitate. Bateria de 500Wh ofera autonomie buna.</li><li><strong>Dezavantaje:</strong> Pretul e destul de piperat. Unele modele vin cu anvelope mai inguste, mai potrivite pentru asfalt, deci ai putea avea nevoie de o schimbare pentru off-road.</li></ul>
+        <p></li><li><strong>Scott Sub Cross eRIDE 30 (aproximativ 10.000 lei)</strong></p>
+        <ul><li><strong>Avantaje:</strong> Echilibru bun intre viteza pe asfalt si agilitate pe drumuri neasfaltate. Motorul Bosch Performance Line e un atu major. Cadru usor si manevrabil.</li><li><strong>Dezavantaje:</strong> Suspensia fata e destul de simpla, nu te astepta la minuni pe denivelari mari. Dotarile sunt decente, dar nu de top, mai ales la pretul asta.</li></ul>
+        <p></li></ul></p>
+        <p>Na, astea sunt parerile mele, bazate pe ce am simtit eu pe pielea mea. Fiecare are plusurile ei, dar si unde mai ai de bagat banul ulterior.</p>
+      </section>
+
+      <section id="cum-sa-ti-alegi-bicicleta-electrica-potrivita-ghidul-prietenului-tau">
+        <h2>Cum sa-ti alegi bicicleta electrica potrivita: Ghidul prietenului tau</h2>
+        <p>Alegerea unei <strong>biciclete electrice bune</strong> poate fi o misiune daca nu stii la ce sa te uiti. Hai sa luam pe rand, ca sa nu cumperi ceva ce dupa doua saptamani iti pare o prostie.</p>
+        <h3>Motorul si bateria: Inima batatoare</h3>
+        <p>Aici e diferenta mare. Motoarele Bosch, Yamaha si Brose sunt considerate cele mai bune. Bosch e cel mai raspandit, fiabil si are o integrare excelenta.</p>
+        <p>Yamaha si Brose sunt la fel de bune, uneori chiar mai silentioase. Nu te lua dupa cifre mari pe hartie la motoare no-name, ca s-ar putea sa fie varza. Bateria e la fel de importanta.</p>
+        <p>Cauta cel putin 400Wh pentru oras, ideal peste 500Wh daca vrei autonomie mare sau mergi pe dealuri. Orice e sub 400Wh s-ar putea sa te lase balta mai repede decat crezi. Si vezi unde e pozitionata, una integrata in cadru arata mai bine, dar una externa poate fi mai usor de scos si incarcat in casa sau birou.</p>
+        <h3>Tipul de bicicleta electrica: Oras, munte sau hibrida?</h3>
+        <p>Asta e prima intrebare pe care trebuie sa ti-o pui. Vrei o <strong>bicicleta electrica de oras</strong>, gen Cube Kathmandu, ca sa ajungi la munca, la cumparaturi, fara sa transpiri? Sau vrei una <strong>mountain bike electrica</strong>, gen Trek Powerfly, sa te dai pe poteci si sa urci dealuri? Sau poate ceva hibrid, cum e Giant Explore E+ 2, care se descurca un pic la ambele. Fiecare tip are specificul lui: la oras, vrei confort, dotari (portbagaj, lumini).</p>
+        <p>La munte, vrei suspensii, frane puternice, anvelope late. Hibrida e un compromis, buna pentru cine nu se hotaraste.</p>
+        <h3>Componentele: Frane, transmisie, suspensii</h3>
+        <p>Aici se vede diferenta de pret. Franele hidraulice pe disc de la Shimano sau Tektro sunt obligatorii. Cele mecanice sunt slabe, mai ales pe o bicicleta electrica grea.</p>
+        <p>Transmisia Shimano sau SRAM e standardul, cauta cel putin un nivel Deore sau echivalent. La suspensie, la oras, una simpla e ok. La munte, vrei suspensie pe fata cu cursa de cel putin 100mm, ideal pe aer.</p>
+        <p>Nu uita de anvelope. Pentru oras, cele mai inguste si netede sunt mai rapide. Pentru munte, vrei anvelope late, cu crampoane, pentru aderenta.</p>
+        <h3>Greutatea si manevrabilitatea</h3>
+        <p>Bicicletele electrice sunt grele. Majoritatea modelelor bune au peste 20kg, cele de oras pot ajunge si la 25-27kg. Asta inseamna ca odata ce ramai fara baterie, pedalezi o tona. Verifica daca iti poti scoate bateria usor, daca iti incape in lift sau pe scara.
+Sincer, pana la urma, cel mai bine e sa probezi. Ce pare bun pe hartie s-ar putea sa nu ti se potriveasca tie. Daca poti, mergi la un magazin si fa un test drive.</p>
+      </section>
+
+      <section id="oras-vs-munte-ce-bicicleta-electrica-e-mai-buna-pentru-tine">
+        <h2>Oras vs. Munte: Ce bicicleta electrica e mai buna pentru tine?</h2>
+        <p>Hai sa comparam doua lumi. Stai sa te gandesti: unde o sa folosesti cel mai mult <strong>bicicleta electrica</strong>? Asta e cheia.</p>
+        <h3>Bicicleta electrica de oras: Mobilitate urbana fara efort</h3>
+        <p>Aici vorbim de confort, functionalitate si autonomie pentru naveta zilnica. Ideale sunt modelele cu cadru jos (step-through), pentru ca poti urca si cobori usor, mai ales daca porti haine de strada. Pozitia de pedalat e dreapta, relaxata, cu ghidonul mai sus.</p>
+        <p>Motoarele sunt de obicei optimizate pentru accelerari line, fara socuri, iar autonomia e cruciala – vrei sa ajungi de la punct A la punctul B si inapoi, poate chiar cu o tura la magazin, fara sa te gandesti la incarcat. Un motor Bosch Performance Line sau Yamaha SyncDrive, cu o baterie de minim 500Wh, e ce cauti. Dotarile fac diferenta: portbagaj solid, lumini integrate (care merg direct din bateria bicicletei), aripi, protectie la lant.</p>
+        <p>Modelele de la Cube, cum am zis, sau Kalkhoff sunt exemple bune. Pretul pentru ceva bun in clasa asta incepe de pe la 10.000 lei si urca spre 18.000 lei.</p>
+        <h3>Mountain bike electrica (E-MTB): Aventuri pe doua roti in natura</h3>
+        <p>Aici vorbim de altceva. Vrei putere bruta pentru urcari abrupte, suspensii care sa absoarba socurile, frane puternice care sa te opreasca din viteza pe coborari. Geometria e mai agresiva, cu un unghi al furcii mai deschis, ca sa fie stabila pe teren accidentat.</p>
+        <p>Rotile sunt mai late, cu anvelope cu crampoane pentru aderenta. Motorul ideal e unul puternic, cum ar fi Bosch Performance Line CX, cu un cuplu mare (75-85 Nm), care te impinge efectiv in sus. Bateria poate fi si de 500Wh, dar pe ture lungi de munte, unde urci mult, s-ar putea sa vrei 625Wh sau chiar 750Wh.</p>
+        <p>Suspensia pe fata e obligatorie, ideala e pe aer si cu cursa de 120-140mm. Franele Shimano cu 4 pistoane sunt un must-have. Modelele de la Trek, Specialized, Scott, Giant sunt in frunte.</p>
+        <p>Pretul pentru o E-MTB decenta porneste de la 12.000 lei si poate ajunge la 30.000 lei sau chiar mai mult. Deci, uite care-i treaba: daca vrei sa ajungi repede la munca, fara transpiratie, si sa te plimbi prin parc, ia una de oras. Daca vrei sa explorezi poteci, sa te dai pe dealuri si sa simti adrenalina, ia una de munte.</p>
+        <p>Nu incerca sa faci dintr-una pe alta, ca o sa fii nemultumit.</p>
+      </section>
+
+      <section id="cumpara-inteligent-sfaturi-ca-sa-nu-arunci-banii-pe-fereastra-pe-biciclete-electrice">
+        <h2>Cumpara inteligent: Sfaturi ca sa nu arunci banii pe fereastra pe biciclete electrice</h2>
+        <p>Multi se arunca sa cumpere <strong>cea mai ieftina bicicleta electrica</strong> pe care o gasesc online, si apoi regreta. Uite cateva ponturi de la cineva care a vazut multe.</p>
+        <h3>Evita motoarele si bateriile no-name</h3>
+        <p>Asta e prima regula. Daca vezi o bicicleta electrica la 3.000 lei cu un motor pe care nu-l recunosti, sau o baterie cu specificatii vagi, fugi! E ca si cum ai cumpara o masina cu motor necunoscut. Motoarele de la Bosch, Yamaha, Brose, Shimano sunt testate, fiabile si au service. Un motor no-name se poate strica in garantie si ramai cu ea pe dreapta.</p>
+        <h3>Atentie la greutate!</h3>
+        <p>Multe biciclete electrice ieftine sunt supraponderale. Nu doar ca sunt greu de manevrat cand nu au baterie, dar inseamna si componente mai putin rezistente, frane slabe, cadru mai greu. O bicicleta electrica de oras buna ar trebui sa fie sub 25kg, iar una de munte sub 23kg. Daca e mult peste, probabil s-au facut compromisuri la calitate.</p>
+        <h3>Componente de baza = Mentenanta sporita</h3>
+        <p>Pe modelele ieftine, producatorii economisesc la frane, schimbator, cauciucuri. Franele mecanice pe disc, de exemplu, sunt o gluma pe o bicicleta electrica. Schimbatorul e mai prost, se deregleaza usor.</p>
+        <p>Cauciucurile sunt tari si aluneca. Asta inseamna ca vei baga bani in piese de schimb mult mai repede. Si poti fi nevoit sa schimbi cateva componente imediat dupa achizitie.</p>
+        <p>Am avut un prieten care si-a luat o E-bike SH la un pret bun, dar dupa 3 luni a bagat deja 1000 lei in ea pentru ca era plina de piese ieftine. Na, asta e. Nu te zgarci la capitolul componente.</p>
+        <h3>Verifica garantie si service</h3>
+        <p>Unde o poti repara? Ai garantie la motor si baterie? Majoritatea brandurilor mari au service autorizat in Romania. Pentru bicicletele cumparate de la e-mag, de exemplu, sau de la producatori mai mici, s-ar putea sa fie mai greu sa gasesti service. Intreaba inainte de a cumpara.
+Si la partea de garantie la baterie, vezi cat tine. Unii dau 1 an, altii 2 ani sau un numar de cicluri de incarcare. E o componenta scumpa, deci merita atentie.</p>
+        <h3>Nu te lasa pacalit de "putere maxima"</h3>
+        <p>Multe firme prajesc clientii cu specificatii mari, gen "putere 750W". Pe majoritatea bicicletelor electrice din UE, puterea legala e de 250W. Ce inseamna cifrele mari e puterea de varf, nu cea continua.</p>
+        <p>Important e cuplul motorului (Nm) si cum livreaza puterea. Un motor de 250W cu 65Nm de la Bosch o sa fie mult mai eficient si placut decat unul chinezesc de 750W "peak power". Deci, sfatul meu e sa cauti branduri cunoscute, sa te uiti la specificatii reale si sa nu te lasi sedus de preturi prea mici.</p>
+        <p>O <strong>bicicleta electrica</strong> e o investitie, trataza-o ca atare.</p>
+      </section>
+
+      <section id="cat-te-costa-o-bicicleta-electrica-buna-verdict-pe-bugete">
+        <h2>Cat te costa o bicicleta electrica buna? Verdict pe bugete</h2>
+        <p>Bun, hai sa vorbim despre bani. Pentru ca, sincer, asta dicteaza multe. Hai sa vedem ce gasesti la diferite niveluri de pret.</p>
+        <h3>Buget mic (sub 7.000 lei): Primii pasi in lumea E-bike</h3>
+        <p>In zona asta gasesti preponderent biciclete electrice mai simple, gen cele de oras sau hibride usoare, dar si cateva E-MTB-uri entry-level. Aici, Decathlon e probabil cel mai bun prieten al tau. Rockrider E-ST 500, cum am zis, e o optiune populara.</p>
+        <p>Motorele sunt de obicei Brose sau alte branduri mai putin cunoscute, iar bateriile au in jur de 400-420Wh, suficiente pentru navete scurte sau plimbari prin parc. Componentele sunt de baza: frane mecanice pe disc (pe care ti le recomand sa le schimbi rapid), schimbatoare simple. Nu te astepta la performante spectaculoase, dar pentru inceput si pentru deplasari fara pretentii, e o alegere decenta.</p>
+        <p>Alte optiuni sunt prin supermarketuri online, dar acolo risti si mai mult la capitolul calitate si service.
+<strong>Ce primesti:</strong> O bicicleta electrica functionala pentru oras/drumuri usoare, autonomie medie, componente de baza.
+<strong>Ce NU primesti:</strong> Fiabilitate pe termen lung pe teren dificil, componente de top, autonomie uriasa.</p>
+        <h3>Buget mediu (7.000 - 12.000 lei): Echilibru si performanta</h3>
+        <p>Aici incepe distractia serioasa. Poti gasi biciclete electrice de oras sau hibride cu motoare Bosch Performance Line sau Yamaha SyncDrive, si baterii de 500Wh sau chiar 625Wh. Asta inseamna autonomie mult mai buna si un raspuns mult mai prompt al motorului.</p>
+        <p>Componentele sunt de nivel mediu: frane hidraulice Shimano, transmisii Shimano Deore sau echivalente, suspensii fata mai capabile. Poti gasi si E-MTB-uri de nivel de intrare spre mediu, gen cele de la Cube (seria Aim sau Attention Hybrid), Giant sau Scott, care te vor duce pe poteci montane fara mari probleme.
+<strong>Ce primesti:</strong> O bicicleta electrica echilibrata, cu motor fiabil, autonomie buna, componente decente pentru utilizare frecventa.
+<strong>Ce NU primesti:</strong> Componente de top-level, suspensii sofisticate, sau cele mai usoare cadre.</p>
+        <h3>Buget mare (peste 12.000 lei): Performanta de varf</h3>
+        <p>Daca ai peste 12.000 lei, poti sa te uiti la cele mai bune biciclete electrice din clasa lor. Aici vorbim de Cube Kathmandu Hybrid SL, Trek Powerfly, Specialized Turbo Levo sau Cube Stereo Hybrid pentru munte. Motoare Bosch Performance Line CX sau echivalente, baterii mari (625Wh, 750Wh), componente de top (frane Shimano XT sau SLX, transmisii SRAM GX, suspensii RockShox sau Fox de calitate).</p>
+        <p>Greutatea e mai mica, manevrabilitatea e mult mai buna. Aceste biciclete sunt construite sa reziste si sa ofere performanta maxima, fie in oras, fie pe cele mai grele trasee montane.
+<strong>Ce primesti:</strong> Calitate premium, performanta de varf, fiabilitate, greutate redusa (pentru o E-bike), autonomie mare.
+<strong>Ce NU primesti:</strong> Prea multe minusuri. Poate doar ca pretul e pe masura, si ca si aici, pentru entuziasti, exista mereu un nivel superior si mai scump.</p>
+        <p>Deci, inainte sa cumperi, gândește-te bine cati bani vrei sa bagi si ce asteptari ai. Niciodata nu e bine sa cumperi cea mai ieftina varianta daca vrei ceva care sa te tina si sa te bucure.</p>
+      </section>
+
+          <!-- FAQ Section -->
+          <section class="faq-section" id="faq">
+            <h2 class="faq-title">Intrebari Frecvente</h2>
+            
+            <details class="faq-item" id="faq-0">
+              <summary>
+                Cat costa o bicicleta electrica buna in Romania?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                O bicicleta electrica buna, fiabila, pentru oras sau uz mixt, te costa minim 7.000 lei. Modelele de top, cu motoare puternice si componente de calitate, pot ajunge si la 15.000-20.000 lei, iar cele de mountain bike performante depasesc frecvent 12.000 lei.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-1">
+              <summary>
+                Care e diferenta intre o bicicleta electrica de oras si una de munte?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Bicicletele electrice de oras sunt gandite pentru confort, cu pozitie dreapta, dotari (portbagaj, lumini) si autonomie mare pe asfalt. Cele de munte au suspensii performante, frane puternice, anvelope late si o geometrie agresiva pentru teren accidentat.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-2">
+              <summary>
+                Merita sa cumpar o bicicleta electrica ieftina?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Nu prea. Bicicletele electrice foarte ieftine (sub 5.000 lei) vin de obicei cu motoare si baterii de proasta calitate, componente fragile si risc mare de defectare rapida. Investeste intr-un brand recunoscut pentru fiabilitate.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-3">
+              <summary>
+                Ce motor e mai bun la bicicletele electrice?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Cele mai bune motoare sunt de la Bosch (Performance Line, CX), Yamaha (SyncDrive) si Brose. Acestea ofera putere constanta, fiabilitate si sunt integrate perfect in bicicleta. Nu te lasa pacalit de specificatii mari la motoare no-name.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-4">
+              <summary>
+                Cat dureaza o baterie de bicicleta electrica?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Autonomia depinde de capacitatea bateriei (masurata in Wh) si de modul de asistenta folosit. O baterie de 500Wh poate oferi intre 50 si 120 km, in functie de teren, greutate si nivelul de asistenta. Incarcarea completa dureaza, in general, intre 4 si 7 ore.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-5">
+              <summary>
+                De ce sunt bicicletele electrice asa de grele?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Greutatea vine de la motor, bateria, si componentele ranforsate necesare pentru a sustine greutatea suplimentara si fortele mai mari. Majoritatea E-bike-urilor bune cantaresc intre 20 si 27 kg.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-6">
+              <summary>
+                Cum intretin corect o bicicleta electrica?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                La fel ca una normala: curata si unge lantul, verifica franele si presiunea in anvelope. Bateria trebuie depozitata la temperatura camerei si nu lasata sa se descarce complet pe perioade lungi. Consultă manualul pentru instrucțiuni specifice motorului și bateriei.
+              </div>
+            </details>
+
+            <details class="faq-item" id="faq-7">
+              <summary>
+                Unde gasesc cele mai bune oferte la biciclete electrice?
+                <span class="faq-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                Cele mai bune oferte le gasesti la magazinele specializate in biciclete (fizice sau online) care vand branduri cunoscute precum Cube, Trek, Giant, Scott, Specialized. Decathlon are preturi bune pentru modelele proprii. Fii atent la reducerile de sezon.
+              </div>
+            </details>
+          </section>
+        </div>
+
+        <!-- Author -->
+        <div class="author-line">
+          <div class="author-avatar">DV</div>
+          <div>
+            <div class="author-name">Dan Vasilescu</div>
+            <div class="author-role">Expert Sport si Outdoor</div>
+          </div>
+        </div>
+
+        <!-- Similar Articles -->
+        <SimilarArticles
+          currentSlug="cele-mai-bune-biciclete-electrice"
+          currentCategory="sport-timp-liber"
+          articles={allArticles}
+        />
+      </div>
+
+      <!-- Sticky TOC Sidebar (desktop) - RIGHT side -->
+      <aside class="toc-sidebar">
+        <p class="toc-sidebar-title">Cuprins</p>
+        <ol class="toc-sidebar-list">
+          {toc.map(item => (
+            <li><a href={`#${item.id}`}>{item.title}</a></li>
+          ))}
+          <li><a href="#faq">Intrebari Frecvente</a></li>
+        </ol>
+      </aside>
+    </div>
+  </article>
+</Layout>
