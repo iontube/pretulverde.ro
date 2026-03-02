@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pretulverde.ro/sitemap-index.xml
+Sitemap: https://pretulverde.ro/sitemap_index.xml
