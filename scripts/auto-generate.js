@@ -115,7 +115,7 @@ function selectFromDifferentCategories(keywords, count) {
   return selected;
 }
 
-// Check if enough time passed since last generation (min 2 days)
+// Check if enough time passed since last generation (min 12 hours)
 async function shouldRunToday() {
   try {
     const keywordsData = JSON.parse(await fs.readFile(KEYWORDS_FILE, 'utf-8'));
@@ -127,9 +127,8 @@ async function shouldRunToday() {
       .reduce((a, b) => Math.max(a, b), 0);
 
     const daysSinceLast = (Date.now() - lastDate) / (1000 * 60 * 60 * 24);
-    // Randomize: skip if today, 50% chance if 1 day ago, always run if 2+ days
-    if (daysSinceLast < 1) return false;
-    // Post every day, skip only if already posted today
+    // Skip only if already posted today (use 0.5 days to avoid timing issues with daily cron)
+    if (daysSinceLast < 0.5) return false;
     return true;
   } catch {
     return true;
@@ -161,7 +160,7 @@ async function generateStats() {
 async function main() {
   // Check if we should run today (min 2 days between articles)
   if (!await shouldRunToday()) {
-    console.log(`[${new Date().toISOString()}] Skipping - last article was less than 2 days ago`);
+    console.log(`[${new Date().toISOString()}] Skipping - last article was less than 12 hours ago`);
     process.exit(0);
   }
 
