@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import SimilarArticles from '../components/SimilarArticles.astro';
 import keywordsData from '../../keywords.json';
+import PrevNextNav from '../components/PrevNextNav.astro';
 
 export const frontmatter = {
   title: "Cele mai bune uscatoare de rufe",
@@ -118,10 +119,10 @@ const allArticles = keywordsData.completed.map(item => ({
           
       <section id="direct-la-subiect-care-sunt-cele-mai-bune-uscatoare-de-rufe-acum">
         <h2>Direct la subiect: care sunt cele mai bune uscatoare de rufe acum?</h2>
-        <p>Bon, hai sa fim directi. Daca vrei sa stii care sunt <strong>cele mai bune uscatoare de rufe</strong>, raspunsul scurt e asta: tehnologia cu <strong>pompa de caldura</strong> e regele, fara discutie. De ce? Pentru ca iti mananca mult mai putina energie electrica decat cele clasice, alea cu rezistenta, si in plus, sunt mult mai blande cu tesaturile.</p>
+        <p>Bon, hai sa fim directi. Daca vrei sa stii care sunt <strong>cele mai <a href="/cele-mai-bune-uscatoare-de-par-profesionale/" class="interlink">bune uscatoare</a> de rufe</strong>, raspunsul scurt e asta: tehnologia cu <strong>pompa de caldura</strong> e regele, fara discutie. De ce? Pentru ca iti mananca mult mai putina energie electrica decat cele clasice, alea cu rezistenta, si in plus, sunt mult mai blande cu tesaturile.</p>
         <p>Hainele tale vor arata ca noi pentru mai mult timp. Nu am testat personal toate modelele de pe piata, dar din ce am vazut si auzit de la prieteni si din review-uri, Bosch Seria 6 sau 8, Siemens iQ700 si Miele sunt practic fara concurenta la capitolul performanta si durabilitate. Stiu, pretul lor te poate lua cu lesin, dar gandeste-te ca e o investitie pe termen lung.</p>
         <p>Am avut un uscator mai vechi, unul clasic, care a murit in 4 ani. Asta nou cu pompa de caldura, sper sa tina dublu.</p>
-        <p>Acum, daca bugetul e un pic mai... restrans, nu inseamna ca trebuie sa renunti la confort. Uite, modelele de la Beko, in special cele din gama cu Autodry sau ProSmart Inverter, fac treaba buna pentru acasa. Si Hotpoint are niste optiuni decente. Nu sunt chiar la nivelul de top din Germania, dar pentru un utilizator obisnuit, care nu spala zeci de kilograme de rufe in fiecare zi, sunt mai mult decat suficiente.</p>
+        <p>Acum, daca bugetul e un pic mai... restrans, nu inseamna ca trebuie sa renunti la confort. Uite, modelele de la Beko, in special cele din gama cu Autodry sau ProSmart Inverter, fac treaba buna <a href="/cele-mai-bune-stepper-e-pentru-acasa/" class="interlink">pentru acasa</a>. Si Hotpoint are niste optiuni decente. Nu sunt chiar la nivelul de top din Germania, dar pentru un utilizator obisnuit, care nu spala zeci de kilograme de rufe in fiecare zi, sunt mai mult decat suficiente.</p>
         <p>Sincer, diferenta intre un uscator bun si unul mediocru se vede in timp. Hainele iesite din uscatoarele de top sunt mai aerisite, mai putin mototolite, si au acel miros placut de curat, nu de ars. Si cel mai important, nu se degradeaza tesaturile. Ala e marele castig.</p>
       </section>
 
@@ -151,7 +152,7 @@ const allArticles = keywordsData.completed.map(item => ({
         <h2>Comparatie rapida: Pompa de caldura vs. Condensare Clasica</h2>
         <p>Hai sa punem fata in fata cele doua mari categorii de uscatoare, ca sa intelegi de ce insist atata pe pompa de caldura. E o diferenta mare, pe bune.</p>
         <ul><li><strong>Uscatoare cu Pompa de Caldura</strong>:
-        <ul><li><strong>Cum functioneaza</strong>: Folosesc un sistem similar cu aerul conditionat. Recircula aerul cald, il usuca si il refoloseste. Nu au nevoie de rezistenta electrica care se incalzeste la maxim.</li><li><strong>Avantaje</strong>:
+        <ul><li><strong>Cum functioneaza</strong>: Folosesc un sistem similar cu aerul <a href="/cele-mai-bune-aparate-de-aer-conditionat/" class="interlink">conditionat</a>. Recircula aerul cald, il usuca si il refoloseste. Nu au nevoie de rezistenta electrica care se incalzeste la maxim.</li><li><strong>Avantaje</strong>:
         <ul><li>Consum de energie mult mai mic (pana la 50% mai putin decat cele clasice). Asta se vede direct pe factura la curent.</li><li>Mult mai blande cu hainele. Nu le suprasolicita cu temperaturi extreme, deci tesaturile rezista mai mult si arata mai bine.</li><li>Nu necesita evacuare speciala in exterior, se potrivesc in orice locuinta.</li></ul>
         <p></li><li><strong>Dezavantaje</strong>:</p>
         <ul><li>Pretul de achizitie este mai mare. Asta e principala lor problema.</li><li>Programele de uscare pot dura un pic mai mult, pentru ca se bazeaza pe eficienta energetica, nu pe viteza bruta.</li></ul>
@@ -284,6 +285,12 @@ const allArticles = keywordsData.completed.map(item => ({
           currentCategory="electrocasnice"
           articles={allArticles}
         />
+
+    <PrevNextNav
+      currentSlug="cele-mai-bune-uscatoare-de-rufe"
+      currentCategory="electrocasnice"
+      articles={allArticles}
+    />
       </div>
 
       <!-- Sticky TOC Sidebar (desktop) - RIGHT side -->
