@@ -871,6 +871,11 @@ img {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-2xl);
+  min-width: 0;
+}
+
+.article-layout > * {
+  min-width: 0;
 }
 
 @media (min-width: 1024px) {
@@ -1003,6 +1008,8 @@ img {
   line-height: 1.9;
   max-width: 720px;
   order: 1;
+  min-width: 0;
+  overflow-x: hidden;
 }
 
 .article-content h2 {
