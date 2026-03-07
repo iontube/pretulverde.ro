@@ -79,7 +79,7 @@ async function sleep(ms) {
 async function translateToEnglish(text) {
   for (let attempt = 0; attempt < 3; attempt++) {
     const apiKey = getNextGeminiKey();
-    const url = `https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash-lite:generateContent?key=${apiKey}`;
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${apiKey}`;
 
     try {
       const response = await fetch(url, {
@@ -127,7 +127,7 @@ function stripBrands(text) {
 async function rephraseWithoutBrands(text) {
   for (let attempt = 0; attempt < 3; attempt++) {
     const apiKey = getNextGeminiKey();
-    const url = `https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash-lite:generateContent?key=${apiKey}`;
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${apiKey}`;
     try {
       const response = await fetch(url, {
         method: 'POST',
@@ -164,7 +164,7 @@ async function generateSafePrompt(text, categorySlug) {
 
   for (let attempt = 0; attempt < 3; attempt++) {
     const apiKey = getNextGeminiKey();
-    const url = `https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash-lite:generateContent?key=${apiKey}`;
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${apiKey}`;
     try {
       const response = await fetch(url, {
         method: 'POST',
@@ -426,7 +426,7 @@ ${interlinkList}` : ''}`;
   let retries = 5;
   while (retries > 0) {
     const apiKey = getNextGeminiKey();
-    const url = `https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash-lite:generateContent?key=${apiKey}`;
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${apiKey}`;
     try {
       const response = await fetch(url, {
         method: 'POST',
@@ -437,7 +437,8 @@ ${interlinkList}` : ''}`;
           }],
           generationConfig: {
             temperature: 0.7,
-            maxOutputTokens: 16000
+            maxOutputTokens: 40000,
+            responseMimeType: "application/json"
           }
         })
       });
@@ -445,15 +446,7 @@ ${interlinkList}` : ''}`;
       const data = await response.json();
 
       if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
-        let text = data.candidates[0].content.parts[0].text;
-        // Clean JSON - remove markdown wrappers
-        text = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
-
-        // Try to extract JSON object if there's extra text
-        const jsonMatch = text.match(/\{[\s\S]*\}/);
-        if (jsonMatch) {
-          text = jsonMatch[0];
-        }
+        let text = data.candidates[0].content.parts[0].text.trim();
 
         try {
           const parsed = JSON.parse(text);
