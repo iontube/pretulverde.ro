@@ -1,0 +1,628 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SimilarArticles from '../components/SimilarArticles.astro';
+import PrevNextNav from '../components/PrevNextNav.astro';
+import keywordsData from '../../keywords.json';
+
+export const frontmatter = {
+  title: "Cele mai bune ghete de munte",
+  excerpt: "Cautati cele mai bune ghete de munte pentru a explora traseele montane in siguranta si confort? Alegerea corecta a incaltamintei de munte este esentiala pentru a preveni accidentarile, a oferi suport optim si a proteja picioarele de intemperii.",
+  image: "/images/articles/cele-mai-bune-ghete-de-munte.webp",
+  category: "Sport si Timp Liber",
+  categorySlug: "sport-timp-liber",
+  date: "2025-04-08T08:00:00.000Z",
+  modifiedDate: "2026-03-07T09:05:18.306Z",
+  author: "Dan Vasilescu",
+  authorRole: "Expert Sport si Outdoor",
+  authorBio: "Dan este pasionat de sport si activitati in aer liber. Testeaza biciclete, echipament fitness si accesorii outdoor, punand accent pe performanta si raportul calitate-pret."
+};
+
+const breadcrumbs = [
+  { name: "Acasa", url: "/" },
+  { name: "Sport si Timp Liber", url: "/sport-timp-liber/" },
+  { name: "Cele mai bune ghete de munte", url: "/cele-mai-bune-ghete-de-munte/" }
+];
+
+const faq = [
+  { question: "Cat costa cele mai bune ghete de munte in 2026?", answer: "Pretul pentru cele mai bune ghete de munte in 2026 variaza semnificativ in functie de brand, tehnologii si destinatie. Modelele de buget incep de la aproximativ 400 lei, cele medii se situeaza intre 500 si 900 lei, iar ghetele tehnice sau premium pot ajunge la 1100-1300 lei sau chiar mai mult." },
+  { question: "Care e diferenta intre ghetele de munte joase, medii si inalte?", answer: "Diferenta principala consta in inaltimea peste glezna. Ghetele joase ofera libertate de miscare si sunt usoare, potrivite pentru teren plat sau usor denivelat. Cele medii ofera un echilibru bun intre mobilitate si suport pentru glezna. Ghetele inalte ofera protectie maxima pentru glezna si stabilitate pe teren accidentat, fiind ideale pentru ture lungi sau backpacking." },
+  { question: "Merita sa investesc in ghete de munte cu membrana Gore-Tex?", answer: "Da, daca planuiesti sa mergi pe munte in conditii meteo variate. Gore-Tex ofera impermeabilitate si respirabilitate de top, mentinand picioarele uscate si confortabile atat in ploaie, cat si in zile mai calduroase, prin permiterea evaporarii transpiratiei." },
+  { question: "Cum se intretin corect ghetele de munte?", answer: "Dupa fiecare utilizare, curata murdaria cu o perie si apa. Lasa-le sa se usuce natural, la temperatura camerei, departe de surse directe de caldura. Aplica produse specifice de impermeabilizare si ingrijire a pielii sau materialelor textile, conform recomandarilor producatorului, pentru a prelungi durata de viata si performanta." },
+  { question: "Pot folosi ghete de munte pentru alergare pe munte?", answer: "In general, nu. Ghetele de munte sunt construite pentru stabilitate, protectie si aderenta pe teren accidentat, fiind mai grele si mai rigide decat pantofii de trail running. Pantofii de trail running sunt mai usori, mai flexibili si ofera o amortizare optimizata pentru viteza si agilitate pe suprafete de munte." }
+];
+
+const toc = [
+  { title: "Salomon X Ultra 4 Mid GTX", id: "salomon-x-ultra-4-mid-gtx" },
+  { title: "Merrell Moab 3 Mid Waterproof", id: "merrell-moab-3-mid-waterproof" },
+  { title: "Hoka Anacapa Mid GTX", id: "hoka-anacapa-mid-gtx" },
+  { title: "Columbia Newton Ridge Plus Waterproof II", id: "columbia-newton-ridge-plus-waterproof-ii" },
+  { title: "La Sportiva Trango Tech GTX", id: "la-sportiva-trango-tech-gtx" },
+  { title: "Mammut Ducan High GTX Men", id: "mammut-ducan-high-gtx-men" },
+  { title: "Comparatie", id: "comparatie" },
+  { title: "Cum alegi cele mai bune ghete de munte pentru nevoile tale?", id: "ghid" },
+  { title: "Intrebari Frecvente", id: "faq" }
+];
+
+// Get all articles for similar articles component
+const allArticles = keywordsData.completed.map(item => ({
+  title: item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1),
+  slug: item.keyword.toLowerCase()
+    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+    .replace(/ș/g, 's').replace(/ț/g, 't')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
+  excerpt: item.excerpt || '',
+  image: `/images/articles/${item.keyword.toLowerCase()
+    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+    .replace(/ș/g, 's').replace(/ț/g, 't')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}.webp`,
+  category: item.category,
+  categorySlug: item.categorySlug,
+  date: item.date || new Date().toISOString()
+}));
+---
+
+<Layout
+  title="Cele mai bune ghete de munte - PretulVerde"
+  description="Cautati cele mai bune ghete de munte pentru a explora traseele montane in siguranta si confort? Alegerea corecta a incaltamintei de munte este esentiala pentru a preveni accidentarile, a oferi suport optim si a proteja picioarele de intemperii."
+  image="/images/articles/cele-mai-bune-ghete-de-munte.webp"
+  type="article"
+  publishedTime="2025-04-08T08:00:00.000Z"
+  modifiedTime="2026-03-07T09:05:18.306Z"
+  author="Dan Vasilescu"
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <article class="article-page">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+      <ol>
+        <li><a href="/">Acasa</a></li>
+        <li>Sport si Timp Liber</li>
+        <li><span>Cele mai bune ghete de munte</span></li>
+      </ol>
+    </nav>
+
+    <!-- Title -->
+    <h1 class="article-page-title">Cele mai bune ghete de munte</h1>
+
+    <!-- Meta -->
+    <div class="article-page-meta">
+      <span>Dan Vasilescu</span>
+      <span>&middot;</span>
+      <span>Publicat: 8 aprilie 2025</span>
+      <span>&middot;</span>
+      <span>Actualizat: 7 martie 2026</span>
+    </div>
+
+    <!-- Featured Image -->
+    <img src="/images/articles/cele-mai-bune-ghete-de-munte.webp" alt="Cele mai bune ghete de munte" class="article-page-image" width="800" height="600" loading="eager">
+
+    <!-- Two-column layout: content + TOC sidebar on RIGHT -->
+    <div class="article-layout">
+      <aside class="toc-sidebar">
+        <p class="toc-sidebar-title">Cuprins</p>
+        <ol class="toc-sidebar-list" id="toc-desktop-list">
+          {toc.map(item => (
+            <li><a href={`#${item.id}`} data-toc-id={item.id}>{item.title}</a></li>
+          ))}
+        </ol>
+      </aside>
+
+      <div>
+        <!-- Mobile TOC (expandable) -->
+        <div class="toc-mobile" id="toc-mobile">
+          <button class="toc-mobile-toggle" onclick="this.parentElement.classList.toggle('open')">
+            Cuprins
+            <span class="toc-chevron">&#9660;</span>
+          </button>
+          <ol class="toc-mobile-list">
+            {toc.map(item => (
+              <li><a href={`#${item.id}`}>{item.title}</a></li>
+            ))}
+          </ol>
+        </div>
+
+        <!-- Article Content -->
+        <div class="article-content">
+          <section id="intro">
+            <p>Cautati <strong>cele mai bune ghete de munte</strong> pentru a explora traseele montane in siguranta si confort? Alegerea corecta a incaltamintei de munte este esentiala pentru a preveni accidentarile, a oferi suport optim si a proteja picioarele de intemperii. Acest articol va prezinta o selectie de modele performante, atent analizate pentru a va ghida spre cea mai buna decizie, indiferent de nivelul dvs. de experienta sau de tipul de teren pe care intentionati sa-l abordati.</p><p>Ce intelegem prin cele mai bune ghete de munte? Ne referim la produse care imbina tehnologii avansate de impermeabilitate, respirabilitate, aderenta pe diverse suprafete, durabilitate si confort pe termen lung. Vom analiza optiuni pentru bugete variate, punand accent pe raportul calitate-pret si pe specificatiile care fac diferenta pe munte. Fie ca sunteti un pasionat de drumeții ocazionale sau un montaniard experimentat, veti gasi aici informatiile necesare pentru a alege perechea potrivita.</p><p>Care sunt factorii critici in alegerea unei perechi de ghete de munte? Pe langa marca si pret, aspectele precum tipul de talpa, materialul exterior, sistemul de inchidere, greutatea si potrivirea pe picior sunt decisive. O gheata prea rigida poate fi incomoda pe teren plat, in timp ce una prea flexibila nu va oferi suficient suport pe pante abrupte sau cu pietris. Vom discuta despre aceste elemente in detaliu pentru fiecare model in parte, pentru a va oferi o imagine completa.</p>
+          </section>
+
+
+          <article class="product-review" id="salomon-x-ultra-4-mid-gtx">
+            <div class="product-review__header">
+              <span class="section-tag">Alegerea Noastra</span>
+              <h3>Salomon X Ultra 4 Mid GTX</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Ghete de munte medii
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Salomon
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Membrana Gore-Tex, talpa Contagrip MA, sistem ADV-C Chassis, protectie varf, sistem Quicklace
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>400g (marimea 42), inaltime medie
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>2 ani standard
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Salomon X Ultra 4 Mid GTX se impune ca o optiune de top pentru cei care cauta <strong>cele mai bune ghete de munte</strong> versatile si performante. Aceste ghete sunt concepute pentru a oferi un echilibru excelent intre agilitate, suport si protectie, fiind potrivite pentru o gamă largă de activități montane, de la drumeții pe poteci bine bătute la trasee mai tehnice.</p><p>Ce face ca Salomon X Ultra 4 Mid GTX sa iasa in evidenta? In primul rand, tehnologia Gore-Tex garanteaza impermeabilitate si respirabilitate superioare, pastrand picioarele uscate indiferent de conditiile meteo. Talpa Contagrip MA ofera o aderenta exceptionala pe suprafete variate, de la noroi la piatra uda, minimizand riscul de alunecare. Sistemul ADV-C Chassis, integrat in talpa intermediara, ofera stabilitate suplimentara pe teren accidentat, protejând articulațiile.</p><p>Cum se simte gheata in timpul utilizarii? Greutatea de aproximativ 400g pe picior (pentru marimea 42) le face surprinzator de usoare pentru o gheata de munte medie, contribuind la o senzatie de agilitate. Sistemul de inchidere Quicklace permite ajustarea rapidă și precisă a strângerii, eliminând nodurile care se pot desface. Protecția pentru varf adaugă un strat suplimentar de siguranță împotriva loviturilor accidentale cu pietre sau rădăcini.</p><p>Care sunt alternativele si cum se compara? Comparativ cu modele mai grele și rigide, Salomon X Ultra 4 Mid GTX oferă o flexibilitate mai mare, fiind ideale pentru cei care preferă un ritm mai alert sau drumeții mai lungi. Totuși, pentru expuneri extreme sau ture de iarnă severe, ar putea fi necesară o gheată cu protecție termică mai avansată sau o construcție mai robustă. Prețul se situează în segmentul mediu-superior, în jur de 750-900 lei, reflectând calitatea materialelor și tehnologiile integrate.</p><p>Pentru cine sunt recomandate aceste ghete? Sunt o alegere excelentă pentru drumeți amatori și avansați, pasionați de trasee montane de o zi sau de weekend, care apreciază un echilibru între confort, protecție și greutate redusă. Dacă sunteți în căutarea unei perechi versatile care să vă însoțească în numeroase aventuri, acestea sunt o investiție solidă.</p><p>Recomandare finală: Dacă prioritizați agilitatea, impermeabilitatea și o aderență de încredere, Salomon X Ultra 4 Mid GTX reprezintă o alegere de referință. Cumpărați-le dacă doriți o gheată performantă, gata de acțiune pe orice fel de traseu.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Impermeabilitate și respirabilitate excelente datorită membranei Gore-Tex</li>
+              <li>Aderență superioară pe diverse suprafețe cu talpa Contagrip MA</li>
+              <li>Greutate redusă pentru o gheată de munte medie</li>
+              <li>Suport și stabilitate sporite pe teren accidentat</li>
+              <li>Sistem de închidere rapid și eficient</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Durabilitatea pe termen foarte lung a materialelor textile ar putea fi o preocupare pe trasee extrem de abrazive</li>
+              <li>Nu oferă protecție termică pentru condiții de iarnă severă</li>
+              <li>Sistemul Quicklace, deși rapid, poate fi mai greu de reparat în teren comparativ cu șireturile clasice</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="merrell-moab-3-mid-waterproof">
+            <div class="product-review__header">
+              <span class="section-tag">Raport Calitate-Pret</span>
+              <h3>Merrell Moab 3 Mid Waterproof</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Ghete de munte medii
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Merrell
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Membrana impermeabilă M Select DRY, talpă Vibram TC5+, branț Kinetic Fit, amortizare M Select P.A.B.
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>450g (marimea 42), inaltime medie
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>2 ani standard
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Merrell Moab 3 Mid Waterproof este deseori menționată printre <strong>cele mai bune ghete de munte</strong> datorită combinației sale imbatabile de confort, durabilitate și preț accesibil. Această pereche este ideală pentru drumeții pe distanțe medii și lungi, oferind un suport solid și protecție împotriva elementelor.</p><p>Cum se diferențiază Merrell Moab 3 Mid Waterproof? Punctul forte este membrana impermeabilă M Select DRY, care menține picioarele uscate în condiții de ploaie sau umezeală. Talpa Vibram TC5+ este un standard în industrie, oferind o aderență fiabilă pe majoritatea suprafețelor întâlnite pe munte. Amortizarea M Select P.A.B. (Performance Air Cushion) în călcâi absoarbe șocurile, reducând oboseala pe parcursul zilei.</p><p>Ce experiență de utilizare oferă? Aceste ghete sunt cunoscute pentru confortul lor imediat, necesitând o perioadă minimă de rodaj. Branțul Kinetic Fit oferă un suport personalizat și o senzație de stabilitate. Greutatea de aproximativ 450g pe picior le plasează în categoria ghete medii, fiind potrivite pentru ture de o zi sau weekenduri montane. Construcția robustă din piele și mesh asigură durabilitate.</p><p>Cum se poziționează față de concurență? Comparativ cu modele premium, Moab 3 Mid Waterproof ar putea să nu ofere același nivel de respirabilitate sau aceeași aderență pe teren extrem de tehnic. Totuși, la un preț mult mai accesibil, în jur de 500-650 lei, oferă o performanță excelentă pentru majoritatea drumeților. Dacă bugetul este un factor important, acestea reprezintă o alternativă inteligentă la modelele mai scumpe.</p><p>Pentru cine sunt potrivite aceste ghete? Sunt perfecte pentru începători, drumeți ocazionali și cei care caută o pereche de ghete de munte fiabile, confortabile și cu un preț corect. De asemenea, se potrivesc celor care doresc o gheată rezistentă pentru utilizare frecventă pe trasee variate, dar nu extrem de solicitante.</p><p>Recomandare finală: Dacă doriți <strong>cele mai bune ghete de munte</strong> cu un raport calitate-preț excepțional, Merrell Moab 3 Mid Waterproof este alegerea ideală. Achiziționați-le dacă prețuiți confortul, durabilitatea și performanța fiabilă fără a depăși un buget stabilit.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Confort excelent încă de la prima purtare</li>
+              <li>Impermeabilitate bună pentru condiții variabile</li>
+              <li>Aderență fiabilă pe majoritatea suprafețelor</li>
+              <li>Durabilitate bună a materialelor</li>
+              <li>Preț foarte accesibil pentru performanța oferită</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Respirabilitatea ar putea fi îmbunătățită pentru zile caniculare</li>
+              <li>Talpa Vibram TC5+ nu excelează pe terenuri extrem de umede sau alunecoase</li>
+              <li>Greutatea este puțin mai mare comparativ cu modelele ultra-light</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="hoka-anacapa-mid-gtx">
+            <div class="product-review__header">
+              <span class="section-tag">Premium</span>
+              <h3>Hoka Anacapa Mid GTX</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Ghete de munte medii
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Hoka
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Membrana Gore-Tex, talpă Vibram Megagrip, spumă CMEVA, limbă cu burduf, protecție cauciucată
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>430g (marimea 42), inaltime medie
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>2 ani standard
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Pentru cei care caută <strong>cele mai bune ghete de munte</strong> cu un accent pe amortizare și confort pe distanțe lungi, Hoka Anacapa Mid GTX reprezintă o opțiune premium. Cunoscută pentru tehnologia sa de amortizare superioară, Hoka aplică aceleași principii și în încălțămintea de munte, oferind o experiență de mers unică.</p><p>Ce caracteristici fac Hoka Anacapa Mid GTX speciale? Membrana Gore-Tex asigură impermeabilitatea, esențială pe trasee montane. Talpa Vibram Megagrip este un standard de aur pentru aderență, oferind tracțiune excepțională chiar și pe suprafețe umede și dificile. Partea cea mai distinctivă este însă spuma CMEVA utilizată în talpa intermediară, care oferă o amortizare generoasă, protejând articulațiile și reducând oboseala pe parcursul turelor lungi. Această amortizare este similară cu cea întâlnită la pantofii lor de alergare.</p><p>Cum se simt aceste ghete în practică? Greutatea de aproximativ 430g pe picior este destul de redusă, având în vedere nivelul de amortizare. Designul mediu oferă suport pentru gleznă, iar limba cu burduf ajută la menținerea detritusului și a umezelii afară. Protecția cauciucată din partea frontală adaugă un plus de rezistență la impacturi.</p><p>Ce le diferențiază de alte modele premium? Spre deosebire de ghetele tradiționale mai rigide, Hoka Anacapa Mid GTX oferă o senzație mult mai moale și mai receptivă. Acest lucru le face ideale pentru drumeții lungi pe poteci variate, unde confortul este prioritar. Totuși, pentru trasee extrem de tehnice, unde stabilitatea laterală maximă este necesară, rigiditatea sporită a altor modele ar putea fi preferată. Prețul se încadrează în segmentul premium, ajungând la 900-1100 lei.</p><p>Pentru cine sunt recomandate? Aceste ghete sunt o alegere excelentă pentru drumeți care parcurg distanțe mari, care suferă de probleme articulare sau care pur și simplu apreciază o amortizare maximă. Sunt potrivite pentru ture de o zi sau de mai multe zile, unde confortul pe termen lung este esențial. Dacă sunteți fan al filozofiei Hoka de amortizare, acestea sunt o extensie naturală pentru munte.</p><p>Recomandare finală: Pentru confortul suprem pe distanțe lungi și o protecție excelentă a articulațiilor, Hoka Anacapa Mid GTX sunt o investiție în sănătatea și plăcerea dvs. montană. Achiziționați-le dacă sunteți pregătiți să experimentați un nou nivel de amortizare pe munte.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Amortizare excepțională, reduce oboseala articulară</li>
+              <li>Aderență de top cu talpa Vibram Megagrip</li>
+              <li>Impermeabilitate și respirabilitate bună</li>
+              <li>Greutate redusă pentru nivelul de amortizare oferit</li>
+              <li>Confort sporit pe distanțe lungi</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Pot fi prea moi pentru terenuri extrem de tehnice sau pentru persoane care necesită suport lateral maxim</li>
+              <li>Prețul este în segmentul premium</li>
+              <li>Durabilitatea pe termen lung a elementelor de cauciuc de protecție ar putea fi testată pe terenuri abrazive</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="columbia-newton-ridge-plus-waterproof-ii">
+            <div class="product-review__header">
+              <span class="section-tag">Pentru Buget Mic</span>
+              <h3>Columbia Newton Ridge Plus Waterproof II</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Ghete de munte joase/medii
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Columbia
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Membrană Omni-Tech, talpă Omni-Grip, construcție ușoară, suport gleznă (model Mid)
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>380g (marimea 42, model Mid), inaltime medie
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>1 an standard
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Columbia Newton Ridge Plus Waterproof II se profilează ca una dintre cele mai accesibile opțiuni pentru cei care caută <strong>cele mai bune ghete de munte</strong> fără a compromite funcționalitatea de bază. Acest model oferă o protecție adecvată și confort pentru drumeții ușoare și moderate, la un preț extrem de competitiv.</p><p>Ce oferă Columbia Newton Ridge Plus Waterproof II? Punctul central este membrana impermeabilă Omni-Tech, care menține picioarele uscate în condiții de umiditate moderată. Talpa Omni-Grip este proiectată pentru a oferi o aderență decentă pe poteci forestiere, pietriș și teren ușor denivelat. Construcția este relativ ușoară, în jur de 380g pe picior pentru modelul Mid, ceea ce le face confortabile pentru ture de o zi.</p><p>Cum se simt aceste ghete? Confortul este unul bun pentru prețul lor, cu o căptușeală suficient de moale și un suport decent pentru gleznă. Acestea nu sunt ghete rigide, ci mai degrabă flexibile, ceea ce le face potrivite pentru mers pe poteci bine amenajate sau pe drumuri forestiere. Nu sunt destinate traseelor alpine sau celor cu expunere mare.</p><p>Cum se compară cu alternativele? Față de modelele de top, Columbia Newton Ridge Plus Waterproof II nu oferă aceeași durabilitate a materialelor, aceeași aderență pe teren umed și tehnic sau același nivel de suport pe teren accidentat. Însă, la un preț de 400-550 lei, este greu să găsești o alternativă care să ofere impermeabilitate și un confort decent. Ele sunt o alternativă mai robustă la bocancii de trekking ușori.</p><p>Pentru cine sunt potrivite? Aceste ghete sunt ideale pentru începătorii în drumeții, pentru cei care merg ocazional la munte pe trasee ușoare, sau pentru cei care au un buget limitat. Sunt o alegere bună pentru plimbări în natură, drumeții scurte în weekend sau ca o primă pereche de încălțăminte de munte.</p><p>Recomandare finală: Dacă bugetul este principala dvs. constrângere, dar doriți o gheată de munte funcțională, Columbia Newton Ridge Plus Waterproof II este o opțiune smart. Achiziționați-le dacă aveți nevoie de o pereche de bază, fiabilă, pentru drumeții lejere.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Preț foarte accesibil</li>
+              <li>Impermeabilitate decentă pentru condiții moderate</li>
+              <li>Greutate redusă, confortabile pentru plimbări</li>
+              <li>Suport bun pentru gleznă (model Mid)</li>
+              <li>Aderență rezonabilă pe terenuri ușoare</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Durabilitatea materialelor pe termen lung este inferioară modelelor premium</li>
+              <li>Aderența pe teren umed, noroi sau stâncă poate fi limitată</li>
+              <li>Nu oferă suport suficient pentru terenuri tehnice sau backpacking greu</li>
+              <li>Respirabilitatea este mediocră</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="la-sportiva-trango-tech-gtx">
+            <div class="product-review__header">
+              <span class="section-tag">Best Buy 2026</span>
+              <h3>La Sportiva Trango Tech GTX</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Ghete de munte tehnice
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>La Sportiva
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Membrana Gore-Tex, talpă Vibram Matterhorn, sistem 3D Flex, protecție cauciucată integrală, talpă intermediară anti-șoc
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>560g (marimea 42), inaltime medie-inalta
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>2 ani standard
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Pentru cei care caută performanță maximă și sunt pregătiți să investească în <strong>cele mai bune ghete de munte</strong> pentru ture alpine, trasee dificile sau chiar via ferrata, La Sportiva Trango Tech GTX este o alegere de referință. Aceste ghete combină tehnologia avansată cu durabilitatea necesară în medii montane solicitante.</p><p>Ce face ca La Sportiva Trango Tech GTX să fie remarcabilă? Membrana Gore-Tex oferă impermeabilitate și respirabilitate, esențiale în condiții montane variabile. Talpa Vibram Matterhorn este proiectată pentru aderență maximă pe stâncă, zăpadă și gheață, fiind compatibilă cu colțari semi-automati. Sistemul 3D Flex la nivelul gleznei permite o mișcare naturală și flexibilă, fără a compromite suportul necesar pe teren accidentat. Protecția cauciucată integrală asigură rezistență la abraziune și protecție împotriva rocilor ascuțite.</p><p>Cum se comportă pe teren? Greutatea de aproximativ 560g pe picior (pentru marimea 42) este justificată de construcția robustă și tehnologiile integrate. Aceste ghete oferă un suport excepțional pentru gleznă și o rigiditate controlată, ideală pentru a naviga pe terenuri tehnice. Talpa intermediară anti-șoc absoarbe impacturile, contribuind la confort pe parcursul turelor lungi, chiar și cu încărcătură.</p><p>Cum se compară cu alte ghete tehnice? La Sportiva Trango Tech GTX se situează în vârful segmentului de ghete de munte tehnice. Ele oferă o combinație superioară de greutate, flexibilitate și performanță pe gheață/zăpadă comparativ cu ghetele clasice de trekking. Prețul este pe măsură, situându-se în intervalul 1100-1300 lei, reflectând calitatea superioară și destinația lor pentru activități montane avansate. Dacă căutați o gheată pentru drumeții ușoare, acestea ar putea fi supra-dimensionate.</p><p>Pentru cine sunt recomandate? Aceste ghete sunt destinate montaniarzilor experimentați, alpiniștilor, celor care practică schi de tură sau drumeții pe ghețar, și oricui are nevoie de o gheată robustă, cu aderență excelentă pe teren mixt (stâncă, zăpadă, gheață) și compatibilitate cu colțari.</p><p>Recomandare finală: Pentru performanță de top în condiții montane extreme, La Sportiva Trango Tech GTX sunt o alegere de neegalat. Achiziționați-le dacă sunteți un montaniard dedicat care are nevoie de cea mai bună protecție și aderență.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Performanță maximă pe teren tehnic, stâncă, zăpadă și gheață</li>
+              <li>Aderență excelentă cu talpă Vibram Matterhorn</li>
+              <li>Compatibilitate cu colțari semi-automati</li>
+              <li>Suport excepțional pentru gleznă și gleznă liberă datorită sistemului 3D Flex</li>
+              <li>Construcție foarte durabilă și protecție integrală</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Prețul este ridicat, necesitând o investiție considerabilă</li>
+              <li>Rigiditatea poate fi prea mare pentru drumeții ușoare sau teren plat</li>
+              <li>Greutatea este mai mare comparativ cu ghetele de trekking</li>
+              <li>Perioada de rodaj poate fi mai lungă datorită construcției rigide</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="mammut-ducan-high-gtx-men">
+            <div class="product-review__header">
+              <span class="section-tag">Alegerea Noastra</span>
+              <h3>Mammut Ducan High GTX Men</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Ghete de munte medii-înalte
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Mammut
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Membrana Gore-Tex, talpă Vibram Flextrem, sistem de șireturi elastic, talpă intermediară memo foam, sistem de susținere a gleznei
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>490g (marimea 42), inaltime medie-inalta
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>2 ani standard
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Mammut Ducan High GTX Men se distinge în peisajul <strong>cele mai bune ghete de munte</strong> prin accentul pus pe confortul dinamic și suportul eficient. Aceste ghete sunt concepute pentru drumeții rapide și ture de mai multe zile, unde agilitatea și protecția gleznei sunt esențiale.</p><p>Ce aduce nou Mammut Ducan High GTX Men? Membrana Gore-Tex asigură impermeabilitatea și respirabilitatea. Talpa Vibram Flextrem, cu o aderență excelentă, este optimizată pentru mișcări rapide și terenuri variate. Un element cheie este talpa intermediară memo foam, care se adaptează formei piciorului oferind amortizare personalizată și confort pe termen lung. Sistemul de șireturi elastic permite ajustări rapide și o fixare sigură, iar designul mediu-înalt oferă un suport superior pentru gleznă, reducând riscul de entorse.</p><p>Cum se simt aceste ghete în ture? Greutatea de aproximativ 490g pe picior (pentru mărimea 42) le plasează într-o categorie echilibrată, oferind un bun compromis între suport și greutate. Flexibilitatea tălpii, combinată cu amortizarea memo foam, face ca mersul pe teren accidentat să fie mai puțin obositor. Sistemul de susținere a gleznei, deși confortabil, oferă suficientă stabilitate pentru a naviga pe poteci dificile.</p><p>Cum se compară cu alte modele? Față de ghetele tradiționale mai rigide, Ducan High oferă o senzație mai dinamică și mai puțin restrictivă. Comparativ cu modelele ultra-light, oferă un suport sporit pentru gleznă. Prețul se încadrează în segmentul mediu-superior, în jur de 850-1000 lei, justificat de tehnologiile integrate și calitatea construcției. Sunt o alternativă excelentă la modelele Salomon X Ultra dacă doriți un suport mai pronunțat al gleznei.</p><p>Pentru cine sunt recomandate? Aceste ghete sunt potrivite pentru drumeți activi, care parcurg distanțe considerabile, inclusiv ture de mai multe zile cu rucsac. Sunt ideale pentru cei care apreciază confortul, protecția gleznei și o senzație de mișcare fluidă pe teren montan.</p><p>Recomandare finală: Dacă căutați o gheată de munte care combină confortul dinamic cu suportul gleznei și aderența fiabilă, Mammut Ducan High GTX Men este o alegere excelentă. Achiziționați-le dacă doriți o pereche versatilă pentru ture montane solicitante.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Confort sporit datorită tălpii memo foam personalizate</li>
+              <li>Aderență excelentă pe diverse suprafețe cu talpa Vibram Flextrem</li>
+              <li>Suport eficient pentru gleznă</li>
+              <li>Impermeabilitate și respirabilitate garantate de Gore-Tex</li>
+              <li>Greutate echilibrată pentru performanță și confort</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Sistemul de șireturi elastic, deși practic, ar putea necesita înlocuire după o utilizare intensă</li>
+              <li>Prețul este în segmentul mediu-superior</li>
+              <li>Aderența pe terenuri extrem de înghețate ar putea fi inferioară modelelor specifice de iarnă</li>
+              <li>Durabilitatea pe termen lung a materialelor textile ar putea fi o preocupare pe terenuri extrem de abrazive</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+
+          <section id="comparatie">
+            <h2>Comparatie</h2>
+            <p>Comparația detaliată a principalelor modele de ghete de munte vă ajută să identificați rapid caracteristicile cheie și potrivirea pentru nevoile dvs.</p>
+            <div class="comparison-outer">
+              <div class="comparison-hint">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                Gliseaza pentru a vedea tot tabelul
+              </div>
+              <div class="comparison-wrap">
+                <table class="comparison-table">
+                  <thead>
+                    <tr>
+                      <th>Produs</th>
+                      <th>Tip</th>
+                      <th>Brand</th>
+                      <th>Specificatii cheie</th>
+                      <th>Dimensiuni</th>
+                      <th>PotrivitPentru</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+              <tr>
+                <td><strong>Salomon X Ultra 4 Mid GTX</strong></td>
+                <td>Ghete de munte medii</td>
+                <td>Salomon</td>
+                <td>Gore-Tex, Contagrip MA, ADV-C Chassis</td>
+                <td>400g, medie</td>
+                <td>Drumeții versatile</td>
+              </tr>
+
+              <tr>
+                <td><strong>Merrell Moab 3 Mid Waterproof</strong></td>
+                <td>Ghete de munte medii</td>
+                <td>Merrell</td>
+                <td>M Select DRY, Vibram TC5+, Kinetic Fit</td>
+                <td>450g, medie</td>
+                <td>Raport calitate-pret</td>
+              </tr>
+
+              <tr>
+                <td><strong>Hoka Anacapa Mid GTX</strong></td>
+                <td>Ghete de munte medii</td>
+                <td>Hoka</td>
+                <td>Gore-Tex, Vibram Megagrip, CMEVA</td>
+                <td>430g, medie</td>
+                <td>Amortizare maximă</td>
+              </tr>
+
+              <tr>
+                <td><strong>Columbia Newton Ridge Plus Waterproof II</strong></td>
+                <td>Ghete de munte medii</td>
+                <td>Columbia</td>
+                <td>Omni-Tech, Omni-Grip</td>
+                <td>380g, medie</td>
+                <td>Buget redus</td>
+              </tr>
+
+              <tr>
+                <td><strong>La Sportiva Trango Tech GTX</strong></td>
+                <td>Ghete de munte tehnice</td>
+                <td>La Sportiva</td>
+                <td>Gore-Tex, Vibram Matterhorn, 3D Flex</td>
+                <td>560g, medie-inalta</td>
+                <td>Ture alpine</td>
+              </tr>
+
+              <tr>
+                <td><strong>Mammut Ducan High GTX Men</strong></td>
+                <td>Ghete de munte medii-înalte</td>
+                <td>Mammut</td>
+                <td>Gore-Tex, Vibram Flextrem, Memo Foam</td>
+                <td>490g, medie-inalta</td>
+                <td>Drumeții dinamice</td>
+              </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+
+          <section id="ghid">
+            <h2>Cum alegi cele mai bune ghete de munte pentru nevoile tale?</h2>
+            <div class="guide">
+              <h4>Ce tip de trasee vei parcurge cel mai des?</h4><p>Aceasta este prima întrebare pe care trebuie să ți-o pui. Pentru drumeții ușoare, pe poteci bine bătute, o gheată joasă sau medie, mai flexibilă, poate fi suficientă. Dacă intenționezi să abordezi trasee mai tehnice, cu pietriș, stânci sau denivelări mari, vei avea nevoie de o gheată medie sau înaltă, cu suport sporit pentru gleznă și o talpă mai rigidă. Pentru ture alpine, zăpadă sau gheață, sunt necesare ghete tehnice, compatibile cu colțari. Alegerea tipului de traseu determină rigiditatea, protecția și tipul de talpă necesar.</p><h4>Care este nivelul de impermeabilitate și respirabilitate necesar?</h4><p>Membranele impermeabile precum Gore-Tex sau similare sunt esențiale pentru a menține picioarele uscate în condiții de ploaie, umezeală sau traversări de pâraie. Totuși, impermeabilitatea vine uneori cu un compromis la capitolul respirabilitate, mai ales în zilele caniculare. Dacă drumețiile tale se desfășoară preponderent în condiții uscate și calde, o gheată cu mesh respirabil ar putea fi mai potrivită. Pentru vreme umedă și rece, o membrană impermeabilă este obligatorie. Consideră și tipul de șosete pe care le vei purta, acestea influențând și ele managementul umidității.</p><h4>Ce fel de suport și amortizare cauți?</h4><p>Suportul gleznei este critic, mai ales pe teren accidentat. Ghetele înalte oferă cel mai bun suport, în timp ce cele medii oferă un echilibru bun. Amortizarea este, de asemenea, importantă, mai ales pentru turele lungi. Modelele cu spumă groasă (cum ar fi Hoka) sunt excelente pentru a reduce impactul asupra articulațiilor. Rigiditatea tălpii influențează și ea confortul: o talpă mai rigidă oferă stabilitate pe teren tehnic, dar poate fi mai obositoare pe teren plat. Gândește-te la greutatea rucsacului pe care îl vei căra; un rucsac greu necesită o gheată mai robustă și mai rigidă.</p><h4>Cum te asiguri că alegi mărimea potrivită?</h4><p>Aceasta este probabil cea mai importantă etapă. Ghetele de munte nu ar trebui să fie nici prea strâmte, nici prea largi. Încearcă-le seara, când picioarele sunt puțin umflate. Poartă șosetele pe care le vei folosi la drumeții. Asigură-te că degetele nu ating vârful ghetei când stai în picioare, dar nici nu au prea mult spațiu liber. Când ești pe o pantă, călcâiul nu ar trebui să se ridice prea mult. Dacă este posibil, probează mai multe modele și mărimi de la producători diferiți. Reține că dimensiunile pot varia între branduri. Dacă achiziționezi online, verifică politica de retur. O potrivire corectă previne bășicile și disconfortul.</p>
+            </div>
+          </section>
+
+          <!-- FAQ Section -->
+          <section class="faq-section" id="faq">
+            <h2 class="faq-title">Intrebari Frecvente</h2>
+            
+            <div class="faq-item" id="faq-0">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Cat costa cele mai bune ghete de munte in 2026?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Pretul pentru cele mai bune ghete de munte in 2026 variaza semnificativ in functie de brand, tehnologii si destinatie. Modelele de buget incep de la aproximativ 400 lei, cele medii se situeaza intre 500 si 900 lei, iar ghetele tehnice sau premium pot ajunge la 1100-1300 lei sau chiar mai mult.
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq-1">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Care e diferenta intre ghetele de munte joase, medii si inalte?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Diferenta principala consta in inaltimea peste glezna. Ghetele joase ofera libertate de miscare si sunt usoare, potrivite pentru teren plat sau usor denivelat. Cele medii ofera un echilibru bun intre mobilitate si suport pentru glezna. Ghetele inalte ofera protectie maxima pentru glezna si stabilitate pe teren accidentat, fiind ideale pentru ture lungi sau backpacking.
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq-2">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Merita sa investesc in ghete de munte cu membrana Gore-Tex?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Da, daca planuiesti sa mergi pe munte in conditii meteo variate. Gore-Tex ofera impermeabilitate si respirabilitate de top, mentinand picioarele uscate si confortabile atat in ploaie, cat si in zile mai calduroase, prin permiterea evaporarii transpiratiei.
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq-3">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Cum se intretin corect ghetele de munte?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Dupa fiecare utilizare, curata murdaria cu o perie si apa. Lasa-le sa se usuce natural, la temperatura camerei, departe de surse directe de caldura. Aplica produse specifice de impermeabilizare si ingrijire a pielii sau materialelor textile, conform recomandarilor producatorului, pentru a prelungi durata de viata si performanta.
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq-4">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Pot folosi ghete de munte pentru alergare pe munte?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                In general, nu. Ghetele de munte sunt construite pentru stabilitate, protectie si aderenta pe teren accidentat, fiind mai grele si mai rigide decat pantofii de trail running. Pantofii de trail running sunt mai usori, mai flexibili si ofera o amortizare optimizata pentru viteza si agilitate pe suprafete de munte.
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Author -->
+        <div class="author-line">
+          <div class="author-avatar">DV</div>
+          <div>
+            <div class="author-name">Dan Vasilescu</div>
+            <div class="author-role">Expert Sport si Outdoor</div>
+          </div>
+        </div>
+
+        <!-- Similar Articles -->
+        <SimilarArticles
+          currentSlug="cele-mai-bune-ghete-de-munte"
+          currentCategory="sport-timp-liber"
+          articles={allArticles}
+        />
+
+        <!-- Prev/Next Navigation -->
+        <PrevNextNav
+          currentSlug="cele-mai-bune-ghete-de-munte"
+          currentCategory="sport-timp-liber"
+          articles={allArticles}
+        />
+      </div>
+    </div>
+  </article>
+
+  <script>
+    document.querySelectorAll('.comparison-outer').forEach(outer => {
+      const wrap = outer.querySelector('.comparison-wrap');
+      if (!wrap) return;
+      function checkScroll() {
+        const canScroll = wrap.scrollWidth > wrap.clientWidth;
+        const atEnd = wrap.scrollLeft + wrap.clientWidth >= wrap.scrollWidth - 2;
+        outer.classList.toggle('can-scroll', canScroll && !atEnd);
+      }
+      checkScroll();
+      wrap.addEventListener('scroll', checkScroll, { passive: true });
+      window.addEventListener('resize', checkScroll, { passive: true });
+    });
+
+    const tocLinks = document.querySelectorAll('#toc-desktop-list a[data-toc-id]');
+    if (tocLinks.length > 0) {
+      const ids = Array.from(tocLinks).map(a => a.dataset.tocId);
+      const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              tocLinks.forEach(a => a.classList.remove('active'));
+              const match = Array.from(tocLinks).find(a => a.dataset.tocId === entry.target.id);
+              match?.classList.add('active');
+            }
+          }
+        },
+        { rootMargin: '-80px 0px -60% 0px', threshold: 0 }
+      );
+      sections.forEach(s => observer.observe(s));
+    }
+  </script>
+</Layout>
