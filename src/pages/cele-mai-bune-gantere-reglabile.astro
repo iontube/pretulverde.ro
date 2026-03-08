@@ -1,0 +1,632 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SimilarArticles from '../components/SimilarArticles.astro';
+import PrevNextNav from '../components/PrevNextNav.astro';
+import keywordsData from '../../keywords.json';
+
+export const frontmatter = {
+  title: "Cele mai bune gantere reglabile",
+  excerpt: "Cauti cele mai bune gantere reglabile pentru a-ti optimiza antrenamentul acasa sau la sala, fara a investi intr-un set complet de greutati? Daca spatiul este limitat si vrei versatilitate, ganterele reglabile sunt solutia ideala.",
+  image: "/images/articles/cele-mai-bune-gantere-reglabile.webp",
+  category: "Sport si Timp Liber",
+  categorySlug: "sport-timp-liber",
+  date: "2025-04-27T13:00:00.000Z",
+  modifiedDate: "2026-03-08T08:38:00.847Z",
+  author: "Dan Vasilescu",
+  authorRole: "Expert Sport si Outdoor",
+  authorBio: "Dan este pasionat de sport si activitati in aer liber. Testeaza biciclete, echipament fitness si accesorii outdoor, punand accent pe performanta si raportul calitate-pret."
+};
+
+const breadcrumbs = [
+  { name: "Acasa", url: "/" },
+  { name: "Sport si Timp Liber", url: "/sport-timp-liber/" },
+  { name: "Cele mai bune gantere reglabile", url: "/cele-mai-bune-gantere-reglabile/" }
+];
+
+const faq = [
+  { question: "Cat costa cele mai bune gantere reglabile in Romania?", answer: "Preturile pentru cele mai bune gantere reglabile in Romania variaza semnificativ. Modelele generice, cu greutati medii, pot costa intre 800 si 1500 lei. Seturile de la branduri cunoscute, precum Bowflex sau PowerBlock, cu greutati mari si sisteme premium, pot ajunge la 2000-3500 lei. Pretul depinde de marca, greutatea maxima, sistemul de ajustare si calitatea materialelor." },
+  { question: "Care este greutatea maxima recomandata pentru gantere reglabile acasa?", answer: "Greutatea maxima recomandata depinde de nivelul tau. Pentru majoritatea barbatilor, un set de gantere reglabile care ajunge la 25-30 kg per gantera este suficient pentru o varietate mare de exercitii. Femeile sau cei care se antreneaza pentru anduranta pot alege seturi cu greutate maxima de 15-20 kg. Avansatii pot opta pentru modele de peste 30 kg." },
+  { question: "Merita sa cumpar gantere reglabile in loc de un set complet?", answer: "Da, merita daca spatiul este limitat sau daca vrei sa economisesti. Un set complet de gantere (de la 1 kg la 30 kg) ar ocupa mult spatiu si ar costa mult mai mult. Ganterele reglabile ofera versatilitate si economie de spatiu, fiind ideale pentru antrenamentul acasa. Totusi, schimbarea greutatii dureaza mai mult decat la ganterele fixe." },
+  { question: "Ce inseamna sistemul \"dial\" la ganterele reglabile?", answer: "Sistemul \"dial\" se refera la mecanismul de ajustare a greutatii prin rotirea unui disc sau buton, de obicei situat pe manerul ganterei. Acesta selecteaza greutatea dorita, modificand automat numarul de placi de greutate active. Este un sistem rapid si eficient, popular la multe modele de gantere reglabile, precum Bowflex sau Fitness Reality." },
+  { question: "Cum intretin ganterele reglabile pentru a le prelungi durata de viata?", answer: "Pentru a prelungi durata de viata a ganterelor reglabile, curata-le regulat de praf si transpiratie cu o carpa umeda. Evita sa le scapi pe jos, mai ales de la inaltime, pentru a proteja mecanismul de blocare. Lubrifiaza ocazional mecanismul, daca producatorul recomanda, si asigura-te ca placile de greutate sunt corect asezate in baza de depozitare pentru a preveni deteriorarea." }
+];
+
+const toc = [
+  { title: "Set Ganteră Reglabilă Dumbbell 2-24 kg", id: "set-gantera-reglabila-dumbbell-2-24-kg" },
+  { title: "Set Ganteră Reglabilă Bowflex SelectTech 552i", id: "set-gantera-reglabila-bowflex-selecttech-552i" },
+  { title: "Set Ganteră Reglabilă ATX Mega-Tec 2.5-25 kg", id: "set-gantera-reglabila-atx-mega-tec-25-25-kg" },
+  { title: "Set Ganteră Reglabilă PowerBlock Sport 24", id: "set-gantera-reglabila-powerblock-sport-24" },
+  { title: "Set Ganteră Reglabilă Ajustabila 2-32 kg", id: "set-gantera-reglabila-ajustabila-2-32-kg" },
+  { title: "Set Ganteră Reglabilă Fitness Reality 2.5-25 kg", id: "set-gantera-reglabila-fitness-reality-25-25-kg" },
+  { title: "Comparatie", id: "comparatie" },
+  { title: "Cum alegi cele mai bune gantere reglabile pentru antrenamentul tău?", id: "ghid" },
+  { title: "Intrebari Frecvente", id: "faq" }
+];
+
+// Get all articles for similar articles component
+const allArticles = keywordsData.completed.map(item => ({
+  title: item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1),
+  slug: item.keyword.toLowerCase()
+    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+    .replace(/ș/g, 's').replace(/ț/g, 't')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
+  excerpt: item.excerpt || '',
+  image: `/images/articles/${item.keyword.toLowerCase()
+    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+    .replace(/ș/g, 's').replace(/ț/g, 't')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}.webp`,
+  category: item.category,
+  categorySlug: item.categorySlug,
+  date: item.date || new Date().toISOString()
+}));
+---
+
+<Layout
+  title="Cele mai bune gantere reglabile - PretulVerde"
+  description="Cauti cele mai bune gantere reglabile pentru a-ti optimiza antrenamentul acasa sau la sala, fara a investi intr-un set complet de greutati? Daca spatiul este limitat si vrei versatilitate, ganterele reglabile sunt solutia ideala."
+  image="/images/articles/cele-mai-bune-gantere-reglabile.webp"
+  type="article"
+  publishedTime="2025-04-27T13:00:00.000Z"
+  modifiedTime="2026-03-08T08:38:00.847Z"
+  author="Dan Vasilescu"
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <article class="article-page">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+      <ol>
+        <li><a href="/">Acasa</a></li>
+        <li>Sport si Timp Liber</li>
+        <li><span>Cele mai bune gantere reglabile</span></li>
+      </ol>
+    </nav>
+
+    <!-- Title -->
+    <h1 class="article-page-title">Cele mai bune gantere reglabile</h1>
+
+    <!-- Meta -->
+    <div class="article-page-meta">
+      <span>Dan Vasilescu</span>
+      <span>&middot;</span>
+      <span>Publicat: 27 aprilie 2025</span>
+      <span>&middot;</span>
+      <span>Actualizat: 8 martie 2026</span>
+    </div>
+
+    <!-- Featured Image -->
+    <img src="/images/articles/cele-mai-bune-gantere-reglabile.webp" alt="Cele mai bune gantere reglabile" class="article-page-image" width="800" height="600" loading="eager">
+
+    <!-- Two-column layout: content + TOC sidebar on RIGHT -->
+    <div class="article-layout">
+      <aside class="toc-sidebar">
+        <p class="toc-sidebar-title">Cuprins</p>
+        <ol class="toc-sidebar-list" id="toc-desktop-list">
+          {toc.map(item => (
+            <li><a href={`#${item.id}`} data-toc-id={item.id}>{item.title}</a></li>
+          ))}
+        </ol>
+      </aside>
+
+      <div>
+        <!-- Mobile TOC (expandable) -->
+        <div class="toc-mobile" id="toc-mobile">
+          <button class="toc-mobile-toggle" onclick="this.parentElement.classList.toggle('open')">
+            Cuprins
+            <span class="toc-chevron">&#9660;</span>
+          </button>
+          <ol class="toc-mobile-list">
+            {toc.map(item => (
+              <li><a href={`#${item.id}`}>{item.title}</a></li>
+            ))}
+          </ol>
+        </div>
+
+        <!-- Article Content -->
+        <div class="article-content">
+          <section id="intro">
+            <p>Cauti cele mai bune gantere reglabile pentru a-ti optimiza antrenamentul acasa sau la sala, fara a investi intr-un set complet de greutati? Daca spatiul este limitat si vrei versatilitate, ganterele reglabile sunt solutia ideala. Ele iti permit sa ajustezi greutatea rapid, oferindu-ti posibilitatea de a progresa in diverse exercitii, de la cele pentru forta la cele pentru anduranta, totul cu un singur set de echipament. Alegerea potrivita depinde de bugetul tau, de greutatea maxima necesara si de sistemul de ajustare preferat.</p><p>Ce ar trebui sa stii cand cauti cele mai bune gantere reglabile? Principalul aspect este mecanismul de schimbare a greutatii: fie prin rotirea unui disc (tip dial), fie prin introducerea/scoaterea manuala a placilor. Fiecare sistem are avantaje si dezavantaje in termeni de viteza, fiabilitate si pret. De asemenea, greutatea maxima pe gantera, materialele din care sunt fabricate (otel, fonta, plastic rezistent) si ergonomia manerului sunt factori critici pentru o experienta de antrenament sigura si eficienta. Pretul poate varia semnificativ, de la cateva sute la cateva mii de lei, in functie de aceste caracteristici.</p><p>In acest articol, iti prezentam o selectie de cele mai bune gantere reglabile disponibile pe piata din Romania, analizand performanta, durabilitatea si raportul calitate-pret. Vom compara modele cu sisteme de ajustare diferite, mentionand specificatii tehnice si preturi concrete, pentru a te ajuta sa faci cea mai informata decizie pentru obiectivele tale de fitness.</p>
+          </section>
+
+
+          <article class="product-review" id="set-gantera-reglabila-dumbbell-2-24-kg">
+            <div class="product-review__header">
+              <span class="section-tag">Alegerea Noastra</span>
+              <h3>Set Ganteră Reglabilă Dumbbell 2-24 kg</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Ganteră reglabilă
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Generic
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Greutate ajustabila de la 2 kg la 24 kg per gantera, sistem de blocare prin rotire disc, manere ergonomice cu priza anti-alunecare
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>Aprox. 40 cm lungime per gantera
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>12 luni
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Acest set de gantere reglabile de la un brand generic ofera o solutie completa pentru antrenamentul la domiciliu, acoperind o plaja larga de greutati, de la 2 kg la 24 kg per gantera. Mecanismul de ajustare prin rotirea discului este rapid si intuitiv. Pur si simplu selectezi greutatea dorita, iar discurile se fixeaza automat. Acest lucru este un avantaj major fata de sistemele care necesita introducerea manuala a placilor, economisind timp pretios intre seturi.</p><p>Cum functioneaza acest sistem de ajustare? Mecanismul intern permite rotirea discului exterior, care la randul sau angreneaza un sistem de pini ce fixeaza placile de greutate corespunzatoare. Procesul de schimbare a greutatii dureaza cateva secunde, permitand o tranzitie fluida intre exercitii cu intensitati diferite. Manerele sunt acoperite cu un material cauciucat pentru o priza sigura, chiar si atunci cand mainile transpira.</p><p>Pentru cine sunt potrivite aceste gantere? Sunt ideale pentru persoanele care doresc sa progreseze constant in forta si masa musculara, fara a fi limitate de greutatea maxima a unui set fix. Pot fi folosite pentru o varietate mare de exercitii, de la flotari cu priza in gantera, la ramat, indreptari, genuflexiuni cu gantera, impins deasupra capului si multe altele. Sunt o alternativa excelenta la abonamentul la sala, mai ales pentru cei care au un program incarcat.</p><p>Comparativ cu ganterele reglabile tip "dial" de la branduri premium, acest model generic poate prezenta mici diferente la capitolul finisaje sau durabilitatea pe termen foarte lung a mecanismului. Totusi, pentru pretul sau, ofera un raport calitate-pret excelent. Greutatea maxima de 24 kg este suficienta pentru majoritatea utilizatorilor casnici, inclusiv pentru cei avansati in anumite tipuri de exercitii.</p><p>Un dezavantaj ar putea fi dimensiunea ganterei la greutati mari; ele devin mai lungi pe masura ce adaugi greutate, ceea ce poate afecta confortul in anumite exercitii care necesita o miscare mai compacta. De asemenea, sistemul de blocare, desi rapid, necesita atentie pentru a te asigura ca este complet securizat inainte de fiecare set. Fiind un produs generic, garantia este standard, de 12 luni, ceea ce este in linie cu piata, dar nu exceptional.</p><p>Recomandarea noastra este sa acorzi atentie felului in care depozitezi ganterele. Mecanismul de blocare poate fi sensibil la socuri puternice. Daca prioritizezi o plaja larga de greutati la un pret accesibil si un sistem de ajustare rapid, acest set de 2-24 kg este o alegere solida. Pretul acestui set se situeaza in jur de 1200-1500 lei, in functie de oferte.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Plaja larga de greutati (2-24 kg) per gantera</li>
+              <li>Ajustare rapida si usoara a greutatii prin sistemul "dial"</li>
+              <li>Economie de spatiu considerabila fata de un set complet de gantere</li>
+              <li>Manere ergonomice cu priza buna</li>
+              <li>Raport calitate-pret avantajos pentru versatilitatea oferita</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Dimensiune mai mare a ganterei la greutati ridicate</li>
+              <li>Mecanismul poate fi mai putin robust decat la brandurile premium</li>
+              <li>Necesita atentie sporita la fixarea corecta a greutatii</li>
+              <li>Garantie standard de 12 luni</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="set-gantera-reglabila-bowflex-selecttech-552i">
+            <div class="product-review__header">
+              <span class="section-tag">Premium</span>
+              <h3>Set Ganteră Reglabilă Bowflex SelectTech 552i</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Ganteră reglabilă
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Bowflex
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Greutate ajustabila de la 2 kg la 24.9 kg (5-52.5 lbs) per gantera, sistem de selectare a greutatii prin rotirea unui disc, manere confortabile, baza de depozitare inclusa
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>Aprox. 40 cm lungime x 20 cm latime (baza)
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>2 ani (inclusiv mecanismul)
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Bowflex SelectTech 552i sunt considerate printre cele mai bune gantere reglabile de pe piata, recunoscute pentru calitatea constructiei si usurinta in utilizare. Acest set inlocuieste pana la 15 perechi de gantere traditionale, oferind o flexibilitate remarcabila. Greutatea poate fi ajustata de la 2 kg pana la 24.9 kg (aproximativ 52.5 lbs) printr-o simpla rotire a unui disc.</p><p>Cum se schimba greutatea la Bowflex SelectTech 552i? Sistemul "dial" este extrem de eficient. Pur si simplu pozitionezi gantera pe baza sa, rotești discul la greutatea dorita, iar pinul de blocare selectează automat placile de greutate necesare. Acest proces durează doar cateva secunde si este foarte sigur. Baza de depozitare nu doar ca mentine ordinea, dar si protejeaza mecanismul de blocare.</p><p>Pentru cine sunt recomandate? Aceste gantere sunt potrivite atat pentru incepatori, cat si pentru atleti experimentati care cauta sa economiseasca spatiu si timp. Plaja de greutati acopera o gama larga de exercitii, de la cele de incalzire si reabilitare, pana la antrenamente de forta intense. Sunt o investitie pe termen lung pentru oricine doreste sa isi construiasca un home gym complet si eficient.</p><p>Comparativ cu alte modele reglabile, Bowflex 552i se distinge prin finisajele premium, durabilitatea materialelor (otel, plastic de inalta rezistenta) si designul ergonomic. Greutatea maxima de 24.9 kg este suficienta pentru majoritatea utilizatorilor, insa pentru cei care lucreaza cu greutati mult mai mari, exista si modele superioare de la acelasi producator (ex. 1090i). Totusi, 552i ramane cel mai popular model.</p><p>Care sunt dezavantajele? Unul dintre principalele dezavantaje este pretul, care este considerabil mai ridicat fata de modelele generice. De asemenea, desi compacte pe baza, ganterele in sine pot fi voluminoase la greutati maxime, comparativ cu ganterele traditionale. Mecanismul de blocare, desi fiabil, poate fi sensibil la murdarie sau praf acumulat in timp, necesitand ocazional o curatare atenta. In plus, greutatea maxima de 24.9 kg poate fi insuficienta pentru culturistii foarte avansati.</p><p>Recomandarea finala pentru Bowflex SelectTech 552i este clara: daca bugetul permite si cauti cea mai buna combinatie de calitate, durabilitate, usurinta in utilizare si design, acestea sunt printre cele mai bune gantere reglabile pe care le poti cumpara. Pretul lor in Romania variaza intre 2500 si 3500 lei, in functie de magazin si reduceri.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Calitate exceptionala a constructiei si durabilitate</li>
+              <li>Sistem de ajustare rapid si sigur (rotire disc)</li>
+              <li>Design compact si elegant cu baza de depozitare</li>
+              <li>Plaja de greutati versatila (2-24.9 kg)</li>
+              <li>Manere confortabile si ergonomice</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Pret ridicat comparativ cu alte optiuni</li>
+              <li>Greutatea maxima poate fi insuficienta pentru unii utilizatori avansati</li>
+              <li>Pot fi voluminoase la greutati maxime</li>
+              <li>Mecanismul poate necesita curatare periodica</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="set-gantera-reglabila-atx-mega-tec-25-25-kg">
+            <div class="product-review__header">
+              <span class="section-tag">Raport Calitate-Pret</span>
+              <h3>Set Ganteră Reglabilă ATX Mega-Tec 2.5-25 kg</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Ganteră reglabilă
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>ATX
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Greutate ajustabila de la 2.5 kg la 25 kg per gantera, sistem de blocare cu pin, manere din otel cromat, discuri din fonta
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>Aprox. 38 cm lungime per gantera
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>24 luni
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Setul de gantere reglabile ATX Mega-Tec 2.5-25 kg se adreseaza celor care cauta o alternativa robusta si fiabila, cu un sistem de ajustare diferit fata de "dial". Aceste gantere utilizeaza un sistem de blocare cu pini, unde selectezi greutatea dorita prin introducerea sau scoaterea manuala a placilor de pe bara.</p><p>Cum functioneaza acest sistem? Bara ganterei are un maner central, iar pe ambele capete se infileteaza sau se gliseaza discuri de greutate. Blocarea se face cu ajutorul unor coliere cu filet sau cu sistem "quick-release". Acest sistem, desi mai lent la schimbarea greutatii, este considerat de multi ca fiind mai sigur si mai durabil pe termen lung, fiind mai putin predispus la defectiuni mecanice.</p><p>Pentru cine sunt cele mai potrivite? Aceste gantere sunt ideale pentru utilizatorii care nu au nevoie sa schimbe greutatea foarte des in timpul antrenamentului. Sunt potrivite pentru antrenamente de forta, unde greutatea este setata pentru o perioada mai lunga (ex. 5 seturi de 8 repetari). Materialele de calitate (otel, fonta) le fac o optiune excelenta pentru antrenamente intense, unde fiabilitatea este primordiala.</p><p>Comparativ cu modelele "dial", acest sistem este mai mecanic si mai simplu. Dezavantajul principal este timpul necesar pentru schimbarea greutatii. Daca vrei sa faci superseturi sau sa treci rapid de la un exercitiu la altul cu greutati diferite, acest model nu este cel mai eficient. Insa, pentru antrenamente standard, robustetea sa este un mare plus.</p><p>Un dezavantaj real este viteza de ajustare a greutatii. Schimbarea placilor poate dura de la 30 de secunde la 1-2 minute, in functie de cat de rapid desfaceti colierele si puneti placile. De asemenea, stocarea lor poate fi mai putin ordonata daca nu ai un suport dedicat, deoarece placile sunt separate. Manerele din otel cromat pot deveni alunecoase daca mainile transpira, desi calitatea materialului este buna.</p><p>Recomandarea noastra: Daca prioritatea ta este durabilitatea, fiabilitatea si un pret mai accesibil fata de brandurile de top cu sistem "dial", si nu te deranjeaza sa petreci cateva momente in plus la schimbarea greutatii, atunci ATX Mega-Tec 2.5-25 kg este o alegere excelenta. Acestea se gasesc in jur de 1000-1300 lei, oferind o valoare foarte buna pentru echipamentul de sala acasa. Sunt printre cele mai bune gantere reglabile pentru un buget controlat.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Constructie robusta din otel si fonta</li>
+              <li>Sistem de blocare cu pini, foarte fiabil pe termen lung</li>
+              <li>Greutate maxima de 25 kg, potrivita pentru majoritatea antrenamentelor</li>
+              <li>Pret mai accesibil fata de modelele cu sistem "dial" de top</li>
+              <li>Discuri de greutate precise</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Schimbarea greutatii este mai lenta si necesita mai mult efort</li>
+              <li>Necesita coliere de blocare sigure (pot fi pierdute)</li>
+              <li>Manerele din otel pot deveni alunecoase</li>
+              <li>Stocarea poate fi mai putin organizata fara accesorii suplimentare</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="set-gantera-reglabila-powerblock-sport-24">
+            <div class="product-review__header">
+              <span class="section-tag">Best Buy 2026</span>
+              <h3>Set Ganteră Reglabilă PowerBlock Sport 24</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Ganteră reglabilă
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>PowerBlock
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Greutate ajustabila de la 1.1 kg la 24 kg (5-52.5 lbs) per gantera, sistem de blocare cu pini retractabili, design compact si patrat
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>Aprox. 35 cm lungime x 15 cm latime (la greutate maxima)
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>3 ani
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>PowerBlock Sport 24 sunt o optiune unica pe piata, oferind un design compact, patrat, care permite o miscare mai naturala in anumite exercitii, comparativ cu ganterele rotunde. Sistemul de ajustare a greutatii se bazeaza pe pini, similar cu ATX, dar cu o implementare diferita, mai rapida.</p><p>Cum functioneaza acest sistem de pini? Pe partea superioara a ganterei se afla un selector. Cand il tragi si il rotesti, poti selecta greutatea dorita. Apoi, introduci pinul principal in pozitia de blocare. Acest sistem permite schimbarea greutatii in aproximativ 10-15 secunde, fiind mult mai rapid decat sistemul clasic cu coliere.</p><p>Pentru cine sunt aceste gantere? Datorita designului lor compact si a greutatii minime de 1.1 kg, sunt excelente pentru o varietate mare de antrenamente, de la cele de forta la cele de anduranta sau chiar exercitii de mobilitate. Utilizatorii care au spatiu limitat si cauta o solutie eficienta vor aprecia acest model. De asemenea, sunt potrivite pentru persoanele care fac antrenamente tip circuit.</p><p>Comparativ cu Bowflex 552i, PowerBlock Sport 24 sunt mai compacte la greutati maxime si au un sistem de blocare mai rapid decat modelele traditionale cu pini/coliere. Totusi, designul patrat poate fi mai putin familiar la inceput. Greutatea maxima de 24 kg este similara cu Bowflex 552i, dar plaja de greutati incepe de la o valoare mult mai mica (1.1 kg), ceea ce le face mai versatile pentru recuperare sau exercitii specifice.</p><p>Care sunt dezavantajele? Designul patrat, desi compact, poate fi inconfortabil pentru unii utilizatori in anumite pozitii ale mainii. Sistemul de pini, desi rapid, necesita o atentie sporita la alinierea corecta pentru a se fixa complet. Greutatea maxima de 24 kg, desi decenta, poate fi o limitare pentru culturistii avansati. De asemenea, pretul este in segmentul mediu-superior, similar cu Bowflex.</p><p>Recomandarea noastra: Daca vrei cele mai bune gantere reglabile care combina un design compact, un sistem de ajustare rapid si o plaja extinsa de greutati, PowerBlock Sport 24 sunt o alegere excelenta. Pretul lor in Romania se situeaza intre 2200 si 3000 lei. Sunt o investitie buna pentru un antrenament versatil si eficient acasa, mai ales daca spatiul este o problema.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Design compact si patrat, economiseste spatiu</li>
+              <li>Sistem de ajustare rapid (aproximativ 10-15 secunde)</li>
+              <li>Plaja larga de greutati, de la 1.1 kg la 24 kg</li>
+              <li>Pini de blocare robusti si siguri</li>
+              <li>Garantie extinsa de 3 ani</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Designul patrat poate fi incomod pentru unii utilizatori</li>
+              <li>Greutatea maxima poate fi insuficienta pentru avansati</li>
+              <li>Pretul este considerabil</li>
+              <li>Necesita alinierea precisa a pinilor pentru blocare</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="set-gantera-reglabila-ajustabila-2-32-kg">
+            <div class="product-review__header">
+              <span class="section-tag">Pentru Buget Mic</span>
+              <h3>Set Ganteră Reglabilă Ajustabila 2-32 kg</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Ganteră reglabilă
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Generic
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Greutate ajustabila de la 2 kg la 32 kg per gantera, sistem de rotire disc, manere confortabile
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>Aprox. 45 cm lungime per gantera
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>12 luni
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Acest set de gantere reglabile de la un brand generic, cu o greutate maxima de 32 kg per gantera, este ideal pentru cei care cauta sa maximizeze greutatea la un buget redus. Sistemul de ajustare este prin rotirea unui disc, similar cu modelele mai scumpe, ceea ce permite schimbari rapide ale greutatii.</p><p>Cum functioneaza acest sistem? La fel ca la alte modele "dial", rotirea discului selector ajusteaza greutatea. Mecanismul intern selecteaza placile de greutate necesare. Este un sistem eficient pentru antrenamente rapide, unde vrei sa treci de la un exercitiu la altul fara pierdere de timp.</p><p>Pentru cine este acest produs? Este perfect pentru persoanele care doresc sa progreseze semnificativ in forta si masa musculara, avand nevoie de greutati mai mari. Cei care fac antrenamente grele, cum ar fi genuflexiuni cu gantere, indreptari sau impins cu gantere, vor beneficia de greutatea maxima de 32 kg. Este o solutie economica pentru a avea o sala de forta acasa, fara a investi in gantere separate pentru fiecare greutate.</p><p>Comparativ cu alte modele generice, plusul major este greutatea maxima de 32 kg. Insa, la aceasta greutate, gantera devine destul de lunga si greu de manevrat in anumite exercitii. Calitatea constructiei poate varia, iar mecanismul "dial" poate fi mai putin rafinat decat la brandurile premium. Este important sa verifici bine fixarea greutatii inainte de fiecare utilizare.</p><p>Care sunt dezavantajele? La greutati mari, gantera devine foarte lunga, ceea ce poate afecta echilibrul si confortul in anumite miscari. Mecanismul de ajustare, desi rapid, poate fi mai putin precis sau durabil pe termen lung decat la branduri de renume. Finisajele pot fi mai simple, iar manerele pot fi mai putin ergonomice. Garantia standard de 12 luni este un punct slab fata de alte optiuni.</p><p>Recomandarea noastra pentru acest set este clara: daca bugetul este principalul factor si ai nevoie de greutati mari (pana la 32 kg), acestea sunt printre cele mai bune gantere reglabile pe care le poti gasi la un pret accesibil. Pretul variaza intre 900 si 1300 lei. Totusi, fii pregatit pentru posibile compromisuri la capitolul finisaje si durabilitatea pe termen foarte lung a mecanismului. Sunt o solutie buna pentru inceput sau pentru utilizatori ocazionali.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Greutate maxima mare (32 kg) la un pret accesibil</li>
+              <li>Sistem de ajustare rapid prin rotire disc</li>
+              <li>Economie de spatiu semnificativa</li>
+              <li>Potrivit pentru antrenamente de forta intense</li>
+              <li>Ofera o plaja larga de greutati pentru progresie</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Ganterele devin foarte lungi la greutati mari</li>
+              <li>Calitatea constructiei si a mecanismului poate fi inferioara brandurilor premium</li>
+              <li>Manerele pot fi mai putin confortabile</li>
+              <li>Garantie standard de 12 luni</li>
+              <li>Necesita atentie la fixarea corecta a greutatii</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="set-gantera-reglabila-fitness-reality-25-25-kg">
+            <div class="product-review__header">
+              <span class="section-tag">Alegerea Noastra</span>
+              <h3>Set Ganteră Reglabilă Fitness Reality 2.5-25 kg</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Ganteră reglabilă
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Fitness Reality
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Greutate ajustabila de la 2.5 kg la 25 kg per gantera, sistem de rotire disc cu blocare sigura, manere ergonomice cu priza anti-alunecare, baza de depozitare inclusa
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>Aprox. 40 cm lungime per gantera
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>24 luni
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Fitness Reality ofera un set de gantere reglabile care se potriveste excelent nevoilor majoritatii utilizatorilor casnici. Cu o greutate maxima de 25 kg per gantera si un sistem de ajustare rapid prin rotire disc, aceste gantere sunt o solutie completa pentru antrenamentul de forta acasa.</p><p>Cum functioneaza acest sistem de ajustare? Mecanismul este similar cu cel al altor modele "dial". Rotești un disc de pe maner pentru a selecta greutatea dorită, iar sistemul de pini interne fixează plăcile corespunzătoare. Procesul este rapid, durând doar câteva secunde, și permite tranziții fluide între exerciții sau seturi.</p><p>Pentru cine sunt potrivite aceste gantere? Sunt ideale pentru persoanele care încep un program de antrenament acasă sau pentru cei care doresc să își extindă opțiunile de antrenament fără a ocupa mult spațiu. Greutatea maximă de 25 kg este suficientă pentru o gamă largă de exerciții, inclusiv cele pentru picioare, spate, piept și umeri. Baza de depozitare inclusă ajută la menținerea ordinii și la protejarea mecanismului.</p><p>Comparativ cu alte modele similare, Fitness Reality se distinge prin calitatea materialelor și sistemul de blocare sigur, care minimizează riscul de alunecare a plăcilor. Manerele sunt bine proiectate pentru o priză confortabilă și stabilă, chiar și în timpul antrenamentelor intense. Durata de viață a mecanismului este, de asemenea, un punct forte, susținut de o garanție de 24 de luni.</p><p>Care sunt dezavantajele? Greutatea maximă de 25 kg poate fi limitativă pentru culturiștii avansați sau cei care lucrează cu greutăți foarte mari. Deși sistemul de blocare este sigur, ca la orice mecanism "dial", este important să te asiguri că greutatea este complet fixată înainte de fiecare utilizare. Prețul este în segmentul mediu, ceea ce poate fi un factor pentru cei cu un buget foarte restrâns.</p><p>Recomandarea noastră: Setul Fitness Reality 2.5-25 kg reprezintă un echilibru excelent între versatilitate, calitate și preț. Sunt printre cele mai bune gantere reglabile pentru majoritatea utilizatorilor casnici. Costă în jur de 1600-2000 lei și oferă o soluție durabilă și eficientă pentru antrenamentul de forță acasă. Investiția merită pentru beneficiile aduse antrenamentului.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Greutate maximă de 25 kg, potrivită pentru majoritatea utilizatorilor</li>
+              <li>Sistem de ajustare rapid și sigur (rotire disc)</li>
+              <li>Bază de depozitare inclusă pentru organizare</li>
+              <li>Manere ergonomice și confortabile</li>
+              <li>Garanție extinsă de 24 luni</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Greutatea maximă poate fi insuficientă pentru unii utilizatori avansați</li>
+              <li>Prețul este în segmentul mediu, nu cel mai ieftin</li>
+              <li>Necesită atenție la fixarea completă a greutății</li>
+              <li>Dimensiunea ganterei la greutăți mari poate fi incomodă</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+
+          <section id="comparatie">
+            <h2>Comparatie</h2>
+            <p>Iată o comparație rapidă a principalelor modele de gantere reglabile analizate, pentru a te ajuta să identifici rapid care se potrivește cel mai bine nevoilor tale de antrenament și spațiului disponibil.</p>
+            <div class="comparison-outer">
+              <div class="comparison-hint">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                Gliseaza pentru a vedea tot tabelul
+              </div>
+              <div class="comparison-wrap">
+                <table class="comparison-table">
+                  <thead>
+                    <tr>
+                      <th>Produs</th>
+                      <th>Tip</th>
+                      <th>Brand</th>
+                      <th>Specificatii cheie</th>
+                      <th>Dimensiuni</th>
+                      <th>PotrivitPentru</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+              <tr>
+                <td><strong>Generic 2-24 kg</strong></td>
+                <td>Ganteră reglabilă</td>
+                <td>Generic</td>
+                <td>2-24 kg, rotire disc</td>
+                <td>40 cm lungime</td>
+                <td>Buget, versatilitate</td>
+              </tr>
+
+              <tr>
+                <td><strong>Bowflex SelectTech 552i</strong></td>
+                <td>Ganteră reglabilă</td>
+                <td>Bowflex</td>
+                <td>2-24.9 kg, rotire disc, premium</td>
+                <td>40 cm lungime</td>
+                <td>Calitate, design, utilizare frecventă</td>
+              </tr>
+
+              <tr>
+                <td><strong>ATX Mega-Tec 2.5-25 kg</strong></td>
+                <td>Ganteră reglabilă</td>
+                <td>ATX</td>
+                <td>2.5-25 kg, sistem cu pini/coliere</td>
+                <td>38 cm lungime</td>
+                <td>Robustete, antrenament forță</td>
+              </tr>
+
+              <tr>
+                <td><strong>PowerBlock Sport 24</strong></td>
+                <td>Ganteră reglabilă</td>
+                <td>PowerBlock</td>
+                <td>1.1-24 kg, pini retractabili, compact</td>
+                <td>35 cm lungime</td>
+                <td>Spațiu limitat, viteză ajustare</td>
+              </tr>
+
+              <tr>
+                <td><strong>Generic 2-32 kg</strong></td>
+                <td>Ganteră reglabilă</td>
+                <td>Generic</td>
+                <td>2-32 kg, rotire disc, greutate mare</td>
+                <td>45 cm lungime</td>
+                <td>Buget, greutăți mari</td>
+              </tr>
+
+              <tr>
+                <td><strong>Fitness Reality 2.5-25 kg</strong></td>
+                <td>Ganteră reglabilă</td>
+                <td>Fitness Reality</td>
+                <td>2.5-25 kg, rotire disc, bază inclusă</td>
+                <td>40 cm lungime</td>
+                <td>Echilibru, confort</td>
+              </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+
+          <section id="ghid">
+            <h2>Cum alegi cele mai bune gantere reglabile pentru antrenamentul tău?</h2>
+            <div class="guide">
+              <p><h4>Ce greutate maximă ar trebui să aleg?</h4><p>Alegerea greutății maxime depinde de nivelul tău actual de fitness și de obiectivele tale. Pentru începători, un set care merge până la 15-20 kg per ganteră este adesea suficient. Cei intermediari sau avansați ar trebui să vizeze 25-30 kg sau chiar mai mult, mai ales dacă se antrenează pentru forță sau hipertrofie. Analizează exercițiile pe care le faci cel mai des și greutățile pe care le folosești la sală pentru a estima necesarul.</p></p><p><h4>Ce sistem de ajustare este mai bun: "dial" sau cu pini?</h4><p>Sistemul "dial" (rotire disc) este, în general, mai rapid și mai convenabil pentru schimbări frecvente de greutate în timpul antrenamentului. Este ideal pentru antrenamente tip circuit sau superseturi. Sistemul cu pini (fie cu coliere, fie cu pini retractabili ca la PowerBlock) este adesea considerat mai robust și mai fiabil pe termen lung, dar schimbarea greutății durează mai mult. Alegerea depinde de prioritățile tale: viteză sau durabilitate maximă.</p></p><p><h4>Cât de importantă este calitatea construcției și materialele?</h4><p>Calitatea construcției este esențială pentru siguranță și durabilitate. Caută gantere fabricate din oțel de calitate, fontă pentru plăcile de greutate și materiale rezistente pentru mecanismul de ajustare. Finisajele bune, cum ar fi manerele ergonomice cu priză anti-alunecare, contribuie la confort și previn accidentările. O garanție extinsă (2-3 ani) este un indicator al încrederii producătorului în produsul său.</p></p><p><h4>Ce rol joacă dimensiunea și ergonomia?</h4><p>Dimensiunea ganterelor, în special la greutăți mari, poate influența confortul în timpul exercițiilor. Modelele compacte, cum sunt cele PowerBlock, pot fi mai ușor de manevrat. Ergonomia manerului este crucială: acesta trebuie să se simtă confortabil în mână, să ofere o priză sigură și să permită o gamă completă de mișcare fără iritații. Verifică recenziile utilizatorilor pentru a afla despre confortul pe termen lung.</p></p>
+            </div>
+          </section>
+
+          <!-- FAQ Section -->
+          <section class="faq-section" id="faq">
+            <h2 class="faq-title">Intrebari Frecvente</h2>
+            
+            <div class="faq-item" id="faq-0">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Cat costa cele mai bune gantere reglabile in Romania?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Preturile pentru cele mai bune gantere reglabile in Romania variaza semnificativ. Modelele generice, cu greutati medii, pot costa intre 800 si 1500 lei. Seturile de la branduri cunoscute, precum Bowflex sau PowerBlock, cu greutati mari si sisteme premium, pot ajunge la 2000-3500 lei. Pretul depinde de marca, greutatea maxima, sistemul de ajustare si calitatea materialelor.
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq-1">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Care este greutatea maxima recomandata pentru gantere reglabile acasa?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Greutatea maxima recomandata depinde de nivelul tau. Pentru majoritatea barbatilor, un set de gantere reglabile care ajunge la 25-30 kg per gantera este suficient pentru o varietate mare de exercitii. Femeile sau cei care se antreneaza pentru anduranta pot alege seturi cu greutate maxima de 15-20 kg. Avansatii pot opta pentru modele de peste 30 kg.
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq-2">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Merita sa cumpar gantere reglabile in loc de un set complet?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Da, merita daca spatiul este limitat sau daca vrei sa economisesti. Un set complet de gantere (de la 1 kg la 30 kg) ar ocupa mult spatiu si ar costa mult mai mult. Ganterele reglabile ofera versatilitate si economie de spatiu, fiind ideale pentru antrenamentul acasa. Totusi, schimbarea greutatii dureaza mai mult decat la ganterele fixe.
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq-3">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Ce inseamna sistemul "dial" la ganterele reglabile?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Sistemul "dial" se refera la mecanismul de ajustare a greutatii prin rotirea unui disc sau buton, de obicei situat pe manerul ganterei. Acesta selecteaza greutatea dorita, modificand automat numarul de placi de greutate active. Este un sistem rapid si eficient, popular la multe modele de gantere reglabile, precum Bowflex sau Fitness Reality.
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq-4">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Cum intretin ganterele reglabile pentru a le prelungi durata de viata?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Pentru a prelungi durata de viata a ganterelor reglabile, curata-le regulat de praf si transpiratie cu o carpa umeda. Evita sa le scapi pe jos, mai ales de la inaltime, pentru a proteja mecanismul de blocare. Lubrifiaza ocazional mecanismul, daca producatorul recomanda, si asigura-te ca placile de greutate sunt corect asezate in baza de depozitare pentru a preveni deteriorarea.
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Author -->
+        <div class="author-line">
+          <div class="author-avatar">DV</div>
+          <div>
+            <div class="author-name">Dan Vasilescu</div>
+            <div class="author-role">Expert Sport si Outdoor</div>
+          </div>
+        </div>
+
+        <!-- Similar Articles -->
+        <SimilarArticles
+          currentSlug="cele-mai-bune-gantere-reglabile"
+          currentCategory="sport-timp-liber"
+          articles={allArticles}
+        />
+
+        <!-- Prev/Next Navigation -->
+        <PrevNextNav
+          currentSlug="cele-mai-bune-gantere-reglabile"
+          currentCategory="sport-timp-liber"
+          articles={allArticles}
+        />
+      </div>
+    </div>
+  </article>
+
+  <script>
+    document.querySelectorAll('.comparison-outer').forEach(outer => {
+      const wrap = outer.querySelector('.comparison-wrap');
+      if (!wrap) return;
+      function checkScroll() {
+        const canScroll = wrap.scrollWidth > wrap.clientWidth;
+        const atEnd = wrap.scrollLeft + wrap.clientWidth >= wrap.scrollWidth - 2;
+        outer.classList.toggle('can-scroll', canScroll && !atEnd);
+      }
+      checkScroll();
+      wrap.addEventListener('scroll', checkScroll, { passive: true });
+      window.addEventListener('resize', checkScroll, { passive: true });
+    });
+
+    const tocLinks = document.querySelectorAll('#toc-desktop-list a[data-toc-id]');
+    if (tocLinks.length > 0) {
+      const ids = Array.from(tocLinks).map(a => a.dataset.tocId);
+      const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              tocLinks.forEach(a => a.classList.remove('active'));
+              const match = Array.from(tocLinks).find(a => a.dataset.tocId === entry.target.id);
+              match?.classList.add('active');
+            }
+          }
+        },
+        { rootMargin: '-80px 0px -60% 0px', threshold: 0 }
+      );
+      sections.forEach(s => observer.observe(s));
+    }
+  </script>
+</Layout>
