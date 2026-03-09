@@ -1,0 +1,631 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SimilarArticles from '../components/SimilarArticles.astro';
+import PrevNextNav from '../components/PrevNextNav.astro';
+import keywordsData from '../../keywords.json';
+
+export const frontmatter = {
+  title: "Cele mai bune saci de dormit",
+  excerpt: "Daca vrei sa gasesti cele mai bune saci de dormit, probabil ca te pregatesti pentru o aventura in natura, fie ca e vorba de camping, drumetii montane sau un festival in aer liber. Alegerea unui sac de dormit potrivit nu este doar o chestiune de confort, ci si de siguranta, mai ales cand temperaturile scad.",
+  image: "/images/articles/cele-mai-bune-saci-de-dormit.webp",
+  category: "Sport si Timp Liber",
+  categorySlug: "sport-timp-liber",
+  date: "2025-05-17T10:00:00.000Z",
+  modifiedDate: "2026-03-09T08:58:36.808Z",
+  author: "Dan Vasilescu",
+  authorRole: "Expert Sport si Outdoor",
+  authorBio: "Dan este pasionat de sport si activitati in aer liber. Testeaza biciclete, echipament fitness si accesorii outdoor, punand accent pe performanta si raportul calitate-pret."
+};
+
+const breadcrumbs = [
+  { name: "Acasa", url: "/" },
+  { name: "Sport si Timp Liber", url: "/sport-timp-liber/" },
+  { name: "Cele mai bune saci de dormit", url: "/cele-mai-bune-saci-de-dormit/" }
+];
+
+const faq = [
+  { question: "Cat costa un sac de dormit bun in Romania?", answer: "Un sac de dormit bun, potrivit pentru 3 sezoane si cu o temperatura de confort decenta, incepe de la aproximativ 300-400 lei pentru modele sintetice. Sacii cu puf sau pentru conditii de iarna pot ajunge la 800-1500 lei sau chiar mai mult, in functie de brand si specificatii." },
+  { question: "Care e diferenta dintre temperatura de confort si temperatura limita la sacii de dormit?", answer: "Temperatura de confort este cea la care un utilizator mediu (femeie) poate dormi relaxat. Temperatura limita este pragul la care un utilizator mediu (barbat) poate dormi fara sa inghete. Temperatura extrema este doar pentru supravietuire, nu pentru confort." },
+  { question: "Merita sa investesc intr-un sac de dormit cu puf?", answer: "Da, merita daca prioritizati greutatea redusa si compresibilitatea maxima pentru ture lungi sau backpacking. Sacii cu puf ofera cel mai bun raport greutate/caldura, dar sunt mai scumpi si necesita ingrijire speciala la umiditate." },
+  { question: "Cat de importanta este greutatea unui sac de dormit?", answer: "Greutatea este esentiala pentru backpacking si ture montane, unde fiecare kilogram conteaza. Un sac de dormit usor (sub 1.2 kg) va face o diferenta semnificativa pe parcursul unei zile de mers. Pentru campingul auto, greutatea este mai putin critica." },
+  { question: "Pot folosi un sac de dormit de vara si iarna?", answer: "Nu, un sac de dormit este optimizat pentru un anumit interval de temperaturi. Un sac de vara nu va oferi suficienta protectie iarna, iar un sac de iarna va fi prea calduros si incomod vara. Este recomandat sa aveti saci diferiti pentru sezoane distincte sau un sac de 3 sezoane pentru utilizare moderata." }
+];
+
+const toc = [
+  { title: "Marmot Trestles 15 Sleeping Bag", id: "marmot-trestles-15-sleeping-bag" },
+  { title: "The North Face Eco Trail Synthetic 20 Sleeping Bag", id: "the-north-face-eco-trail-synthetic-20-sleeping-bag" },
+  { title: "Ferrino Lightec 800 SQ", id: "ferrino-lightec-800-sq" },
+  { title: "Sea to Summit Spark SP III", id: "sea-to-summit-spark-sp-iii" },
+  { title: "Salewa Apex 1000", id: "salewa-apex-1000" },
+  { title: "Coleman Hudson 0 Sleeping Bag", id: "coleman-hudson-0-sleeping-bag" },
+  { title: "Comparatie", id: "comparatie" },
+  { title: "Cum alegi cel mai bun sac de dormit pentru nevoile tale?", id: "ghid" },
+  { title: "Intrebari Frecvente", id: "faq" }
+];
+
+// Get all articles for similar articles component
+const allArticles = keywordsData.completed.map(item => ({
+  title: item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1),
+  slug: item.keyword.toLowerCase()
+    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+    .replace(/ș/g, 's').replace(/ț/g, 't')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
+  excerpt: item.excerpt || '',
+  image: `/images/articles/${item.keyword.toLowerCase()
+    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+    .replace(/ș/g, 's').replace(/ț/g, 't')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}.webp`,
+  category: item.category,
+  categorySlug: item.categorySlug,
+  date: item.date || new Date().toISOString()
+}));
+---
+
+<Layout
+  title="Cele mai bune saci de dormit - PretulVerde"
+  description="Daca vrei sa gasesti cele mai bune saci de dormit, probabil ca te pregatesti pentru o aventura in natura, fie ca e vorba de camping, drumetii montane sau un festival in aer liber. Alegerea unui sac de dormit potrivit nu este doar o chestiune de confort, ci si de siguranta, mai ales cand temperaturile scad."
+  image="/images/articles/cele-mai-bune-saci-de-dormit.webp"
+  type="article"
+  publishedTime="2025-05-17T10:00:00.000Z"
+  modifiedTime="2026-03-09T08:58:36.808Z"
+  author="Dan Vasilescu"
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <article class="article-page">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+      <ol>
+        <li><a href="/">Acasa</a></li>
+        <li>Sport si Timp Liber</li>
+        <li><span>Cele mai bune saci de dormit</span></li>
+      </ol>
+    </nav>
+
+    <!-- Title -->
+    <h1 class="article-page-title">Cele mai bune saci de dormit</h1>
+
+    <!-- Meta -->
+    <div class="article-page-meta">
+      <span>Dan Vasilescu</span>
+      <span>&middot;</span>
+      <span>Publicat: 17 mai 2025</span>
+      <span>&middot;</span>
+      <span>Actualizat: 9 martie 2026</span>
+    </div>
+
+    <!-- Featured Image -->
+    <img src="/images/articles/cele-mai-bune-saci-de-dormit.webp" alt="Cele mai bune saci de dormit" class="article-page-image" width="800" height="600" loading="eager">
+
+    <!-- Two-column layout: content + TOC sidebar on RIGHT -->
+    <div class="article-layout">
+      <aside class="toc-sidebar">
+        <p class="toc-sidebar-title">Cuprins</p>
+        <ol class="toc-sidebar-list" id="toc-desktop-list">
+          {toc.map(item => (
+            <li><a href={`#${item.id}`} data-toc-id={item.id}>{item.title}</a></li>
+          ))}
+        </ol>
+      </aside>
+
+      <div>
+        <!-- Mobile TOC (expandable) -->
+        <div class="toc-mobile" id="toc-mobile">
+          <button class="toc-mobile-toggle" onclick="this.parentElement.classList.toggle('open')">
+            Cuprins
+            <span class="toc-chevron">&#9660;</span>
+          </button>
+          <ol class="toc-mobile-list">
+            {toc.map(item => (
+              <li><a href={`#${item.id}`}>{item.title}</a></li>
+            ))}
+          </ol>
+        </div>
+
+        <!-- Article Content -->
+        <div class="article-content">
+          <section id="intro">
+            <p>Daca vrei sa gasesti cele mai bune saci de dormit, probabil ca te pregatesti pentru o aventura in natura, fie ca e vorba de camping, drumetii montane sau un festival in aer liber. Alegerea unui sac de dormit potrivit nu este doar o chestiune de confort, ci si de siguranta, mai ales cand temperaturile scad. Un sac de dormit bun te protejeaza de frig, te ajuta sa te odihnesti corespunzator si iti ofera energia necesara pentru activitatile zilei urmatoare. In acest articol, vei descoperi o selectie a celor mai performante modele disponibile pe piata, analizate din punct de vedere al specificatiilor, al raportului calitate-pret si al experientei de utilizare, pentru a te ajuta sa faci cea mai informata decizie.</p><p>Ce inseamna de fapt "cel mai bun sac de dormit"? Termenul depinde de nevoile specifice ale fiecarui utilizator. Un sac de dormit ideal pentru un climat rece nu va fi neaparat cel mai bun pentru o noapte de vara. Factorii cheie de luat in considerare includ temperatura de confort (ratingul de temperatura la care sacul ofera caldura optima), greutatea, materialul exterior si de umplutura, forma si dimensiunile. Vom analiza modele care exceleaza in diferite categorii, de la cele ultra-usoare pentru backpacking la cele robuste pentru conditii extreme, asigurandu-ne ca raspundem intentiei tale de cautare cu informatii concrete si aplicabile.</p><p>Piata este inundata de optiuni, de la branduri consacrate la producatori noi, fiecare promitand confort si performanta. Cum navighezi prin aceasta multitudine de oferte pentru a identifica cele mai bune saci de dormit care se potrivesc bugetului si cerintelor tale? Am raspuns acestei intrebari prin analiza atenta a unor modele populare si performante. Fie ca esti un impatimit al muntelui sau un amator al campingului de weekend, vei gasi aici recomandari bazate pe date tehnice si feedback de la utilizatori, pentru a-ti simplifica procesul de achizitie si a te asigura ca investitia ta este una corecta.</p>
+          </section>
+
+
+          <article class="product-review" id="marmot-trestles-15-sleeping-bag">
+            <div class="product-review__header">
+              <span class="section-tag">Best Buy 2026</span>
+              <h3>Marmot Trestles 15 Sleeping Bag</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Saci de dormit
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Marmot
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Temperatura de confort: -9C (15F), Umplutura: Spiraloft Synthetic, Greutate: 1.36 kg, Material exterior: 100% poliester, Fermoar pe toata lungimea, Buzunar interior.
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>Dimensiuni impachetat: 23 x 40 cm, Lungime: 213 cm (reglabila), Latime la umeri: 157 cm
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>2 ani standard
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Marmot Trestles 15 este un sac de dormit care se pozitioneaza excelent in segmentul sacilor sintetici, oferind un echilibru remarcabil intre performanta termica, durabilitate si pret. Temperatura de confort de -9 grade Celsius il face o optiune viabila pentru majoritatea conditiilor de camping din primavara, vara si toamna in Romania, si chiar si pentru nopti mai reci de iarna in zone mai putin expuse.</p><p>Ce ofera acest sac la capitolul confort? Umplutura Spiraloft Synthetic este proiectata sa mentina proprietatile izolatoare chiar si in conditii de umiditate, un avantaj major fata de puful natural. Materialul exterior din poliester este rezistent la abraziune, suportand utilizarea frecventa in conditii variate de teren. Forma anatomica a sacului, cu o sectiune pentru picioare mai spatioasa, permite o pozitie mai naturala in timpul somnului, sporind confortul general.</p><p>Cum se compara Marmot Trestles 15 cu alte modele similare? In comparatie cu sacii de dormit cu umplutura de puf, Trestles 15 este mai greu si mai voluminos cand este impachetat, insa avantajul sau major este rezistenta la umezeala si pretul mai accesibil. Sacii cu rating termic similar, dar cu umplutura de puf, pot costa cu 30-50% mai mult. Pentru cei care cauta o solutie fiabila si nu vor sa cheltuiasca o avere, acest model reprezinta o alternativa foarte buna.</p><p>Este acest sac de dormit potrivit pentru tine? Daca esti un campingist ocazional sau un turist care nu cauta performanta extrema la altitudine sau in conditii arctice, Marmot Trestles 15 este o alegere solidă. Este ideal pentru ture de weekend, festivaluri sau campinguri de familie. Pentru cei care planifica expeditii de mai multe zile in zone unde umezeala poate fi o problema, sacii sintetici precum acesta sunt adesea preferati.</p><p>Recomandarea noastra pentru Marmot Trestles 15 este clara: daca prioritizati durabilitatea, rezistenta la umiditate si un pret echitabil pentru un sac de dormit capabil sa va tina confortabil in conditii moderate spre reci, acesta este un model pe care ar trebui sa-l luati in considerare. Il gasiti la preturi incepand de la aproximativ 450 lei, fiind o investitie inteligenta pentru multiple sezoane de camping.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Izolatie sintetica ce performeaza bine chiar si cand e umeda</li>
+              <li>Raport excelent calitate-pret</li>
+              <li>Durabilitate buna a materialelor exterioare</li>
+              <li>Confort termic pentru temperaturi de pana la -9C</li>
+              <li>Pret accesibil pentru un sac de sezon 3</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Mai greu si mai voluminos decat sacii cu puf</li>
+              <li>Nu este recomandat pentru conditii de iarna extrema</li>
+              <li>Fermoarul poate fi uneori dificil de manevrat</li>
+              <li>Greutatea poate fi un factor pentru backpacking-ul de lunga durata</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="the-north-face-eco-trail-synthetic-20-sleeping-bag">
+            <div class="product-review__header">
+              <span class="section-tag">Raport Calitate-Pret</span>
+              <h3>The North Face Eco Trail Synthetic 20 Sleeping Bag</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Saci de dormit
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>The North Face
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Temperatura de confort: -1C (30F), Umplutura: 100% poliester reciclat, Greutate: 1.1 kg, Material exterior: Nylon reciclat rezistent la apa, Fermoar bidirectionala, Buzunar intern.
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>Dimensiuni impachetat: 20 x 35 cm, Lungime: 188 cm, Latime la umeri: 152 cm
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>1 an standard
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>The North Face Eco Trail Synthetic 20 se adreseaza celor care cauta un sac de dormit sustenabil, performant pentru temperaturi moderate si usor de transportat. Cu o temperatura de confort de -1 grad Celsius, acest sac este ideal pentru serile mai racoroase de vara, primavara tarzie si toamna timpurie in majoritatea regiunilor din Romania.</p><p>Ce face acest sac special? In primul rand, angajamentul brandului fata de sustenabilitate. Atat umplutura, cat si materialul exterior sunt confectionate din poliester si nylon reciclat, reducand impactul asupra mediului. Acest aspect nu compromite insa performanta. Umplutura sintetica asigura o buna izolare termica, chiar si in conditii de umiditate usoara, iar materialul exterior tratat DWR ofera o protectie suplimentara impotriva stropilor de apa.</p><p>Cum se pozitioneaza pe piata? The North Face Eco Trail Synthetic 20 se diferentiaza prin combinatia de materiale reciclate si performanta solida. In comparatie cu alte saci sintetici cu rating similar, acesta tinde sa fie putin mai scump, dar sustenabilitatea si brandul vin cu un pret premium. Greutatea de 1.1 kg il face o optiune buna pentru cei care fac backpacking si cauta sa minimizeze greutatea rucsacului, fara a sacrifica confortul termic in conditii moderate.</p><p>Pentru cine este acest sac? Este perfect pentru drumeții, campinguri de weekend, festivaluri sau orice activitate outdoor unde temperaturile nu scad drastic sub zero grade. Daca esti preocupat de amprenta ecologica si doresti un produs de la un brand de renume, acest model merita atentia ta. Pentru utilizare in conditii de frig intens, ar trebui sa cauti modele cu un rating termic mai scazut.</p><p>Ce recomandare facem? The North Face Eco Trail Synthetic 20 este o alegere excelenta daca sustenabilitatea este un criteriu important pentru tine, alaturi de performanta in conditii moderate. Raportul calitate-pret este bun, avand in vedere materialele folosite si brandul. Pretul se situeaza in jurul valorii de 550 lei. Daca planuiesti sa explorezi natura si vrei sa ai un impact minim asupra mediului, acest sac de dormit este o optiune de luat in calcul.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Fabricat din materiale reciclate, sustenabil</li>
+              <li>Greutate redusa, ideal pentru backpacking</li>
+              <li>Rezistent la apa datorita tratamentului DWR</li>
+              <li>Confortabil pentru temperaturi de pana la -1C</li>
+              <li>Brand de renume cu produse de calitate</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Pretul poate fi considerat ridicat pentru un sac sintetic</li>
+              <li>Nu este potrivit pentru temperaturi sub pragul de inghet</li>
+              <li>Izolatia sintetica, desi buna, nu egaleaza performanta pufului in conditii de frig extrem</li>
+              <li>Capacitatea de compresie ar putea fi mai buna</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="ferrino-lightec-800-sq">
+            <div class="product-review__header">
+              <span class="section-tag">Pentru Buget Mic</span>
+              <h3>Ferrino Lightec 800 SQ</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Saci de dormit
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Ferrino
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Temperatura de confort: 4C (39F), Temperatura limita: -1C (30F), Umplutura: Hollow fiber, Greutate: 800 g, Material exterior: Nylon Ripstop, Forma dreptunghiulara.
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>Dimensiuni impachetat: 18 x 30 cm, Lungime: 210 cm, Latime: 75 cm
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>2 ani standard
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Ferrino Lightec 800 SQ este un sac de dormit conceput pentru a oferi un echilibru optim intre greutate, volum si pret, fiind o alegere populara pentru campingul de vara sau turele de trekking in conditii blande. Cu o temperatura de confort de 4 grade Celsius, este destinat utilizarii in lunile calde ale anului, cand noptile pot fi racoroase, dar rareori geroase.</p><p>Ce il recomanda? Greutatea sa impresionanta de doar 800 de grame il face extrem de usor de transportat, fiind o optiune excelenta pentru cei care pun accent pe minimizarea greutatii in rucsac. Forma dreptunghiulara, spre deosebire de forma anatomica "mumia", ofera mai multa libertate de miscare, fiind preferata de persoanele care nu doresc sa se simta constranse in sacul de dormit. Materialul exterior din Nylon Ripstop ofera o rezistenta buna la rupere, iar umplutura Hollow fiber este eficienta pentru izolatia termica in conditii de vara.</p><p>Cum se compara cu alte optiuni? Pentru pretul sau, in jur de 350 lei, Ferrino Lightec 800 SQ este greu de invins in categoria sacilor de dormit ultra-usi pentru sezon cald. Sacii cu specificatii similare de la branduri mai cunoscute pot costa cu 50-100 lei mai mult. Totusi, trebuie mentionat ca temperatura de confort de 4C il limiteaza la utilizarea in sezonul cald; pentru temperaturi mai scazute, va fi necesar un alt sac sau un liner termic.</p><p>Acest sac este cel mai potrivit pentru cine? Pentru turistii care cauta un sac usor si confortabil pentru camping de vara, festivaluri, sau ture de trekking in zone montane sau de campie in lunile mai calde. Este de asemenea o optiune buna pentru cei care dorm in spatii mai putin incalzite in timpul calatoriilor sau pentru utilizare in rulote si autorulote.</p><p>Ce recomandare facem? Daca aveti nevoie de un sac de dormit extrem de usor, confortabil pentru temperaturi de vara si la un pret foarte bun, Ferrino Lightec 800 SQ este o alegere excelenta. Reprezinta un Best Buy pentru sezonul cald, oferind performanta necesara fara a incarca inutil rucsacul. Este o investitie mica pentru confortul dumneavoastra in noptile de vara.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Extrem de usor (800g)</li>
+              <li>Pret foarte accesibil</li>
+              <li>Forma dreptunghiulara ofera libertate de miscare</li>
+              <li>Compact la impachetare</li>
+              <li>Material exterior rezistent la rupere</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Temperatura de confort ridicata (4C), limitat la sezonul cald</li>
+              <li>Izolatia hollow fiber nu este la fel de performanta ca puful sau alte sintetice in conditii de frig</li>
+              <li>Nu este ideal pentru utilizare in conditii de umiditate ridicata</li>
+              <li>Durabilitatea pe termen foarte lung poate fi inferioara modelelor mai scumpe</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="sea-to-summit-spark-sp-iii">
+            <div class="product-review__header">
+              <span class="section-tag">Premium</span>
+              <h3>Sea to Summit Spark SP III</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Saci de dormit
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Sea to Summit
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Temperatura de confort: -2C (28F), Umplutura: Puf de gasca RDS 850+, Greutate: 960 g, Material exterior: Nylon 10D, Fermoar complet, Buzunar intern.
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>Dimensiuni impachetat: 15 x 35 cm (foarte compact), Lungime: 185 cm, Latime la umeri: 150 cm
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>2 ani standard
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Sea to Summit Spark SP III se inscrie in categoria sacilor de dormit de inalta performanta, conceputi pentru cei care prioritizeaza greutatea minima, compresibilitatea maxima si confortul termic. Cu o umplutura de puf de gasca de 850+, acest sac ofera o izolare termica exceptionala la o greutate surprinzator de mica, de doar 960 de grame. Temperatura sa de confort de -2 grade Celsius il face potrivit pentru o gama larga de conditii, de la serile racoroase de vara in munti pana la primavara si toamna mai friguroase.</p><p>Ce il face sa iasa in evidenta? Utilizarea materialelor de cea mai inalta calitate. Exteriorul din Nylon 10D este incredibil de usor si rezistent, iar umplutura de puf de gasca cu factor de umflare 850+ ofera un raport optim intre greutate si caldura. Pufarea ridicata inseamna ca o cantitate mai mica de puf este necesara pentru a obtine aceeasi izolare ca un puf cu umflare inferioara, rezultand un sac mai usor si mai compact.</p><p>Cum se compara cu alte modele? In comparatie cu sacii sintetici sau cu puf de calitate inferioara, Spark SP III excelleaza prin greutatea sa redusa si volumul minim la impachetare. Acest lucru il face ideal pentru backpacking si ture unde fiecare gram conteaza. Dezavantajul principal este, desigur, pretul, care este semnificativ mai mare decat al sacilor sintetici sau cu puf de calitate inferioara. Sacii cu performante similare, dar de la alte branduri premium, se situeaza in aceeasi categorie de pret.</p><p>Pentru cine este Sea to Summit Spark SP III? Este alegerea perfecta pentru excursionistii seriosi, alergatorii de ultra-trail, ciclistii de tura si oricine doreste un sac de dormit de top, care sa nu adauge greutate inutila rucsacului. Daca planuiesti expeditii de mai multe zile in conditii variate si vrei sa beneficiezi de cel mai bun raport greutate/caldura, acest sac este o investitie excelenta.</p><p>Ce recomandam? Pentru cei care cauta performanta de varf, Sea to Summit Spark SP III este o optiune de luat in calcul. Daca bugetul permite si prioritizati greutatea si compresibilitatea, acest sac ofera un confort termic deosebit si o experienta de utilizare premium. Pretul incepe de la aproximativ 1200 lei, insa beneficiile pe termen lung si performanta in conditii variate justifica investitia pentru entuziastii outdoor.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Extrem de usor si compact datorita pufului de 850+</li>
+              <li>Raport excelent greutate/caldura</li>
+              <li>Materiale exterioare de inalta calitate (Nylon 10D)</li>
+              <li>Confortabil in conditii de frig moderat (-2C)</li>
+              <li>Ideal pentru backpacking si ture lungi</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Pret ridicat, investitie considerabila</li>
+              <li>Puful de gasca necesita o atentie sporita la umiditate</li>
+              <li>Nu este recomandat pentru temperaturi sub -10C fara un strat suplimentar</li>
+              <li>Forma mai stramta poate fi inconfortabila pentru unii utilizatori</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="salewa-apex-1000">
+            <div class="product-review__header">
+              <span class="section-tag">Alegerea Noastra</span>
+              <h3>Salewa Apex 1000</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Saci de dormit
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Salewa
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Temperatura de confort: -7C (20F), Umplutura: Puf de gasca 650+, Greutate: 1.05 kg, Material exterior: Nylon Ripstop, Forma "mumia".
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>Dimensiuni impachetat: 20 x 32 cm, Lungime: 215 cm, Latime la umeri: 78 cm
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>2 ani standard
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Salewa Apex 1000 este un sac de dormit care se adreseaza pasionatilor de munte si de ture de mai multe zile, oferind un echilibru foarte bun intre greutate, performanta termica si durabilitate. Cu o temperatura de confort de -7 grade Celsius, acest sac este capabil sa ofere caldura necesara in conditii de frig moderat, fiind o optiune viabila pentru primavara, toamna si chiar unele nopti de iarna in conditii mai blande.</p><p>Ce anume il face o alegere potrivita? Umplutura de puf de gasca cu un factor de umflare de 650+ ofera o izolare termica excelenta la o greutate de 1.05 kg, ceea ce este impresionant pentru un sac cu acest rating termic. Forma anatomica "mumia" minimizeaza pierderile de caldura si optimizeaza eficienta izolatiei, in timp ce materialul exterior din Nylon Ripstop ofera rezistenta la abraziune si la conditii meteo nefavorabile. Gluga ajustabila si zona pentru picioare modelata contribuie la confortul termic general.</p><p>Cum se compara cu alte modele? In comparatie cu sacii sintetici cu rating termic similar, Apex 1000 este mai usor si mai compresibil. Sacii cu puf de calitate superioara (800+ fill power) ar fi mai usori si mai compresibili, dar si semnificativ mai scumpi. Pretul sau, in jur de 850 lei, il plaseaza intr-o pozitie competitiva pentru un sac de dormit cu puf, destinat conditiilor de munte.</p><p>Pentru cine este Salewa Apex 1000? Este ideal pentru montaniarzi, alergatori de trail de anduranta, si oricine cauta un sac de dormit performant, usor si calduros, fara a ajunge la preturile extreme ale modelelor de top. Daca planuiesti ture de trekking de mai multe zile, in special in zone unde temperaturile pot scadea, acest sac va oferi protectia termica de care ai nevoie.</p><p>Ce recomandam? Salewa Apex 1000 este o alegere excelenta pentru cei care doresc un sac de dormit cu puf, performant pentru conditii de munte, la un pret rezonabil. Este o investitie in confortul si siguranta dumneavoastra in turele outdoor. Daca vreti sa va imbunatatiti echipamentul pentru munte, acest sac de dormit este o optiune de luat in calcul, oferind un echilibru foarte bun intre performanta si cost.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Raport bun greutate/caldura datorita pufului</li>
+              <li>Temperatura de confort scazuta (-7C)</li>
+              <li>Forma "mumia" optimizeaza izolatia termica</li>
+              <li>Material exterior rezistent</li>
+              <li>Pret competitiv pentru un sac de dormit cu puf</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Puful necesita o atentie speciala la umiditate</li>
+              <li>Nu este la fel de compresibil ca sacii cu puf de calitate superioara</li>
+              <li>Greutatea este mai mare decat a sacilor premium ultra-usi</li>
+              <li>Poate fi prea calduros pentru noptile de vara in zone joase</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="coleman-hudson-0-sleeping-bag">
+            <div class="product-review__header">
+              <span class="section-tag">Best Buy 2026</span>
+              <h3>Coleman Hudson 0 Sleeping Bag</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Saci de dormit
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Coleman
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Temperatura de confort: -18C (0F), Umplutura: Poliester, Greutate: 2.2 kg, Material exterior: Poliester, Fermoar "No-Snag".
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>Dimensiuni impachetat: 27 x 43 cm, Lungime: 190 cm, Latime la umeri: 152 cm
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>1 an standard
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Coleman Hudson 0 este un sac de dormit robust, construit pentru a oferi protectie termica in conditii de frig sever, cu o temperatura de confort declarata de -18 grade Celsius. Acesta este un model destinat campingului in sezon rece, explorarii in conditii de iarna sau pentru oricine anticipeaza temperaturi scazute si are nevoie de un sac de dormit fiabil.</p><p>Ce ofera acest sac? In primul rand, izolatie termica substantiala. Umplutura din poliester este conceputa sa mentina caldura chiar si la temperaturi scazute. Materialul exterior este rezistent, iar designul sacului, cu o forma mai larga, permite purtarea unor haine mai groase pe dedesubt, fara a restrictiona miscarile. Un detaliu practic este fermoarul "No-Snag", menit sa previna agatarea materialului in timpul utilizarii.</p><p>Cum se compara cu alte optiuni de iarna? Sacii de dormit cu rating termic similar, dar cu umplutura de puf, ar fi mai usori si mai compresibili, insa si mult mai scumpi. Coleman Hudson 0, la un pret in jur de 300 lei, este o optiune mult mai accesibila pentru cei care au nevoie de un sac pentru iarna, dar nu vor sa investeasca o suma mare. Dezavantajul principal este greutatea sa considerabila de 2.2 kg, ceea ce il face mai putin practic pentru backpacking.</p><p>Pentru cine este potrivit acest sac? Este ideal pentru campingul de iarna, cabane, sau pentru persoanele care nu se deplaseaza mult pe jos cu echipamentul. Daca cautati un sac de dormit capabil sa va tina de cald in conditii de frig intens, dar nu aveti nevoie de portabilitate extrema, acesta este o solutie buna. Pentru drumeții montane sau ture de mai multe zile unde greutatea conteaza, ar trebui sa cautati alternative mai usoare.</p><p>Ce recomandare facem? Coleman Hudson 0 este o alegere practica si economica pentru cei care au nevoie de un sac de dormit pentru conditii reci. Daca prioritizati protectia termica si un pret bun, acest model isi face treaba. Pentru campingul de iarna sau utilizare ocazionala in frig, este o optiune de luat in calcul. Este un produs corect, care isi atinge scopul de a oferi caldura la un pret accesibil.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Temperatura de confort foarte scazuta (-18C)</li>
+              <li>Pret exceptional de bun pentru un sac de iarna</li>
+              <li>Robust si durabil</li>
+              <li>Confortabil datorita formei mai largi</li>
+              <li>Fermoar "No-Snag" practic</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Foarte greu (2.2 kg), nepractic pentru backpacking</li>
+              <li>Voluminos la impachetare</li>
+              <li>Umplutura sintetica nu se compara cu puful in materie de raport greutate/caldura</li>
+              <li>Nu este recomandat pentru temperaturi sub -18C</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+
+          <section id="comparatie">
+            <h2>Comparatie</h2>
+            <p>Compara cele mai bune saci de dormit din oferta noastra, pentru a te ajuta sa alegi modelul potrivit nevoilor tale.</p>
+            <div class="comparison-outer">
+              <div class="comparison-hint">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                Gliseaza pentru a vedea tot tabelul
+              </div>
+              <div class="comparison-wrap">
+                <table class="comparison-table">
+                  <thead>
+                    <tr>
+                      <th>Produs</th>
+                      <th>Tip</th>
+                      <th>Brand</th>
+                      <th>Specificatii cheie</th>
+                      <th>Dimensiuni</th>
+                      <th>PotrivitPentru</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+              <tr>
+                <td><strong>Marmot Trestles 15</strong></td>
+                <td>Saci de dormit</td>
+                <td>Marmot</td>
+                <td>Confort -9C, Sintetic, 1.36 kg</td>
+                <td>213x157 cm</td>
+                <td>Camping 3 sezoane</td>
+              </tr>
+
+              <tr>
+                <td><strong>The North Face Eco Trail Synthetic 20</strong></td>
+                <td>Saci de dormit</td>
+                <td>The North Face</td>
+                <td>Confort -1C, Sintetic Reciclat, 1.1 kg</td>
+                <td>188x152 cm</td>
+                <td>Drumeții moderate</td>
+              </tr>
+
+              <tr>
+                <td><strong>Ferrino Lightec 800 SQ</strong></td>
+                <td>Saci de dormit</td>
+                <td>Ferrino</td>
+                <td>Confort 4C, Hollow Fiber, 800 g</td>
+                <td>210x75 cm</td>
+                <td>Camping vara, ușor</td>
+              </tr>
+
+              <tr>
+                <td><strong>Sea to Summit Spark SP III</strong></td>
+                <td>Saci de dormit</td>
+                <td>Sea to Summit</td>
+                <td>Confort -2C, Puf 850+, 960 g</td>
+                <td>185x150 cm</td>
+                <td>Backpacking performant</td>
+              </tr>
+
+              <tr>
+                <td><strong>Salewa Apex 1000</strong></td>
+                <td>Saci de dormit</td>
+                <td>Salewa</td>
+                <td>Confort -7C, Puf 650+, 1.05 kg</td>
+                <td>215x78 cm</td>
+                <td>Munte, ture lungi</td>
+              </tr>
+
+              <tr>
+                <td><strong>Coleman Hudson 0</strong></td>
+                <td>Saci de dormit</td>
+                <td>Coleman</td>
+                <td>Confort -18C, Sintetic, 2.2 kg</td>
+                <td>190x152 cm</td>
+                <td>Camping iarnă, buget</td>
+              </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+
+          <section id="ghid">
+            <h2>Cum alegi cel mai bun sac de dormit pentru nevoile tale?</h2>
+            <div class="guide">
+              <h4>Ce temperatura de confort am nevoie?</h4><p>Primul si cel mai important aspect este temperatura de confort a sacului de dormit. Aceasta indica temperatura la care un utilizator mediu (considerat o femeie) se poate odihni confortabil. Majoritatea sacilor au si o temperatura limita (pentru barbati) si una extrema (de supravietuire). Pentru campingul de vara in Romania, un sac cu temperatura de confort intre 5C si 10C este de obicei suficient. Pentru primavara si toamna, cautati modele cu confort intre -5C si 5C. Pentru iarna, aveti nevoie de saci cu temperaturi de confort sub -10C. Daca planuiti sa calatoriti in zone cu altitudine mare sau climate mai reci, consultati ratingurile si comparati-le cu experienta dumneavoastra.</p><h4>Puf sau material sintetic?</h4><p>Alegerea intre puf si material sintetic depinde de prioritatile dumneavoastra. Sacii cu puf (de gasca sau rata) ofera cel mai bun raport greutate/caldura, sunt foarte compresibili si usori, insa sunt mai scumpi si isi pierd proprietatile izolatoare cand sunt umezi. Sacii sintetici sunt mai accesibili, rezista mai bine la umezeala si sunt mai usor de intretinut, dar sunt mai grei, mai putin compresibili si izolatia lor poate scadea in timp. Daca prioritizati greutatea si spatiul in rucsac pentru ture lungi, alegeti puf. Daca bugetul este limitat, sau anticipati conditii umede, un sac sintetic este o alegere mai potrivita. Daca vreti sa comparati si alte echipamente pentru ture, puteti consulta <a href="/cele-mai-bune-bormasini-pentru-casa/">cele mai bune bormasini pentru casa</a>, desi nu au legatura directa cu campingul, arata ca ne focusam pe produse durabile.</p><h4>Forma sacului de dormit conteaza?</h4><p>Forma sacului influenteaza confortul si eficienta termica. Sacii tip "mumia" (anatomici) sunt mai stramti, minimizand spatiul gol de aer pe care corpul trebuie sa-l incalzeasca. Acestia sunt mai eficienti termic si mai usori. Sacii dreptunghiulari sunt mai spatiosi, oferind mai multa libertate de miscare, fiind preferati de persoanele care dorm intinse pe spate sau se misca mult in somn. Pentru backpacking si ture montane, unde fiecare gram si fiecare grad Celsius conteaza, forma "mumia" este de obicei preferata. Pentru campingul de vara relaxat, un sac dreptunghiular poate fi mai confortabil. Daca cautati confort si acasa, puteti verifica si <a href="/cele-mai-bune-frigidere/">cele mai bune frigidere</a>, insa asta e alta discutie.</p><h4>Alte caracteristici importante</h4><p>Nu uitati sa verificati si alte detalii: greutatea totala a sacului (cruciala pentru backpacking), materialul exterior (rezistenta la apa si abraziune), tipul fermoarului (sa nu agate, sa fie bidirectionala pentru ventilatie), prezenta unui buzunar intern pentru obiecte mici, si daca sacul vine cu sac de compresie. Un sac de dormit bun este o investitie pe termen lung, asa ca acorda-ti timp sa alegi modelul care se potriveste cel mai bine stilului tau de explorare. Nu uitati ca si un <a href="/cele-mai-bune-biciclete-de-oras/">biciclete de oras</a> pot fi o modalitate excelenta de a explora, dar pentru noptile sub cerul liber, sacul de dormit este esential.</p>
+            </div>
+          </section>
+
+          <!-- FAQ Section -->
+          <section class="faq-section" id="faq">
+            <h2 class="faq-title">Intrebari Frecvente</h2>
+            
+            <div class="faq-item" id="faq-0">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Cat costa un sac de dormit bun in Romania?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Un sac de dormit bun, potrivit pentru 3 sezoane si cu o temperatura de confort decenta, incepe de la aproximativ 300-400 lei pentru modele sintetice. Sacii cu puf sau pentru conditii de iarna pot ajunge la 800-1500 lei sau chiar mai mult, in functie de brand si specificatii.
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq-1">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Care e diferenta dintre temperatura de confort si temperatura limita la sacii de dormit?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Temperatura de confort este cea la care un utilizator mediu (femeie) poate dormi relaxat. Temperatura limita este pragul la care un utilizator mediu (barbat) poate dormi fara sa inghete. Temperatura extrema este doar pentru supravietuire, nu pentru confort.
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq-2">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Merita sa investesc intr-un sac de dormit cu puf?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Da, merita daca prioritizati greutatea redusa si compresibilitatea maxima pentru ture lungi sau backpacking. Sacii cu puf ofera cel mai bun raport greutate/caldura, dar sunt mai scumpi si necesita ingrijire speciala la umiditate.
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq-3">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Cat de importanta este greutatea unui sac de dormit?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Greutatea este esentiala pentru backpacking si ture montane, unde fiecare kilogram conteaza. Un sac de dormit usor (sub 1.2 kg) va face o diferenta semnificativa pe parcursul unei zile de mers. Pentru campingul auto, greutatea este mai putin critica.
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq-4">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Pot folosi un sac de dormit de vara si iarna?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Nu, un sac de dormit este optimizat pentru un anumit interval de temperaturi. Un sac de vara nu va oferi suficienta protectie iarna, iar un sac de iarna va fi prea calduros si incomod vara. Este recomandat sa aveti saci diferiti pentru sezoane distincte sau un sac de 3 sezoane pentru utilizare moderata.
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Author -->
+        <div class="author-line">
+          <div class="author-avatar">DV</div>
+          <div>
+            <div class="author-name">Dan Vasilescu</div>
+            <div class="author-role">Expert Sport si Outdoor</div>
+          </div>
+        </div>
+
+        <!-- Similar Articles -->
+        <SimilarArticles
+          currentSlug="cele-mai-bune-saci-de-dormit"
+          currentCategory="sport-timp-liber"
+          articles={allArticles}
+        />
+
+        <!-- Prev/Next Navigation -->
+        <PrevNextNav
+          currentSlug="cele-mai-bune-saci-de-dormit"
+          currentCategory="sport-timp-liber"
+          articles={allArticles}
+        />
+      </div>
+    </div>
+  </article>
+
+  <script>
+    document.querySelectorAll('.comparison-outer').forEach(outer => {
+      const wrap = outer.querySelector('.comparison-wrap');
+      if (!wrap) return;
+      function checkScroll() {
+        const canScroll = wrap.scrollWidth > wrap.clientWidth;
+        const atEnd = wrap.scrollLeft + wrap.clientWidth >= wrap.scrollWidth - 2;
+        outer.classList.toggle('can-scroll', canScroll && !atEnd);
+      }
+      checkScroll();
+      wrap.addEventListener('scroll', checkScroll, { passive: true });
+      window.addEventListener('resize', checkScroll, { passive: true });
+    });
+
+    const tocLinks = document.querySelectorAll('#toc-desktop-list a[data-toc-id]');
+    if (tocLinks.length > 0) {
+      const ids = Array.from(tocLinks).map(a => a.dataset.tocId);
+      const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              tocLinks.forEach(a => a.classList.remove('active'));
+              const match = Array.from(tocLinks).find(a => a.dataset.tocId === entry.target.id);
+              match?.classList.add('active');
+            }
+          }
+        },
+        { rootMargin: '-80px 0px -60% 0px', threshold: 0 }
+      );
+      sections.forEach(s => observer.observe(s));
+    }
+  </script>
+</Layout>
