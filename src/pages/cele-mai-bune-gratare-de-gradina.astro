@@ -1,0 +1,690 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SimilarArticles from '../components/SimilarArticles.astro';
+import PrevNextNav from '../components/PrevNextNav.astro';
+import keywordsData from '../../keywords.json';
+
+export const frontmatter = {
+  title: "Cele mai bune gratare de gradina",
+  excerpt: "Daca va intereseaza cele mai bune gratare de gradina, probabil ca sunteti in cautarea unui model care sa combine functionalitatea, durabilitatea si un pret accesibil pentru a va bucura de mese in aer liber. Alegerea corecta depinde de frecventa utilizarii, numarul de persoane pentru care gatiti si spatiul disponibil.",
+  image: "/images/articles/cele-mai-bune-gratare-de-gradina.webp",
+  category: "Casa si Gradina",
+  categorySlug: "casa-gradina",
+  date: "2025-05-09T08:00:00.000Z",
+  modifiedDate: "2026-03-13T08:45:26.985Z",
+  author: "Elena Marin",
+  authorRole: "Expert Casa si Gradina",
+  authorBio: "Elena are experienta practica cu scule electrice, mobilier si echipamente de gradina. Testeaza produse si ofera recomandari bazate pe durabilitate, pret si usurinta de utilizare."
+};
+
+const breadcrumbs = [
+  { name: "Acasa", url: "/" },
+  { name: "Casa si Gradina", url: "/casa-gradina/" },
+  { name: "Cele mai bune gratare de gradina", url: "/cele-mai-bune-gratare-de-gradina/" }
+];
+
+const faq = [
+  { question: "Care este pretul mediu pentru cele mai bune gratare de gradina in 2026?", answer: "Preturile pentru cele mai bune gratare de gradina variaza considerabil. Modelele de baza pe carbuni pot incepe de la 300-500 lei, cele pe gaz de nivel mediu se situeaza intre 1000-2500 lei, iar modelele premium pe gaz sau ceramice pot depasi 4000-8000 lei. Gratarele electrice compacte sunt cele mai accesibile, pornind de la aproximativ 200 lei." },
+  { question: "Ce inseamna un gratar pe gaz cu 4+1 arzatoare?", answer: "Un gratar pe gaz cu specificatia \"4+1\" inseamna ca are 4 arzatoare principale sub suprafata de gatire si un arzator lateral suplimentar. Acest arzator lateral este util pentru a gati sosuri, a sota legume sau a mentine mancarea calda, oferind o versatilitate sporita." },
+  { question: "Merita sa investesc intr-un gratar ceramic (Kamado)?", answer: "Da, merita daca sunteti un pasionat de gatit in aer liber si cautati versatilitate maxima. Gratarele ceramice exceleaza la afumare, coacere si gatire la temperaturi inalte, oferind o izolare termica superioara si un control precis al temperaturii. Investitia initiala este mare, dar durabilitatea si performanta sunt exceptionale." },
+  { question: "Care este diferenta intre gratarul pe carbuni si cel pe gaz ca gust?", answer: "Gratarele pe carbuni ofera un gust afumat distinct, apreciat de multi, datorita arderii carbunilor si a grasimii care picura. Gratarele pe gaz sunt mai curate si ofera un gust de gratar mai neutru, dar pot fi imbogatite cu arome prin adaugarea de rumegus in cutii speciale sau prin utilizarea de sosuri. Gustul este o chestiune de preferinta personala." },
+  { question: "Cum curat corect un gratar din fonta?", answer: "Curatarea unui gratar din fonta se face dupa ce s-a racit, folosind o perie rigida sau o racleta pentru a indeparta resturile. Evitati detergentii puternici. Dupa curatare, aplicati un strat fin de ulei vegetal (prin ungere) si incalziti gratarul la foc mic pentru a proteja suprafata. Acest proces se numeste \"seasoning\" si previne rugina." }
+];
+
+const toc = [
+  { title: "Weber Spirit II E-310 Black", id: "weber-spirit-ii-e-310-black" },
+  { title: "Activa Romantica 4+1", id: "activa-romantica-41" },
+  { title: "Landmann Triton 4.1", id: "landmann-triton-41" },
+  { title: "Tepro Toronto", id: "tepro-toronto" },
+  { title: "Weber Master-Touch GBS Premium Black", id: "weber-master-touch-gbs-premium-black" },
+  { title: "Grătar Electric de Masă Tefal", id: "gratar-electric-de-masa-tefal" },
+  { title: "Kamado Joe Classic Joe III", id: "kamado-joe-classic-joe-iii" },
+  { title: "Comparatie", id: "comparatie" },
+  { title: "Cum alegi cele mai bune gratare de gradina pentru nevoile tale?", id: "ghid" },
+  { title: "Intrebari Frecvente", id: "faq" }
+];
+
+// Get all articles for similar articles component
+const allArticles = keywordsData.completed.map(item => ({
+  title: item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1),
+  slug: item.keyword.toLowerCase()
+    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+    .replace(/ș/g, 's').replace(/ț/g, 't')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
+  excerpt: item.excerpt || '',
+  image: `/images/articles/${item.keyword.toLowerCase()
+    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+    .replace(/ș/g, 's').replace(/ț/g, 't')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}.webp`,
+  category: item.category,
+  categorySlug: item.categorySlug,
+  date: item.date || new Date().toISOString()
+}));
+---
+
+<Layout
+  title="Cele mai bune gratare de gradina - PretulVerde"
+  description="Daca va intereseaza cele mai bune gratare de gradina, probabil ca sunteti in cautarea unui model care sa combine functionalitatea, durabilitatea si un pret accesibil pentru a va bucura de mese in aer liber. Alegerea corecta depinde de frecventa utilizarii, numarul de persoane pentru care gatiti si spatiul disponibil."
+  image="/images/articles/cele-mai-bune-gratare-de-gradina.webp"
+  type="article"
+  publishedTime="2025-05-09T08:00:00.000Z"
+  modifiedTime="2026-03-13T08:45:26.985Z"
+  author="Elena Marin"
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <article class="article-page">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+      <ol>
+        <li><a href="/">Acasa</a></li>
+        <li>Casa si Gradina</li>
+        <li><span>Cele mai bune gratare de gradina</span></li>
+      </ol>
+    </nav>
+
+    <!-- Title -->
+    <h1 class="article-page-title">Cele mai bune gratare de gradina</h1>
+
+    <!-- Meta -->
+    <div class="article-page-meta">
+      <span>Elena Marin</span>
+      <span>&middot;</span>
+      <span>Publicat: 9 mai 2025</span>
+      <span>&middot;</span>
+      <span>Actualizat: 13 martie 2026</span>
+    </div>
+
+    <!-- Featured Image -->
+    <img src="/images/articles/cele-mai-bune-gratare-de-gradina.webp" alt="Cele mai bune gratare de gradina" class="article-page-image" width="800" height="600" loading="eager">
+
+    <!-- Two-column layout: content + TOC sidebar on RIGHT -->
+    <div class="article-layout">
+      <aside class="toc-sidebar">
+        <p class="toc-sidebar-title">Cuprins</p>
+        <ol class="toc-sidebar-list" id="toc-desktop-list">
+          {toc.map(item => (
+            <li><a href={`#${item.id}`} data-toc-id={item.id}>{item.title}</a></li>
+          ))}
+        </ol>
+      </aside>
+
+      <div>
+        <!-- Mobile TOC (expandable) -->
+        <div class="toc-mobile" id="toc-mobile">
+          <button class="toc-mobile-toggle" onclick="this.parentElement.classList.toggle('open')">
+            Cuprins
+            <span class="toc-chevron">&#9660;</span>
+          </button>
+          <ol class="toc-mobile-list">
+            {toc.map(item => (
+              <li><a href={`#${item.id}`}>{item.title}</a></li>
+            ))}
+          </ol>
+        </div>
+
+        <!-- Article Content -->
+        <div class="article-content">
+          <section id="intro">
+            <p>Daca va intereseaza <strong>cele mai bune gratare de gradina</strong>, probabil ca sunteti in cautarea unui model care sa combine functionalitatea, durabilitatea si un pret accesibil pentru a va bucura de mese in aer liber. Alegerea corecta depinde de frecventa utilizarii, numarul de persoane pentru care gatiti si spatiul disponibil. Un gratar de gradina de calitate nu este doar un accesoriu, ci o investitie in momente de relaxare si socializare.</p><p>Ce definește <strong>cele mai bune gratare de gradina</strong> in 2026? In primul rand, materialele folosite – otelul inoxidabil sau fonta ofera o rezistenta sporita la coroziune si o distributie uniforma a caldurii. Apoi, vine functionalitatea: suprafata de gatire, sistemul de control al temperaturii si usurinta in curatare sunt factori determinanti. In final, pretul trebuie sa reflecte calitatea si caracteristicile oferite, asigurand un raport optim.</p><p>Acest articol va prezinta o selectie a celor mai performante gratare de gradina, analizate din punct de vedere al performantei, durabilitatii si raportului calitate-pret, pentru a va ajuta sa faceti cea mai buna achizitie.</p>
+          </section>
+
+
+          <article class="product-review" id="weber-spirit-ii-e-310-black">
+            <div class="product-review__header">
+              <span class="section-tag">Alegerea Noastra</span>
+              <h3>Weber Spirit II E-310 Black</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Grătar pe gaz
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Weber
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>3 arzatoare din otel inoxidabil, 10.6 kW putere, sistem de aprindere Infinity Ignition, gratar din fonta emailata, termometru integrat in capac, sistem de management al grasimii, 2 roti
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>132 cm (inaltime) x 122 cm (latime) x 69 cm (adancime), suprafata de gatire 60 cm x 46 cm
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>10 ani pentru capac si cadru, 5 ani pentru arzatoare, gratar si componente
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Weber Spirit II E-310 este o optiune de top pentru cei care cauta <strong>cele mai bune gratare de gradina</strong> pe gaz, combinand performanta solida cu fiabilitatea brandului. Sistemul de aprindere Infinity Ignition asigura pornirea rapida si sigura a arzatoarelor, iar cele trei unitati din otel inoxidabil permit un control precis al temperaturii pe zone distincte. Suprafata de gatire generoasa, de 60 cm x 46 cm, este ideala pentru familii sau grupuri de prieteni.</p><p>Grătarul din fonta emailata retine caldura excelent si confera mancarurilor amprenta specifica gratarului. Termometrul integrat in capac este un plus pentru monitorizarea temperaturii fara a deschide gratarul. Sistemul de management al grasimii directioneaza reziduurile catre o tava colectoare, facilitand curatarea. Cele doua roti integrate permit deplasarea relativ usoara a gratarului, desi greutatea sa nu este neglijabila.</p><p>Este acest gratar potrivit pentru dumneavoastra? Daca puneti accent pe precizie, controlul temperaturii si durabilitatea pe termen lung, Weber Spirit II E-310 este o alegere excelenta. Brandul Weber este sinonim cu calitatea in lumea gratarului, iar acest model nu face exceptie.</p><p>Totusi, acest model vine cu un pret pe masura. Fiind un produs premium, costul initial poate fi un impediment pentru unii cumparatori. De asemenea, desi are roti, manevrarea sa pe teren accidentat poate fi dificila. Nu dispune de arzator lateral, o functie prezenta la alte modele din gama superioara, care ar permite prepararea sosurilor sau a garniturilor simultan cu friptura.</p><p>In ciuda acestor mici dezavantaje, performanta, calitatea constructiei si fiabilitatea pe termen lung fac din Weber Spirit II E-310 o investitie inteligenta pentru pasionatii de gratar. Recomandarea noastra este pentru cei care gatesc frecvent si doresc un aparat robust, performant si usor de utilizat.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Performanta excelenta de gatire si control precis al temperaturii</li>
+              <li>Materiale de inalta calitate si constructie robusta</li>
+              <li>Sistem eficient de management al grasimii pentru curatare usoara</li>
+              <li>Brand recunoscut pentru fiabilitate si durabilitate</li>
+              <li>Suprafata de gatire generoasa</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Pret ridicat comparativ cu alte optiuni</li>
+              <li>Lipsa arzatorului lateral</li>
+              <li>Poate fi greu de manevrat pe suprafete denivelate</li>
+              <li>Necesita conectare la butelie de gaz</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="activa-romantica-41">
+            <div class="product-review__header">
+              <span class="section-tag">Raport Calitate-Pret</span>
+              <h3>Activa Romantica 4+1</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Grătar pe gaz
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Activa
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>4 arzatoare principale din otel inoxidabil (aprox. 8 kW), 1 arzator lateral (aprox. 3 kW), aprindere piezoelectrica, termometru in capac, 2 gratare din fonta, 2 roti
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>128 cm (inaltime) x 112 cm (latime) x 57 cm (adancime), suprafata de gatire 56 cm x 42 cm
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>2 ani
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Activa Romantica 4+1 se pozitioneaza ca o optiune echilibrata pentru cei ce cauta <strong>cele mai bune gratare de gradina</strong> accesibile, oferind o multitudine de functii la un pret competitiv. Cele patru arzatoare principale asigura o putere suficienta pentru a gati pentru un grup mediu de persoane, iar arzatorul lateral este un atu major, permitand prepararea sosurilor sau sotarea legumelor in paralel cu gatirea pe gratarul principal. Acest lucru il face un model versatil.</p><p>Aprinderea piezoelectrica este convenabila, iar termometrul integrat in capac ajuta la mentinerea unei temperaturi constante. Grătarele din fonta sunt durabile si distribuie caldura uniform, oferind rezultate bune. Suprafata de gatire de 56 cm x 42 cm este potrivita pentru majoritatea nevoilor casnice. Constructia generala este solida pentru clasa sa de pret.</p><p>Pentru cine este potrivit acest model? Este o alegere buna pentru familiile care doresc un gratar pe gaz cu functii multiple, inclusiv arzator lateral, fara a depasi un buget rezonabil. Este un pas inainte fata de gratarele pe carbuni, oferind mai mult control si confort.</p><p>Care sunt limitările? Durata de viata a arzatoarelor s-ar putea sa nu fie la fel de lunga ca la modelele premium. De asemenea, materialele folosite, desi bune pentru pret, nu se compara cu otelul inoxidabil de inalta calitate sau fonta groasa intalnita la gratarele mult mai scumpe. Suprafata de gatire, desi generoasa, nu este la fel de mare ca la unele modele mai mari.</p><p>In ciuda acestor aspecte, Activa Romantica 4+1 ofera un pachet complet pentru pretul sau. Daca prioritizati versatilitatea si functiile suplimentare, cum ar fi arzatorul lateral, acesta este un candidat serios in clasa sa de pret. Este o investitie buna pentru a va bucura de gatitul in aer liber fara costuri exorbitante.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Arzator lateral inclus, sporind versatilitatea</li>
+              <li>Pret accesibil pentru functiile oferite</li>
+              <li>Aprindere piezoelectrica comoda</li>
+              <li>Suprafata de gatire decenta</li>
+              <li>Constructie relativ solida pentru clasa sa</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Materialele nu sunt la fel de durabile ca la modelele premium</li>
+              <li>Durata de viata potential mai scurta a arzatoarelor</li>
+              <li>Controlul temperaturii poate fi mai putin precis decat la modelele superioare</li>
+              <li>Necesita asamblare</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="landmann-triton-41">
+            <div class="product-review__header">
+              <span class="section-tag">Best Buy 2026</span>
+              <h3>Landmann Triton 4.1</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Grătar pe gaz
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Landmann
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>4 arzatoare din otel inoxidabil (aprox. 12.3 kW total), 1 arzator lateral (aprox. 3 kW), sistem de aprindere piezo, termometru in capac, 2 gratare din fonta, 2 rafturi laterale, 2 roti
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>106 cm (inaltime) x 130 cm (latime) x 55 cm (adancime), suprafata de gatire 60 cm x 40 cm
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>2 ani
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Landmann Triton 4.1 este un alt candidat puternic in segmentul gratarelor pe gaz, oferind o combinatie excelenta de putere, functionalitate si un design atractiv, fiind o optiune potrivita cand cautati <strong>cele mai bune gratare de gradina</strong>. Cele patru arzatoare principale, impreuna cu arzatorul lateral, pun la dispozitie o putere totala de peste 15 kW, asigurand gatirea rapida si eficienta a unei cantitati mari de mancare.</p><p>Suprafata de gatire de 60 cm x 40 cm este generoasa si permite prepararea simultana a mai multor tipuri de preparate. Grătarele din fonta sunt un standard pentru o distributie buna a caldurii si pentru a obtine acele marcaje apetisante pe carne. Termometrul integrat in capac este util pentru monitorizarea temperaturii, iar aprinderea piezoelectrica face procesul de pornire simplu si sigur.</p><p>Modelul Triton 4.1 este ideal pentru familii mari sau pentru cei care organizeaza frecvent petreceri in curte. Rafturile laterale ofera spatiu de lucru suplimentar, un detaliu practic adesea neglijat. Versatilitatea sporita de catre arzatorul lateral completeaza pachetul pentru o experienta culinara completa in aer liber.</p><p>Ce dezavantaje ar putea avea? Constructia, desi solida, nu atinge nivelul de finisare al modelelor mult mai scumpe. De asemenea, curatarea gratarului din fonta necesita atentie pentru a mentine suprafata in stare buna pe termen lung. Greutatea sa, combinata cu doar doua roti, poate face mutarea sa mai anevoioasa pe teren accidentat.</p><p>In ciuda acestor aspecte, Landmann Triton 4.1 se distinge prin raportul sau excelent calitate-pret. Oferta de putere, suprafata de gatire si functiile suplimentare il recomanda ca o alegere inspirata pentru cei care doresc un gratar pe gaz performant si versatil. Este o investitie care va aduce multe satisfactii.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Putere mare de gatire, ideala pentru cantitati mari</li>
+              <li>Arzator lateral si rafturi laterale pentru functionalitate sporita</li>
+              <li>Suprafata de gatire generoasa</li>
+              <li>Gratare din fonta pentru rezultate optime</li>
+              <li>Design atractiv si constructie solida</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Finisajele nu sunt la nivelul modelelor premium</li>
+              <li>Curatarea gratarului din fonta necesita ingrijire</li>
+              <li>Manevrabilitate limitata pe teren accidentat din cauza numarului de roti</li>
+              <li>Necesita asamblare</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="tepro-toronto">
+            <div class="product-review__header">
+              <span class="section-tag">Pentru Buget Mic</span>
+              <h3>Tepro Toronto</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Grătar pe cărbuni
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Tepro
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Suprafata de gatire mare (aprox. 56 cm x 36 cm), gratar din otel cromat, termometru in capac, 2 rafturi laterale (unul rabatabil), 2 roti, 2 zone de ventilatie reglabile, tava cenusa detasabila
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>97 cm (inaltime) x 107 cm (latime) x 60 cm (adancime)
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>1 an
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Pentru cei care prefera aroma autentica a gratarului pe carbuni, Tepro Toronto se profileaza ca una dintre <strong>cele mai bune gratare de gradina</strong> din segmentul sau de pret. Suprafata de gatire generoasa, de aproximativ 56 cm x 36 cm, este suficienta pentru a gati pentru un grup numeros de persoane. Gratarul din otel cromat este usor de curatat, iar cele doua zone de ventilatie reglabile permit un control mai bun al temperaturii.</p><p>Un aspect practic important este prezenta unui raft lateral rabatabil, care ofera spatiu suplimentar pentru asezarea ingredientelor sau a ustensilelor. Termometrul integrat in capac este un plus pentru monitorizarea temperaturii, iar tava detasabila pentru cenusa face curatarea mult mai usoara dupa utilizare. Constructia este simpla, dar functionala, iar cele doua roti faciliteaza deplasarea.</p><p>Acest gratar este o alegere potrivita pentru cei cu un buget limitat, dar care nu vor sa sacrifice suprafata de gatire. Este ideal pentru utilizare ocazionala sau pentru cei care apreciaza simplitatea si gustul specific al gratarului pe carbuni. Este o introducere excelenta in lumea gratarului in aer liber.</p><p>Ce ar putea fi imbunatatit? Materialele folosite, in special otelul, nu sunt la fel de rezistente la coroziune pe termen lung ca otelul inoxidabil sau fonta. Gratarul cromat, desi usor de curatat, poate fi mai putin durabil decat cel din fonta. De asemenea, lipsa unor caracteristici precum arzatorul lateral sau controlul precis al temperaturii il plaseaza in clasa inferioara a gratarelor pe gaz.</p><p>In concluzie, Tepro Toronto este o optiune solida pentru cei care cauta un gratar pe carbuni mare si accesibil. Oferta sa de spatiu de gatire si caracteristicile practice il fac o alegere buna pentru bugetul sau. Daca doriti gustul autentic al gratarului pe carbuni fara investitii mari, acesta este un model de luat in considerare.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Suprafata de gatire mare, potrivita pentru grupuri</li>
+              <li>Pret foarte accesibil</li>
+              <li>Raft lateral rabatabil pentru spatiu de lucru suplimentar</li>
+              <li>Tava pentru cenusa detasabila, usureaza curatarea</li>
+              <li>Controlul ventilatiei pentru reglarea temperaturii</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Materiale mai putin rezistente la coroziune pe termen lung</li>
+              <li>Gratar cromat mai putin durabil decat fonta</li>
+              <li>Nu ofera precizia controlului temperaturii gratarelor pe gaz</li>
+              <li>Necesita utilizarea si gestionarea carbunilor</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="weber-master-touch-gbs-premium-black">
+            <div class="product-review__header">
+              <span class="section-tag">Premium</span>
+              <h3>Weber Master-Touch GBS Premium Black</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Grătar pe cărbuni
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Weber
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Sistemul Gourmet BBQ (GBS) pentru accesorii multiple, gratar din otel placat cu crom (diametru 57 cm), sistem One-Touch pentru curatare, cenusar detasabil, termometru integrat in capac, deflector de caldura, carlige pentru ustensile, 3 picioare cu roti
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>107 cm (inaltime) x 60 cm (latime) x 74 cm (adancime), suprafata de gatire 57 cm diametru
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>10 ani pentru capac si cuva, 5 ani pentru sistemul One-Touch si componente din plastic, 2 ani pentru gratar
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Pentru pasionatii de gratar pe carbuni care doresc cea mai buna experienta, Weber Master-Touch GBS Premium este o alegere exceptionala. Acest model nu este doar un gratar, ci un sistem complet de gatit in aer liber, datorita sistemului Gourmet BBQ (GBS). Acesta permite inlocuirea partii centrale a gratarului cu o varietate de accesorii, de la plite de fonta la rotisor sau piatra pentru pizza, transformandu-l intr-un adevarat centru culinar.</p><p>Suprafata de gatire de 57 cm diametru este generoasa si permite gatirea pentru un grup mare. Gratarul din otel placat cu crom, desi nu este din fonta, este durabil si ofera o suprafata buna de gatire. Sistemul One-Touch, impreuna cu cenusarul detasabil, fac curatarea incredibil de usoara, un avantaj major fata de alte gratare pe carbuni.</p><p>Termometrul integrat in capac si sistemul de ventilatie permit un control precis al temperaturii, esential pentru gatirea lenta sau pentru a obtine diferite niveluri de gatire. Deflectorul de caldura inclus permite gatirea indirecta, adica transformarea gratarului intr-un cuptor.</p><p>Acest gratar este pentru cineva care apreciaza calitatea, versatilitatea si este dispus sa investeasca intr-un aparat de gatit pe carbuni de top. Daca doriti sa experimentati cu diverse tehnici de gatit si sa aveti control total asupra procesului, acesta este un produs de top.</p><p>Totusi, pretul este, fara indoiala, unul dintre cele mai mari de pe piata pentru un gratar pe carbuni. Sistemul GBS, desi fantastic, necesita achizitionarea separata a accesoriilor, ceea ce poate creste costul total. De asemenea, fiind pe carbuni, necesita timp pentru a ajunge la temperatura optima si pentru a curata cenusa.</p><p>In ciuda pretului, Weber Master-Touch GBS Premium ofera o experienta de gatit de neegalat. Versatilitatea sa, calitatea constructiei si usurinta in utilizare il plaseaza in varful ierarhiei gratarelor pe carbuni. Este o investitie pe termen lung pentru pasionatii adevarati.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Sistem Gourmet BBQ (GBS) pentru versatilitate exceptionala</li>
+              <li>Calitate de constructie Weber, recunoscuta pentru durabilitate</li>
+              <li>Sistem One-Touch pentru curatare rapida si usoara</li>
+              <li>Control precis al temperaturii datorita sistemului de ventilatie</li>
+              <li>Suprafata de gatire generoasa</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Pret foarte ridicat</li>
+              <li>Necesita achizitionarea separata a accesoriilor GBS</li>
+              <li>Necesita timp pentru incalzire si curatare (specific gratarelor pe carbuni)</li>
+              <li>Gratarul din otel, desi placat, nu este din fonta</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="gratar-electric-de-masa-tefal">
+            <div class="product-review__header">
+              <span class="section-tag">Alegerea Noastra</span>
+              <h3>Grătar Electric de Masă Tefal</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Grătar electric de masă
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Tefal
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Putere 2000W, termostat reglabil cu 3 trepte de temperatura, suprafata de gatire antiaderenta, indicator luminos de functionare, tavita colectoare pentru grasime, termometru integrat in capac (la unele modele), usor de curatat
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>Aprox. 45 cm (lungime) x 30 cm (latime) x 10 cm (inaltime), suprafata de gatire aprox. 2000 cm²
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>2 ani
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Pentru cei care locuiesc la apartament sau au spatii mici, dar doresc sa se bucure de gustul gratarului, un gratar electric de masa precum Tefal este o solutie excelenta. Aceste modele sunt printre <strong>cele mai bune gratare de gradina</strong> compacte, oferind rapiditate si usurinta in utilizare. Puterea de 2000W permite atingerea temperaturii optime rapid, iar termostatul reglabil cu 3 trepte ofera un control decent al gatirii.</p><p>Suprafata de gatire antiaderenta, de obicei in jur de 2000 cm², este potrivita pentru gatirea pentru 2-4 persoane. Mancarea nu se lipeste, iar curatarea este extrem de simpla, adesea prin simpla stergere sau clatire. Tavita colectoare pentru grasime este un detaliu important pentru un gatit mai sanatos si pentru a mentine suprafata curata.</p><p>Acest tip de gratar este ideal pentru balcoane, terase mici sau chiar pentru utilizare in interior (cu o buna ventilatie). Nu produce fum excesiv, asa cum se intampla la gratarele pe carbuni sau gaz, fiind o optiune mult mai prietenoasa cu vecinii si cu spatiul de locuit.</p><p>Ce ii lipseste? Gustul specific dat de fumul de carbuni sau lemn. De asemenea, suprafata de gatire este limitata, nefiind potrivita pentru grupuri mari. Fiind electric, depinde de o sursa de curent, ceea ce il face mai putin portabil decat un gratar pe carbuni sau gaz mic.</p><p>Cu toate acestea, pentru simplitate, viteza si convenienta, gratarul electric Tefal este o alegere excelenta. Daca prioritizati usurinta in utilizare, curatarea rapida si gatitul fara fum pe balcon, acesta este modelul potrivit. Este o investitie minima pentru a te bucura de preparate la gratar oricand doresti.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Ideal pentru apartamente si spatii mici</li>
+              <li>Rapiditate in incalzire si gatire</li>
+              <li>Curatare extrem de usoara datorita suprafetei antiaderente</li>
+              <li>Fara fum excesiv, prietenos cu vecinii</li>
+              <li>Termostat reglabil pentru controlul temperaturii</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Nu ofera gustul autentic al gratarului pe carbuni/gaz</li>
+              <li>Suprafata de gatire limitata</li>
+              <li>Necesita o sursa de alimentare electrica</li>
+              <li>Potrivit doar pentru utilizare in spatii bine ventilate daca se doreste utilizarea in interior</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="kamado-joe-classic-joe-iii">
+            <div class="product-review__header">
+              <span class="section-tag">Premium</span>
+              <h3>Kamado Joe Classic Joe III</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Grătar ceramic (Kamado)
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Kamado Joe
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Construcție ceramică groasă pentru izolare termică excelentă, sistem de gătit in 2 nivele (2000 cm²), deflector de căldură din ceramică, termometru precis, sistem de curățare cenusa 'Divide & Conquer', sistem de etanșare nou, șasiu metalic cu roți mari, accesorii incluse (clește, lopățică, racletă)
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>122 cm (inaltime) x 137 cm (latime) x 76 cm (adancime), diametru gratar 45.7 cm
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>Garanție limitată pe viață pentru cuptor, capac și vas; 5 ani pentru sistemul de ardere; 1 an pentru componentele electronice
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Kamado Joe Classic Joe III reprezintă vârful tehnologiei și versatilității în materie de gratare, fiind o investiție majoră pentru pasionații de gătit în aer liber. Aceste tipuri de gratare, cunoscute sub numele de Kamado, folosesc ceramică groasă pentru a reține căldura și a oferi o izolare termică excepțională, permițând gătirea la temperaturi joase (smoking) sau la temperaturi foarte înalte (searing) cu o eficiență remarcabilă.</p><p>Sistemul 'Divide & Conquer' permite configurarea grătarului pe două nivele, dublând practic suprafața de gătit efectivă și oferind flexibilitate în prepararea diferitelor tipuri de alimente simultan. Construcția ceramică asigură o distribuție uniformă a căldurii, eliminând punctele fierbinți și garantând rezultate consistente. Termometrul integrat este precis, iar garnitura de etanșare îmbunătățită reduce pierderile de căldură.</p><p>Acest model este pentru cei care doresc să exploreze toate aspectele gătitului la grătar – de la pizza la afumare lentă, la fripturi perfect sigilate. Versatilitatea sa este de neegalat, iar calitatea construcției și materialele premium promit o durabilitate pe viață, dacă este întreținut corespunzător. Este, de departe, una dintre <strong>cele mai bune gratare de gradina</strong> din punct de vedere al performanței pure.</p><p>Care sunt dezavantajele majore? Principalul obstacol este, desigur, prețul extrem de ridicat. Aceste gratare sunt o investiție considerabilă. De asemenea, sunt foarte grele și necesită o poziționare fixă, nefiind concepute pentru a fi mutate frecvent, chiar dacă au roți. Gătirea pe ceramică necesită o curbă de învățare, mai ales pentru cei obișnuiți cu gratarele tradiționale.</p><p>În ciuda costului, Kamado Joe Classic Joe III oferă o performanță și o versatilitate care justifică investiția pentru entuziaștii dedicați. Dacă sunteți gata să faceți saltul la un aparat de gătit premium și să explorați noi orizonturi culinare, acest Kamado este o alegere de top. Este o piesă centrală pentru orice bucătărie exterioară.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Versatilitate excepțională: afumare, coacere, searing</li>
+              <li>Izolare termică superioară datorită construcției ceramice</li>
+              <li>Control precis al temperaturii pe o gamă largă</li>
+              <li>Sistem 'Divide & Conquer' pentru gătire pe mai multe niveluri</li>
+              <li>Calitate de construcție premium și garanție extinsă</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Preț foarte ridicat, o investiție majoră</li>
+              <li>Greutate considerabilă, dificil de mutat</li>
+              <li>Necesită o curbă de învățare pentru optimizarea utilizării</li>
+              <li>Dimensiunile generale pot fi mari pentru spații mici</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+
+          <section id="comparatie">
+            <h2>Comparatie</h2>
+            <p>Pentru a va ajuta sa vizualizati rapid diferitele optiuni, iata un tabel comparativ al principalelor modele analizate, concentrandu-se pe caracteristicile cheie.</p>
+            <div class="comparison-outer">
+              <div class="comparison-hint">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                Gliseaza pentru a vedea tot tabelul
+              </div>
+              <div class="comparison-wrap">
+                <table class="comparison-table">
+                  <thead>
+                    <tr>
+                      <th>Produs</th>
+                      <th>Tip</th>
+                      <th>Brand</th>
+                      <th>Specificatii cheie</th>
+                      <th>Dimensiuni</th>
+                      <th>PotrivitPentru</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+              <tr>
+                <td><strong>Weber Spirit II E-310</strong></td>
+                <td>Gaz</td>
+                <td>Weber</td>
+                <td>3 arzatoare, 10.6 kW, fonta emailata</td>
+                <td>132x122x69 cm</td>
+                <td>Familii, utilizare frecventa</td>
+              </tr>
+
+              <tr>
+                <td><strong>Activa Romantica 4+1</strong></td>
+                <td>Gaz</td>
+                <td>Activa</td>
+                <td>4+1 arzatoare, 11 kW total, fonta</td>
+                <td>128x112x57 cm</td>
+                <td>Buget, versatilitate</td>
+              </tr>
+
+              <tr>
+                <td><strong>Landmann Triton 4.1</strong></td>
+                <td>Gaz</td>
+                <td>Landmann</td>
+                <td>4+1 arzatoare, 15.3 kW total, fonta</td>
+                <td>106x130x55 cm</td>
+                <td>Grupuri mari, putere</td>
+              </tr>
+
+              <tr>
+                <td><strong>Tepro Toronto</strong></td>
+                <td>Carbuni</td>
+                <td>Tepro</td>
+                <td>Suprafata mare, otel cromat</td>
+                <td>97x107x60 cm</td>
+                <td>Buget, gust autentic</td>
+              </tr>
+
+              <tr>
+                <td><strong>Weber Master-Touch GBS</strong></td>
+                <td>Carbuni</td>
+                <td>Weber</td>
+                <td>GBS, 57 cm diametru, One-Touch</td>
+                <td>107x60x74 cm</td>
+                <td>Pasionati, versatilitate</td>
+              </tr>
+
+              <tr>
+                <td><strong>Grătar Electric Tefal</strong></td>
+                <td>Electric</td>
+                <td>Tefal</td>
+                <td>2000W, antiaderent, compact</td>
+                <td>45x30x10 cm</td>
+                <td>Apartamente, spatii mici</td>
+              </tr>
+
+              <tr>
+                <td><strong>Kamado Joe Classic Joe III</strong></td>
+                <td>Ceramic (Kamado)</td>
+                <td>Kamado Joe</td>
+                <td>Gatire multi-nivel, izolare ceramica, 45.7 cm diametru</td>
+                <td>122x137x76 cm</td>
+                <td>Entuziasti, performanta maxima</td>
+              </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+
+          <section id="ghid">
+            <h2>Cum alegi cele mai bune gratare de gradina pentru nevoile tale?</h2>
+            <div class="guide">
+              <p>Alegerea <strong>cele mai bune gratare de gradina</strong> depinde de mai multi factori personali. Gândiți-vă la frecvența cu care veți găti și la numărul de persoane pentru care pregătiți mesele. Un gratar pe gaz, cum ar fi Weber Spirit II E-310, este ideal pentru utilizare frecventă și rapiditate, în timp ce un gratar pe cărbuni, precum Weber Master-Touch GBS, oferă gustul autentic, dar necesită mai mult timp pentru pregătire și curățare.</p><h4>Ce tip de combustibil este cel mai potrivit?</h4><p>Decizia se reduce la preferințe și la tipul de experiență pe care o căutați. Gratarele pe gaz oferă control facil al temperaturii și aprindere rapidă, fiind excelente pentru gătirea frecventă. Gratarele pe cărbuni oferă aroma distinctă a fumului, dar necesită mai multă atenție la controlul căldurii. Gratarele electrice sunt cele mai convenabile pentru spații mici și utilizare rapidă, dar nu oferă aceeași aromă ca cele pe combustibil solid. Pentru cei care doresc versatilitate maximă și performanță de top, gratarele ceramice (Kamado) sunt o investiție pe termen lung.</p><h4>Ce caracteristici suplimentare ar trebui să iau în considerare?</h4><p>Pe lângă tipul de combustibil, suprafața de gătit este esențială. Pentru familii sau grupuri, o suprafață de peste 50 cm lungime este recomandată. Arzatoarele laterale, termometrele integrate, sistemele de curățare ușoară (cum ar fi One-Touch de la Weber) și materialele de construcție (fontă, oțel inoxidabil) influențează experiența generală și durabilitatea. Dacă spațiul este limitat, un grătar electric compact sau un model pe gaz cu rafturi laterale rabatabile poate fi o soluție practică. Verificarea accesoriilor disponibile, cum ar fi sistemul GBS de la Weber, poate adăuga un nivel suplimentar de funcționalitate.</p><h4>Cum influențează materialele calitatea și prețul?</h4><p>Materialele de construcție dictează adesea durabilitatea și prețul. Oțelul inoxidabil și fonta sunt mai rezistente la coroziune și căldură, conferind o durată de viață mai lungă, dar cresc și costul. Modelele din oțel cromat sau emailat sunt mai accesibile, dar pot necesita înlocuire mai frecventă. Gratarele ceramice, deși scumpe inițial, oferă o izolare termică superioară și o durabilitate excepțională. Alegerea corectă înseamnă un echilibru între bugetul disponibil și cerințele de performanță și longevitate.</p>
+            </div>
+          </section>
+
+          <!-- FAQ Section -->
+          <section class="faq-section" id="faq">
+            <h2 class="faq-title">Intrebari Frecvente</h2>
+            
+            <div class="faq-item" id="faq-0">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Care este pretul mediu pentru cele mai bune gratare de gradina in 2026?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Preturile pentru cele mai bune gratare de gradina variaza considerabil. Modelele de baza pe carbuni pot incepe de la 300-500 lei, cele pe gaz de nivel mediu se situeaza intre 1000-2500 lei, iar modelele premium pe gaz sau ceramice pot depasi 4000-8000 lei. Gratarele electrice compacte sunt cele mai accesibile, pornind de la aproximativ 200 lei.
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq-1">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Ce inseamna un gratar pe gaz cu 4+1 arzatoare?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Un gratar pe gaz cu specificatia "4+1" inseamna ca are 4 arzatoare principale sub suprafata de gatire si un arzator lateral suplimentar. Acest arzator lateral este util pentru a gati sosuri, a sota legume sau a mentine mancarea calda, oferind o versatilitate sporita.
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq-2">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Merita sa investesc intr-un gratar ceramic (Kamado)?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Da, merita daca sunteti un pasionat de gatit in aer liber si cautati versatilitate maxima. Gratarele ceramice exceleaza la afumare, coacere si gatire la temperaturi inalte, oferind o izolare termica superioara si un control precis al temperaturii. Investitia initiala este mare, dar durabilitatea si performanta sunt exceptionale.
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq-3">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Care este diferenta intre gratarul pe carbuni si cel pe gaz ca gust?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Gratarele pe carbuni ofera un gust afumat distinct, apreciat de multi, datorita arderii carbunilor si a grasimii care picura. Gratarele pe gaz sunt mai curate si ofera un gust de gratar mai neutru, dar pot fi imbogatite cu arome prin adaugarea de rumegus in cutii speciale sau prin utilizarea de sosuri. Gustul este o chestiune de preferinta personala.
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq-4">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Cum curat corect un gratar din fonta?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Curatarea unui gratar din fonta se face dupa ce s-a racit, folosind o perie rigida sau o racleta pentru a indeparta resturile. Evitati detergentii puternici. Dupa curatare, aplicati un strat fin de ulei vegetal (prin ungere) si incalziti gratarul la foc mic pentru a proteja suprafata. Acest proces se numeste "seasoning" si previne rugina.
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Author -->
+        <div class="author-line">
+          <div class="author-avatar">EM</div>
+          <div>
+            <div class="author-name">Elena Marin</div>
+            <div class="author-role">Expert Casa si Gradina</div>
+          </div>
+        </div>
+
+        <!-- Similar Articles -->
+        <SimilarArticles
+          currentSlug="cele-mai-bune-gratare-de-gradina"
+          currentCategory="casa-gradina"
+          articles={allArticles}
+        />
+
+        <!-- Prev/Next Navigation -->
+        <PrevNextNav
+          currentSlug="cele-mai-bune-gratare-de-gradina"
+          currentCategory="casa-gradina"
+          articles={allArticles}
+        />
+      </div>
+    </div>
+  </article>
+
+  <script>
+    document.querySelectorAll('.comparison-outer').forEach(outer => {
+      const wrap = outer.querySelector('.comparison-wrap');
+      if (!wrap) return;
+      function checkScroll() {
+        const canScroll = wrap.scrollWidth > wrap.clientWidth;
+        const atEnd = wrap.scrollLeft + wrap.clientWidth >= wrap.scrollWidth - 2;
+        outer.classList.toggle('can-scroll', canScroll && !atEnd);
+      }
+      checkScroll();
+      wrap.addEventListener('scroll', checkScroll, { passive: true });
+      window.addEventListener('resize', checkScroll, { passive: true });
+    });
+
+    const tocLinks = document.querySelectorAll('#toc-desktop-list a[data-toc-id]');
+    if (tocLinks.length > 0) {
+      const ids = Array.from(tocLinks).map(a => a.dataset.tocId);
+      const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              tocLinks.forEach(a => a.classList.remove('active'));
+              const match = Array.from(tocLinks).find(a => a.dataset.tocId === entry.target.id);
+              match?.classList.add('active');
+            }
+          }
+        },
+        { rootMargin: '-80px 0px -60% 0px', threshold: 0 }
+      );
+      sections.forEach(s => observer.observe(s));
+    }
+  </script>
+</Layout>
