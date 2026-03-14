@@ -1,0 +1,631 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SimilarArticles from '../components/SimilarArticles.astro';
+import PrevNextNav from '../components/PrevNextNav.astro';
+import keywordsData from '../../keywords.json';
+
+export const frontmatter = {
+  title: "Cele mai bune rachete de tenis",
+  excerpt: "Daca cauti cele mai bune rachete de tenis, probabil vrei sa intelegi ce caracteristici fac o racheta potrivita pentru nivelul tau de joc si stilul preferat. Alegerea corecta poate imbunatati semnificativ performanta pe teren, oferind control, putere si manevrabilitate.",
+  image: "/images/articles/cele-mai-bune-rachete-de-tenis.webp",
+  category: "Sport si Timp Liber",
+  categorySlug: "sport-timp-liber",
+  date: "2025-06-05T15:00:00.000Z",
+  modifiedDate: "2026-03-14T08:51:06.754Z",
+  author: "Dan Vasilescu",
+  authorRole: "Expert Sport si Outdoor",
+  authorBio: "Dan este pasionat de sport si activitati in aer liber. Testeaza biciclete, echipament fitness si accesorii outdoor, punand accent pe performanta si raportul calitate-pret."
+};
+
+const breadcrumbs = [
+  { name: "Acasa", url: "/" },
+  { name: "Sport si Timp Liber", url: "/sport-timp-liber/" },
+  { name: "Cele mai bune rachete de tenis", url: "/cele-mai-bune-rachete-de-tenis/" }
+];
+
+const faq = [
+  { question: "Cat costa o racheta de tenis buna?", answer: "O racheta de tenis decenta, potrivita pentru un jucator intermediar, costa intre 700 si 1200 lei. Modelele de top, profesionale, pot depasi 1500 lei. Exista si optiuni pentru incepatori sub 500 lei, dar performanta si durabilitatea sunt inferioare." },
+  { question: "Ce diferenta este intre o racheta pentru barbati si una pentru femei?", answer: "In general, rachetele \"pentru barbati\" sunt mai grele si au manere mai mari, in timp ce cele \"pentru femei\" sunt mai usoare si au manere mai mici. Totusi, cea mai importanta distinctie este potrivirea individuala, nu genul. Alegerea se face pe baza greutatii, echilibrului si dimensiunii manerului, nu pe baza etichetei." },
+  { question: "Merita sa cumpar o racheta mai scumpa daca sunt amator?", answer: "Daca joci ocazional si nu ai pretentii mari, o racheta mai accesibila (sub 700 lei) este suficienta. Daca joci regulat, vrei sa te dezvolti si sa te bucuri de joc, o investitie intr-o racheta de calitate medie (700-1200 lei) se va reflecta in performanta si confort, similar cu alegerea unor <a href=\"/cele-mai-bune-trotinete-electrice/\">cele mai bune trotinete electrice</a> unde raportul calitate-pret este esential." },
+  { question: "Cum aleg corect marimea manerului (grip size)?", answer: "Marimea corecta a manerului previne accidentarile si imbunatateste controlul. Pentru majoritatea barbatilor, grip-ul 2 sau 3 (4 1/4\" sau 4 3/8\") este potrivit, iar pentru femei, grip-ul 1 sau 2 (4 1/8\" sau 4 1/4\"). O metoda simpla: cand tii racheta, ar trebui sa incapa aproximativ un deget intre varful degetului inelar si palma." },
+  { question: "Ce sunt rachetele \"pre-strung\" si \"unstrung\"?", answer: "Rachetele \"unstrung\" vin fara corzi si trebuie racordate de tine sau de un profesionist, permitandu-ti sa alegi tipul si tensiunea corzilor. Rachetele \"pre-strung\" vin gata racordate din fabrica, de obicei cu corzi standard, fiind gata de joc imediat. Pentru performanta optima, este recomandat sa cumperi \"unstrung\" si sa alegi corzi personalizate." }
+];
+
+const toc = [
+  { title: "Babolat Pure Drive 2024", id: "babolat-pure-drive-2024" },
+  { title: "Wilson Blade 98 v8 16x19", id: "wilson-blade-98-v8-16x19" },
+  { title: "Head Speed MP", id: "head-speed-mp" },
+  { title: "Yonex EZONE 98 (305g)", id: "yonex-ezone-98-305g" },
+  { title: "Head Instinct MP", id: "head-instinct-mp" },
+  { title: "Dunlop CX 400 Tour", id: "dunlop-cx-400-tour" },
+  { title: "Comparatie", id: "comparatie" },
+  { title: "Cum alegi cel mai bun rachete de tenis pentru nivelul tau?", id: "ghid" },
+  { title: "Intrebari Frecvente", id: "faq" }
+];
+
+// Get all articles for similar articles component
+const allArticles = keywordsData.completed.map(item => ({
+  title: item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1),
+  slug: item.keyword.toLowerCase()
+    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+    .replace(/ș/g, 's').replace(/ț/g, 't')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
+  excerpt: item.excerpt || '',
+  image: `/images/articles/${item.keyword.toLowerCase()
+    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+    .replace(/ș/g, 's').replace(/ț/g, 't')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}.webp`,
+  category: item.category,
+  categorySlug: item.categorySlug,
+  date: item.date || new Date().toISOString()
+}));
+---
+
+<Layout
+  title="Cele mai bune rachete de tenis - PretulVerde"
+  description="Daca cauti cele mai bune rachete de tenis, probabil vrei sa intelegi ce caracteristici fac o racheta potrivita pentru nivelul tau de joc si stilul preferat. Alegerea corecta poate imbunatati semnificativ performanta pe teren, oferind control, putere si manevrabilitate."
+  image="/images/articles/cele-mai-bune-rachete-de-tenis.webp"
+  type="article"
+  publishedTime="2025-06-05T15:00:00.000Z"
+  modifiedTime="2026-03-14T08:51:06.754Z"
+  author="Dan Vasilescu"
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <article class="article-page">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+      <ol>
+        <li><a href="/">Acasa</a></li>
+        <li>Sport si Timp Liber</li>
+        <li><span>Cele mai bune rachete de tenis</span></li>
+      </ol>
+    </nav>
+
+    <!-- Title -->
+    <h1 class="article-page-title">Cele mai bune rachete de tenis</h1>
+
+    <!-- Meta -->
+    <div class="article-page-meta">
+      <span>Dan Vasilescu</span>
+      <span>&middot;</span>
+      <span>Publicat: 5 iunie 2025</span>
+      <span>&middot;</span>
+      <span>Actualizat: 14 martie 2026</span>
+    </div>
+
+    <!-- Featured Image -->
+    <img src="/images/articles/cele-mai-bune-rachete-de-tenis.webp" alt="Cele mai bune rachete de tenis" class="article-page-image" width="800" height="600" loading="eager">
+
+    <!-- Two-column layout: content + TOC sidebar on RIGHT -->
+    <div class="article-layout">
+      <aside class="toc-sidebar">
+        <p class="toc-sidebar-title">Cuprins</p>
+        <ol class="toc-sidebar-list" id="toc-desktop-list">
+          {toc.map(item => (
+            <li><a href={`#${item.id}`} data-toc-id={item.id}>{item.title}</a></li>
+          ))}
+        </ol>
+      </aside>
+
+      <div>
+        <!-- Mobile TOC (expandable) -->
+        <div class="toc-mobile" id="toc-mobile">
+          <button class="toc-mobile-toggle" onclick="this.parentElement.classList.toggle('open')">
+            Cuprins
+            <span class="toc-chevron">&#9660;</span>
+          </button>
+          <ol class="toc-mobile-list">
+            {toc.map(item => (
+              <li><a href={`#${item.id}`}>{item.title}</a></li>
+            ))}
+          </ol>
+        </div>
+
+        <!-- Article Content -->
+        <div class="article-content">
+          <section id="intro">
+            <p>Daca cauti <strong>cele mai bune rachete de tenis</strong>, probabil vrei sa intelegi ce caracteristici fac o racheta potrivita pentru nivelul tau de joc si stilul preferat. Alegerea corecta poate imbunatati semnificativ performanta pe teren, oferind control, putere si manevrabilitate. Acest articol analizeaza optiuni de top pentru diferite tipuri de jucatori, luand in considerare materiale, greutate, echilibru, marimea capului si tehnologii specifice, pentru a te ghida spre cea mai buna investitie.</p><p>Ce anume defineste o racheta de tenis buna pentru tine? Raspunsul depinde de experienta ta, de fizicul tau si de tipul de lovituri pe care le executi predominant. Un incepator are nevoie de o racheta mai permisiva, care iarta erorile si ofera un sweet spot generos, in timp ce un jucator avansat cauta precizie, manevrabilitate si un raspuns direct de la racheta. Vom prezenta modele care acopera aceste nevoi, concentrandu-ne pe raportul calitate-pret si pe performanta sustenabila.</p><p>Piata ofera o varietate uriasa de modele, de la cele entry-level, accesibile, pana la cele profesionale, construite din materiale compozite avansate. Intelegerea specificațiilor tehnice si a modului in care acestea se traduc in performanta pe teren este cheia. Vom explora optiuni pentru diferite bugete, asigurandu-ne ca gasesti o racheta de tenis care nu doar ca se potriveste stilului tau, dar si ofera un avantaj competitiv, fara a depasi un buget rezonabil. Daca te gandesti sa investesti in echipament de sport, acest ghid te va ajuta sa navighezi prin optiunile disponibile, similar cu modul in care am structurat <a href="/cele-mai-bune-biciclete-de-oras/">cele mai bune biciclete de oras</a>, pentru a maximiza valoarea si satisfactia.</p>
+          </section>
+
+
+          <article class="product-review" id="babolat-pure-drive-2024">
+            <div class="product-review__header">
+              <span class="section-tag">Best Buy 2026</span>
+              <h3>Babolat Pure Drive 2024</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Racheta tenis All-around
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Babolat
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Marime cap: 645 cm patrati (100 sq. in.), Greutate nesirata: 300g, Echilibru: 320mm (fara sir), Rigiditate: 70 RA, Pattern corzi: 16x19, Tehnologie: SWX Pure Feel, FSI Power
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>Lungime standard 68.58 cm (27 in.)
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>1 an (defecțiuni de fabricație)
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Babolat Pure Drive 2024 ramane o referinta pentru jucatorii de nivel intermediar spre avansat care cauta un echilibru excelent intre putere si control. Marimea capului de 100 sq. in. ofera un sweet spot generos, ceea ce o face relativ iertatoare pentru lovituri decentrate. Greutatea de 300g nesirata este un punct de echilibru ideal, oferind suficienta masa pentru stabilitate si impact, dar si manevrabilitate pentru swing-uri rapide.</p><p>Ce face Pure Drive 2024 sa iasa in evidenta? Tehnologia FSI Power, cu o densitate maritata a gaurilor pentru grommets in zona sweet spot-ului si un pattern de corzi 16x19, imbunatateste transferul de energie si permite generarea usoara de spin. Acest lucru se traduce printr-o lovitura puternica si precisa, cu o traiectorie adesea mai joasa, potrivita pentru jucatorii agresivi. Rigiditatea de 70 RA indica un cadru mai ferm, care maximizeaza transferul de energie, insa poate fi un dezavantaj pentru jucatorii cu probleme la cot.</p><p>Cum se compara cu alte modele all-around? Pure Drive tinde sa fie mai puternica decat un Wilson Blade de greutate similara, dar poate oferi mai putina senzatie de teren. Pentru cine este recomandata? Jucatori intermediari si avansati, cu un stil de joc agresiv, care apreciaza puterea si spin-ul. Daca ai un swing rapid si cauti o racheta care sa te ajute sa pui presiune pe adversar, aceasta este o optiune formidabila. Pretul se situeaza in jurul valorii de 1100-1300 lei, un cost justificat de performanta si durabilitate.</p><p>Este Babolat Pure Drive 2024 potrivita pentru tine? Daca prioritizarea este generarea usoara de putere si spin, cu un sweet spot tolerant, raspunsul este da. Insa, daca ai un cot sensibil sau preferi o senzatie mai moale la impact, ar trebui sa consideri alte optiuni. Pentru cei care cauta <strong>cele mai bune rachete de tenis</strong> cu un profil all-around solid, Pure Drive 2024 este o alegere greu de batut in segmentul sau de pret.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Putere impresionanta generata usor</li>
+              <li>Spin excelent datorita pattern-ului de corzi 16x19</li>
+              <li>Sweet spot generos si tolerant</li>
+              <li>Manevrabilitate buna pentru greutatea sa</li>
+              <li>Stabilitate la impact</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Poate fi prea rigida pentru jucatorii cu probleme la cot</li>
+              <li>Senzatie de teren mai putin pronuntata comparativ cu alte modele</li>
+              <li>Necesita o tehnica solida pentru a controla puterea maxima</li>
+              <li>Pretul poate fi considerat ridicat pentru unii amatori</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="wilson-blade-98-v8-16x19">
+            <div class="product-review__header">
+              <span class="section-tag">Raport Calitate-Pret</span>
+              <h3>Wilson Blade 98 v8 16x19</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Racheta tenis All-around/Control
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Wilson
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Marime cap: 632 cm patrati (98 sq. in.), Greutate nesirata: 305g, Echilibru: 325mm (fara sir), Rigiditate: 68 RA, Pattern corzi: 16x19, Tehnologie: FORTYFIVE° (anterior FeelFlex), DirectConnect
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>Lungime standard 68.58 cm (27 in.)
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>1 an (defecțiuni de fabricație)
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Wilson Blade 98 v8 16x19 este o alegere excelenta pentru jucatorii intermediari si avansati care cauta precizie, control si o senzatie de teren superioara. Cu o greutate de 305g nesirata si un cap de 98 sq. in., aceasta racheta ofera un echilibru fin intre manevrabilitate si stabilitate. Pattern-ul de corzi 16x19 este standardul pentru generarea de spin, permitand lovituri cu efecte pronuntate.</p><p>Ce aduce nou versiunea v8? Tehnologia FORTYFIVE° (anterior FeelFlex) este integrata in stratul de grafit pentru a spori flexibilitatea si conectivitatea cu mingea, oferind o senzatie mai buna la impact. Sistemul DirectConnect, care conecteaza direct capatul manerului la capul rachetei, imbunatateste torsiunea si stabilitatea. Aceste inovatii se traduc printr-un control sporit si o senzatie mai naturala pe teren.</p><p>Cum se pozitioneaza fata de Babolat Pure Drive? Blade 98 ofera, in general, mai multa senzatie si control, fiind preferata de jucatorii care apreciaza feedback-ul direct de la minge. Pure Drive, in schimb, exceleaza la capitolul putere generata usor. Pentru cine este potrivita? Jucatori cu un swing complet, care isi bazeaza jocul pe precizie si varietate, si care cauta o racheta cu un raspuns fin si controlabil. Pretul este undeva la 1000-1200 lei, un punct de intrare bun pentru o racheta de performanta.</p><p>Merita sa investesti in Wilson Blade 98 v8 16x19? Daca esti un jucator intermediar spre avansat care cauta precizie chirurgicala, un control excelent si o senzatie de teren de neegalat, raspunsul este un rasunator DA. Este una dintre cele mai bune rachete de tenis pentru control si feedback. Totusi, daca puterea este prioritatea ta principala si nu ai un swing foarte rapid, s-ar putea sa simti lipsa de "potenta" comparativ cu rachete cu un cap mai mare sau un profil mai rigid. Aceasta racheta se simte grozav si este o optiune excelenta pentru cei care joaca frecvent.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Control exceptional si precizie chirurgicala</li>
+              <li>Senzatie de teren excelenta datorita FORTYFIVE°</li>
+              <li>Spin generos si usor de obtinut</li>
+              <li>Manevrabilitate buna pentru greutatea sa</li>
+              <li>Stabilitate sporita la impact datorita DirectConnect</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Poate fi mai putin puternica decat alte rachete pentru lovituri pasive</li>
+              <li>Sweet spot-ul este mai mic decat la modelele cu cap de 100 sq. in.</li>
+              <li>Necesita o tehnica buna pentru a valorifica intregul potential</li>
+              <li>Rigiditatea moderata (68 RA) poate fi un compromis pentru unii</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="head-speed-mp">
+            <div class="product-review__header">
+              <span class="section-tag">Alegerea Noastra</span>
+              <h3>Head Speed MP</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Racheta tenis All-around/Viteza
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Head
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Marime cap: 645 cm patrati (100 sq. in.), Greutate nesirata: 300g, Echilibru: 320mm (fara sir), Rigiditate: 64 RA, Pattern corzi: 16x19, Tehnologie: Graphene 360+
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>Lungime standard 68.58 cm (27 in.)
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>1 an (defecțiuni de fabricație)
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Head Speed MP este o racheta all-around conceputa pentru viteza si joc modern, potrivita pentru o gama larga de jucatori, de la intermediari la avansati. Cu o greutate de 300g si un cap de 100 sq. in., ofera un echilibru remarcabil intre putere, control si manevrabilitate. Pattern-ul de corzi 16x19 permite generarea usoara de spin, esentiala in jocul actual.</p><p>Ce diferentiaza Head Speed MP? Tehnologia Graphene 360+ combina puterea exclusiva a Graphene 360 cu fibre spiralate imbunatatite in partea inferioara a capului rachetei, pentru o flexibilitate sporita si un transfer de energie imbunatatit. Aceasta se traduce printr-o senzatie mai curata la impact si o putere mai mare, fara a compromite controlul. Rigiditatea moderata de 64 RA ofera un confort sporit la utilizare, fiind mai blanda cu bratul decat modelele mai rigide.</p><p>Cum se compara cu alte optiuni pentru viteza? Head Speed MP este adesea considerata mai manevrabila decat Babolat Pure Drive, oferind un swing speed mai rapid. In acelasi timp, ofera mai multa putere accesibila decat un Wilson Blade 98, dar cu o senzatie de teren putin mai redusa. Este ideala pentru jucatorii care doresc sa dicteze ritmul jocului, sa loveasca puternic si sa adauge mult spin mingilor. Pretul se mentine in jurul valorii de 950-1150 lei, oferind un excelent raport calitate-pret.</p><p>Merita Head Speed MP investitia? Daca cauti o racheta versatila, care sa te ajute sa accelerezi swing-ul, sa generezi spin si sa obtii putere cu usurinta, in timp ce beneficiezi de un confort bun, atunci raspunsul este da. Este una dintre <strong>cele mai bune rachete de tenis</strong> pentru cei care vor sa joace rapid si agresiv. Totusi, daca jocul tau se bazeaza exclusiv pe precizie milimetrica sau daca preferi o senzatie foarte "moale" la impact, s-ar putea sa vrei sa testezi si alte optiuni. Pentru majoritatea jucatorilor intermediari si avansati, este o alegere solidă.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Manevrabilitate excelenta si viteza de swing mare</li>
+              <li>Generare usoara de putere si spin</li>
+              <li>Confort sporit la impact datorita rigiditatii moderate</li>
+              <li>Design modern si echilibru bun</li>
+              <li>Potrivita pentru o gama larga de stiluri de joc</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Senzatie de teren mai putin pronuntata decat la rachetele de control pur</li>
+              <li>Stabilitatea la impactul cu mingi foarte puternice poate fi inferioara modelelor mai grele</li>
+              <li>Durabilitatea finisajului exterior poate fi un punct slab pentru unii utilizatori</li>
+              <li>Echilibrul spre cap (320mm) poate necesita adaptare pentru unii jucatori</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="yonex-ezone-98-305g">
+            <div class="product-review__header">
+              <span class="section-tag">Premium</span>
+              <h3>Yonex EZONE 98 (305g)</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Racheta tenis All-around/Control
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Yonex
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Marime cap: 632 cm patrati (98 sq. in.), Greutate nesirata: 305g, Echilibru: 315mm (fara sir), Rigiditate: 67 RA, Pattern corzi: 16x19, Tehnologie: VDM (Vibration Dampening Mesh), ISOMETRIC
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>Lungime standard 68.58 cm (27 in.)
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>1 an (defecțiuni de fabricație)
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Yonex EZONE 98 (305g) se distinge prin combinatia sa unica de confort, putere si control, fiind o alegere populara printre jucatorii intermediari si avansati. Capul de 98 sq. in. si greutatea de 305g ofera un echilibru excelent, permitand manevrabilitate si stabilitate in acelasi timp. Pattern-ul de corzi 16x19 este standardul pentru generarea de spin, iar forma capului ISOMETRIC de la Yonex mareste sweet spot-ul.</p><p>Ce face EZONE 98 speciala? Tehnologia VDM (Vibration Dampening Mesh) integrata in maner reduce vibratiile nedorite la impact, oferind o senzatie mai moale si mai confortabila, ceea ce o face o optiune excelenta pentru jucatorii predispusi la probleme cu cotul sau incheietura. De asemenea, combinatia dintre grafitul high-modulus si tehnologia "Liners Technology" contribuie la o mai buna flexibilitate si stabilitate a cadrului. Aceasta racheta ofera un raspuns foarte placut si un control fin.</p><p>Cum se diferentiaza de alte modele? Fata de Wilson Blade, EZONE 98 ofera adesea o senzatie mai confortabila si mai putina vibratie. Comparativ cu Babolat Pure Drive, este mai putin puternica "din start", dar ofera mai mult control si o senzatie mai naturala. Este potrivita pentru jucatori care doresc sa aiba control asupra loviturilor, sa plaseze mingea cu precizie si sa beneficieze de confort pe parcursul meciurilor lungi. Pretul este in segmentul premium, ajungand la 1200-1400 lei.</p><p>Merita Yonex EZONE 98 (305g) sa fie in cosul tau de cumparaturi? Daca prioritizati confortul, controlul si o senzatie de teren placuta, fara a sacrifica prea mult din putere si spin, atunci aceasta racheta este o optiune de top. Este o alegere excelenta pentru cei care cauta <strong>cele mai bune rachete de tenis</strong> pentru a-si imbunatati jocul pe termen lung, mai ales daca au un istoric de probleme articulare. Totusi, daca doriti puterea maxima cu minim efort, s-ar putea sa fie nevoie sa rimati mai puternic sau sa alegeti o racheta cu un cap mai mare. Este o investitie in confort si precizie.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Confort exceptional datorita tehnologiei VDM</li>
+              <li>Control precis si senzatie placuta la impact</li>
+              <li>Sweet spot extins datorita formei ISOMETRIC</li>
+              <li>Manevrabilitate buna pentru greutatea sa</li>
+              <li>Stabilitate excelenta pentru o racheta de 305g</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Puterea generata este mai mica comparativ cu modelele "power-oriented"</li>
+              <li>Pretul este in segmentul premium, mai ridicat decat al concurentei directe</li>
+              <li>Senzatia de teren, desi confortabila, poate fi mai putin "crisp" pentru unii jucatori</li>
+              <li>Necesita un swing atletic pentru a maximiza potentialul</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="head-instinct-mp">
+            <div class="product-review__header">
+              <span class="section-tag">Pentru Buget Mic</span>
+              <h3>Head Instinct MP</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Racheta tenis All-around/Putere
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Head
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Marime cap: 645 cm patrati (100 sq. in.), Greutate nesirata: 295g, Echilibru: 320mm (fara sir), Rigiditate: 67 RA, Pattern corzi: 16x19, Tehnologie: Graphene 360+
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>Lungime standard 68.58 cm (27 in.)
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>1 an (defecțiuni de fabricație)
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Head Instinct MP, cu o greutate de 295g nesirata, este conceputa pentru a oferi o combinatie echilibrata de putere si manevrabilitate, fiind o optiune excelenta pentru jucatorii intermediari care cauta o racheta mai usoara, dar performanta. Capul de 100 sq. in. si pattern-ul de corzi 16x19 faciliteaza generarea de putere si spin, iar echilibrul spre cap (320mm) ii confera o senzatie de "lovire" puternica.</p><p>Cum se traduce tehnologia Graphene 360+ in beneficii practice? Similar cu modelul Speed, Instinct MP beneficiaza de aceasta tehnologie pentru a imbunatati flexibilitatea si transferul de energie, rezultand intr-o putere mai mare si un impact mai "curat". Rigiditatea de 67 RA o plaseaza in zona moderata, oferind un confort bun, dar fara a fi prea moale. Este o racheta "plug-and-play", adica usor de adaptat si cu o curba de invatare redusa.</p><p>Care sunt diferentele fata de alte modele pentru incepatori/intermediari? Instinct MP este mai puternica si mai iertatoare decat multe rachete orientate spre control, cum ar fi un Wilson Blade 98. Este, de asemenea, o alternativa mai accesibila si adesea mai confortabila decat o Babolat Pure Drive. Este ideala pentru jucatorii care doresc sa-si dezvolte loviturile puternice, sa puna presiune pe adversar si sa beneficieze de o manevrabilitate sporita datorita greutatii mai mici. Pretul este un atu major, situandu-se frecvent sub 900 lei, ceea ce o face o alegere excelenta pentru buget.</p><p>Merita Head Instinct MP sa fie urmatoarea ta racheta? Daca esti un jucator intermediar care doreste sa treaca la un nivel superior, cautand o racheta care sa ofere putere cu usurinta, manevrabilitate si un confort bun, raspunsul este da. Este una dintre <strong>cele mai bune rachete de tenis</strong> pentru jucatorii cu un buget limitat, dar care nu vor sa faca compromisuri majore la performanta. Totusi, daca esti un jucator avansat care cauta precizie extrema sau stabilitate maxima impotriva loviturilor puternice, s-ar putea sa simti lipsa de "greutate" si feedback. Este o optiune excelenta pentru progres.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Putere generata usor, ideala pentru jucatori in progres</li>
+              <li>Manevrabilitate excelenta datorita greutatii reduse</li>
+              <li>Sweet spot generos si tolerant</li>
+              <li>Confort bun la impact</li>
+              <li>Pret foarte accesibil, excelent raport calitate-pret</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Stabilitate limitata impotriva loviturilor foarte puternice</li>
+              <li>Controlul fin poate fi mai redus comparativ cu rachetele de control</li>
+              <li>Senzatia de teren poate fi mai "sterila" pentru unii</li>
+              <li>Durabilitatea finisajului exterior poate fi inferioara modelelor premium</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="dunlop-cx-400-tour">
+            <div class="product-review__header">
+              <span class="section-tag">Raport Calitate-Pret</span>
+              <h3>Dunlop CX 400 Tour</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>Racheta tenis All-around/Control
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Dunlop
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>Marime cap: 645 cm patrati (100 sq. in.), Greutate nesirata: 300g, Echilibru: 325mm (fara sir), Rigiditate: 67 RA, Pattern corzi: 16x19, Tehnologie: Sonic Core, PowerGrid Stringtech
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>Lungime standard 68.58 cm (27 in.)
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>1 an (defecțiuni de fabricație)
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Dunlop CX 400 Tour ofera o combinatie impresionanta de putere, control si confort, fiind o optiune atractiva pentru jucatorii intermediari si avansati. Cu un cap de 100 sq. in. si o greutate de 300g, aceasta racheta se simte echilibrata si manevrabila, permitand un swing rapid. Pattern-ul de corzi 16x19 este ideal pentru generarea de spin, iar echilibrul de 325mm ii confera o stabilitate decenta la impact.</p><p>Ce aduce nou tehnologia Sonic Core? Aceasta tehnologie, utilizand un material numit Sonic Core (bazat pe uretan), este amplasata in capul rachetei pentru a reduce vibratiile si a creste stabilitatea la impact. Acest lucru se traduce printr-un confort sporit si o senzatie de lovire mai "moale", ceea ce este benefic pentru jucatorii cu articulatii sensibile. PowerGrid Stringtech imbunatateste distribuția greutății si rezistența la deformare a cadrului.</p><p>Cum se compară cu alte modele all-around? Dunlop CX 400 Tour se situează undeva intre Babolat Pure Drive (mai multa putere) si Wilson Blade (mai mult control si senzatie). Oferă un echilibru bun între aceste atribute, fiind o alegere versatilă. Este potrivită pentru jucătorii care caută o rachetă care să îi ajute să genereze putere, să plaseze mingea cu precizie și să beneficieze de un confort sporit. Pretul este competitiv, situându-se în general între 900-1100 lei.</p><p>Merită Dunlop CX 400 Tour să fie luată în considerare? Dacă cauți o rachetă all-around care oferă un pachet complet – putere, control, spin și confort – la un preț rezonabil, atunci răspunsul este DA. Este o opțiune excelentă pentru jucătorii care doresc să își îmbunătățească jocul fără a investi sume exorbitante. Este una dintre <strong>cele mai bune rachete de tenis</strong> pentru cei care apreciază tehnologia ce sporește confortul. Totuși, jucătorii foarte avansați, care au nevoie de precizie absolută sau de o stabilitate maximă la impactul cu mingi foarte puternice, ar putea găsi-o ușor inferioară modelelor de top din segmente specifice.</p>
+
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>Echilibru excelent intre putere, control si spin</li>
+              <li>Confort sporit datorita tehnologiei Sonic Core</li>
+              <li>Sweet spot generos si tolerant</li>
+              <li>Manevrabilitate buna pentru greutatea sa</li>
+              <li>Raport calitate-pret atractiv</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>Stabilitatea la impactul cu mingi foarte puternice poate fi inferioara modelelor mai grele</li>
+              <li>Senzatia de teren poate fi mai putin "crisp" comparativ cu rachetele orientate spre control</li>
+              <li>Durabilitatea finisajului exterior poate fi un punct slab</li>
+              <li>Brand-ul Dunlop, desi respectat, nu are aceeasi "aura" ca Babolat sau Wilson pentru unii amatori</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+
+          <section id="comparatie">
+            <h2>Comparatie</h2>
+            <p>Pentru a te ajuta sa vizualizezi rapid diferentele cheie intre modelele analizate, am pregatit un tabel comparativ. Acesta evidentiaza specificatiile principale si tipul de jucator pentru care fiecare racheta este ideala.</p>
+            <div class="comparison-outer">
+              <div class="comparison-hint">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                Gliseaza pentru a vedea tot tabelul
+              </div>
+              <div class="comparison-wrap">
+                <table class="comparison-table">
+                  <thead>
+                    <tr>
+                      <th>Produs</th>
+                      <th>Tip</th>
+                      <th>Brand</th>
+                      <th>Specificatii cheie</th>
+                      <th>Dimensiuni</th>
+                      <th>PotrivitPentru</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+              <tr>
+                <td><strong>Babolat Pure Drive 2024</strong></td>
+                <td>All-around / Putere</td>
+                <td>Babolat</td>
+                <td>100 sq. in., 300g, 16x19</td>
+                <td>Standard, 320mm echilibru</td>
+                <td>Intermediar-Avansat, Agresiv</td>
+              </tr>
+
+              <tr>
+                <td><strong>Wilson Blade 98 v8 16x19</strong></td>
+                <td>All-around / Control</td>
+                <td>Wilson</td>
+                <td>98 sq. in., 305g, 16x19</td>
+                <td>Standard, 325mm echilibru</td>
+                <td>Intermediar-Avansat, Precizie</td>
+              </tr>
+
+              <tr>
+                <td><strong>Head Speed MP</strong></td>
+                <td>All-around / Viteza</td>
+                <td>Head</td>
+                <td>100 sq. in., 300g, 16x19</td>
+                <td>Standard, 320mm echilibru</td>
+                <td>Intermediar-Avansat, Joc Rapid</td>
+              </tr>
+
+              <tr>
+                <td><strong>Yonex EZONE 98 (305g)</strong></td>
+                <td>All-around / Confort</td>
+                <td>Yonex</td>
+                <td>98 sq. in., 305g, 16x19</td>
+                <td>Standard, 315mm echilibru</td>
+                <td>Intermediar-Avansat, Confort</td>
+              </tr>
+
+              <tr>
+                <td><strong>Head Instinct MP</strong></td>
+                <td>All-around / Putere Usoara</td>
+                <td>Head</td>
+                <td>100 sq. in., 295g, 16x19</td>
+                <td>Standard, 320mm echilibru</td>
+                <td>Intermediar, Buget Mic</td>
+              </tr>
+
+              <tr>
+                <td><strong>Dunlop CX 400 Tour</strong></td>
+                <td>All-around / Versatil</td>
+                <td>Dunlop</td>
+                <td>100 sq. in., 300g, 16x19</td>
+                <td>Standard, 325mm echilibru</td>
+                <td>Intermediar-Avansat, Echilibru</td>
+              </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+
+          <section id="ghid">
+            <h2>Cum alegi cel mai bun rachete de tenis pentru nivelul tau?</h2>
+            <div class="guide">
+              <h4>Ce marime de cap ar trebui sa aleg?</h4><p>Marimea capului rachetei influenteaza "sweet spot"-ul (zona ideala de impact) si puterea. Un cap mai mare (peste 100 sq. in.) este mai iertator si ofera mai multa putere, fiind ideal pentru incepatori sau jucatori care cauta asistenta la generarea de forta. Un cap mediu (95-100 sq. in.) ofera un echilibru bun intre putere si control, fiind potrivit pentru majoritatea jucatorilor intermediari si avansati. Capetele mai mici (sub 95 sq. in.) sunt destinate jucatorilor avansati care cauta precizie maxima si feedback direct, sacrificand din iertare si putere.</p><h4>Cum influenteaza greutatea rachetei jocul?</h4><p>Greutatea rachetei este un factor critic pentru stabilitate, manevrabilitate si transfer de energie. Rachetele mai grele (peste 305g nesirata) ofera stabilitate sporita impotriva loviturilor puternice si transfer de energie eficient, dar pot fi mai greu de manevrat si pot solicita mai mult bratul. Rachetele mai usoare (sub 290g nesirata) sunt mai manevrabile, permitand swing-uri rapide si generare usoara de spin, dar pot fi mai putin stabile impotriva loviturilor puternice. Modelele de 295-305g, ca majoritatea celor prezentate, sunt considerate un punct de mijloc ideal pentru jucatorii intermediari si avansati.</p><h4>Ce inseamna pattern-ul corzilor si echilibrul?</h4><p>Pattern-ul corzilor (ex: 16x19 sau 18x20) afecteaza spin-ul si controlul. Un pattern mai deschis (mai putine corzi, ex: 16x19) permite corzilor sa "musce" mingea mai bine, generand mai mult spin. Un pattern mai inchis (ex: 18x20) ofera mai mult control si o senzatie mai "taioasa", dar mai putin spin. Echilibrul rachetei (masurat in puncte "head light" - spre maner, sau "head heavy" - spre cap) influenteaza manevrabilitatea si senzatia. Un echilibru "head light" (ex: 320mm sau mai jos) face racheta mai manevrabila si mai rapida in swing, in timp ce un echilibru "head heavy" (peste 330mm) sporeste puterea, dar reduce manevrabilitatea.</p><h4>Cat de important este materialul si tehnologia?</h4><p>Majoritatea rachetelor moderne sunt fabricate din grafit compozit, dar calitatea grafitului si tehnologiile specifice variaza. Producatorii integreaza diverse tehnologii (ex: Graphene, VDM, FSI Power) pentru a imbunatati flexibilitatea, stabilitatea, confortul sau transferul de energie. Cand alegi, uita-te la specificatii, dar si la cum acestea se traduc in beneficii. Spre exemplu, o tehnologie de amortizare a vibratiilor este cruciala daca ai probleme cu bratul, similar cu alegerea unor <a href="/cele-mai-bune-bormasini-pentru-casa/">cele mai bune bormasini pentru casa</a>, unde materialul si amortizarea conteaza pentru confortul utilizatorului.</p>
+            </div>
+          </section>
+
+          <!-- FAQ Section -->
+          <section class="faq-section" id="faq">
+            <h2 class="faq-title">Intrebari Frecvente</h2>
+            
+            <div class="faq-item" id="faq-0">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Cat costa o racheta de tenis buna?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                O racheta de tenis decenta, potrivita pentru un jucator intermediar, costa intre 700 si 1200 lei. Modelele de top, profesionale, pot depasi 1500 lei. Exista si optiuni pentru incepatori sub 500 lei, dar performanta si durabilitatea sunt inferioare.
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq-1">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Ce diferenta este intre o racheta pentru barbati si una pentru femei?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                In general, rachetele "pentru barbati" sunt mai grele si au manere mai mari, in timp ce cele "pentru femei" sunt mai usoare si au manere mai mici. Totusi, cea mai importanta distinctie este potrivirea individuala, nu genul. Alegerea se face pe baza greutatii, echilibrului si dimensiunii manerului, nu pe baza etichetei.
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq-2">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Merita sa cumpar o racheta mai scumpa daca sunt amator?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Daca joci ocazional si nu ai pretentii mari, o racheta mai accesibila (sub 700 lei) este suficienta. Daca joci regulat, vrei sa te dezvolti si sa te bucuri de joc, o investitie intr-o racheta de calitate medie (700-1200 lei) se va reflecta in performanta si confort, similar cu alegerea unor <a href="/cele-mai-bune-trotinete-electrice/">cele mai bune trotinete electrice</a> unde raportul calitate-pret este esential.
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq-3">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Cum aleg corect marimea manerului (grip size)?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Marimea corecta a manerului previne accidentarile si imbunatateste controlul. Pentru majoritatea barbatilor, grip-ul 2 sau 3 (4 1/4" sau 4 3/8") este potrivit, iar pentru femei, grip-ul 1 sau 2 (4 1/8" sau 4 1/4"). O metoda simpla: cand tii racheta, ar trebui sa incapa aproximativ un deget intre varful degetului inelar si palma.
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq-4">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Ce sunt rachetele "pre-strung" si "unstrung"?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Rachetele "unstrung" vin fara corzi si trebuie racordate de tine sau de un profesionist, permitandu-ti sa alegi tipul si tensiunea corzilor. Rachetele "pre-strung" vin gata racordate din fabrica, de obicei cu corzi standard, fiind gata de joc imediat. Pentru performanta optima, este recomandat sa cumperi "unstrung" si sa alegi corzi personalizate.
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Author -->
+        <div class="author-line">
+          <div class="author-avatar">DV</div>
+          <div>
+            <div class="author-name">Dan Vasilescu</div>
+            <div class="author-role">Expert Sport si Outdoor</div>
+          </div>
+        </div>
+
+        <!-- Similar Articles -->
+        <SimilarArticles
+          currentSlug="cele-mai-bune-rachete-de-tenis"
+          currentCategory="sport-timp-liber"
+          articles={allArticles}
+        />
+
+        <!-- Prev/Next Navigation -->
+        <PrevNextNav
+          currentSlug="cele-mai-bune-rachete-de-tenis"
+          currentCategory="sport-timp-liber"
+          articles={allArticles}
+        />
+      </div>
+    </div>
+  </article>
+
+  <script>
+    document.querySelectorAll('.comparison-outer').forEach(outer => {
+      const wrap = outer.querySelector('.comparison-wrap');
+      if (!wrap) return;
+      function checkScroll() {
+        const canScroll = wrap.scrollWidth > wrap.clientWidth;
+        const atEnd = wrap.scrollLeft + wrap.clientWidth >= wrap.scrollWidth - 2;
+        outer.classList.toggle('can-scroll', canScroll && !atEnd);
+      }
+      checkScroll();
+      wrap.addEventListener('scroll', checkScroll, { passive: true });
+      window.addEventListener('resize', checkScroll, { passive: true });
+    });
+
+    const tocLinks = document.querySelectorAll('#toc-desktop-list a[data-toc-id]');
+    if (tocLinks.length > 0) {
+      const ids = Array.from(tocLinks).map(a => a.dataset.tocId);
+      const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              tocLinks.forEach(a => a.classList.remove('active'));
+              const match = Array.from(tocLinks).find(a => a.dataset.tocId === entry.target.id);
+              match?.classList.add('active');
+            }
+          }
+        },
+        { rootMargin: '-80px 0px -60% 0px', threshold: 0 }
+      );
+      sections.forEach(s => observer.observe(s));
+    }
+  </script>
+</Layout>
