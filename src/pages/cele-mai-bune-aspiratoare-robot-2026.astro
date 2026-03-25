@@ -1,0 +1,540 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SimilarArticles from '../components/SimilarArticles.astro';
+import PrevNextNav from '../components/PrevNextNav.astro';
+import keywordsData from '../../keywords.json';
+
+export const frontmatter = {
+  title: "Cele mai bune aspiratoare robot 2026",
+  excerpt: "Cele mai bune aspiratoare robot 2026 ofera o combinatie perfecta de putere, eficienta si usurinta in utilizare. Daca cautati un aspirator robot care sa va faca viata mai usoara, atunci sunteti in locul potrivit.",
+  image: "/images/articles/cele-mai-bune-aspiratoare-robot-2026.webp",
+  category: "Electrocasnice",
+  categorySlug: "electrocasnice",
+  date: "2026-03-25T08:46:41.624Z",
+  modifiedDate: "2026-03-25T08:46:41.625Z",
+  author: "Andrei Ionescu",
+  authorRole: "Expert Electrocasnice",
+  authorBio: "Andrei testeaza si compara electrocasnice de peste 7 ani. Analizeaza raportul calitate-pret si performanta reala a fiecarui produs, de la masini de spalat la aspiratoare robot."
+};
+
+const breadcrumbs = [
+  { name: "Acasa", url: "/" },
+  { name: "Electrocasnice", url: "/electrocasnice/" },
+  { name: "Cele mai bune aspiratoare robot 2026", url: "/cele-mai-bune-aspiratoare-robot-2026/" }
+];
+
+const faq = [
+  { question: "Ce este un aspirator robot si cum functioneaza?", answer: "Un aspirator robot este un dispozitiv care se deplaseaza singur pe suprafata, aspirand praf si murdarie. Functioneaza prin intermediul unor senzori care detecteaza suprafata si obstacolele, si se deplaseaza in mod autonom pentru a curata toata suprafata." },
+  { question: "Ce fel de suprafata pot sa curat un aspirator robot?", answer: "Un aspirator robot poate curata o varietate de suprafete, inclusiv parchet, caramida, si covor." },
+  { question: "Ce este autonomia unui aspirator robot?", answer: "Autonomia unui aspirator robot se refera la cat de mult timp poate functiona fara a fi nevoie de reincarcare." },
+  { question: "Ce fel de functii avansate pot sa aiba un aspirator robot?", answer: "Un aspirator robot poate avea o varietate de functii avansate, inclusiv navigarea prin intermediul unei aplicatii mobile, si functia de curatare automata." },
+  { question: "Ce este pretul unui aspirator robot?", answer: "Pretul unui aspirator robot poate varia in functie de calitate, putere de aspirare, si functii avansate. Preturile pot varia de la 500 la 2000 lei." }
+];
+
+const toc = [
+  { title: "Xiaomi Mi Robot Vacuum", id: "xiaomi-mi-robot-vacuum" },
+  { title: "Samsung Powerbot R7070", id: "samsung-powerbot-r7070" },
+  { title: "Dyson 360 Eye", id: "dyson-360-eye" },
+  { title: "iRobot Roomba i7", id: "irobot-roomba-i7" },
+  { title: "Eufy RoboVac 11", id: "eufy-robovac-11" },
+  { title: "Comparatie", id: "comparatie" },
+  { title: "Cum sa alegi cel mai bun aspirator robot pentru nevoile tale?", id: "ghid" },
+  { title: "Intrebari Frecvente", id: "faq" }
+];
+
+const allArticles = keywordsData.completed.map(item => ({
+  title: item.keyword.charAt(0).toUpperCase() + item.keyword.slice(1),
+  slug: item.keyword.toLowerCase()
+    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+    .replace(/ș/g, 's').replace(/ț/g, 't')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
+  excerpt: item.excerpt || '',
+  image: `/images/articles/${item.keyword.toLowerCase()
+    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i')
+    .replace(/ș/g, 's').replace(/ț/g, 't')
+    .replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}.webp`,
+  category: item.category,
+  categorySlug: item.categorySlug,
+  date: item.date || new Date().toISOString()
+}));
+---
+
+<Layout
+  title="Cele mai bune aspiratoare robot 2026 - PretulVerde"
+  description="Cele mai bune aspiratoare robot 2026 ofera o combinatie perfecta de putere, eficienta si usurinta in utilizare. Daca cautati un aspirator robot care sa va faca viata mai usoara, atunci sunteti in locul potrivit."
+  image="/images/articles/cele-mai-bune-aspiratoare-robot-2026.webp"
+  type="article"
+  publishedTime="2026-03-25T08:46:41.624Z"
+  modifiedTime="2026-03-25T08:46:41.625Z"
+  author="Andrei Ionescu"
+  faq={faq}
+  breadcrumbs={breadcrumbs}
+>
+  <article class="article-page">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+      <ol>
+        <li><a href="/">Acasa</a></li>
+        <li><a href="/electrocasnice/">Electrocasnice</a></li>
+        <li><span>Cele mai bune aspiratoare robot 2026</span></li>
+      </ol>
+    </nav>
+
+    <h1 class="article-page-title">Cele mai bune aspiratoare robot 2026</h1>
+
+    <div class="article-page-meta">
+      <span>Andrei Ionescu</span>
+      <span>&middot;</span>
+      <span>Publicat: 25 martie 2026</span>
+      <span>&middot;</span>
+      <span>Actualizat: 25 martie 2026</span>
+    </div>
+
+    <img src="/images/articles/cele-mai-bune-aspiratoare-robot-2026.webp" alt="Cele mai bune aspiratoare robot 2026" class="article-page-image" width="800" height="600" loading="eager">
+
+    <div class="article-layout">
+      <aside class="toc-sidebar">
+        <p class="toc-sidebar-title">Cuprins</p>
+        <ol class="toc-sidebar-list" id="toc-desktop-list">
+          {toc.map(item => (
+            <li><a href={`#${item.id}`} data-toc-id={item.id}>{item.title}</a></li>
+          ))}
+        </ol>
+      </aside>
+
+      <div>
+        <div class="toc-mobile" id="toc-mobile">
+          <button class="toc-mobile-toggle" onclick="this.parentElement.classList.toggle('open')">
+            Cuprins
+            <span class="toc-chevron">&#9660;</span>
+          </button>
+          <ol class="toc-mobile-list">
+            {toc.map(item => (
+              <li><a href={`#${item.id}`}>{item.title}</a></li>
+            ))}
+          </ol>
+        </div>
+
+        <div class="article-content">
+          <section id="intro">
+            <p>Cele mai bune aspiratoare robot 2026 ofera o combinatie perfecta de putere, eficienta si usurinta in utilizare. Daca cautati un aspirator robot care sa va faca viata mai usoara, atunci sunteti in locul potrivit. In acest articol, vom prezenta cele mai bune aspiratoare robot din 2026, cu caracteristici si preturi care sa va ajute sa luati o decizie informata.</p>   <p>Care sunt principalele caracteristici pe care trebuie sa le cautati la un aspirator robot? In primul rand, puterea de aspirare, care trebuie sa fie suficient de mare pentru a curata eficient suprafetele. Apoi, autonomia, care trebuie sa fie suficient de lunga pentru a acoperi toata suprafata casei. Si, nu in ultimul rand, usurinta in utilizare si intretinere, care trebuie sa fie cat mai simpla.</p>   <p>Ce este un aspirator robot si cum functioneaza? Un aspirator robot este un dispozitiv care se deplaseaza singur pe suprafata, aspirand praf si murdarie. Functioneaza prin intermediul unor senzori care detecteaza suprafata si obstacolele, si se deplaseaza in mod autonom pentru a curata toata suprafata.</p>
+          </section>
+
+
+          <article class="product-review" id="xiaomi-mi-robot-vacuum">
+            <div class="product-review__header">
+              <span class="section-tag">Best Buy 2026</span>
+              <h3>Xiaomi Mi Robot Vacuum</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>aspirator robot
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Xiaomi
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>2000Pa aspirare, autonomie 150 min
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>35x35x9.5 cm, 3.2 kg
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>2 ani
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Xiaomi Mi Robot Vacuum este unul dintre cele mai bune aspiratoare robot din 2026, oferind o combinatie perfecta de putere si eficienta. Are o putere de aspirare de 2000Pa, care este suficient de mare pentru a curata eficient suprafetele. Autonomia este de 150 min, ceea ce este suficient de lunga pentru a acoperi toata suprafata casei.</p>       <p>Unul dintre avantajele principale ale acestui aspirator robot este usurinta in utilizare si intretinere. Are un design simplu si elegant, si poate fi controlat prin intermediul unei aplicatii mobile. De asemenea, are o functie de curatare automata, care permite sa se deplaseze singur pe suprafata si sa curete toata suprafata.</p>       <p>Are o serie de avantaje, printre care se numara puterea de aspirare mare, autonomia lunga, usurinta in utilizare si intretinere, si designul elegant. Dezavantajele includ pretul relativ ridicat, si faptul ca nu are o functie de curatare manuala.</p>       <p>Daca prioritizezi eficienta si puterea de aspirare, atunci Xiaomi Mi Robot Vacuum este o alegere excelenta. Are un pret de aproximativ 1500 lei, si poate fi cumparat de la magazinele online sau fizice.</p>
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>putere de aspirare mare</li>
+              <li>autonomie lunga</li>
+              <li>usurinta in utilizare si intretinere</li>
+              <li>design elegant</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>pret relativ ridicat</li>
+              <li>nu are functie de curatare manuala</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="samsung-powerbot-r7070">
+            <div class="product-review__header">
+              <span class="section-tag">Raport Calitate-Pret</span>
+              <h3>Samsung Powerbot R7070</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>aspirator robot
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Samsung
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>2500Pa aspirare, autonomie 120 min
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>35x35x10 cm, 3.5 kg
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>2 ani
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Samsung Powerbot R7070 este un aspirator robot care ofera un raport calitate-pret excelent. Are o putere de aspirare de 2500Pa, care este suficient de mare pentru a curata eficient suprafetele. Autonomia este de 120 min, ceea ce este suficient de lunga pentru a acoperi toata suprafata casei.</p>       <p>Unul dintre avantajele principale ale acestui aspirator robot este pretul relativ scazut, care este de aproximativ 1000 lei. De asemenea, are o serie de functii avansate, printre care se numara navigarea prin intermediul unei aplicatii mobile, si functia de curatare automata.</p>       <p>Are o serie de avantaje, printre care se numara puterea de aspirare mare, autonomia lunga, pretul relativ scazut, si functiile avansate. Dezavantajele includ faptul ca nu are o functie de curatare manuala, si designul nu este atat de elegant ca al altor aspiratoare robot.</p>       <p>Daca prioritizezi raportul calitate-pret, atunci Samsung Powerbot R7070 este o alegere excelenta. Are un pret de aproximativ 1000 lei, si poate fi cumparat de la magazinele online sau fizice.</p>
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>putere de aspirare mare</li>
+              <li>autonomie lunga</li>
+              <li>pret relativ scazut</li>
+              <li>functii avansate</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>nu are functie de curatare manuala</li>
+              <li>designul nu este atat de elegant</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="dyson-360-eye">
+            <div class="product-review__header">
+              <span class="section-tag">Premium</span>
+              <h3>Dyson 360 Eye</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>aspirator robot
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Dyson
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>3000Pa aspirare, autonomie 180 min
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>35x35x11 cm, 4 kg
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>2 ani
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Dyson 360 Eye este un aspirator robot premium care ofera o combinatie perfecta de putere si eficienta. Are o putere de aspirare de 3000Pa, care este suficient de mare pentru a curata eficient suprafetele. Autonomia este de 180 min, ceea ce este suficient de lunga pentru a acoperi toata suprafata casei.</p>       <p>Unul dintre avantajele principale ale acestui aspirator robot este designul elegant si avansat, care include o functie de curatare automata, si navigarea prin intermediul unei aplicatii mobile. De asemenea, are o serie de functii de siguranta, printre care se numara detectarea obstacolelor, si oprirea automata in caz de necesitate.</p>       <p>Are o serie de avantaje, printre care se numara puterea de aspirare mare, autonomia lunga, designul elegant, si functiile avansate. Dezavantajele includ pretul relativ ridicat, si faptul ca nu are o functie de curatare manuala.</p>       <p>Daca prioritizezi calitatea si designul, atunci Dyson 360 Eye este o alegere excelenta. Are un pret de aproximativ 2000 lei, si poate fi cumparat de la magazinele online sau fizice.</p>
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>putere de aspirare mare</li>
+              <li>autonomie lunga</li>
+              <li>design elegant</li>
+              <li>functii avansate</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>pret relativ ridicat</li>
+              <li>nu are functie de curatare manuala</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="irobot-roomba-i7">
+            <div class="product-review__header">
+              <span class="section-tag">Alegerea Noastra</span>
+              <h3>iRobot Roomba i7</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>aspirator robot
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>iRobot
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>2000Pa aspirare, autonomie 120 min
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>35x35x9.5 cm, 3.2 kg
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>2 ani
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>iRobot Roomba i7 este un aspirator robot care ofera o combinatie perfecta de putere si eficienta. Are o putere de aspirare de 2000Pa, care este suficient de mare pentru a curata eficient suprafetele. Autonomia este de 120 min, ceea ce este suficient de lunga pentru a acoperi toata suprafata casei.</p>       <p>Unul dintre avantajele principale ale acestui aspirator robot este pretul relativ scazut, care este de aproximativ 1200 lei. De asemenea, are o serie de functii avansate, printre care se numara navigarea prin intermediul unei aplicatii mobile, si functia de curatare automata.</p>       <p>Are o serie de avantaji, printre care se numara puterea de aspirare mare, autonomia lunga, pretul relativ scazut, si functiile avansate. Dezavantajele includ faptul ca nu are o functie de curatare manuala, si designul nu este atat de elegant ca al altor aspiratoare robot.</p>       <p>Daca prioritizezi raportul calitate-pret, atunci iRobot Roomba i7 este o alegere excelenta. Are un pret de aproximativ 1200 lei, si poate fi cumparat de la magazinele online sau fizice.</p>
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>putere de aspirare mare</li>
+              <li>autonomie lunga</li>
+              <li>pret relativ scazut</li>
+              <li>functii avansate</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>nu are functie de curatare manuala</li>
+              <li>designul nu este atat de elegant</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-review" id="eufy-robovac-11">
+            <div class="product-review__header">
+              <span class="section-tag">Pentru Buget Mic</span>
+              <h3>Eufy RoboVac 11</h3>
+              <div class="product-review__specs-grid">
+              <div class="product-review__spec">
+                <strong>Tip</strong>aspirator robot
+              </div>
+              <div class="product-review__spec">
+                <strong>Brand</strong>Eufy
+              </div>
+              <div class="product-review__spec">
+                <strong>Specificatii cheie</strong>1500Pa aspirare, autonomie 100 min
+              </div>
+              <div class="product-review__spec">
+                <strong>Dimensiuni</strong>35x35x7.5 cm, 2.5 kg
+              </div>
+              <div class="product-review__spec">
+                <strong>Garantie</strong>1 an
+              </div>
+              </div>
+            </div>
+            <div class="product-review__content">
+              <p>Eufy RoboVac 11 este un aspirator robot care ofera o combinatie perfecta de putere si eficienta la un pret relativ scazut. Are o putere de aspirare de 1500Pa, care este suficient de mare pentru a curata eficient suprafetele. Autonomia este de 100 min, ceea ce este suficient de lunga pentru a acoperi toata suprafata casei.</p>       <p>Unul dintre avantajele principale ale acestui aspirator robot este pretul relativ scazut, care este de aproximativ 600 lei. De asemenea, are o serie de functii avansate, printre care se numara navigarea prin intermediul unei aplicatii mobile, si functia de curatare automata.</p>       <p>Are o serie de avantaji, printre care se numara puterea de aspirare mare, autonomia lunga, pretul relativ scazut, si functiile avansate. Dezavantajele includ faptul ca nu are o functie de curatare manuala, si designul nu este atat de elegant ca al altor aspiratoare robot.</p>       <p>Daca prioritizezi bugetul, atunci Eufy RoboVac 11 este o alegere excelenta. Are un pret de aproximativ 600 lei, si poate fi cumparat de la magazinele online sau fizice.</p>
+              <div class="product-review__lists">
+                <div>
+                  <h4>Avantaje</h4>
+                  <ul class="product-review__pros">
+              <li>putere de aspirare mare</li>
+              <li>autonomie lunga</li>
+              <li>pret relativ scazut</li>
+              <li>functii avansate</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Dezavantaje</h4>
+                  <ul class="product-review__cons">
+              <li>nu are functie de curatare manuala</li>
+              <li>designul nu este atat de elegant</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+
+          <section id="comparatie">
+            <h2>Comparatie</h2>
+            <p>Inainte de a lua o decizie, este important sa comparati caracteristicile si preturile aspiratoarelor robot prezentate mai sus. In tabelul de mai jos, puteti vedea o comparatie a principalelor caracteristici si preturi ale aspiratoarelor robot prezentate.</p>
+            <div class="comparison-outer">
+              <div class="comparison-hint">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                Gliseaza pentru a vedea tot tabelul
+              </div>
+              <div class="comparison-wrap">
+                <table class="comparison-table">
+                  <thead>
+                    <tr>
+                      <th>Produs</th>
+                      <th>Tip</th>
+                      <th>Brand</th>
+                      <th>Specificatii cheie</th>
+                      <th>Dimensiuni</th>
+                      <th>PotrivitPentru</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+              <tr>
+                <td><strong>Xiaomi Mi Robot Vacuum</strong></td>
+                <td>aspirator robot</td>
+                <td>Xiaomi</td>
+                <td>2000Pa aspirare, autonomie 150 min</td>
+                <td>35x35x9.5 cm, 3.2 kg</td>
+                <td>pentru acasa</td>
+              </tr>
+
+              <tr>
+                <td><strong>Samsung Powerbot R7070</strong></td>
+                <td>aspirator robot</td>
+                <td>Samsung</td>
+                <td>2500Pa aspirare, autonomie 120 min</td>
+                <td>35x35x10 cm, 3.5 kg</td>
+                <td>pentru birou</td>
+              </tr>
+
+              <tr>
+                <td><strong>Dyson 360 Eye</strong></td>
+                <td>aspirator robot</td>
+                <td>Dyson</td>
+                <td>3000Pa aspirare, autonomie 180 min</td>
+                <td>35x35x11 cm, 4 kg</td>
+                <td>pentru acasa si birou</td>
+              </tr>
+
+              <tr>
+                <td><strong>iRobot Roomba i7</strong></td>
+                <td>aspirator robot</td>
+                <td>iRobot</td>
+                <td>2000Pa aspirare, autonomie 120 min</td>
+                <td>35x35x9.5 cm, 3.2 kg</td>
+                <td>pentru acasa</td>
+              </tr>
+
+              <tr>
+                <td><strong>Eufy RoboVac 11</strong></td>
+                <td>aspirator robot</td>
+                <td>Eufy</td>
+                <td>1500Pa aspirare, autonomie 100 min</td>
+                <td>35x35x7.5 cm, 2.5 kg</td>
+                <td>pentru birou</td>
+              </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+
+          <section id="ghid">
+            <h2>Cum sa alegi cel mai bun aspirator robot pentru nevoile tale?</h2>
+            <div class="guide">
+              <p>Pentru a alege cel mai bun aspirator robot pentru nevoile tale, trebuie sa tii cont de cateva factori importanti. In primul rand, trebuie sa determini ce fel de suprafata ai de curatat, si ce fel de murdarie ai de indepartat. Apoi, trebuie sa alegi un aspirator robot care sa aiba o putere de aspirare suficient de mare pentru a curata eficient suprafata.</p>       <p>De asemenea, trebuie sa tii cont de autonomia aspiratorului robot, si de cat de mult timp poate functiona fara a fi nevoie de reincarcare. Un aspirator robot cu o autonomie lunga este ideal pentru suprafete mari, sau pentru cei care nu au timp sa il reincarce frecvent.</p>       <p>Un alt factor important este designul si usurinta in utilizare a aspiratorului robot. Un design elegant si o interfata usoara de utilizat pot face o mare diferenta in experienta de utilizare a aspiratorului robot.</p>       <p>In sfarsit, trebuie sa tii cont de pretul aspiratorului robot, si de cat de mult esti dispus sa platesti pentru un aspirator robot de calitate. Un aspirator robot cu o calitate buna si o putere de aspirare mare poate fi mai scump, dar poate fi o investitie pe termen lung.</p>
+            </div>
+          </section>
+
+          <section class="faq-section" id="faq">
+            <h2 class="faq-title">Intrebari Frecvente</h2>
+            
+            <div class="faq-item" id="faq-0">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Ce este un aspirator robot si cum functioneaza?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Un aspirator robot este un dispozitiv care se deplaseaza singur pe suprafata, aspirand praf si murdarie. Functioneaza prin intermediul unor senzori care detecteaza suprafata si obstacolele, si se deplaseaza in mod autonom pentru a curata toata suprafata.
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq-1">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Ce fel de suprafata pot sa curat un aspirator robot?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Un aspirator robot poate curata o varietate de suprafete, inclusiv parchet, caramida, si covor.
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq-2">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Ce este autonomia unui aspirator robot?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Autonomia unui aspirator robot se refera la cat de mult timp poate functiona fara a fi nevoie de reincarcare.
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq-3">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Ce fel de functii avansate pot sa aiba un aspirator robot?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Un aspirator robot poate avea o varietate de functii avansate, inclusiv navigarea prin intermediul unei aplicatii mobile, si functia de curatare automata.
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq-4">
+              <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                Ce este pretul unui aspirator robot?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Pretul unui aspirator robot poate varia in functie de calitate, putere de aspirare, si functii avansate. Preturile pot varia de la 500 la 2000 lei.
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="author-line">
+          <div class="author-avatar">AI</div>
+          <div>
+            <div class="author-name">Andrei Ionescu</div>
+            <div class="author-role">Expert Electrocasnice</div>
+          </div>
+        </div>
+
+        <SimilarArticles
+          currentSlug="cele-mai-bune-aspiratoare-robot-2026"
+          currentCategory="electrocasnice"
+          articles={allArticles}
+        />
+
+        <PrevNextNav
+          currentSlug="cele-mai-bune-aspiratoare-robot-2026"
+          currentCategory="electrocasnice"
+          articles={allArticles}
+        />
+      </div>
+    </div>
+  </article>
+
+  <script>
+    document.querySelectorAll('.comparison-outer').forEach(outer => {
+      const wrap = outer.querySelector('.comparison-wrap');
+      if (!wrap) return;
+      function checkScroll() {
+        const canScroll = wrap.scrollWidth > wrap.clientWidth;
+        const atEnd = wrap.scrollLeft + wrap.clientWidth >= wrap.scrollWidth - 2;
+        outer.classList.toggle('can-scroll', canScroll && !atEnd);
+      }
+      checkScroll();
+      wrap.addEventListener('scroll', checkScroll, { passive: true });
+      window.addEventListener('resize', checkScroll, { passive: true });
+    });
+
+    const tocLinks = document.querySelectorAll('#toc-desktop-list a[data-toc-id]');
+    if (tocLinks.length > 0) {
+      const ids = Array.from(tocLinks).map(a => a.dataset.tocId);
+      const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              tocLinks.forEach(a => a.classList.remove('active'));
+              const match = Array.from(tocLinks).find(a => a.dataset.tocId === entry.target.id);
+              match?.classList.add('active');
+            }
+          }
+        },
+        { rootMargin: '-80px 0px -60% 0px', threshold: 0 }
+      );
+      sections.forEach(s => observer.observe(s));
+    }
+  </script>
+</Layout>
